@@ -1,4 +1,7 @@
 {
   "name": "yarn-test",
-  "author": "Peter Talley"
+  "author": "Peter Talley",
+  "dependencies": {
+    "three": "^0.115.0"
+  }
 }
