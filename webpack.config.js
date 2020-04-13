@@ -1,7 +1,7 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const PnpWebpackPlugin = require('pnp-webpack-plugin')
-// const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 module.exports = {
     mode: 'development',
@@ -28,6 +28,7 @@ module.exports = {
         plugins: [PnpWebpackPlugin.moduleLoader(module)]
     },
     plugins: [
+        new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({ title: "Combining yarn, webpack, and three.js" })
     ],
     output: {

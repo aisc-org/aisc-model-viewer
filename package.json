@@ -12,6 +12,7 @@
   "devDependencies": {
     "@types/node": "^13.11.1",
     "@yarnpkg/pnpify": "^2.0.0-rc.20",
+    "clean-webpack-plugin": "^3.0.0",
     "file-loader": "^6.0.0",
     "html-webpack-plugin": "^4.2.0",
     "pnp-webpack-plugin": "^1.6.4",
