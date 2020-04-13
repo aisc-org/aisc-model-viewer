@@ -1,4 +1,4 @@
 declare module "*.gltf" {
-    const content: any
+    const content: string
     export default content
 }
