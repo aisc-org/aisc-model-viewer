@@ -1,4 +1,7 @@
+# Don't check the built site into the repository
 dist/*
+
+# Yarn stuff
 .yarn/*
 !.yarn/releases
 !.yarn/plugins
