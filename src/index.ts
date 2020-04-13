@@ -3,6 +3,7 @@ import { GLTFLoader, GLTF } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import modelPath from './neyland-connection.gltf'
 import { Vector3 } from 'three'
+import './style.css'
 
 // Set up the renderer
 let scene = new THREE.Scene()
