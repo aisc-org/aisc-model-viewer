@@ -4,9 +4,11 @@ To run:
 
 ````````````````````````````````````````````````````````````````````````````````
 yarn install
-yarn run build
-python -m http.server --directory dist/
+yarn start
 ````````````````````````````````````````````````````````````````````````````````
 
-For some reason the `webpack-dev-server` isn't working right now; will have to
-figure that out later.
+Then open a new tab pointing to `localhost:8080`.
+
+Note that Yarn and `webpack-dev-server` aren't playing along nicely right now if
+you try to have `webpack-dev-server` automatically open a new tab for you (see
+[the relevant yarn issue](https://github.com/yarnpkg/berry/issues/856)).
