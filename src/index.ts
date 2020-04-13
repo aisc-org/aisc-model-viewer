@@ -2,7 +2,6 @@ import * as THREE from 'three'
 import { GLTFLoader, GLTF } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import modelPath from './neyland-connection.gltf'
-import { Vector3 } from 'three'
 import './style.css'
 
 // Set up the renderer
@@ -33,8 +32,8 @@ controls.update()
 const loader = new GLTFLoader()
 loader.load(modelPath, function(gltf) {
     const box = new THREE.Box3().setFromObject(gltf.scene)
-    const size = box.getSize(new Vector3()).length()
-    const center = box.getCenter(new Vector3())
+    const size = box.getSize(new THREE.Vector3()).length()
+    const center = box.getCenter(new THREE.Vector3())
 
     controls.reset()
 
