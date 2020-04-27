@@ -6272,6 +6272,15 @@ typescript@^3.8.3:
   languageName: node
   linkType: hard
 
+"webpack-merge@npm:^4.2.2":
+  version: 4.2.2
+  resolution: "webpack-merge@npm:4.2.2"
+  dependencies:
+    lodash: ^4.17.15
+  checksum: 2/038c6d8ba45f538ce8e4505a8a3d90fbd2e554ba2065bacffe4d7cff0229cce9f0d983bf56061f8e0fef86c711da7232f88681aab285c06673b3916b1040cd9e
+  languageName: node
+  linkType: hard
+
 "webpack-sources@npm:^1.4.0, webpack-sources@npm:^1.4.1":
   version: 1.4.3
   resolution: "webpack-sources@npm:1.4.3"
@@ -6504,5 +6513,6 @@ typescript@^3.8.3:
     webpack: ^4.42.1
     webpack-cli: ^3.3.11
     webpack-dev-server: ^3.10.3
+    webpack-merge: ^4.2.2
   languageName: unknown
   linkType: soft

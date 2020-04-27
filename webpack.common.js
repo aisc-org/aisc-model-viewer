@@ -4,13 +4,10 @@ const PnpWebpackPlugin = require('pnp-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 module.exports = {
-    mode: 'development',
     entry: {
         index: './src/index.ts',
         app: './src/app.ts'
     },
-    devtool: 'inline-source-map',
-    devServer: { contentBase: './dist' },
     module: {
         rules: [
             {
