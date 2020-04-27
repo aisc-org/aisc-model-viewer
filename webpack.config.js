@@ -5,7 +5,10 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 module.exports = {
     mode: 'development',
-    entry: './src/index.ts',
+    entry: {
+        index: './src/index.ts',
+        app: './src/app.ts'
+    },
     devtool: 'inline-source-map',
     devServer: { contentBase: './dist' },
     module: {
@@ -21,6 +24,10 @@ module.exports = {
             {
                 test: /\.gltf$/,
                 use: 'file-loader'
+            },
+            {
+                test: /\.svg$/,
+                use: 'file-loader'
             }
         ]
     },
@@ -33,7 +40,18 @@ module.exports = {
     },
     plugins: [
         new CleanWebpackPlugin(),
-        new HtmlWebpackPlugin({ title: "Combining yarn, webpack, and three.js" })
+        new HtmlWebpackPlugin({
+            title: 'AISC Model Viewer',
+            filename: 'index.html',
+            template: './src/main-page.ejs',
+            chunks: ['index']
+        }),
+        new HtmlWebpackPlugin({
+            title: 'Double angle connection',
+            filename: 'models/double-angle-connection.html',
+            template: './src/model-page.ejs',
+            chunks: ['app']
+        }),
     ],
     output: {
         filename: '[name].bundle.js',
