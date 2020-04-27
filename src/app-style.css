@@ -28,3 +28,8 @@ nav.header ul {
     width: 100%;
     flex: 2;
 }
+/* Part of preventing flash of unstyled content */
+html {
+    visibility: visible;
+}
+

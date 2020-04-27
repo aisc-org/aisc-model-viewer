@@ -23,3 +23,7 @@ figure img {
 figure figcaption {
     text-align: center;
 }
+/* Part of preventing flash of unstyled content */
+html {
+    visibility: visible;
+}
