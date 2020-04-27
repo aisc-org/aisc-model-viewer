@@ -1,6 +1,6 @@
 import { Model, ModelViewer } from './viewer'
 import pathToDoubleAngle from './neyland-connection.gltf'
-import './style.css'
+import './app-style.css'
 
 const modelList = [
     new Model('Double Angle Connection', pathToDoubleAngle)
