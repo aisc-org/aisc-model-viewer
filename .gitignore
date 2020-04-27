@@ -6,3 +6,6 @@ dist/*
 !.yarn/releases
 !.yarn/plugins
 .pnp.*
+
+# Apparent some stuff still uses node_modules
+node_modules/*
