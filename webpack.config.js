@@ -22,13 +22,13 @@ module.exports = {
                 use: 'ts-loader',
             },
             {
-                test: /\.gltf$/,
-                use: 'file-loader'
+                test: /\.(gltf|svg)$/,
+                loader: 'file-loader',
+                options: {
+                    context: 'src',
+                    name: '[path][name].[ext]'
+                }
             },
-            {
-                test: /\.svg$/,
-                use: 'file-loader'
-            }
         ]
     },
     resolve: {
