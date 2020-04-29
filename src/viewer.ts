@@ -1,7 +1,7 @@
 import * as THREE from 'three'
 import { GLTFLoader, GLTF } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
-
+import * as path from 'path'
 
 /**
  * Metadata wrapper around the standard GLTF object.
@@ -38,7 +38,19 @@ export class ModelViewer {
         this.container = container
 
         this.loader = new GLTFLoader()
-        this.loader.setPath('/')
+
+        // This is a little wonky, but:
+        // - model files are stored in dist/assets
+        // - the site (dist) isn't always hosted at the URL root
+        // - but the bundle this ends up in is in dist/
+        // - so we can get the current script (the bundle) and get src from there
+        // - but typescript complains that `currentScript` might be an SVG, which
+        //   doesn't have a `src` attribute
+        // - so to make typescript happy we stick it in an if
+        const bundle = document.currentScript
+        if (bundle instanceof HTMLScriptElement) {
+            this.loader.setPath(path.dirname(bundle.src) + '/')
+        }
 
         this.scene = new THREE.Scene()
         this.addLights()

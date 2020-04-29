@@ -19,13 +19,20 @@ module.exports = {
                 use: 'ts-loader',
             },
             {
-                test: /\.(gltf|svg)$/,
+                test: /\.(svg)$/,
                 loader: 'file-loader',
                 options: {
                     context: 'src',
                     name: '[path][name].[ext]'
                 }
             },
+            {
+                test: /.(gltf|glb)$/,
+                loader: 'file-loader',
+                options: {
+                    name: 'assets/[contenthash].[ext]'
+                }
+            }
         ]
     },
     resolve: {
