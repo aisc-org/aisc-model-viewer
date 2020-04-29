@@ -6,7 +6,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 module.exports = {
     entry: {
         index: './src/index.ts',
-        app: './src/app.ts'
+        double_angle: './src/collections/double-angle/double-angle.ts',
     },
     module: {
         rules: [
@@ -47,7 +47,7 @@ module.exports = {
             title: 'Double angle connection',
             filename: 'models/double-angle-connection.html',
             template: './src/model-page.ejs',
-            chunks: ['app']
+            chunks: ['double_angle']
         }),
     ],
     output: {

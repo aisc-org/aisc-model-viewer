@@ -59,28 +59,28 @@ export class ModelViewer {
 
     setModelAsCurrent(model: Model) {
         this.clearScene()
-        this.loader.load(model.path, (gltf) =>{
+        this.loader.load(model.path, (gltf) => {
             // Determine the size of the model, and move it to the center of the scene
             const box = new THREE.Box3().setFromObject(gltf.scene)
             const size = box.getSize(new THREE.Vector3()).length()
             const center = box.getCenter(new THREE.Vector3())
-    
+
             gltf.scene.position.x += (gltf.scene.position.x - center.x)
             gltf.scene.position.y += (gltf.scene.position.y - center.y)
             gltf.scene.position.z += (gltf.scene.position.z - center.z)
-    
+
             this.controls.reset()
             this.controls.maxDistance = size*10
             this.camera.near = size / 100
             this.camera.far = size * 100
             this.camera.updateProjectionMatrix()
-    
+
             this.camera.position.copy(center)
             this.camera.position.x += size / 2.0
             this.camera.position.y += size / 5.0
             this.camera.position.z += size / 2.0
             this.camera.lookAt(center)
-    
+
             this.scene.add(gltf.scene)
         })
         this.render()

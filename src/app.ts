@@ -1,18 +1,19 @@
-import { Model, ModelViewer } from './viewer'
-import pathToDoubleAngle from './neyland-connection.gltf'
+import { ModelViewer } from './viewer'
 import './app-style.css'
 import './assets/house-white.svg'
 
-const modelList = [
-    new Model('Double Angle Connection', pathToDoubleAngle)
-]
+export class App {
+    children: Array<any>
+    viewer: ModelViewer
 
-// Set up the page
-const container = document.createElement('div')
-container.className = 'viewer-container'
-document.body.appendChild(container)
+    constructor(children: Array<any>) {
+        this.children = children
 
-const viewer = new ModelViewer(container)
-viewer.setModelAsCurrent(modelList[0])
+        const container = document.createElement('div')
+        container.className = 'viewer-container'
+        document.body.appendChild(container)
 
-window.addEventListener('resize', viewer.onWindowResize.bind(viewer), false)
+        this.viewer = new ModelViewer(container)
+        window.addEventListener('resize', this.viewer.onWindowResize.bind(this.viewer), false)
+    }
+}
