@@ -7,15 +7,18 @@ html, body {
 
 body {
     overflow: hidden;
-    display: flex;
-    flex-direction: column;
 }
 
 nav.header {
     margin: 0;
     padding: 0;
     width: 100%;
+    height: 5vh;
     background-color: #58595B;
+}
+
+nav.header img.home-button {
+    height: 5vh;
 }
 
 nav.header ul {
@@ -26,8 +29,9 @@ nav.header ul {
 
 .viewer-container {
     width: 100%;
-    flex: 2;
+    height: 95vh;
 }
+
 /* Part of preventing flash of unstyled content */
 html {
     visibility: visible;
