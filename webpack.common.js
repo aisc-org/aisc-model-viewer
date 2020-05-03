@@ -7,6 +7,7 @@ module.exports = {
     entry: {
         index: './src/index.ts',
         double_angle: './src/collections/double-angle/double-angle.ts',
+        wf_truss: './src/collections/wf-truss/wf-truss.ts',
     },
     module: {
         rules: [
@@ -55,6 +56,12 @@ module.exports = {
             filename: 'models/double-angle-connection.html',
             template: './src/model-page.ejs',
             chunks: ['double_angle']
+        }),
+        new HtmlWebpackPlugin({
+            title: 'Wide flange truss connection',
+            filename: 'models/wf-truss-connection.html',
+            template: './src/model-page.ejs',
+            chunks: ['wf_truss']
         }),
     ],
     output: {
