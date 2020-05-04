@@ -3,25 +3,18 @@ import { GLTFLoader, GLTF } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import * as path from 'path'
 
-/**
- * Metadata wrapper around the standard GLTF object.
- *
- * @param name - The name of the model
- * @param gltf - The actual GLTF object
- */
-export class Model {
-    name: string
-    path: string
-    gltf: GLTF
 
-    /**
-     * @param name - The name to use in the sidebar for this model
-     * @param path - The path to the GLTF file for this model
-     */
-    constructor(name: string, path: string) {
-        this.name = name
-        this.path = path
-    }
+const colors = {
+    orange:   new THREE.Color('#FF8200'),
+    white:    new THREE.Color('#FFFFFF'),
+    smokey:   new THREE.Color('#58595B'),
+    valley:   new THREE.Color('#00746F'),
+    globe:    new THREE.Color('#006C93'),
+    smokey_x: new THREE.Color('#333333'),
+    gray_1:   new THREE.Color('#F6F6F6'),
+    gray_2:   new THREE.Color('#E0E0E0'),
+    gray_3:   new THREE.Color('#CACACA'),
+    gray_4:   new THREE.Color('#B6B6B6'),
 }
 
 
@@ -53,6 +46,7 @@ export class ModelViewer {
         }
 
         this.scene = new THREE.Scene()
+        this.scene.background = colors.gray_3
         this.addLights()
         this.camera = new THREE.PerspectiveCamera(75, this.container.clientWidth / this.container.clientHeight)
 
@@ -69,9 +63,9 @@ export class ModelViewer {
         this.render()
     }
 
-    setModelAsCurrent(model: Model) {
+    setModelAsCurrent(path: string) {
         this.clearScene()
-        this.loader.load(model.path, (gltf) => {
+        this.loader.load(path, (gltf) => {
             // Determine the size of the model, and move it to the center of the scene
             const box = new THREE.Box3().setFromObject(gltf.scene)
             const size = box.getSize(new THREE.Vector3()).length()
@@ -107,7 +101,10 @@ export class ModelViewer {
     }
 
     clearScene() {
-        this.scene.traverse(function (child) {
+        this.scene.traverse(child => {
+            if (child instanceof THREE.Group) {
+                this.scene.remove(child)
+            }
         })
     }
 
