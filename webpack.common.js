@@ -61,13 +61,13 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             title: 'Double angle connection',
-            filename: 'models/double-angle-connection.html',
+            filename: 'double-angle/index.html',
             template: './src/model-page.ejs',
             chunks: ['double_angle']
         }),
         new HtmlWebpackPlugin({
             title: 'Wide flange truss connection',
-            filename: 'models/wf-truss-connection.html',
+            filename: 'wf-truss/index.html',
             template: './src/model-page.ejs',
             chunks: ['wf_truss']
         }),
