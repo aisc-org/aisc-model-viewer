@@ -33,6 +33,14 @@ module.exports = {
                 options: {
                     name: 'assets/[contenthash].[ext]'
                 }
+            },
+            {
+                test: /\.html$/,
+                loader: 'file-loader',
+                options: {
+                    context: 'src/collections',
+                    name: '[path][name].[ext]'
+                }
             }
         ]
     },
