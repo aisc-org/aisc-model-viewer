@@ -88,7 +88,10 @@ export class ModelViewer {
     }
 
     clearScene() {
-        this.scene.traverse(function (child) {
+        this.scene.traverse(child => {
+            if (child instanceof THREE.Group) {
+                this.scene.remove(child)
+            }
         })
     }
 
