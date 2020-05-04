@@ -1,24 +1,41 @@
 html, body {
+    font-family: Arial, Helvetica, sans-serif;
     height: 100%;
     margin: 0;
     padding: 0;
     border: 0;
+    background-color: #FF8200;
+    color: #333333;
 }
 
 body {
     overflow: hidden;
 }
 
+a {
+    color: #006C93;
+    text-decoration: underline;
+}
+
+/* --------------- Header --------------- */
 nav.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     margin: 0;
     padding: 0;
     width: 100%;
-    height: 5vh;
-    background-color: #58595B;
+    height: 5%;
 }
 
-nav.header img.home-button {
-    height: 5vh;
+nav.header img {
+    height: 100%;
+    width: auto;
+}
+
+nav.header h1 {
+    align-self: center;
+    font-size: 2.5vh;
 }
 
 nav.header ul {
@@ -27,13 +44,57 @@ nav.header ul {
     padding: 0;
 }
 
-.viewer-container {
+nav.header ul li {
+    display: inline-flex;
+}
+
+nav.header ul li:hover {
+    background-color: #58595B;
+}
+
+/* --------------- Viewer --------------- */
+div.app {
     width: 100%;
-    height: 95vh;
+    height: 95%;
+}
+
+.viewer-container {
+    z-index: 1;
+    float: left;
+    width: calc(100% - 250px);
+    height: 100%;
+}
+
+/* --------------- Sidebar --------------- */
+nav.sidebar {
+    z-index: 0;
+    float: right;
+    width: 250px;
+    height: 100%;
+    background-color: #F6F6F6;
+    border-left: 10px solid #FF8200;
+    box-sizing: border-box;
+    color: #333333;
+    padding: 0;
+}
+
+.sidebar section {
+    margin: 1em;
+}
+
+.sidebar ul {
+    list-style-type: "➤ ";
+    list-style-position: inside;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar h2 {
+    color: #006C93;
+    margin: 0;
 }
 
 /* Part of preventing flash of unstyled content */
 html {
     visibility: visible;
 }
-

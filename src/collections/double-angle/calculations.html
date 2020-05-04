@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculations</title>
+
+    <!-- Some basic CSS. We'll probably want to explore some more styling
+         options further down the line. -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+        body {
+            font-family: 'Tinos', serif;
+            margin: auto;
+            padding: 0 1em;
+            max-width: 30em;
+        }
+        p {
+            text-align: justify;
+            hyphens: auto;
+            -ms-hyphens: auto;
+            -webkit-hyphens: auto;
+        }
+        code {
+            padding: 0.5%;
+            background-clip: border-box;
+            background-color: #e5e5e5;
+            border-radius: 10%;
+        }
+        figure img {
+            max-width: 100%;
+        }
+        figure figcaption {
+            text-align: center;
+        }
+    </style>
+
+    <!-- This is the configuration for MathJax. It needs to be present before
+         MathJax itself is loaded. -->
+    <script>
+        MathJax = {
+            tex: {
+                //tags: 'ams'  // This turns on equation numbering for AMS
+                             // environments (e.g. equation)
+            },
+            chtml: {
+                scale: 0.95, // MathJax by default auto-scales the font size;
+                             // it's a little big with the selected body font   
+                displayAlign: 'left',
+                displayIndent: '1em'                             
+            }
+        }
+    </script>
+    <!-- These scripts deliver MathJax. -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+    <p>This page demonstrates calculations to:</p>
+    <ul>
+        <li>determine the design strength of the double angle tension member and bolted connection</li>
+        <li>assess the compliance of the connection with geometric limitations</li>
+    </ul>
+    
+    <p>The calculations are based on the 2016 AISC <i>Specification</i> and the 15th Edition AISC <i>Manaul</i>.</p>
+    
+    <h2>Material and Geometric Properties</h2>
+    <p>As indicated on the two-dimensional structural drawing, both the double angle tension memeber and the gusset plate conform to A36.</p>
+    
+    <p>From AISC <i>Manual</i> Table 2-4, the material properties are as follows: </p>
+    <p style="padding-left: 1em;">ASTM A36<br>\(F_y = 36 \text{ ksi}\)<br>\(F_u = 58 \text{ ksi}\)</p>
+    
+    <p>From AISC <i>Manual</i> Table 1-7, the geometric properties are as follows: </p>
+    <p style="padding-left: 1em;">L6x6x5/8<br>\(A_g = 7.13 \text{ in.}^2\)<br>\(\bar{x} = 1.72 \text{ in.}\)</p>
+    
+    <h2>Tensile Yielding</h2>
+    
+    <p>Calculate the nominal strength using AISC <i>Specification</i> Equation D2-1.</p>
+    
+    <p>\[ \begin{align}
+            P_n &= F_y A_g \\
+                &= (36 \text{ ksi})(2 \times 7.13 \text{ in.}^2) \\
+                &= 513 \text{ kips} 
+          \end{align} \]</p>       
+          
+    <p>Calculate the design strength by applying the resistnace factor.</p>
+    
+    <p>\[ \phi P_n = 0.9(513 \text{ kips}) = 462 \text{ kips}\]</p>
+    
+    <h2>Tensile Rupture</h2>  
+    <p>A depiction of tensile rupture failure for this connection is shown in this three-dimensional view</p> <!-- @todo add link -->
+    
+    <p>The net area, \(A_n\), is shown in red. It is equal to the gross area minus the material removed for two bolt holes:</p> 
+    
+    <p>\[ \begin{align}
+            A_n &= A_g - 2(d_h + \tfrac{1}{16} \text{ in.})t \\
+                &= (2 \times 7.13 \text{ in.}^2) - 2(\tfrac{15}{16} \text{ in.} + \tfrac{1}{16} \text{ in.})(\tfrac{5}{8} \text{ in.}) \\
+                &= 13.01 \text{ in.}^2
+          \end{align} \]</p>    
+
+    <p>From the description of the element in AISC <i>Specification</i> Table D3.1 Case 8, calculate the shear lag factor, U, as the larger of the values from Case 2 and Case 8.</p>
+          
+    <p>Case 2, where \(l\) is the length of connection from the centerline of the first bolt to centerline of the last bolt.</p>
+    <p>\[ \begin{align}
+            U &= 1 - \frac{\bar{x}}{l} \\
+              &= 1 - \frac{1.72 \text{ in.}}{24 \text{ in.}} \\
+              &= 0.928
+          \end{align} \]</p>    
+    
+    <p>Case 8.</p>
+    <p>\[ U = 0.8 \]</p>    
+    
+    <p>Therefore, use the larger \(U = 0.928\).</p>
+          
+    <p>Calculate the effective net area using AISC <i>Specification</i> Equation D3-1.</p>
+    
+    <p>\[ \begin{align}
+            A_e &= A_n U \\
+                &= (13.01 \text{ in.}^2)(0.928) \\
+                &= 12.07 \text{ in.}^2
+          \end{align} \]</p> 
+
+    <p>Calculate the nominal strength using AISC <i>Specification</i> Equation D2-2.</p>
+    
+    <p>\[ \begin{align}
+            P_n &= F_u A_e \\
+                &= (58 \text{ ksi})(12.07 \text{ in.}^2) \\
+                &= 700 \text{ kips} 
+          \end{align} \]</p>       
+    
+    <p>Calculate the design strength by applying the resistnace factor.</p>
+    <p>\[ \phi P_n = 0.75(700 \text{ kips}) = 525 \text{ kips}\]</p>
+    
+    <h2>Block Shear Rupture</h2>
+    <p>A depiction of block shear rupture failure for this connection is shown in this three-dimensional view</p> <!-- @todo add link -->
+    
+    <p>The only valid and plausible block shear rupture failure path is shown below</p> <!-- @todo add figure -->
+       
+    <p>Calculate the gross area subject to shear.</p>
+    <p>\[ \begin{align}
+            A_{gv} &= 2 \times (26\tfrac{1}{8} \text{ in.})(\tfrac{5}{8} \text{ in.}) \\
+                   &= 32.73 \text{ in.}^2 
+          \end{align} \]</p> 
+    
+    <p>Calculate the net area subject to shear as gross area subject to shear minus the material removed for eight and a half bolt holes on each angle.</p> 
+    <p>\[ \begin{align}
+            A_{nv} &= A_{gv} - 2 \times 8\tfrac{1}{2} \times (d_h + \tfrac{1}{16} \text{ in.})t \\
+                   &= 32.73 \text{ in.}^2 - 2 \times 8\tfrac{1}{2} \times (\tfrac{15}{16} \text{ in.} + \tfrac{1}{16} \text{ in.})(\tfrac{5}{8} \text{ in.}) \\
+                   &= 22.11 \text{ in.}^2 
+          \end{align} \]</p>     
+    
+    <p>Calculate the gross area subject to tension.</p>
+    <p>\[ \begin{align}
+            A_{gt} &= 2 \times (3\tfrac{3}{4} \text{ in.})(\tfrac{5}{8} \text{ in.}) \\
+                   &= 4.69 \text{ in.}^2 
+          \end{align} \]</p> 
+    
+    <p>Calculate the net area subject to tension as gross area subject to tension minus the material removed for one half bolt hole on each angle.</p> 
+    <p>\[ \begin{align}
+            A_{nt} &= A_{gt} - 2 \times \tfrac{1}{2} \times (d_h + \tfrac{1}{16} \text{ in.})t \\
+                   &= 4.69 \text{ in.}^2 - 2 \times \tfrac{1}{2} \times (\tfrac{15}{16} \text{ in.} + \tfrac{1}{16} \text{ in.})(\tfrac{5}{8} \text{ in.}) \\
+                   &= 4.07 \text{ in.}^2 
+          \end{align} \]</p>   
+          
+    <p>Calculate the nominal strength using AISC <i>Specification</i> Equation J4-5. Take \(U_{bs} = 1.0\)</p>
+    
+    <p>\[ \begin{align}
+            P_n &= 0.6 F_u A_{nv} + U_{bs} F_u A_{nt} \leq 0.6 F_y A_{gv} + U_{bs} F_u A_{nt} \\
+                &= 0.6 (58 \text{ ksi}) (22.11 \text{ in.}^2) + (1.0)(58 \text{ ksi}) (4.07 \text{ in.}^2)\\
+                &\;\;\;\leq 0.6 (36 \text{ ksi}) (32.73 \text{ in.}^2) + (1.0)(58 \text{ ksi}) (4.07 \text{ in.}^2)\\
+                &= 1005 \text{ kips} \leq 943 \text{ kips} \\
+                &= 943 \text{ kips} 
+          \end{align} \]</p>            
+
+    <p>Calculate the design strength by applying the resistnace factor.</p>
+    <p>\[ \phi P_n = 0.75(943 \text{ kips}) = 707 \text{ kips}\]</p>
+          
+    <h2>Bolt Group Strength</h2>
+    <p>The limit states of bolt shear rupture, bearing, and tearout are evaluated together to determine the design strength of the bolt group.</p>
+    
+    <p>For each bolt, an effective strength is calcualted as the lowest strength from the limit states of bolt shear rupture, bearing, and tearout.</p>
+    <!-- @todo add figure showing the bolt numbering -->
+    
+    <p>From AISC <i>Specification</i> Table J3.2, Group A bolts, when threads are not excluded from shear planes: </p>
+    <p style="padding-left: 1em;">\(F_{nv} = 54 \text{ ksi}=\)</p>
+    
+    <p>Calculate the nominal unthreaded body area of of bolt.</p>
+    <p>\[ \begin{align}
+            A_b &= \tfrac{\pi}{4} d^2 \\
+                &= \tfrac{\pi}{4}(\tfrac{7}{8} \text{ in.})^2 \\
+                &= 0.601 \text{ in.}^2 
+          \end{align} \]</p> 
+    
+    <h3>Bolt #1</h3>
+    
+    <p>The nominal shear strength of for  the nominal strength for the limit state of bolt shear rupture using AISC <i>Specification</i> Equation J3-1.</p>
+    
+    <p>Calculate the nominal strength for the limit state of bolt shear rupture using AISC <i>Specification</i> Equation J3-1. Note that the bolts are in double shear.</p>
+    <p>\[ \begin{align}
+            r_n &= F_{nv} A_b \\
+                &= (54 \text{ ksi})(2 \times 0.601 \text{ in.}^2) \\
+                &= 64.9 \text{ kips}
+          \end{align} \]</p>  
+    
+    <p>Calculate the nominal strength for the limit state of bearing in the double angle using AISC <i>Specification</i> Equation J3-6a.</p>
+    <p>\[ \begin{align}
+            r_n &= 2.4dtF_u \\
+                &= 2.4(\tfrac{7}{8} \text{ in.})(2 \times \tfrac{5}{8} \text{ in.})(58 \text{ ksi}) \\
+                &= 152.3 \text{ kips}
+          \end{align} \]</p>    
+
+    <p>Calculate the nominal strength for the limit state of bearing in the gusset plate using AISC <i>Specification</i> Equation J3-6a.</p>
+    <p>\[ \begin{align}
+            r_n &= 2.4dtF_u \\
+                &= 2.4(\tfrac{7}{8} \text{ in.})(\tfrac{5}{8} \text{ in.})(58 \text{ ksi}) \\
+                &= 76.1 \text{ kips}
+          \end{align} \]</p> 
+
+    <p>Calculate the nominal strength for the limit state of tearout in the double angle using AISC <i>Specification</i> Equation J3-6c.</p> 
+    <p>\[ \begin{align}
+            l_c &= 2\tfrac{1}{8} \text{ in.} - \tfrac{1}{2}d_h \\
+                &= 2\tfrac{1}{8} \text{ in.} - \tfrac{1}{2}(\tfrac{15}{16} \text{ in.}) \\
+                &= 1.656 \text{ in.}
+          \end{align} \]</p>   <!-- @todo add figure shoing lc -->
+    
+    <p>\[ \begin{align}
+            r_n &= 1.2l_ctF_u \\
+                &= 1.2(1.656 \text{ in.})(2 \times \tfrac{5}{8} \text{ in.})(58 \text{ ksi}) \\
+                &= 144.1 \text{ kips}
+          \end{align} \]</p>    
+          
+    <p>Calculate the nominal strength for the limit state of tearout in the gusset plate using AISC <i>Specification</i> Equation J3-6c.</p>
+    <p>\[ \begin{align}
+            l_c &= 3 \text{ in.} - d_h \\
+                &= 3 \text{ in.} - \tfrac{15}{16} \text{ in.} \\
+                &= 2.063 \text{ in.}
+          \end{align} \]</p>   <!-- @todo add figure shoing lc -->
+    
+    <p>\[ \begin{align}
+            r_n &= 1.2l_ctF_u \\
+                &= 1.2(2.063 \text{ in.})(\tfrac{5}{8} \text{ in.})(58 \text{ ksi}) \\
+                &= 74.8 \text{ kips}
+          \end{align} \]</p>   
+          
+    <p>Bolt shear rupture controls. The nominal effective strength of bolt #1 is 64.9 kips.</p>
+    
+    <h3>Bolts #2-8</h3>    
+    <p>The effective strength of bolts #2 through #8 is calculated in the same manner, except with different clear distances. Bolt shear rupture controls. The nominal effective strength of bolts #2 through #8 is 64.9 kips.</p>
+    
+    <h3>Bolts #9</h3>    
+    <p>The effective strength of bolt #9 is calculated in the same manner, except with different clear distances. Bolt shear rupture controls. The nominal effective strength of bolts #2 through #8 is 64.9 kips.</p>
+    
+    <h3>Bolt group</h3>    
+    <p>Calcualte the nominal effective strength of the bolt group by summing the nominal effecitve strenth of each bolt.</p>
+    <p>\[ \begin{align}
+            R_n &= 64.9 \text{ kips} + 7 \times 64.9 \text{ kips} + 64.9 \text{ kips} \\
+                &= 548 \text{ kips}
+          \end{align} \]</p>     
+    
+    <p>Calculate the design strength by applying the resistnace factor.</p>
+    <p>\[ \phi P_n = 0.75(548 \text{ kips}) = 411 \text{ kips}\]</p>
+    
+    <h2>Design Strength</h2>
+    <p>The design strength of the double angle tension member and bolted connection for each of the limit states investigated is summarized in the following table. </p>
+    
+    <table style="width:100%">
+      <tr>
+        <th>Limit state</th>
+        <th>Design strength</th>
+      </tr>
+      <tr>
+        <td>Tensile yielding</td>
+        <td>462 kips</td>
+      </tr>
+      <tr>
+        <td>Tensile rupture</td>
+        <td>525 kips</td>
+      </tr>
+      <tr>
+        <td>Block shear rupture</td>
+        <td>707 kips</td>
+      </tr>
+      <tr>
+        <td>Bolt shear rupture, bearing, and tearout</td>
+        <td>411 kips</td>
+      </tr>
+    </table>
+    
+    <p><strong>Tensile yielding controls with a design strength of 411 kips.</strong></p>
+    
+    <h2>Bolt Spacing</h2>
+    <p>From Section J3.3 of the AISC <i>Specification</i>, the minimum spacing between bolts is \(2\tfrac{2}{3}d\).</p>
+    <p>\[ \begin{align}
+            s_{min} &= 2\tfrac{2}{3}d \\
+                    &= 2\tfrac{2}{3}(\tfrac{7}{8} \text{ in.}) \\
+                    &= 2.33 \text{ in.}
+          \end{align} \]</p>
+          
+    <p>From the User Note in Section J3.3 of the AISC <i>Specification</i>, the preferred minimum spacing between bolts is \(3d\).</p>
+    <p>\[ \begin{align}
+            s_{min} &= 3d \\
+                    &= 3(\tfrac{7}{8} \text{ in.}) \\
+                    &= 2.63 \text{ in.}
+          \end{align} \]</p>
+
+    <p>From Section J3.5 of the AISC <i>Specification</i>, the maximum spacing between bolts is the lesser of 24 times the thickness of this thinner part jointed and 12 in.</p>
+    <p>\[ \begin{align}
+            s_{max} &= min(24t_{min},12 \text{ in.}) \\
+                    &= min(24(\tfrac{5}{8} \text{ in.}),12 \text{ in.}) \\
+                    &= 12 \text{ in.}
+          \end{align} \]</p>
+
+    <p>The provided spacing between bolts is 3 in. which staifies the required minimum spacing, preferred minimum spacing, and the maximum spacing.</p>
+    
+    <h2>Bolt Edge Distances</h2>
+    <p>From Section J3.4 and Table J3.4 of the AISC <i>Specification</i>, the minimum edge disance for a 7/8 in. diameter bolt is a standard hole is \(1\tfrac{1}{8} \text{ in.}\).</p>  
+    
+    <p>The minimum provided edge distance is \(2\tfrac{1}{8} \text{ in.}\) which staifies the minimum edge distance requirement.</p>    
+  
+    <p>From Section J3.5 of the AISC <i>Specification</i>, the maximum spacing between bolts is the lesser of 12 times the thickness of the connected part 6 in.</p>
+    <p>\[ \begin{align}
+            L_{e,max} &= min(12t_{min},6 \text{ in.}) \\
+                      &= min(12(\tfrac{5}{8} \text{ in.}),6 \text{ in.}) \\
+                      &= 6 \text{ in.}
+          \end{align} \]</p>
+
+    <p>The maximum provided edge distance is \(3\tfrac{3}{4} \text{ in.}\) which staifies the maximum edge distance requirement.</p> 
+  
+    <h2>Entering and Tightning Clearances</h2>
+    <p>From Table 7-15 of the AISC <i>Manual</i>, the minimum disance from the center of a 7/8 in. diameter A325 bolt and the face of a vertical obstruction is</p> 
+    <p>\(1\tfrac{1}{4} \text{ in.}\)</p> 
+    
+    <p>The disance between the center of the bolts and the face of the outstanding leg of the angles is</p> 
+    <p>\(2\tfrac{1}{4} \text{ in.} - t = 2\tfrac{1}{4} \text{ in.} - \tfrac{5}{8} \text{ in.} = 1\tfrac{5}{8} \text{ in.}\)</p>
+    
+    <p>The provided clearance exceeds the minimum required clearance, therefore the outstanding leg of the angle will not interfere with the installation of the bolts.</p>
+
+</body>
+
+</html>
