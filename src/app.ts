@@ -17,3 +17,37 @@ export class App {
         window.addEventListener('resize', this.viewer.onWindowResize.bind(this.viewer), false)
     }
 }
+
+
+abstract class SidebarItem {
+    name: string
+
+    /**
+     * Create the item in the given section.
+     * @param app - The parent application.
+     * @param list - the list element to insert the item into.
+     */
+    createItem(app: App, list: HTMLUListElement) {}
+}
+
+
+export class Model extends SidebarItem {
+    path: string
+
+    constructor(params: {name: string, path: string}) {
+        super()
+        this.name = params.name
+        this.path = params.path
+    }
+
+    createItem(app: App, list: HTMLUListElement) {
+        const listitem = document.createElement('li')
+        const button = document.createElement('button')
+        button.className = 'button-use-model'
+        button.innerHTML = this.name
+        button.onclick = () => {app.viewer.setModelAsCurrent(this.path)}
+
+        listitem.appendChild(button)
+        list.appendChild(listitem)
+    }
+}

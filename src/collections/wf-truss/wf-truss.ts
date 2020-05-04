@@ -1,5 +1,4 @@
-import { App } from '../../app'
-import { Model } from '../../viewer'
+import { App, Model } from '../../app'
 import pathToModel from './Gusset.gltf'
 
 const app = new App([

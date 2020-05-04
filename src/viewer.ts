@@ -3,25 +3,6 @@ import { GLTFLoader, GLTF } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import * as path from 'path'
 
-/**
- * Metadata wrapper around the standard GLTF object.
- *
- * @param name - The name of the model
- * @param gltf - The actual GLTF object
- */
-export class Model {
-    name: string
-    path: string
-    gltf: GLTF
-
-    /**
-     * @param name - The name to use in the sidebar for this model
-     * @param path - The path to the GLTF file for this model
-     */
-    constructor(name: string, path: string) {
-        this.name = name
-        this.path = path
-    }
 }
 
 
@@ -69,9 +50,9 @@ export class ModelViewer {
         this.render()
     }
 
-    setModelAsCurrent(model: Model) {
+    setModelAsCurrent(path: string) {
         this.clearScene()
-        this.loader.load(model.path, (gltf) => {
+        this.loader.load(path, (gltf) => {
             // Determine the size of the model, and move it to the center of the scene
             const box = new THREE.Box3().setFromObject(gltf.scene)
             const size = box.getSize(new THREE.Vector3()).length()
