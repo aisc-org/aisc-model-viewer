@@ -3,6 +3,18 @@ import { GLTFLoader, GLTF } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import * as path from 'path'
 
+
+const colors = {
+    orange:   new THREE.Color('#FF8200'),
+    white:    new THREE.Color('#FFFFFF'),
+    smokey:   new THREE.Color('#58595B'),
+    valley:   new THREE.Color('#00746F'),
+    globe:    new THREE.Color('#006C93'),
+    smokey_x: new THREE.Color('#333333'),
+    gray_1:   new THREE.Color('#F6F6F6'),
+    gray_2:   new THREE.Color('#E0E0E0'),
+    gray_3:   new THREE.Color('#CACACA'),
+    gray_4:   new THREE.Color('#B6B6B6'),
 }
 
 
@@ -34,6 +46,7 @@ export class ModelViewer {
         }
 
         this.scene = new THREE.Scene()
+        this.scene.background = colors.gray_3
         this.addLights()
         this.camera = new THREE.PerspectiveCamera(75, this.container.clientWidth / this.container.clientHeight)
 
