@@ -79,6 +79,8 @@
     
     <p>Calculate the nominal strength using AISC <i>Specification</i> Equation D2-1.</p>
     
+    <!-- @todo add figure showing the gross area -->
+    
     <p>\[ \begin{align}
             P_n &= F_y A_g \\
                 &= (36 \text{ ksi})(2 \times 7.13 \text{ in.}^2) \\
@@ -92,7 +94,9 @@
     <h2>Tensile Rupture</h2>  
     <p>A depiction of tensile rupture failure for this connection is shown in this three-dimensional view</p> <!-- @todo add link -->
     
-    <p>The net area, \(A_n\), is shown in red. It is equal to the gross area minus the material removed for two bolt holes:</p> 
+    <!-- @todo add figure showing the net area -->
+    
+    <p>The net area, \(A_n\), is shown in red. It is equal to the gross area minus the material removed for two bolt holes as defined in Section B4.3b of the AISC <i>Specification</i>:</p> 
     
     <p>\[ \begin{align}
             A_n &= A_g - 2(d_h + \tfrac{1}{16} \text{ in.})t \\
@@ -100,7 +104,7 @@
                 &= 13.01 \text{ in.}^2
           \end{align} \]</p>    
 
-    <p>From the description of the element in AISC <i>Specification</i> Table D3.1 Case 8, calculate the shear lag factor, U, as the larger of the values from Case 2 and Case 8.</p>
+    <p>From the description of the element in AISC <i>Specification</i> Table D3.1 Case 8, calculate the shear lag factor, U, as the larger of the values from Case 2 and Case 8.</p> <!-- @todo potentially also mention the U compuated as the ratio of area of connected elements to gross area -->
           
     <p>Case 2, where \(l\) is the length of connection from the centerline of the first bolt to centerline of the last bolt.</p>
     <p>\[ \begin{align}
@@ -141,14 +145,14 @@
     <p>Calculate the gross area subject to shear.</p>
     <p>\[ \begin{align}
             A_{gv} &= 2 \times (26\tfrac{1}{8} \text{ in.})(\tfrac{5}{8} \text{ in.}) \\
-                   &= 32.73 \text{ in.}^2 
+                   &= 32.66 \text{ in.}^2 
           \end{align} \]</p> 
     
     <p>Calculate the net area subject to shear as gross area subject to shear minus the material removed for eight and a half bolt holes on each angle.</p> 
     <p>\[ \begin{align}
             A_{nv} &= A_{gv} - 2 \times 8\tfrac{1}{2} \times (d_h + \tfrac{1}{16} \text{ in.})t \\
-                   &= 32.73 \text{ in.}^2 - 2 \times 8\tfrac{1}{2} \times (\tfrac{15}{16} \text{ in.} + \tfrac{1}{16} \text{ in.})(\tfrac{5}{8} \text{ in.}) \\
-                   &= 22.11 \text{ in.}^2 
+                   &= 32.66 \text{ in.}^2 - 2 \times 8\tfrac{1}{2} \times (\tfrac{15}{16} \text{ in.} + \tfrac{1}{16} \text{ in.})(\tfrac{5}{8} \text{ in.}) \\
+                   &= 22.04 \text{ in.}^2 
           \end{align} \]</p>     
     
     <p>Calculate the gross area subject to tension.</p>
@@ -168,23 +172,23 @@
     
     <p>\[ \begin{align}
             P_n &= 0.6 F_u A_{nv} + U_{bs} F_u A_{nt} \leq 0.6 F_y A_{gv} + U_{bs} F_u A_{nt} \\
-                &= 0.6 (58 \text{ ksi}) (22.11 \text{ in.}^2) + (1.0)(58 \text{ ksi}) (4.07 \text{ in.}^2)\\
-                &\;\;\;\leq 0.6 (36 \text{ ksi}) (32.73 \text{ in.}^2) + (1.0)(58 \text{ ksi}) (4.07 \text{ in.}^2)\\
-                &= 1005 \text{ kips} \leq 943 \text{ kips} \\
-                &= 943 \text{ kips} 
+                &= 0.6 (58 \text{ ksi}) (22.04 \text{ in.}^2) + (1.0)(58 \text{ ksi}) (4.07 \text{ in.}^2)\\
+                &\;\;\;\leq 0.6 (36 \text{ ksi}) (32.66 \text{ in.}^2) + (1.0)(58 \text{ ksi}) (4.07 \text{ in.}^2)\\
+                &= 1003 \text{ kips} \leq 942 \text{ kips} \\
+                &= 942 \text{ kips} 
           \end{align} \]</p>            
 
     <p>Calculate the design strength by applying the resistance factor.</p>
-    <p>\[ \phi P_n = 0.75(943 \text{ kips}) = 707 \text{ kips}\]</p>
+    <p>\[ \phi P_n = 0.75(942 \text{ kips}) = 706 \text{ kips}\]</p>
           
     <h2>Bolt Group Strength</h2>
     <p>The limit states of bolt shear rupture, bearing, and tearout are evaluated together to determine the design strength of the bolt group.</p>
     
     <p>For each bolt, an effective strength is calculated as the lowest strength from the limit states of bolt shear rupture, bearing, and tearout.</p>
-    <!-- @todo add figure showing the bolt numbering -->
+    <!-- @todo add figure showing the bolt numbering and direction of force to indicate lc -->
     
     <p>From AISC <i>Specification</i> Table J3.2, Group A bolts, when threads are not excluded from shear planes: </p>
-    <p style="padding-left: 1em;">\(F_{nv} = 54 \text{ ksi}=\)</p>
+    <p style="padding-left: 1em;">\(F_{nv} = 54 \text{ ksi}\)</p>
     
     <p>Calculate the nominal unthreaded body area of of bolt.</p>
     <p>\[ \begin{align}
@@ -194,9 +198,7 @@
           \end{align} \]</p> 
     
     <h3>Bolt #1</h3>
-    
-    <p>The nominal shear strength of for  the nominal strength for the limit state of bolt shear rupture using AISC <i>Specification</i> Equation J3-1.</p>
-    
+       
     <p>Calculate the nominal strength for the limit state of bolt shear rupture using AISC <i>Specification</i> Equation J3-1. Note that the bolts are in double shear.</p>
     <p>\[ \begin{align}
             r_n &= F_{nv} A_b \\
@@ -241,7 +243,7 @@
     <p>\[ \begin{align}
             r_n &= 1.2l_ctF_u \\
                 &= 1.2(2.063 \text{ in.})(\tfrac{5}{8} \text{ in.})(58 \text{ ksi}) \\
-                &= 74.8 \text{ kips}
+                &= 89.7 \text{ kips}
           \end{align} \]</p>   
           
     <p>Bolt shear rupture controls. The nominal effective strength of bolt #1 is 64.9 kips.</p>
@@ -280,7 +282,7 @@
       </tr>
       <tr>
         <td>Block shear rupture</td>
-        <td>707 kips</td>
+        <td>706 kips</td>
       </tr>
       <tr>
         <td>Bolt shear rupture, bearing, and tearout</td>
@@ -305,7 +307,7 @@
                     &= 2.63 \text{ in.}
           \end{align} \]</p>
 
-    <p>From Section J3.5 of the AISC <i>Specification</i>, the maximum spacing between bolts is the lesser of 24 times the thickness of this thinner part jointed and 12 in.</p>
+    <p>From Section J3.5 of the AISC <i>Specification</i> and noting that the members are painted, the maximum spacing between bolts is the lesser of 24 times the thickness of the thinner part jointed and 12 in.</p>
     <p>\[ \begin{align}
             s_{max} &= min(24t_{min},12 \text{ in.}) \\
                     &= min(24(\tfrac{5}{8} \text{ in.}),12 \text{ in.}) \\
