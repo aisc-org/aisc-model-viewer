@@ -56,19 +56,19 @@ module.exports = {
         new HtmlWebpackPlugin({
             title: 'AISC Model Viewer',
             filename: 'index.html',
-            template: './src/main-page.ejs',
+            template: './src/index.ejs',
             chunks: ['index']
         }),
         new HtmlWebpackPlugin({
             title: 'Double angle connection',
             filename: 'double-angle/index.html',
-            template: './src/model-page.ejs',
+            template: './src/app.ejs',
             chunks: ['double_angle']
         }),
         new HtmlWebpackPlugin({
             title: 'Wide flange truss connection',
             filename: 'wf-truss/index.html',
-            template: './src/model-page.ejs',
+            template: './src/app.ejs',
             chunks: ['wf_truss']
         }),
     ],

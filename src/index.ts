@@ -1,1 +1,1 @@
-import './index-style.css'
+import './index.css'
