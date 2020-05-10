@@ -23,15 +23,18 @@ export class App {
         const sidebar = document.getElementById('sidebar')
         let defaultModelHasBeenSet = false
         params.groups.forEach((group, index) => {
+            // Each group corresponds to a section in the sidebar.
             let section = document.createElement('section')
             section.id = 'sidebar.section.' + group.name.replace(/\s/g, '_')
 
+            // Each section consists of an <h2> header and a list of items.
             let header = document.createElement('h2')
             let list = document.createElement('ul')
             header.innerHTML = group.name
             section.appendChild(header)
             section.appendChild(list)
 
+            // If the group has items, append each item to the list.
             if (group.items != null) {
                 group.items.forEach(item => {
                     item.createItem(this, list)
@@ -45,7 +48,8 @@ export class App {
             }
 
             sidebar.appendChild(section)
-            // Don't add a rule after the last group
+            // Sections are separated by <hr>s. But we don't add a rule after
+            // the last group.
             if (index !== params.groups.length - 1) {
                 sidebar.appendChild(document.createElement('hr'))
             }
