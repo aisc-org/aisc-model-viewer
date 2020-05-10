@@ -6,7 +6,7 @@ os:
 dist: bionic
 
 install:
-  - env YARN_CHECKSUM_BEHAVIOR=reset yarn install
+  - yarn install
 script: 
   - yarn build
 
