@@ -6,9 +6,12 @@ os:
 dist: bionic
 
 install:
-  - yarn install
+  - env YARN_CHECKSUM_BEHAVIOR=reset yarn install
 script: 
   - yarn build
+
+cache:
+  - yarn
 
 # Publish the website
 deploy:
