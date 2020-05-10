@@ -528,6 +528,28 @@ __metadata:
   languageName: node
   linkType: hard
 
+"aisc-model-viewer@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "aisc-model-viewer@workspace:."
+  dependencies:
+    "@types/node": ^13.11.1
+    "@yarnpkg/pnpify": ^2.0.0-rc.20
+    clean-webpack-plugin: ^3.0.0
+    css-loader: ^3.5.2
+    file-loader: ^6.0.0
+    html-webpack-plugin: ^4.2.0
+    pnp-webpack-plugin: ^1.6.4
+    style-loader: ^1.1.3
+    three: ^0.116.1
+    ts-loader: ^6.2.2
+    typescript: ^3.8.3
+    webpack: ^4.42.1
+    webpack-cli: ^3.3.11
+    webpack-dev-server: ^3.10.3
+    webpack-merge: ^4.2.2
+  languageName: unknown
+  linkType: soft
+
 "ajv-errors@npm:^1.0.0":
   version: 1.0.1
   resolution: "ajv-errors@npm:1.0.1"
@@ -6929,25 +6951,3 @@ typescript@^3.8.3:
   checksum: 2/92c612cd14a9217d7421ae4f42bc7c460472633bfc2e45f7f86cd614a61a845670d3bac7c2228c39df7fcecce0b8c12b2af65c785b1f757de974dcf84b5074f9
   languageName: node
   linkType: hard
-
-"yarn-test@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "yarn-test@workspace:."
-  dependencies:
-    "@types/node": ^13.11.1
-    "@yarnpkg/pnpify": ^2.0.0-rc.20
-    clean-webpack-plugin: ^3.0.0
-    css-loader: ^3.5.2
-    file-loader: ^6.0.0
-    html-webpack-plugin: ^4.2.0
-    pnp-webpack-plugin: ^1.6.4
-    style-loader: ^1.1.3
-    three: ^0.116.1
-    ts-loader: ^6.2.2
-    typescript: ^3.8.3
-    webpack: ^4.42.1
-    webpack-cli: ^3.3.11
-    webpack-dev-server: ^3.10.3
-    webpack-merge: ^4.2.2
-  languageName: unknown
-  linkType: soft
