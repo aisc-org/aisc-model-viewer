@@ -10,9 +10,6 @@ install:
 script: 
   - yarn build
 
-cache:
-  - yarn
-
 # Publish the website
 deploy:
   provider: pages
