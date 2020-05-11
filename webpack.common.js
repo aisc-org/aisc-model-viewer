@@ -75,5 +75,11 @@ module.exports = {
     output: {
         filename: '[name].bundle.js',
         path: path.resolve(__dirname, 'dist')
+    },
+    optimization: {
+        usedExports: true,
+        splitChunks: {
+            chunks: 'all'
+        }
     }
 }

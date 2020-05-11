@@ -4,8 +4,12 @@
   "version": "0.0.1",
   "scripts": {
     "build": "webpack --config webpack.production.js",
+    "build-dev": "webpack --config webpack.development.js",
     "start": "webpack-dev-server --config webpack.development.js"
   },
+  "sideEffects": [
+    "*.css"
+  ],
   "dependencies": {
     "three": "^0.116.1"
   },
