@@ -1,5 +1,6 @@
 import * as THREE from 'three'
-import { GLTFLoader, GLTF } from 'three/examples/jsm/loaders/GLTFLoader.js'
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
+import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { siteRoot } from './utils'
 
@@ -30,8 +31,11 @@ export class ModelViewer {
     constructor(container: HTMLElement) {
         this.container = container
 
+        const draco = new DRACOLoader()
+        draco.setDecoderPath('https://www.gstatic.com/draco/v1/decoders/')
         this.loader = new GLTFLoader()
         this.loader.setPath(siteRoot)
+        this.loader.setDRACOLoader(draco)
 
         this.scene = new THREE.Scene()
         this.scene.background = colors.gray_3
