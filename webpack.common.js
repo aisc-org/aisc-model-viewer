@@ -20,7 +20,7 @@ module.exports = {
                 use: 'ts-loader',
             },
             {
-                test: /\.(svg)$/,
+                test: /\.(svg|png|jpe?g|html)$/,
                 loader: 'file-loader',
                 options: {
                     context: 'src',
@@ -34,14 +34,6 @@ module.exports = {
                     name: 'assets/[contenthash].[ext]'
                 }
             },
-            {
-                test: /\.html$/,
-                loader: 'file-loader',
-                options: {
-                    context: 'src/collections',
-                    name: '[path][name].[ext]'
-                }
-            }
         ]
     },
     resolve: {
