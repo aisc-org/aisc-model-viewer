@@ -38,7 +38,7 @@ export class ModelViewer {
         this.loader.setDRACOLoader(draco)
 
         this.scene = new THREE.Scene()
-        this.scene.background = colors.gray_3
+        this.scene.background = colors.smokey
         this.addLights()
         this.camera = new THREE.PerspectiveCamera(75, this.container.clientWidth / this.container.clientHeight)
 
