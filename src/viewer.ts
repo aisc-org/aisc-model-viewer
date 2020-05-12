@@ -79,8 +79,8 @@ export class ModelViewer {
             this.camera.lookAt(center)
 
             this.scene.add(gltf.scene)
+            this.controls.update()
         })
-        this.render()
         this.onWindowResize()
     }
 
