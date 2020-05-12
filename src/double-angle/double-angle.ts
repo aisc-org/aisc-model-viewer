@@ -1,7 +1,8 @@
 import { App, HtmlItem, Model } from '../app'
 import { siteRoot } from '../utils'
 import pathToModel from './Neyland Connection (centered).glb'
-import pathToModel2 from './neyland-connection.gltf'
+import pathToNetSection from './Neyland Connection - NET SECTION.glb'
+import pathToBlockShear from './Neyland Connection - BLOCK SHEAR 2.glb'
 import pathToCalcs from './calculations.html'
 import pathToMoreFun from './more_fun.html'
 import pathToPhoto from './Photo.html'
@@ -15,7 +16,8 @@ const app = new App({
             name: 'models',
             items: [
                 new Model({name: '3d model', path: pathToModel}),
-                new Model({name: 'Other model', path: pathToModel2}),
+                new Model({name: 'Net section rupture', path: pathToNetSection}),
+                new Model({name: 'Block shear', path: pathToBlockShear}),
             ]
         },
         {
