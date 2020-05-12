@@ -51,6 +51,8 @@ export class ModelViewer {
         this.controls.addEventListener('change', this.render.bind(this))
         this.controls.update()
 
+        matchMedia(`resolution: ${window.devicePixelRatio}dppx`).addListener(this.updatePixelRatio.bind(this))
+
         this.render()
     }
 
@@ -105,6 +107,10 @@ export class ModelViewer {
         this.camera.updateProjectionMatrix()
         this.renderer.setSize(this.container.clientWidth, this.container.clientHeight)
         this.render()
+    }
+
+    updatePixelRatio() {
+        this.renderer.setPixelRatio(window.devicePixelRatio)
     }
 
     render() {
