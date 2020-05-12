@@ -1,5 +1,5 @@
-import { App, HtmlItem, Model } from '../../app'
-import { siteRoot } from '../../utils'
+import { App, HtmlItem, Model } from '../app'
+import { siteRoot } from '../utils'
 import pathToModel from './Neyland Connection (centered).glb'
 import pathToModel2 from './neyland-connection.gltf'
 import pathToCalcs from './calculations.html'

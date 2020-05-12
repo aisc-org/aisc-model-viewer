@@ -1,4 +1,4 @@
-import { App, Model } from '../../app'
+import { App, Model } from '../app'
 import pathToModel from './Gusset (centered).glb'
 
 const app = new App({

@@ -6,8 +6,8 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 module.exports = {
     entry: {
         index: './src/index.ts',
-        double_angle: './src/collections/double-angle/double-angle.ts',
-        wf_truss: './src/collections/wf-truss/wf-truss.ts',
+        double_angle: './src/double-angle/double-angle.ts',
+        wf_truss: './src/wf-truss/wf-truss.ts',
     },
     module: {
         rules: [
