@@ -79,6 +79,7 @@ div.app {
     top: 50px;
     bottom: 0;
     position: fixed;
+    overflow-x: hidden;
 }
 
 .content-container canvas {
