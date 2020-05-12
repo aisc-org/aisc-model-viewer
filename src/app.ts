@@ -6,19 +6,22 @@ import './assets/hamburger-menu-white.svg'
 
 export class App {
     groups: Array<SidebarGroup>
-    contentlinks: Map<string, SidebarItem>
-    content_container: HTMLElement
-    current_content: HTMLElement
+    contentLinkMap: Map<string, SidebarItem>
+    contentScrollState: Map<string, number>
+    contentContainer: HTMLElement
+    currentElement: HTMLElement
+    currentContent: string
     viewer: ModelViewer
     sidebar_is_open: Boolean = true
 
     constructor(params: {title: string, groups: Array<SidebarGroup>}) {
         this.groups = params.groups;
-        this.contentlinks = new Map<string, SidebarItem>()
+        this.contentLinkMap = new Map<string, SidebarItem>()
+        this.contentScrollState = new Map<string, number>()
 
         // Set up the viewer
-        this.content_container = document.getElementById('content-container')
-        this.viewer = new ModelViewer(this.content_container)
+        this.contentContainer = document.getElementById('content-container')
+        this.viewer = new ModelViewer(this.contentContainer)
         const resize_viewer = this.viewer.onWindowResize.bind(this.viewer)
         window.addEventListener('resize', resize_viewer, false)
         const header_title = document.getElementById('header-title')
@@ -43,7 +46,7 @@ export class App {
             if (group.items != null) {
                 group.items.forEach(item => {
                     item.createItem(this, list)
-                    this.contentlinks[item.linkname] = item
+                    this.contentLinkMap[item.linkname] = item
                 })
             }
 
@@ -60,33 +63,49 @@ export class App {
         sidebar_toggle.onclick = () => {
             if (this.sidebar_is_open) {
                 sidebar.style.visibility = 'hidden'
-                this.content_container.style.width = '100%'
+                this.contentContainer.style.width = '100%'
             } else {
                 sidebar.style.visibility = 'visible'
-                this.content_container.style.width = 'calc(100% - 250px)'
+                this.contentContainer.style.width = 'calc(100% - 250px)'
             }
             this.sidebar_is_open = !this.sidebar_is_open
             resize_viewer()
         }
 
         // If an item has been specified by the hash, go there
-        const onhashchange = () => {
-            const hashitem = window.location.hash.substr(1)
-            if (hashitem in this.contentlinks) {
-                const item = this.contentlinks[hashitem]
-                item.onclick(this)
+        const onhashchange = async () => {
+            const linkname = window.location.hash.substr(1)
+            if (linkname in this.contentLinkMap) {
+                // Save scroll position
+                if (this.currentElement) {
+                    console.log('Saving', this.currentContent, 'scroll position as', this.contentContainer.scrollTop)
+                    this.contentScrollState[this.currentContent] = this.contentContainer.scrollTop
+                }
+
+                const item = this.contentLinkMap[linkname]
+                await item.onclick(this)
+                this.currentContent = linkname
+                console.log(linkname, 'loaded;', 'The current scroll position is', this.contentContainer.scrollTop)
+
+                // Restore scroll position
+                const scrollPosition = this.contentScrollState[linkname]
+                if (scrollPosition) {
+                    console.log('Restoring', linkname, 'to scroll position', scrollPosition)
+                    this.contentContainer.scrollBy(scrollPosition, scrollPosition)
+                    console.log(linkname, 'restored;', 'The current scroll position is', this.contentContainer.scrollTop)
+                }
             }
         }
         window.addEventListener('hashchange', onhashchange)
         onhashchange()
     }
 
-    setCurrentContent(content: HTMLElement) {
-        if (this.current_content != null) {
-            this.content_container.removeChild(this.current_content)
+    setContentElement(content: HTMLElement) {
+        if (this.currentElement != null) {
+            this.contentContainer.removeChild(this.currentElement)
         }
-        this.current_content = content
-        this.content_container.appendChild(this.current_content)
+        this.currentElement = content
+        this.contentContainer.appendChild(this.currentElement)
     }
 }
 
@@ -137,25 +156,28 @@ export class Link extends SidebarItem {
 
 export class HtmlItem extends SidebarItem {
     url: string
+    fetchedContent: string
 
     constructor(params: {name: string, url: string}) {
         super(params.name)
         this.url = params.url
         this.onclick = async (app) => {
+            app.contentContainer.style.overflowY = 'scroll'
             const responseDiv = document.createElement('div')
             responseDiv.className = 'html-content'
-            responseDiv.innerHTML = 'Loading...'
-            app.setCurrentContent(responseDiv);
-            fetch(this.url).then(response => {
-                return response.text()
-            }).then(text => {
-                responseDiv.innerHTML = text
-                return (window as any).MathJax.typesetPromise() as Promise<any>
-            }).catch(err => {
-                console.log('Typesetting failed:')
-                console.log(err)
-            })
-            app.content_container.style.overflowY = 'scroll'
+            app.setContentElement(responseDiv);
+            if (this.fetchedContent) {
+                responseDiv.innerHTML = this.fetchedContent
+            } else {
+                responseDiv.innerHTML = 'Loading...'
+                await fetch(this.url).then(response => {
+                    return response.text()
+                }).then(text => {
+                    this.fetchedContent = text
+                    responseDiv.innerHTML = text
+                })
+            }
+            (window as any).MathJax.typesetPromise([responseDiv])
         }
     }
 
@@ -177,8 +199,8 @@ export class Model extends SidebarItem {
         super(params.name)
         this.path = params.path
         this.onclick = (app) => {
-            app.setCurrentContent(app.viewer.renderer.domElement)
-            app.content_container.style.overflowY = 'hidden'
+            app.setContentElement(app.viewer.renderer.domElement)
+            app.contentContainer.style.overflowY = 'hidden'
             app.viewer.setModelAsCurrent(this.path)
         }
     }
