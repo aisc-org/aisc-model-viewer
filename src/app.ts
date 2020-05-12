@@ -3,8 +3,10 @@ import './app.css'
 import './assets/house-white.svg'
 import './assets/hamburger-menu-white.svg'
 
+
 export class App {
     groups: Array<SidebarGroup>
+    contentlinks: Map<string, SidebarItem>
     content_container: HTMLElement
     current_content: HTMLElement
     viewer: ModelViewer
@@ -12,6 +14,7 @@ export class App {
 
     constructor(params: {title: string, groups: Array<SidebarGroup>}) {
         this.groups = params.groups;
+        this.contentlinks = new Map<string, SidebarItem>()
 
         // Set up the viewer
         this.content_container = document.getElementById('content-container')
@@ -40,13 +43,7 @@ export class App {
             if (group.items != null) {
                 group.items.forEach(item => {
                     item.createItem(this, list)
-
-                    // The first model encountered is used as the default.
-                    if (item instanceof Model && !defaultModelHasBeenSet) {
-                        this.viewer.setModelAsCurrent(item.path)
-                        this.setCurrentContent(this.viewer.renderer.domElement)
-                        defaultModelHasBeenSet = true
-                    }
+                    this.contentlinks[item.linkname] = item
                 })
             }
 
@@ -71,6 +68,17 @@ export class App {
             this.sidebar_is_open = !this.sidebar_is_open
             resize_viewer()
         }
+
+        // If an item has been specified by the hash, go there
+        const onhashchange = () => {
+            const hashitem = window.location.hash.substr(1)
+            if (hashitem in this.contentlinks) {
+                const item = this.contentlinks[hashitem]
+                item.onclick(this)
+            }
+        }
+        window.addEventListener('hashchange', onhashchange)
+        onhashchange()
     }
 
     setCurrentContent(content: HTMLElement) {
@@ -85,6 +93,13 @@ export class App {
 
 abstract class SidebarItem {
     name: string
+    linkname: string
+    onclick?: (app: App) => void;
+
+    constructor(name: string) {
+        this.name = name
+        this.linkname = name.replace(/\s/g, '-')
+    }
 
     /**
      * Create the item in the given section.
@@ -105,8 +120,7 @@ export class Link extends SidebarItem {
     url: string
 
     constructor(params: {name: string, url: string}) {
-        super()
-        this.name = params.name
+        super(params.name)
         this.url = params.url
     }
 
@@ -125,17 +139,9 @@ export class HtmlItem extends SidebarItem {
     url: string
 
     constructor(params: {name: string, url: string}) {
-        super()
-        this.name = params.name
+        super(params.name)
         this.url = params.url
-    }
-
-    createItem(app: App, list: HTMLUListElement) {
-        const listitem = document.createElement('li')
-        const button = document.createElement('button')
-        button.className = 'button-load-html'
-        button.innerHTML = this.name
-        button.onclick = async () => {
+        this.onclick = async (app) => {
             const responseDiv = document.createElement('div')
             responseDiv.className = 'html-content'
             responseDiv.innerHTML = 'Loading...'
@@ -151,7 +157,14 @@ export class HtmlItem extends SidebarItem {
             })
             app.content_container.style.overflowY = 'scroll'
         }
-        listitem.appendChild(button)
+    }
+
+    createItem(app: App, list: HTMLUListElement) {
+        const listitem = document.createElement('li')
+        const anchor = document.createElement('a')
+        anchor.href = `#${this.linkname}`
+        anchor.innerHTML = this.name
+        listitem.appendChild(anchor)
         list.appendChild(listitem)
     }
 }
@@ -161,23 +174,21 @@ export class Model extends SidebarItem {
     path: string
 
     constructor(params: {name: string, path: string}) {
-        super()
-        this.name = params.name
+        super(params.name)
         this.path = params.path
-    }
-
-    createItem(app: App, list: HTMLUListElement) {
-        const listitem = document.createElement('li')
-        const button = document.createElement('button')
-        button.className = 'button-use-model'
-        button.innerHTML = this.name
-        button.onclick = () => {
+        this.onclick = (app) => {
             app.setCurrentContent(app.viewer.renderer.domElement)
             app.content_container.style.overflowY = 'hidden'
             app.viewer.setModelAsCurrent(this.path)
         }
+    }
 
-        listitem.appendChild(button)
+    createItem(app: App, list: HTMLUListElement) {
+        const listitem = document.createElement('li')
+        const anchor = document.createElement('a')
+        anchor.href = `#${this.linkname}`
+        anchor.innerHTML = this.name
+        listitem.appendChild(anchor)
         list.appendChild(listitem)
     }
 }
