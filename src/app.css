@@ -8,10 +8,6 @@ html, body {
     color: #333333;
 }
 
-body {
-    overflow: hidden;
-}
-
 a {
     color: #006C93;
     text-decoration: underline;
@@ -67,11 +63,44 @@ div.app {
     height: calc(100% - 50px);
 }
 
-.viewer-container {
+.content-container {
     z-index: 1;
     float: left;
     width: calc(100% - 250px);
-    height: 100%;
+    top: 50px;
+    bottom: 0;
+    position: fixed;
+}
+
+.content-container canvas {
+    display: block;
+}
+
+/* --------------- Non-viewer content --------------- */
+
+div.html-content {
+    font-family: 'Tinos', serif;
+    margin: auto;
+    padding: 0 1em;
+    max-width: 30em;
+}
+.html-content p {
+    text-align: justify;
+    hyphens: auto;
+    -ms-hyphens: auto;
+    -webkit-hyphens: auto;
+}
+.html-content code {
+    padding: 0.5%;
+    background-clip: border-box;
+    background-color: #e5e5e5;
+    border-radius: 10%;
+}
+.html-content figure img {
+    max-width: 100%;
+}
+.html-content figcaption {
+    text-align: center;
 }
 
 /* --------------- Sidebar --------------- */

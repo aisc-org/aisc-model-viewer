@@ -6,6 +6,22 @@
     <title><%= htmlWebpackPlugin.options.title %></title>
     <!-- Prevent flash of unstyled content (FOUC) -->
     <style>html { visibility: hidden; }</style>
+
+    <!-- This is the configuration for MathJax. It needs to be present before
+         MathJax itself is loaded. -->
+    <script>
+        MathJax = {
+            chtml: {
+                scale: 0.95, // MathJax by default auto-scales the font size;
+                             // it's a little big with the selected body font   
+                displayAlign: 'left',
+                displayIndent: '1em'                             
+            }
+        }
+    </script>
+    <!-- These scripts deliver MathJax. -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
     <nav class="header">
