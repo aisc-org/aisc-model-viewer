@@ -3,6 +3,10 @@ import { siteRoot } from '../utils'
 import pathToModel from './Neyland Connection (centered).glb'
 import pathToModel2 from './neyland-connection.gltf'
 import pathToCalcs from './calculations.html'
+import pathToMoreFun from './more_fun.html'
+import pathToPhoto from './Photo.html'
+import './Photo.jpg'
+import './double-angle.svg'
 
 const app = new App({
     title: 'Double Angle Connection',
@@ -18,6 +22,8 @@ const app = new App({
             name: 'yay links',
             items: [
                 new HtmlItem({name: 'Calculations', url: siteRoot + pathToCalcs}),
+                new HtmlItem({name: 'More fun', url: siteRoot + pathToMoreFun}),
+                new HtmlItem({name: 'Photo', url: siteRoot + pathToPhoto}),
             ]
         }
     ]
