@@ -29,6 +29,10 @@ nav.header {
     background-color: #FF8200;
 }
 
+nav.header a {
+    width: 50px;
+}
+
 nav.header img {
     height: 100%;
     width: auto;
