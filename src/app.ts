@@ -5,15 +5,17 @@ import './assets/hamburger-menu-white.svg'
 
 export class App {
     groups: Array<SidebarGroup>
+    content_container: HTMLElement
+    current_content: HTMLElement
     viewer: ModelViewer
     sidebar_is_open: Boolean = true
 
     constructor(params: {title: string, groups: Array<SidebarGroup>}) {
-        this.groups = params.groups
+        this.groups = params.groups;
 
         // Set up the viewer
-        const viewer_container = document.getElementById('viewer-container')
-        this.viewer = new ModelViewer(viewer_container)
+        this.content_container = document.getElementById('content-container')
+        this.viewer = new ModelViewer(this.content_container)
         const resize_viewer = this.viewer.onWindowResize.bind(this.viewer)
         window.addEventListener('resize', resize_viewer, false)
         const header_title = document.getElementById('header-title')
@@ -42,6 +44,7 @@ export class App {
                     // The first model encountered is used as the default.
                     if (item instanceof Model && !defaultModelHasBeenSet) {
                         this.viewer.setModelAsCurrent(item.path)
+                        this.setCurrentContent(this.viewer.renderer.domElement)
                         defaultModelHasBeenSet = true
                     }
                 })
@@ -60,14 +63,22 @@ export class App {
         sidebar_toggle.onclick = () => {
             if (this.sidebar_is_open) {
                 sidebar.style.visibility = 'hidden'
-                viewer_container.style.width = '100%'
+                this.content_container.style.width = '100%'
             } else {
                 sidebar.style.visibility = 'visible'
-                viewer_container.style.width = 'calc(100% - 250px)'
+                this.content_container.style.width = 'calc(100% - 250px)'
             }
             this.sidebar_is_open = !this.sidebar_is_open
             resize_viewer()
         }
+    }
+
+    setCurrentContent(content: HTMLElement) {
+        if (this.current_content != null) {
+            this.content_container.removeChild(this.current_content)
+        }
+        this.current_content = content
+        this.content_container.appendChild(this.current_content)
     }
 }
 
@@ -110,6 +121,42 @@ export class Link extends SidebarItem {
 }
 
 
+export class HtmlItem extends SidebarItem {
+    url: string
+
+    constructor(params: {name: string, url: string}) {
+        super()
+        this.name = params.name
+        this.url = params.url
+    }
+
+    createItem(app: App, list: HTMLUListElement) {
+        const listitem = document.createElement('li')
+        const button = document.createElement('button')
+        button.className = 'button-load-html'
+        button.innerHTML = this.name
+        button.onclick = async () => {
+            const responseDiv = document.createElement('div')
+            responseDiv.className = 'html-content'
+            responseDiv.innerHTML = 'Loading...'
+            app.setCurrentContent(responseDiv);
+            fetch(this.url).then(response => {
+                return response.text()
+            }).then(text => {
+                responseDiv.innerHTML = text
+                return (window as any).MathJax.typesetPromise() as Promise<any>
+            }).catch(err => {
+                console.log('Typesetting failed:')
+                console.log(err)
+            })
+            app.content_container.style.overflowY = 'scroll'
+        }
+        listitem.appendChild(button)
+        list.appendChild(listitem)
+    }
+}
+
+
 export class Model extends SidebarItem {
     path: string
 
@@ -124,7 +171,11 @@ export class Model extends SidebarItem {
         const button = document.createElement('button')
         button.className = 'button-use-model'
         button.innerHTML = this.name
-        button.onclick = () => {app.viewer.setModelAsCurrent(this.path)}
+        button.onclick = () => {
+            app.setCurrentContent(app.viewer.renderer.domElement)
+            app.content_container.style.overflowY = 'hidden'
+            app.viewer.setModelAsCurrent(this.path)
+        }
 
         listitem.appendChild(button)
         list.appendChild(listitem)

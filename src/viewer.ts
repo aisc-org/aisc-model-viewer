@@ -47,7 +47,6 @@ export class ModelViewer {
         this.controls.addEventListener('change', this.render.bind(this))
         this.controls.update()
 
-        this.container.appendChild(this.renderer.domElement)
         this.render()
     }
 
@@ -78,6 +77,7 @@ export class ModelViewer {
             this.scene.add(gltf.scene)
         })
         this.render()
+        this.onWindowResize()
     }
 
     addLights() {
