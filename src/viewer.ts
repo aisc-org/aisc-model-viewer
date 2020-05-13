@@ -16,6 +16,14 @@ const colors = {
     gray_2:   new THREE.Color('#E0E0E0'),
     gray_3:   new THREE.Color('#CACACA'),
     gray_4:   new THREE.Color('#B6B6B6'),
+    black:    new THREE.Color('#000000'),
+}
+
+
+interface ModelViewerOptions {
+    wireframeColor?: string | number | THREE.Color
+    backgroundColor?: string | number | THREE.Color
+    renderEdges?: Boolean
 }
 
 
@@ -28,8 +36,18 @@ export class ModelViewer {
     renderer: THREE.WebGLRenderer
     controls: OrbitControls
 
-    constructor(container: HTMLElement) {
+    wireframeColor: THREE.Color = colors.black
+    backgroundColor: THREE.Color = colors.gray_4
+    renderEdges: Boolean = true
+
+    constructor(container: HTMLElement, options: ModelViewerOptions = {}) {
         this.container = container
+        if (options.backgroundColor !== undefined)
+            this.backgroundColor = new THREE.Color(options.backgroundColor)
+        if (options.wireframeColor !== undefined)
+            this.wireframeColor = new THREE.Color(options.wireframeColor)
+        if (options.renderEdges !== undefined)
+            this.renderEdges = options.renderEdges
 
         const draco = new DRACOLoader()
         draco.setDecoderPath('https://www.gstatic.com/draco/v1/decoders/')
@@ -38,7 +56,7 @@ export class ModelViewer {
         this.loader.setDRACOLoader(draco)
 
         this.scene = new THREE.Scene()
-        this.scene.background = colors.smokey
+        this.scene.background = this.backgroundColor
         this.addLights()
         this.camera = new THREE.PerspectiveCamera(75, this.container.clientWidth / this.container.clientHeight)
 
@@ -68,6 +86,10 @@ export class ModelViewer {
             gltf.scene.position.y += (gltf.scene.position.y - center.y)
             gltf.scene.position.z += (gltf.scene.position.z - center.z)
 
+            if (this.renderEdges) {
+                this.addWireframeToGroup(gltf.scene)
+            }
+
             this.controls.reset()
             this.controls.maxDistance = size*10
             this.camera.near = size / 100
@@ -87,11 +109,43 @@ export class ModelViewer {
     }
 
     addLights() {
-        const ambientLight = new THREE.AmbientLight(0xFFFFFF, 0.5)
-        const directionalLight = new THREE.DirectionalLight(0xFFFFFF, 0.5)
-        directionalLight.position.set(1, 1, 1)
+        const ambientLight = new THREE.AmbientLight(0xFFFFFF, 1.0)
+        this.scene.add(ambientLight)
+    }
 
-        this.scene.add(ambientLight, directionalLight)
+    addWireframeToGroup(group: THREE.Group) {
+        const wireMaterial = new THREE.LineBasicMaterial({
+            color: this.wireframeColor,
+            linewidth: 2
+        })
+        // For each material, turn on polygonOffset. This very slightly
+        // moves the surface to prevent z-fighting with the wireframe. Store
+        // (and check for) materials we've already updated.
+        const updatedMaterials: THREE.Material[] = []
+        const setPolygonOffset = (material: THREE.Material) => {
+            if (!updatedMaterials.includes(material)) {
+                console.log('Updating material...')
+                material.polygonOffset = true
+                material.polygonOffsetFactor = 1
+                material.polygonOffsetUnits = 1
+                material.needsUpdate = true
+                updatedMaterials.push(material)
+            }
+        }
+        group.traverse(element => {
+            if (element instanceof THREE.Mesh) {
+                if (element.material instanceof THREE.Material) {
+                    setPolygonOffset(element.material)
+                } else {
+                    element.material.forEach(setPolygonOffset)
+                }
+                // Create the wireframe from the mesh geometry.
+                console.log('Adding wireframe to mesh...')
+                let wireGeometry = new THREE.EdgesGeometry(element.geometry)
+                let wireframe = new THREE.LineSegments(wireGeometry, wireMaterial)
+                element.add(wireframe)
+            }
+        });
     }
 
     clearScene() {
