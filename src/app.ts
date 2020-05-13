@@ -20,16 +20,15 @@ export class App {
         this.contentScrollState = new Map<string, number>()
 
         // Set up the viewer
-        this.contentContainer = document.getElementById('content-container')
+        this.contentContainer = document.getElementById('content-container') as HTMLDivElement
         this.viewer = new ModelViewer(this.contentContainer)
         const resize_viewer = this.viewer.onWindowResize.bind(this.viewer)
         window.addEventListener('resize', resize_viewer, false)
-        const header_title = document.getElementById('header-title')
+        const header_title = document.getElementById('header-title') as HTMLHeadingElement
         header_title.innerHTML = params.title
 
         // Set up the sidebar
-        const sidebar = document.getElementById('sidebar')
-        let defaultModelHasBeenSet = false
+        const sidebar = document.getElementById('sidebar') as HTMLElement
         params.groups.forEach((group, index) => {
             // Each group corresponds to a section in the sidebar.
             let section = document.createElement('section')
@@ -59,7 +58,7 @@ export class App {
         })
 
         // Toggling of sidebar
-        const sidebar_toggle = document.getElementById('sidebar-toggle')
+        const sidebar_toggle = document.getElementById('sidebar-toggle') as HTMLButtonElement
         sidebar_toggle.onclick = () => {
             if (this.sidebar_is_open) {
                 sidebar.style.visibility = 'hidden'
