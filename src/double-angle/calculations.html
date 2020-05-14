@@ -165,8 +165,8 @@
     <p>Calculate the nominal strength for the limit state of bearing in the gusset plate using AISC <i>Specification</i> Equation J3-6a.</p>
     <p>\[ \begin{align}
             r_n &= 2.4dtF_u \\
-                &= 2.4(\tfrac{7}{8} \text{ in.})(\tfrac{5}{8} \text{ in.})(58 \text{ ksi}) \\
-                &= 76.1 \text{ kips}
+                &= 2.4(\tfrac{7}{8} \text{ in.})(\tfrac{1}{2} \text{ in.})(58 \text{ ksi}) \\
+                &= 60.9 \text{ kips}
           \end{align} \]</p> 
 
     <p>Calculate the nominal strength for the limit state of tearout in the double angle using AISC <i>Specification</i> Equation J3-6c.</p> 
@@ -178,8 +178,8 @@
     
     <p>\[ \begin{align}
             r_n &= 1.2l_ctF_u \\
-                &= 1.2(1.656 \text{ in.})(2 \times \tfrac{5}{8} \text{ in.})(58 \text{ ksi}) \\
-                &= 144.1 \text{ kips}
+                &= 1.2(1.656 \text{ in.})(2 \times \tfrac{1}{2} \text{ in.})(58 \text{ ksi}) \\
+                &= 115.3 \text{ kips}
           \end{align} \]</p>    
           
     <p>Calculate the nominal strength for the limit state of tearout in the gusset plate using AISC <i>Specification</i> Equation J3-6c.</p>
@@ -191,22 +191,22 @@
     
     <p>\[ \begin{align}
             r_n &= 1.2l_ctF_u \\
-                &= 1.2(2.063 \text{ in.})(\tfrac{5}{8} \text{ in.})(58 \text{ ksi}) \\
-                &= 89.7 \text{ kips}
+                &= 1.2(2.063 \text{ in.})(\tfrac{1}{2} \text{ in.})(58 \text{ ksi}) \\
+                &= 71.2 \text{ kips}
           \end{align} \]</p>   
           
-    <p>Bolt shear rupture controls. The nominal effective strength of bolt #1 is 64.9 kips.</p>
+    <p>Bearing in the gusset plate controls. The nominal effective strength of bolt #1 is 64.9 kips.</p>
     
     <h3>Bolts #2-8</h3>    
-    <p>The effective strength of bolts #2 through #8 is calculated in the same manner, except with different clear distances. Bolt shear rupture controls. The nominal effective strength of bolts #2 through #8 is 64.9 kips.</p>
+    <p>The effective strength of bolts #2 through #8 is calculated in the same manner, except with different clear distances. Bearing in the gusset plate controls. The nominal effective strength of bolts #2 through #8 is 60.9 kips.</p>
     
     <h3>Bolts #9</h3>    
-    <p>The effective strength of bolt #9 is calculated in the same manner, except with different clear distances. Bolt shear rupture controls. The nominal effective strength of bolts #2 through #8 is 64.9 kips.</p>
+    <p>The effective strength of bolt #9 is calculated in the same manner, except with different clear distances. Bearing in the gusset plate controls. The nominal effective strength of bolt #9 is 60.9 kips.</p>
     
     <h3>Bolt group</h3>    
     <p>Calculate the nominal effective strength of the bolt group by summing the nominal effective strength of each bolt.</p>
     <p>\[ \begin{align}
-            R_n &= 64.9 \text{ kips} + 7 \times 64.9 \text{ kips} + 64.9 \text{ kips} \\
+            R_n &= 60.9 \text{ kips} + 7 \times 60.9 \text{ kips} + 60.9 \text{ kips} \\
                 &= 548 \text{ kips}
           \end{align} \]</p>     
     
@@ -239,7 +239,7 @@
       </tr>
     </table>
     
-    <p><strong>Tensile yielding controls with a design strength of 411 kips.</strong></p>
+    <p><strong>Bolt group strength controls with a design strength of 411 kips.</strong></p>
     
     <h2>Bolt Spacing</h2>
     <p>From Section J3.3 of the AISC <i>Specification</i>, the minimum spacing between bolts is \(2\tfrac{2}{3}d\).</p>
@@ -270,11 +270,11 @@
     
     <p>The minimum provided edge distance is \(2\tfrac{1}{8} \text{ in.}\) which satisfies the minimum edge distance requirement.</p>    
   
-    <p>From Section J3.5 of the AISC <i>Specification</i>, the maximum spacing between bolts is the lesser of 12 times the thickness of the connected part 6 in.</p>
+    <p>From Section J3.5 of the AISC <i>Specification</i>, the maximum spacing between bolts is the lesser of 12 times the thickness of the connected part and 6 in.</p>
     <p>\[ \begin{align}
-            L_{e,max} &= min(12t_{min},6 \text{ in.}) \\
-                      &= min(12(\tfrac{5}{8} \text{ in.}),6 \text{ in.}) \\
-                      &= 6 \text{ in.}
+            L_{e,\max} &= \min(12t_{\min},6 \text{ in.}) \\
+                       &= \min(12(\tfrac{1}{2} \text{ in.}),6 \text{ in.}) \\
+                       &= 6 \text{ in.}
           \end{align} \]</p>
 
     <p>The maximum provided edge distance is \(3\tfrac{3}{4} \text{ in.}\) which satisfies the maximum edge distance requirement.</p> 
