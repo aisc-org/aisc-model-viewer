@@ -80,6 +80,7 @@ div.app {
     bottom: 0;
     position: fixed;
     overflow-x: hidden;
+    overflow-y: auto;
 }
 
 .content-container canvas {
@@ -135,6 +136,8 @@ nav.sidebar {
     box-sizing: border-box;
     color: #333333;
     padding: 0;
+    overflow-y: auto;
+    max-height: calc(100vh - 50px);
 }
 
 .sidebar section {

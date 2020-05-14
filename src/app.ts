@@ -161,7 +161,6 @@ export class HtmlItem extends SidebarItem {
         super(params.name)
         this.url = params.url
         this.onclick = async (app) => {
-            app.contentContainer.style.overflowY = 'scroll'
             const responseDiv = document.createElement('div')
             responseDiv.className = 'html-content'
             app.setContentElement(responseDiv);
@@ -199,7 +198,6 @@ export class Model extends SidebarItem {
         this.path = params.path
         this.onclick = (app) => {
             app.setContentElement(app.viewer.renderer.domElement)
-            app.contentContainer.style.overflowY = 'hidden'
             app.viewer.setModelAsCurrent(this.path)
         }
     }
