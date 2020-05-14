@@ -22,7 +22,7 @@ const app = new App({
             ]
         },
         {
-            name: 'yay links',
+            name: 'more',
             items: [
                 new HtmlItem({name: 'Calculations', url: siteRoot + pathToCalcs}),
                 new HtmlItem({name: '2D structural drawing', url: siteRoot + pathToDrawing}),
