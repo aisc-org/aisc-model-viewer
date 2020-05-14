@@ -116,7 +116,7 @@ export class ModelViewer {
     addWireframeToGroup(group: THREE.Group) {
         const wireMaterial = new THREE.LineBasicMaterial({
             color: this.wireframeColor,
-            linewidth: 2
+            linewidth: 1.5,
         })
         // For each material, turn on polygonOffset. This very slightly
         // moves the surface to prevent z-fighting with the wireframe. Store
