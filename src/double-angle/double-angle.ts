@@ -9,6 +9,7 @@ import pathToMoreFun from './more_fun.html'
 import pathToPhoto from './Photo.html'
 import './Photo.jpg'
 import './double-angle.svg'
+import './calcs-net-area.jpg'
 
 const app = new App({
     title: 'Double Angle Connection',
