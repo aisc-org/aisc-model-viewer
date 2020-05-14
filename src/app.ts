@@ -4,6 +4,12 @@ import './assets/house-white.svg'
 import './assets/hamburger-menu-white.svg'
 
 
+enum DisplayMode {
+    Landscape,
+    Portrait
+}
+
+
 export class App {
     groups: Array<SidebarGroup>
     contentLinkMap: Map<string, SidebarItem>
@@ -13,6 +19,7 @@ export class App {
     currentContent: string
     viewer: ModelViewer
     sidebar_is_open: Boolean = true
+    contentSizingMode: DisplayMode = DisplayMode.Landscape
 
     constructor(params: {title: string, groups: Array<SidebarGroup>}) {
         this.groups = params.groups;
@@ -57,15 +64,36 @@ export class App {
             }
         })
 
+        // Responsive content sizing
+        // On portrait displays, we want the content to extend under the sidebar
+        // even when its open.
+        const updateDisplayMode = () => {
+            if (window.innerWidth < window.innerHeight && this.contentSizingMode === DisplayMode.Landscape) {
+                this.contentSizingMode = DisplayMode.Portrait
+                if (this.sidebar_is_open) {
+                    this.contentContainer.style.width = '100%'
+                }
+            } else if (window.innerWidth > window.innerHeight && this.contentSizingMode === DisplayMode.Portrait) {
+                this.contentSizingMode = DisplayMode.Landscape
+                if (this.sidebar_is_open) {
+                    this.contentContainer.style.width = 'calc(100% - 250px)'
+                }
+            }
+        }
+        window.addEventListener('resize', updateDisplayMode)
+        updateDisplayMode()
+
         // Toggling of sidebar
         const sidebar_toggle = document.getElementById('sidebar-toggle') as HTMLButtonElement
         sidebar_toggle.onclick = () => {
             if (this.sidebar_is_open) {
                 sidebar.style.visibility = 'hidden'
-                this.contentContainer.style.width = '100%'
+                if (this.contentSizingMode === DisplayMode.Landscape)
+                    this.contentContainer.style.width = '100%'
             } else {
                 sidebar.style.visibility = 'visible'
-                this.contentContainer.style.width = 'calc(100% - 250px)'
+                if (this.contentSizingMode === DisplayMode.Landscape)
+                    this.contentContainer.style.width = 'calc(100% - 250px)'
             }
             this.sidebar_is_open = !this.sidebar_is_open
             resize_viewer()

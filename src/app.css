@@ -73,8 +73,7 @@ div.app {
 }
 
 .content-container {
-    z-index: 1;
-    float: left;
+    z-index: 0;
     width: calc(100% - 250px);
     top: 50px;
     bottom: 0;
@@ -128,7 +127,7 @@ div.html-content {
 nav.sidebar {
     position: fixed;
     right: 0;
-    z-index: 0;
+    z-index: 1;
     width: 250px;
     height: 100%;
     background-color: #F6F6F6;
