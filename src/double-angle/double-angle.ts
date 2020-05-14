@@ -16,7 +16,7 @@ const app = new App({
         {
             name: 'models',
             items: [
-                new Model({name: '3d model', path: pathToModel}),
+                new Model({name: '3D model', path: pathToModel}),
                 new Model({name: 'Tensile rupture', path: pathToNetSection}),
                 new Model({name: 'Block shear rupture', path: pathToBlockShear}),
             ]
