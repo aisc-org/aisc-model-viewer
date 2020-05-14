@@ -5,13 +5,10 @@ const app = new App({
     title: 'Wide Flange Truss Connection',
     groups: [
         {
-            name: 'basics',
+            name: 'models',
             items: [
-                new Model({name: '3d model', path: pathToModel}),
+                new Model({name: 'Block shear rupture', path: pathToModel}),
             ]
         },
-        {
-            name: 'failure modes',
-        }
     ]
 })
