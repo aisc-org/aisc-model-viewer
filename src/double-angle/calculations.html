@@ -28,7 +28,10 @@
 
     <p>Calculate the nominal strength using AISC <i>Specification</i> Equation D2-1.</p>
 
-    <!-- @todo add figure showing the gross area -->
+    <figure>
+        <img src="./gross-tension.svg" alt="">
+        <figcaption>Tensile yielding path.</figcaption>
+    </figure>
 
     <p>\[ \begin{align}
             P_n &= F_y A_g \\
@@ -44,7 +47,8 @@
     <p>A depiction of tensile rupture failure for this connection is shown in <a href="#Tensile-rupture">this three-dimensional view</a>.</p>
 
     <figure>
-        <img src="./calcs-net-area.jpg" alt="View of the cut surface of the model, with the net area highlighted in orange.">
+        <img src="./net-tension.svg" alt="">
+        <figcaption>Tensile rupture path.</figcaption>
     </figure>
 
     <p>The net area, \(A_n\), is shown in orange. It is equal to the gross area minus the material removed for two bolt holes as defined in Section B4.3b of the AISC <i>Specification</i>:</p>
@@ -89,9 +93,12 @@
     <p>\[ \phi P_n = 0.75(700 \text{ kips}) = 525 \text{ kips}\]</p>
 
     <h2>Block Shear Rupture</h2>
-    <p>A depiction of block shear rupture failure for this connection is shown in <a href="#Block-shear-rupture">this three-dimensional view</a>.</p>
+    <p>The only valid and plausible block shear rupture failure path is shown below. See also the <a href="#Block-shear-rupture">3D view of this failure mode</a>.</p>
 
-    <p>The only valid and plausible block shear rupture failure path is shown below</p> <!-- @todo add figure -->
+    <figure>
+        <img src="./block-shear-path.svg" alt="">
+        <figcaption>Block shear failure path (side view). \(A_{nv}\) in blue, \(A_{nt}\) in red.</figcaption>
+    </figure>
 
     <p>Calculate the gross area subject to shear.</p>
     <p>\[ \begin{align}
@@ -136,7 +143,11 @@
     <p>The limit states of bolt shear rupture, bearing, and tearout are evaluated together to determine the design strength of the bolt group.</p>
 
     <p>For each bolt, an effective strength is calculated as the lowest strength from the limit states of bolt shear rupture, bearing, and tearout.</p>
-    <!-- @todo add figure showing the bolt numbering and direction of force to indicate lc -->
+
+    <figure>
+        <img src="./bolt-numbering.svg" alt="">
+        <figcaption>Bolt numbering scheme used.</figcaption>
+    </figure>
 
     <p>From AISC <i>Specification</i> Table J3.2, Group A bolts, when threads are not excluded from shear planes: </p>
     <p style="padding-left: 1em;">\(F_{nv} = 54 \text{ ksi}\)</p>
