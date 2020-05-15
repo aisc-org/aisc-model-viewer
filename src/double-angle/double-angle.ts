@@ -11,7 +11,9 @@ import './Photo.jpg'
 import './double-angle.svg'
 import './gross-tension.svg'
 import './net-tension.svg'
+import './net-area-3d-view.jpg'
 import './block-shear-path.svg'
+import './block-shear-3d-view.jpg'
 import './bolt-numbering.svg'
 
 const app = new App({
