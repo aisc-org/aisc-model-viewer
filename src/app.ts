@@ -85,7 +85,7 @@ export class App {
 
         // Toggling of sidebar
         const sidebar_toggle = document.getElementById('sidebar-toggle') as HTMLButtonElement
-        sidebar_toggle.onclick = () => {
+        const toggle_sidebar_action = () => {
             if (this.sidebar_is_open) {
                 sidebar.style.visibility = 'hidden'
                 if (this.contentSizingMode === DisplayMode.Landscape)
@@ -97,6 +97,12 @@ export class App {
             }
             this.sidebar_is_open = !this.sidebar_is_open
             resize_viewer()
+        }
+        sidebar_toggle.onclick = toggle_sidebar_action
+
+        // If starting in portrait mode, hide the sidebar
+        if (this.contentSizingMode === DisplayMode.Portrait) {
+            toggle_sidebar_action()
         }
 
         // If an item has been specified by the hash, go there
