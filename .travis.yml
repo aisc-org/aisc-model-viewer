@@ -11,11 +11,11 @@ script:
   - yarn build
 
 # Publish the website
-# deploy:
-#   provider: pages
-#   skip_cleanup: true
-#   github_token: $GITHUB_TOKEN
-#   local_dir: dist
-#   target_branch: gh-pages
-#   on:
-#     branch: master
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  local_dir: dist
+  target_branch: gh-pages
+  on:
+    branch: master
