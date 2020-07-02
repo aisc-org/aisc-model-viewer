@@ -7,6 +7,7 @@ module.exports = {
     entry: {
         index: './src/index.ts',
         double_angle: './src/double-angle/double-angle.ts',
+        wt_plate: './src/wt-plate/wt-plate.ts',
         wf_truss: './src/wf-truss/wf-truss.ts',
     },
     module: {
@@ -56,6 +57,12 @@ module.exports = {
             filename: 'double-angle/index.html',
             template: './src/app.ejs',
             chunks: ['double_angle']
+        }),
+        new HtmlWebpackPlugin({
+            title: 'WT bolted connection',
+            filename: 'wt-plate/index.html',
+            template: './src/app.ejs',
+            chunks: ['wt_plate']
         }),
         new HtmlWebpackPlugin({
             title: 'Wide flange truss connection',
