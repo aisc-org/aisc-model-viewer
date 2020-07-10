@@ -24,6 +24,7 @@ interface ModelViewerOptions {
     wireframeColor?: string | number | THREE.Color
     backgroundColor?: string | number | THREE.Color
     renderEdges?: Boolean
+    edgeThresholdAngle?: number
 }
 
 
@@ -38,7 +39,13 @@ export class ModelViewer {
 
     wireframeColor: THREE.Color = colors.black
     backgroundColor: THREE.Color = colors.gray_4
+    // Whether to render edges as lines in the model.
     renderEdges: Boolean = true
+    // Controls whether the EdgesGeometry used for the outline draws the edge.
+    // If the angle between the adjacent normals exceeds the threshold, the edge
+    // is drawn. Use a fairly high threshold angle -- 20 degrees -- so that
+    // edges don't show up on curved surfaces.
+    edgeThresholdAngle: number = 20
 
     constructor(container: HTMLElement, options: ModelViewerOptions = {}) {
         this.container = container
@@ -48,6 +55,8 @@ export class ModelViewer {
             this.wireframeColor = new THREE.Color(options.wireframeColor)
         if (options.renderEdges !== undefined)
             this.renderEdges = options.renderEdges
+        if (options.edgeThresholdAngle !== undefined)
+            this.edgeThresholdAngle = options.edgeThresholdAngle
 
         const draco = new DRACOLoader()
         draco.setDecoderPath('https://www.gstatic.com/draco/v1/decoders/')
@@ -141,7 +150,7 @@ export class ModelViewer {
                 }
                 // Create the wireframe from the mesh geometry.
                 console.log('Adding wireframe to mesh...')
-                let wireGeometry = new THREE.EdgesGeometry(element.geometry)
+                let wireGeometry = new THREE.EdgesGeometry(element.geometry, this.edgeThresholdAngle)
                 let wireframe = new THREE.LineSegments(wireGeometry, wireMaterial)
                 element.add(wireframe)
             }
