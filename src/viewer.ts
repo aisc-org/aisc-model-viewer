@@ -118,8 +118,11 @@ export class ModelViewer {
     }
 
     addLights() {
-        const ambientLight = new THREE.AmbientLight(0xFFFFFF, 1.0)
-        this.scene.add(ambientLight)
+        const ambientLight = new THREE.AmbientLight(0xFFFFFF, 0.95)
+        const directionalLightUp = new THREE.DirectionalLight(0xFFFFFF, 0.35)
+        directionalLightUp.position.set(0, -1, 0);
+        const directionalLightDn = new THREE.DirectionalLight(0xFFFFFF, 0.35)
+        this.scene.add(ambientLight, directionalLightUp, directionalLightDn)
     }
 
     addWireframeToGroup(group: THREE.Group) {
