@@ -13,11 +13,11 @@ const app = new App({
             name: 'models',
             items: [
                 new Model({name: '3D model', path: pathToModel}),
+                new Model({name: 'Tensile yield', path: pathToYield}),
                 new Model({name: 'Tensile rupture', path: pathToRupture}),
-                new Model({name: 'Web block shear', path: pathToWebShear}),
+                new Model({name: 'Block shear 1', path: pathToWebShear}),
                 new Model({name: 'Block shear 2', path: pathToIntuitiveShear}),
                 new Model({name: 'Block shear 3', path: pathToUnlikelyShear}),
-                new Model({name: 'Tensile yield', path: pathToYield}),
             ]
         },
     ]
