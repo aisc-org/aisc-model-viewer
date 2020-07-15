@@ -11,17 +11,17 @@ enum DisplayMode {
 
 
 export class App {
-    groups: Array<SidebarGroup>
+    groups: SidebarGroup[]
     contentLinkMap: Map<string, SidebarItem>
     contentScrollState: Map<string, number>
     contentContainer: HTMLElement
     currentElement: HTMLElement
     currentContent: string
     viewer: ModelViewer
-    sidebar_is_open: Boolean = true
+    sidebarIsOpen: Boolean = true
     contentSizingMode: DisplayMode = DisplayMode.Landscape
 
-    constructor(params: {title: string, groups: Array<SidebarGroup>}) {
+    constructor(params: {title: string, groups: SidebarGroup[]}) {
         this.groups = params.groups;
         this.contentLinkMap = new Map<string, SidebarItem>()
         this.contentScrollState = new Map<string, number>()
@@ -29,10 +29,10 @@ export class App {
         // Set up the viewer
         this.contentContainer = document.getElementById('content-container') as HTMLDivElement
         this.viewer = new ModelViewer(this.contentContainer)
-        const resize_viewer = this.viewer.onWindowResize.bind(this.viewer)
-        window.addEventListener('resize', resize_viewer, false)
-        const header_title = document.getElementById('header-title') as HTMLHeadingElement
-        header_title.innerHTML = params.title
+        const resizeViewer = this.viewer.onWindowResize.bind(this.viewer)
+        window.addEventListener('resize', resizeViewer, false)
+        const headerTitle = document.getElementById('header-title') as HTMLHeadingElement
+        headerTitle.innerHTML = params.title
 
         // Set up the sidebar
         const sidebar = document.getElementById('sidebar') as HTMLElement
@@ -70,12 +70,12 @@ export class App {
         const updateDisplayMode = () => {
             if (window.innerWidth < window.innerHeight && this.contentSizingMode === DisplayMode.Landscape) {
                 this.contentSizingMode = DisplayMode.Portrait
-                if (this.sidebar_is_open) {
+                if (this.sidebarIsOpen) {
                     this.contentContainer.style.width = '100%'
                 }
             } else if (window.innerWidth > window.innerHeight && this.contentSizingMode === DisplayMode.Portrait) {
                 this.contentSizingMode = DisplayMode.Landscape
-                if (this.sidebar_is_open) {
+                if (this.sidebarIsOpen) {
                     this.contentContainer.style.width = 'calc(100% - 250px)'
                 }
             }
@@ -84,9 +84,9 @@ export class App {
         updateDisplayMode()
 
         // Toggling of sidebar
-        const sidebar_toggle = document.getElementById('sidebar-toggle') as HTMLButtonElement
-        const toggle_sidebar_action = () => {
-            if (this.sidebar_is_open) {
+        const sidebarToggle = document.getElementById('sidebar-toggle') as HTMLButtonElement
+        const toggleSidebar = () => {
+            if (this.sidebarIsOpen) {
                 sidebar.style.visibility = 'hidden'
                 if (this.contentSizingMode === DisplayMode.Landscape)
                     this.contentContainer.style.width = '100%'
@@ -95,18 +95,22 @@ export class App {
                 if (this.contentSizingMode === DisplayMode.Landscape)
                     this.contentContainer.style.width = 'calc(100% - 250px)'
             }
-            this.sidebar_is_open = !this.sidebar_is_open
-            resize_viewer()
+            this.sidebarIsOpen = !this.sidebarIsOpen
+            resizeViewer()
         }
-        sidebar_toggle.onclick = toggle_sidebar_action
+        sidebarToggle.onclick = toggleSidebar
 
         // If starting in portrait mode, hide the sidebar
         if (this.contentSizingMode === DisplayMode.Portrait) {
-            toggle_sidebar_action()
+            toggleSidebar()
         }
 
-        // If an item has been specified by the hash, go there
-        const onhashchange = async () => {
+        // The current content item is specified by the hash. setCurrentContent
+        // handles:
+        // - saving/restoring the scroll state
+        // - calling the 'onclick' method of the activated item
+        //
+        const setCurrentContent = async () => {
             const linkname = window.location.hash.substr(1)
             if (linkname in this.contentLinkMap) {
                 // Save scroll position
@@ -129,8 +133,8 @@ export class App {
                 }
             }
         }
-        window.addEventListener('hashchange', onhashchange)
-        onhashchange()
+        window.addEventListener('hashchange', setCurrentContent)
+        setCurrentContent()
     }
 
     setContentElement(content: HTMLElement) {
@@ -164,7 +168,7 @@ abstract class SidebarItem {
 
 export interface SidebarGroup {
     name: string
-    items?: Array<SidebarItem>
+    items?: SidebarItem[]
 }
 
 
