@@ -145,6 +145,28 @@ div.html-content {
     padding: 0 0.25rem;
 }
 
+.html-content details {
+    border: 1px solid #333;
+    border-radius: 4px;
+    margin: 0 1rem;
+    padding: 0.5em 0.5em 0;
+}
+
+.html-content summary {
+    font-weight: bold;
+    margin: -0.5em -0.5em 0;
+    padding: 0.5em;
+}
+
+.html-content details[open] {
+    padding: 0.5em;
+}
+
+.html-content details[open] summary {
+    border-bottom: 1px solid #333;
+    margin-bottom: 0.5em;
+}
+
 /* --------------- Sidebar --------------- */
 nav.sidebar {
     position: fixed;
