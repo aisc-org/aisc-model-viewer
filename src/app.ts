@@ -17,20 +17,16 @@ export class App {
     contentContainer: HTMLElement
     currentElement: HTMLElement
     currentContent: string
-    viewer: ModelViewer
     sidebarIsOpen: Boolean = true
     contentSizingMode: DisplayMode = DisplayMode.Landscape
 
-    constructor(params: {title: string, groups: SidebarGroup[]}) {
+    constructor(params: { title: string, groups: SidebarGroup[] }) {
         this.groups = params.groups;
         this.contentLinkMap = new Map<string, SidebarItem>()
         this.contentScrollState = new Map<string, number>()
 
         // Set up the viewer
         this.contentContainer = document.getElementById('content-container') as HTMLDivElement
-        this.viewer = new ModelViewer(this.contentContainer)
-        const resizeViewer = this.viewer.onWindowResize.bind(this.viewer)
-        window.addEventListener('resize', resizeViewer, false)
         const headerTitle = document.getElementById('header-title') as HTMLHeadingElement
         headerTitle.innerHTML = params.title
 
@@ -51,7 +47,7 @@ export class App {
             // If the group has items, append each item to the list.
             if (group.items != null) {
                 group.items.forEach(item => {
-                    item.createItem(this, list)
+                    list.appendChild(item.createItem())
                     this.contentLinkMap[item.linkname] = item
                 })
             }
@@ -96,7 +92,6 @@ export class App {
                     this.contentContainer.style.width = 'calc(100% - 250px)'
             }
             this.sidebarIsOpen = !this.sidebarIsOpen
-            resizeViewer()
         }
         sidebarToggle.onclick = toggleSidebar
 
@@ -112,25 +107,34 @@ export class App {
         //
         const setCurrentContent = async () => {
             const linkname = window.location.hash.substr(1)
+            const item: SidebarItem = this.contentLinkMap[linkname]
             if (linkname in this.contentLinkMap) {
-                // Save scroll position
-                if (this.currentElement) {
-                    console.log('Saving', this.currentContent, 'scroll position as', this.contentContainer.scrollTop)
-                    this.contentScrollState[this.currentContent] = this.contentContainer.scrollTop
-                }
+                await item.createContent(this.contentContainer).then(content => {
+                    // Save scroll position
+                    if (this.currentElement) {
+                        console.log('Saving', this.currentContent, 'scroll position as', this.contentContainer.scrollTop)
+                        this.contentScrollState[this.currentContent] = this.contentContainer.scrollTop
+                    }
 
-                const item = this.contentLinkMap[linkname]
-                await item.onclick(this)
-                this.currentContent = linkname
-                console.log(linkname, 'loaded;', 'The current scroll position is', this.contentContainer.scrollTop)
+                    // Set up content element
+                    this.setContentElement(content)
+                    this.currentContent = linkname
+                    console.log(linkname, 'loaded;', 'The current scroll position is', this.contentContainer.scrollTop)
 
-                // Restore scroll position
-                const scrollPosition = this.contentScrollState[linkname]
-                if (scrollPosition) {
-                    console.log('Restoring', linkname, 'to scroll position', scrollPosition)
-                    this.contentContainer.scrollBy(scrollPosition, scrollPosition)
-                    console.log(linkname, 'restored;', 'The current scroll position is', this.contentContainer.scrollTop)
-                }
+                    // Restore scroll position
+                    const scrollPosition = this.contentScrollState[linkname]
+                    if (scrollPosition) {
+                        console.log('Restoring', linkname, 'to scroll position', scrollPosition)
+                        this.contentContainer.scrollBy(scrollPosition, scrollPosition)
+                        console.log(linkname, 'restored;', 'The current scroll position is', this.contentContainer.scrollTop)
+                    }
+                }, error => {
+                    if (error instanceof NoContentError) {
+                        /* No content, no problem */
+                    } else {
+                        console.error(error)
+                    }
+                })
             }
         }
         window.addEventListener('hashchange', setCurrentContent)
@@ -147,10 +151,12 @@ export class App {
 }
 
 
+class NoContentError extends Error { }
+
+
 abstract class SidebarItem {
     name: string
     linkname: string
-    onclick?: (app: App) => void;
 
     constructor(name: string) {
         this.name = name
@@ -158,11 +164,22 @@ abstract class SidebarItem {
     }
 
     /**
-     * Create the item in the given section.
-     * @param app - The parent application.
-     * @param list - the list element to insert the item into.
+     * Create the list item that will be added to the sidebar.
+     * @returns listitem - the created HTMLLIElement
      */
-    createItem(app: App, list: HTMLUListElement) {}
+    abstract createItem(): HTMLLIElement
+
+    /**
+     * Create the content element that will be displayed.
+     * 
+     * @param contentContainer - the parent HTMLElement, provided by the running
+     *                           App instance.
+     * @returns Promise&lt;HTMLElement&gt; - the created HTMLElement. The App will handle
+     *                           adding this to the page.
+     */
+    async createContent(contentContainer: HTMLElement): Promise<HTMLElement> {
+        return Promise.reject(new NoContentError)
+    }
 }
 
 
@@ -175,77 +192,79 @@ export interface SidebarGroup {
 export class Link extends SidebarItem {
     url: string
 
-    constructor(params: {name: string, url: string}) {
+    constructor(params: { name: string, url: string }) {
         super(params.name)
         this.url = params.url
     }
 
-    createItem(app: App, list: HTMLUListElement) {
+    createItem(): HTMLLIElement {
         const listitem = document.createElement('li')
         const anchor = document.createElement('a')
         anchor.href = this.url
         anchor.innerHTML = this.name
+
+        // Open link in new tab/window
+        anchor.target = '_blank'
+        anchor.rel = 'noreferrer noopener'
+
         listitem.appendChild(anchor)
-        list.appendChild(listitem)
+        return listitem
     }
 }
 
 
 export class HtmlItem extends SidebarItem {
-    url: string
+    content: string
     fetchedContent: string
 
-    constructor(params: {name: string, url: string}) {
+    constructor(params: { name: string, content: string }) {
         super(params.name)
-        this.url = params.url
-        this.onclick = async (app) => {
-            const responseDiv = document.createElement('div')
-            responseDiv.className = 'html-content'
-            app.setContentElement(responseDiv);
-            if (this.fetchedContent) {
-                responseDiv.innerHTML = this.fetchedContent
-            } else {
-                responseDiv.innerHTML = 'Loading...'
-                await fetch(this.url).then(response => {
-                    return response.text()
-                }).then(text => {
-                    this.fetchedContent = text
-                    responseDiv.innerHTML = text
-                })
-            }
-            (window as any).MathJax.typesetPromise([responseDiv])
-        }
+        this.content = params.content
     }
 
-    createItem(app: App, list: HTMLUListElement) {
+    async createContent(contentContainer: HTMLElement): Promise<HTMLDivElement> {
+        const contentDiv = document.createElement('div')
+        contentDiv.className = 'html-content'
+        contentDiv.innerHTML = this.content
+        await (window as any).MathJax.typesetPromise([contentDiv])
+        return Promise.resolve(contentDiv)
+    }
+
+    createItem(): HTMLLIElement {
         const listitem = document.createElement('li')
         const anchor = document.createElement('a')
         anchor.href = `#${this.linkname}`
         anchor.innerHTML = this.name
         listitem.appendChild(anchor)
-        list.appendChild(listitem)
+        return listitem
     }
 }
 
 
 export class Model extends SidebarItem {
     path: string
+    static viewer: ModelViewer
 
-    constructor(params: {name: string, path: string}) {
+    constructor(params: { name: string, path: string }) {
         super(params.name)
         this.path = params.path
-        this.onclick = (app) => {
-            app.setContentElement(app.viewer.renderer.domElement)
-            app.viewer.setModelAsCurrent(this.path)
+        if (Model.viewer === undefined) {
+            Model.viewer = new ModelViewer()
         }
     }
 
-    createItem(app: App, list: HTMLUListElement) {
+    async createContent(contentContainer: HTMLElement): Promise<HTMLCanvasElement> {
+        Model.viewer.attachToContainer(contentContainer)
+        Model.viewer.setModelAsCurrent(this.path)
+        return Model.viewer.renderer.domElement
+    }
+
+    createItem() {
         const listitem = document.createElement('li')
         const anchor = document.createElement('a')
         anchor.href = `#${this.linkname}`
         anchor.innerHTML = this.name
         listitem.appendChild(anchor)
-        list.appendChild(listitem)
+        return listitem
     }
 }

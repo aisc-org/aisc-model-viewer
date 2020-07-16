@@ -2,6 +2,7 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const PnpWebpackPlugin = require('pnp-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const child_process = require('child_process')
 
 module.exports = {
     entry: {
@@ -21,7 +22,27 @@ module.exports = {
                 use: 'ts-loader',
             },
             {
-                test: /\.(svg|png|jpe?g|gif|html)$/,
+                test: /\.html$/,
+                loader: 'html-loader',
+                options: {
+                    attributes: false,
+                }
+            },
+            {
+                test: /\.md$/,
+                loader: 'html-loader',
+                options: {
+                    attributes: false,
+                    preprocessor: (content, loaderContext) => {
+                        let result = child_process.execFileSync(
+                            'pandoc', ['-t', 'html', '--mathjax'], { input: content }
+                        )
+                        return result.toString()
+                    }
+                }
+            },
+            {
+                test: /\.(svg|png|jpe?g|gif)$/,
                 loader: 'file-loader',
                 options: {
                     context: 'src',

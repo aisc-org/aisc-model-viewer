@@ -20,14 +20,6 @@ const colors = {
 }
 
 
-interface ModelViewerOptions {
-    wireframeColor?: string | number | THREE.Color
-    backgroundColor?: string | number | THREE.Color
-    renderEdges?: Boolean
-    edgeThresholdAngle?: number
-}
-
-
 export class ModelViewer {
     container: HTMLElement
     loader: GLTFLoader
@@ -47,17 +39,9 @@ export class ModelViewer {
     // edges don't show up on curved surfaces.
     edgeThresholdAngle: number = 20
 
-    constructor(container: HTMLElement, options: ModelViewerOptions = {}) {
-        this.container = container
-        if (options.backgroundColor !== undefined)
-            this.backgroundColor = new THREE.Color(options.backgroundColor)
-        if (options.wireframeColor !== undefined)
-            this.wireframeColor = new THREE.Color(options.wireframeColor)
-        if (options.renderEdges !== undefined)
-            this.renderEdges = options.renderEdges
-        if (options.edgeThresholdAngle !== undefined)
-            this.edgeThresholdAngle = options.edgeThresholdAngle
+    private resizeObserver: MutationObserver
 
+    constructor() {
         const draco = new DRACOLoader()
         draco.setDecoderPath('https://www.gstatic.com/draco/v1/decoders/')
         this.loader = new GLTFLoader()
@@ -67,11 +51,10 @@ export class ModelViewer {
         this.scene = new THREE.Scene()
         this.scene.background = this.backgroundColor
         this.addLights()
-        this.camera = new THREE.PerspectiveCamera(75, this.container.clientWidth / this.container.clientHeight)
+        this.camera = new THREE.PerspectiveCamera(75)
 
         this.renderer = new THREE.WebGLRenderer({ antialias: true })
         this.renderer.setPixelRatio(window.devicePixelRatio)
-        this.renderer.setSize(this.container.clientWidth, this.container.clientHeight)
         this.renderer.outputEncoding = THREE.sRGBEncoding
 
         this.controls = new OrbitControls(this.camera, this.renderer.domElement)
@@ -80,7 +63,16 @@ export class ModelViewer {
 
         matchMedia(`resolution: ${window.devicePixelRatio}dppx`).addListener(this.updatePixelRatio.bind(this))
 
-        this.render()
+        const resizeCallback = this.updateCanvasSize.bind(this)
+        this.resizeObserver = new MutationObserver(resizeCallback)
+        window.addEventListener('resize', resizeCallback)
+    }
+
+    attachToContainer(container: HTMLElement) {
+        this.resizeObserver.disconnect()
+        this.container = container
+        this.resizeObserver.observe(this.container, { attributeFilter: ['style'], childList: true })
+        this.updateCanvasSize()
     }
 
     setModelAsCurrent(path: string) {
@@ -114,7 +106,7 @@ export class ModelViewer {
             this.scene.add(gltf.scene)
             this.controls.update()
         })
-        this.onWindowResize()
+        this.updateCanvasSize()
     }
 
     addLights() {
@@ -168,11 +160,14 @@ export class ModelViewer {
         })
     }
 
-    onWindowResize() {
-        this.camera.aspect = this.container.clientWidth / this.container.clientHeight
-        this.camera.updateProjectionMatrix()
-        this.renderer.setSize(this.container.clientWidth, this.container.clientHeight)
-        this.render()
+    updateCanvasSize() {
+        if (this.container !== undefined) {
+            console.log('Updating canvas size...')
+            this.camera.aspect = this.container.clientWidth / this.container.clientHeight
+            this.camera.updateProjectionMatrix()
+            this.renderer.setSize(this.container.clientWidth, this.container.clientHeight)
+            this.render()
+        }
     }
 
     updatePixelRatio() {

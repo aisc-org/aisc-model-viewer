@@ -5,6 +5,8 @@ os:
   - linux
 dist: bionic
 
+before_install:
+  - sudo apt-get -y install pandoc
 install:
   - yarn install
 script: 

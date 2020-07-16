@@ -1,12 +1,13 @@
 import { App, HtmlItem, Model } from '../app'
-import { siteRoot } from '../utils'
 import pathToModel from './Neyland Connection (centered).glb'
 import pathToNetSection from './Neyland Connection - NET SECTION.glb'
 import pathToBlockShear from './Neyland Connection - BLOCK SHEAR 2.glb'
-import pathToCalcs from './calculations.html'
-import pathToDrawing from './2d-drawing.html'
-import pathToMoreFun from './more_fun.html'
-import pathToPhoto from './Photo.html'
+import calcs from './calculations.html'
+import drawing from './2d-drawing.html'
+import moreFun from './more_fun.html'
+import photo from './Photo.html'
+
+// Assets specified in the HTML files
 import './Photo.jpg'
 import './double-angle.svg'
 import './gross-tension.svg'
@@ -31,10 +32,10 @@ const app = new App({
         {
             name: 'more',
             items: [
-                new HtmlItem({name: 'Calculations', url: siteRoot + pathToCalcs}),
-                new HtmlItem({name: '2D structural drawing', url: siteRoot + pathToDrawing}),
-                new HtmlItem({name: 'Photo', url: siteRoot + pathToPhoto}),
-                new HtmlItem({name: 'More fun!', url: siteRoot + pathToMoreFun}),
+                new HtmlItem({name: 'Calculations', content: calcs}),
+                new HtmlItem({name: '2D structural drawing', content: drawing}),
+                new HtmlItem({name: 'Photo', content: photo}),
+                new HtmlItem({name: 'More fun!', content: moreFun}),
             ]
         }
     ]
