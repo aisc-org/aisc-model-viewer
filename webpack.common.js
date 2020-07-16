@@ -29,7 +29,7 @@ module.exports = {
                 }
             },
             {
-                test: /.(gltf|glb)$/,
+                test: /\.(gltf|glb)$/,
                 loader: 'file-loader',
                 options: {
                     name: 'assets/[contenthash].[ext]'
