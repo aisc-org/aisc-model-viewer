@@ -6,7 +6,8 @@ os:
 dist: bionic
 
 before_install:
-  - sudo apt-get -y install pandoc
+  - curl -O "https://github.com/jgm/pandoc/releases/download/2.10/pandoc-2.10-1-amd64.deb"
+  - sudo apt-get -y install ./pandoc-2.10-1-amd64.deb
 install:
   - yarn install
 script: 
