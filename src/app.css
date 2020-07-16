@@ -151,6 +151,10 @@ nav.sidebar {
     margin: 0;
 }
 
+.sidebar li {
+    padding-bottom: 1ex;
+}
+
 .sidebar h2 {
     color: #58595B;
     margin-bottom: 1ex;
