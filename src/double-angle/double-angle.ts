@@ -15,6 +15,7 @@ import './net-area-3d-view.jpg'
 import './block-shear-path.svg'
 import './block-shear-3d-view.jpg'
 import './bolt-numbering.svg'
+import './workpoint.svg'
 
 const app = new App({
     title: 'Double Angle Connection',
