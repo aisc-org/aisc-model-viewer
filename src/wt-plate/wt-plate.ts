@@ -5,10 +5,13 @@ import pathToWebShear from './WT Connection -- Web block shear.glb'
 import pathToIntuitiveShear from './WT Connection -- Intuitive block shear.glb'
 import pathToUnlikelyShear from './WT Connection -- Unlikely block shear.glb'
 import pathToYield from './WT Connection -- Tensile yield.glb'
+import drawingPage from './2d_drawing.md'
 import calculations from './calculations.md'
 import moreFun from './more_fun.md'
 
 // Assets specified in the MD files
+import './bolted-wt-side.svg'
+import './bolted-wt-top.svg'
 import './idealized-parabolic.png'
 import './bending-of-tee-when-cut.gif'
 
@@ -29,6 +32,7 @@ const app = new App({
         {
             name: 'more',
             items: [
+                new HtmlItem({name: '2D structural drawing', content: drawingPage}),
                 new HtmlItem({name: 'Calculations', content: calculations}),
                 new HtmlItem({name: 'More fun!', content: moreFun}),
             ]

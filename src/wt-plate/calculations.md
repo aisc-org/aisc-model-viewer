@@ -12,8 +12,15 @@ AISC *Manual*.
 Material and Geometric Properties
 ---------------------------------
 
-As indicated on the two-dimensional structural drawing, 
+The connection consists of a WT8x25 (A992) with the flange connected by six (6)
+1" diameter A490 bolts (threads excluded) to a 1" plate (A572 grade 50). $F_y$
+and $F_u$ are 50 ksi and 65 ksi respectively for both the WT and the plate.
 
+<figure>
+    <img src="./bolted-wt-side.svg">
+    <img src="./bolted-wt-top.svg">
+    <figcaption>Structural drawing</figcaption>
+</figure>
 
 Tensile yielding
 ----------------
