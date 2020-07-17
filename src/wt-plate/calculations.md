@@ -12,15 +12,25 @@ AISC *Manual*.
 Material and Geometric Properties
 ---------------------------------
 
-The connection consists of a WT8x25 (A992) with the flange connected by six (6)
-1" diameter A490 bolts (threads excluded) to a 1" plate (A572 grade 50). $F_y$
-and $F_u$ are 50 ksi and 65 ksi respectively for both the WT and the plate.
+The connection consists of a WT8x25 with the flange connected by six (6)
+1" diameter A490 bolts (threads excluded) to a 1" plate.
 
 <figure>
-    <img src="./bolted-wt-side.svg">
     <img src="./bolted-wt-top.svg">
     <figcaption>Structural drawing</figcaption>
 </figure>
+
+Typically, the material specifications for each type of steel shape used on a project
+are listed on the general notes sheet of the structural drawings. For this case,
+the WT conforms to ASTM A992.
+
+From AISC *Manual* Table 2-4, the material properties for the WT are as follows:
+
+ASTM A992
+$$ \begin{align}
+    F_y &= 50 \text{ ksi} \\
+    F_u &= 65 \text{ ksi}
+\end{align}$$
 
 Tensile yielding
 ----------------
@@ -69,9 +79,9 @@ Case 7.
 
 Case 2, where:
 
-- $\bar{x}$ for WT shapes is $\bar{y}$.
-- $l$ is the length of the connection from the centerline of the first row of
-  bolts to the centerline of the last row of bolts
+- $\bar{x}$ is $\bar{y}$ from AISC *Manual* Table 1-9.
+- $l$ is the length of the connection, in the direction of the force, from the
+  centerline of the first row of bolts to the centerline of the last row of bolts
 
 <figure>
 </figure>
@@ -112,28 +122,28 @@ $$\phi P_n = 0.75 (344 \text{ kips}) \boxed{= 258 \text{ kips}}$$
 Block shear
 -----------
 
-There are three plausible block shear paths for this connection. All plausible
-paths have uniform tension stress, so $U_{bs} = 1.0$ for all.
+There are three plausible block shear paths for this connection:
 
-- [Tension in the flange and shear in the web](#Block-shear-1)
-- [Tension in the flange and shear along the bolt lines](#Block-shear-2)
-- [Tension in the web and flange and shear along the bolt lines](#Block-shear-3)
+1. [Tension in the flange and shear in the stem](#Block-shear-1)
+2. [Tension in the outside of the flange and shear along the bolt lines](#Block-shear-2)
+3. [Tension in the stem and the inside of the flange and shear along the bolt lines](#Block-shear-3)
 
-### Block shear 1
+All plausible paths have uniform tension stress, so $U_{bs} = 1.0$ for all.
 
-This fundamentally three-dimensional failure does not involve shear in line with
-the bolts. Instead, the shear plane is in the web at the toe of the fillet.
-Since there are no bolts here, the gross and net shear areas $A_{gv}$ and
-$A_{nv}$ are the same:
+### Block shear 1 ([model](#Block-shear-1))
+
+The shear plane is in the stem at the toe of the fillet. Since there is no material
+removed (e.g., bolt holes), the gross and net shear areas $A_{gv}$ and $A_{nv}$ are
+the same:
 
 $$ \begin{align}
-    A_{gv} = A_{nv} &= t_w l \\
+    A_{gv} = A_{nv} &= t_w (8 \text{ in.}) \\
                     &= (0.380 \text{ in.})(8 \text{ in.}) \\
                     &= 3.04 \text{ in.}^2
 \end{align} $$
 
-The gross area subject to tension is most easily calculated by removing the
-unaffected web area from the known area of the WT:
+The gross area subject to tension is most easily calculated by subtracting the
+area of the stem from the gross area of the WT:
 
 $$ \begin{align}
     A_{gt} &= A - t_w (d - k_{des}) \\
@@ -142,8 +152,7 @@ $$ \begin{align}
            &= 4.67 \text{ in.}^2
 \end{align} $$
 
-The same area of tensile material is removed in this case as for tensile
-rupture.
+Calculate the net area subject to tension.
 
 $$ \begin{align}
     A_{nt} &= A_{gt} - 2(d_h + \tfrac{1}{16}\text{ in.}) t_f \\
@@ -152,8 +161,9 @@ $$ \begin{align}
            &= 3.18 \text{ in.}^2
 \end{align} $$
 
-Calculate the nominal strength using AISC Specification Equation J4-5. Since
-$A_{gv} = A_{nv}$, shear yield will control over shear rupture.
+Calculate the nominal strength using AISC *Specification* Equation J4-5. Since
+$A_{gv} = A_{nv}$, the strength with shear yield will control over the strength
+with shear rupture.
 
 $$ \begin{align}
     R_n &= 0.60 F_y A_{gv} + U_{bs} F_u A_{nt} \\
@@ -162,18 +172,18 @@ $$ \begin{align}
         &\boxed{= 298 \text{ kips}}
 \end{align} $$
 
-### Block shear 2
+### Block shear 2 ([model](#Block-shear-2))
 
 Calculate the gross area subject to shear.
 
 $$ \begin{align}
-    A_{gv} &= 2 t_f l \\
+    A_{gv} &= 2 t_f (8 \text{ in.}) \\
            &= 2 (0.630 \text{ in.}) (8 \text{ in.}) \\
            &= 10.1 \text{ in.}^2
 \end{align} $$
 
-Calculate the net area by removing the material from 4 bolt holes + 2 half bolt
-holes.
+Calculate the net area by removing the material from 4 whole bolt holes and
+2 half bolt holes.
 
 $$ \begin{align}
     A_{nv} &= A_{gv} - 5 (d_h + \tfrac{1}{16}\text{ in.}) t_f \\
@@ -185,7 +195,7 @@ $$ \begin{align}
 Calculate the gross area subject to tension.
 
 $$ \begin{align}
-    A_{gt} &= (b_f - WG_i) t_f \\
+    A_{gt} &= (b_f - 3.5\text{ in.}) t_f \\
            &= (7.07\text{ in.} - 3.5\text{ in.}) (0.630 \text{ in.}) \\
            &= 2.25 \text{ in.}^2
 \end{align} $$
@@ -204,7 +214,7 @@ Calculate the nominal block shear strength.
 $$ \begin{align}
     R_n &= 0.60 F_u A_{nv} + U_{bs} F_u A_{nt} \le
            0.60 F_y A_{gv} + U_{bs} F_u A_{nt} \\
-        &= 0.60 (65\text{ ksi}) (6.34 \text{ in.}^2) 
+        &= 0.60 (65\text{ ksi}) (6.34 \text{ in.}^2)
            + 1.0 (65\text{ ksi}) (1.50 \text{ in.}^2) \\
            &\quad\le
            0.60 (50\text{ ksi}) (10.1 \text{ in.}^2)
@@ -214,7 +224,7 @@ $$ \begin{align}
 \end{align} $$
 
 
-### Block shear 3
+### Block shear 3 ([model](#Block-shear-3))
 
 The gross and net areas subject to shear are the same as for block shear 2.
 
@@ -226,7 +236,7 @@ $$ \begin{align}
 Calculate the gross area subject to tension.
 
 $$ \begin{align}
-    A_{gt} &= A - (b_f - WG_i) t_f \\
+    A_{gt} &= A - (b_f - 3.5\text{ in.}) t_f \\
            &= 7.37 \text{ in.}^2 - (7.07\text{ in.}
               - 3.5\text{ in.}) (0.630 \text{ in.}) \\
            &= 5.12 \text{ in.}^2
@@ -246,7 +256,7 @@ Calculate the nominal block shear strength.
 $$ \begin{align}
     R_n &= 0.60 F_u A_{nv} + U_{bs} F_u A_{nt} \le
            0.60 F_y A_{gv} + U_{bs} F_u A_{nt} \\
-        &= 0.60 (65\text{ ksi}) (6.34 \text{ in.}^2) 
+        &= 0.60 (65\text{ ksi}) (6.34 \text{ in.}^2)
            + 1.0 (65\text{ ksi}) (5.12 \text{ in.}^2) \\
            &\quad\le
            0.60 (50\text{ ksi}) (10.1 \text{ in.}^2)
