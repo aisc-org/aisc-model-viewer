@@ -10,7 +10,6 @@ import calculations from './calculations.md'
 import moreFun from './more_fun.md'
 
 // Assets specified in the MD files
-import './bolted-wt-side.svg'
 import './bolted-wt-top.svg'
 import './idealized-parabolic.png'
 import './bending-of-tee-when-cut.gif'
