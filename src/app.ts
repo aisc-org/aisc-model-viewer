@@ -20,6 +20,7 @@ export class App {
     currentContent: string
     sidebarIsOpen: Boolean = true
     contentSizingMode: DisplayMode = DisplayMode.Landscape
+    forceTrailingSlash = true
 
     // Default HTML displayed when no item selected, or hash doesn't point to an
     // actual item.
@@ -132,6 +133,11 @@ export class App {
     }
 
     async setCurrentContent() {
+        const loc = window.location
+        if (this.forceTrailingSlash && !loc.pathname.endsWith('/')) {
+            window.location.replace(loc.origin + loc.pathname + '/' + loc.hash)
+        }
+
         const linkname = window.location.hash.substr(1)
         const item: SidebarItem = this.contentLinkMap[linkname]
         if (linkname in this.contentLinkMap) {
