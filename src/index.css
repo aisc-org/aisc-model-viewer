@@ -1,29 +1,31 @@
-@import url('https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('./fonts.css');
+
 body {
-    font-family: 'Tinos', serif;
+    font-family: 'STIX 2 Text', serif;
+    line-height: 1.25;
     margin: auto;
     padding: 0 1em;
     max-width: 30em;
 }
+
 p {
     text-align: justify;
     hyphens: auto;
     -ms-hyphens: auto;
     -webkit-hyphens: auto;
 }
+
 code {
     padding: 0.5%;
     background-clip: border-box;
     background-color: #e5e5e5;
     border-radius: 10%;
 }
+
 figure img {
     max-width: 100%;
 }
+
 figure figcaption {
     text-align: center;
-}
-/* Part of preventing flash of unstyled content */
-html {
-    visibility: visible;
 }

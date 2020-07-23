@@ -1,5 +1,5 @@
 import { ModelViewer } from './viewer'
-import './app.css'
+import './style.ts'
 import './assets/house-white.svg'
 import './assets/hamburger-menu-white.svg'
 

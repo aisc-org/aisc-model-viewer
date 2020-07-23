@@ -14,10 +14,6 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.css$/,
-                use: ['style-loader', 'css-loader']
-            },
-            {
                 test: /\.ts$/,
                 use: 'ts-loader',
             },
@@ -42,7 +38,7 @@ module.exports = {
                 }
             },
             {
-                test: /\.(svg|png|jpe?g|gif)$/,
+                test: /\.(css|woff2|svg|png|jpe?g|gif)$/,
                 loader: 'file-loader',
                 options: {
                     context: 'src',
