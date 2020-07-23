@@ -113,12 +113,37 @@ div.html-content {
     padding: 0 0.5rem;
 }
 
-.html-content code {
+/* Inline code */
+.html-content code:not(.sourceCode) {
     padding: 0.5%;
     background-clip: border-box;
     background-color: #e5e5e5;
     border-radius: 10%;
 }
+
+/* Block source code (tagged by pandoc) */
+pre.sourceCode {
+    margin: 0 auto;
+    padding: 1%;
+    background-clip: border-box;
+    background-color: #e5e5e5;
+    overflow-x: auto;
+}
+
+.sourceCode span.kw { color: #268BD2; font-weight: bold; }
+.sourceCode span.dt { color: #268BD2; }
+.sourceCode span.dv { color: #D33682; }
+.sourceCode span.bn { color: #D33682; }
+.sourceCode span.fl { color: #D33682; }
+.sourceCode span.ch { color: #4070a0; }
+.sourceCode span.st { color: #2AA198; }
+.sourceCode span.co { color: #93A1A1; font-style: italic; }
+.sourceCode span.ot { color: #A57800; }
+.sourceCode span.al { color: #CB4B16; font-weight: bold; }
+.sourceCode span.fu { color: #268BD2; }
+.sourceCode span.er { color: #D30102; font-weight: bold; }
+.sourceCode span.va { color: green; }
+.sourceCode.diff span.st { color: red; }
 
 .html-content figure {
     text-align: center;
@@ -167,7 +192,14 @@ div.html-content {
     padding: 0.5em;
 }
 
+.html-content details.sourceCode[open] {
+    background-color: #e5e5e5;
+}
+
 .html-content details[open] summary {
+    background-color: white;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
     border-bottom: 1px solid #333;
     margin-bottom: 0.5em;
 }

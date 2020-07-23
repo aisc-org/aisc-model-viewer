@@ -7,6 +7,7 @@ const child_process = require('child_process')
 module.exports = {
     entry: {
         index: './src/index.ts',
+        docs: './src/docs/docs.ts',
         double_angle: './src/double-angle/double-angle.ts',
         slotted_hss: './src/slotted-hss/slotted-hss.ts',
         wt_plate: './src/wt-plate/wt-plate.ts',
@@ -69,6 +70,12 @@ module.exports = {
             filename: 'index.html',
             template: './src/index.ejs',
             chunks: ['index']
+        }),
+        new HtmlWebpackPlugin({
+            title: 'Model Viewer Documentation',
+            filename: 'docs/index.html',
+            template: './src/app.ejs',
+            chunks: ['docs']
         }),
         new HtmlWebpackPlugin({
             title: 'Double angle connection',
