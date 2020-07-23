@@ -38,5 +38,10 @@ const app = new App({
                 new HtmlItem({name: 'More fun!', content: moreFun}),
             ]
         }
+    ],
+    contributors: [
+        'Mark Denavit',
+        'Nicolo Franceschetti',
+        'Peter Talley',
     ]
 })

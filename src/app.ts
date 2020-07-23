@@ -13,6 +13,7 @@ enum DisplayMode {
 
 export class App {
     groups: SidebarGroup[]
+    contributors: string[] | undefined
     contentLinkMap: Map<string, SidebarItem>
     contentScrollState: Map<string, number>
     contentContainer: HTMLElement
@@ -26,8 +27,9 @@ export class App {
     // actual item.
     defaultHTML = '<p>Select an item from the sidebar.</p>'
 
-    constructor(params: { title: string, groups: SidebarGroup[] }) {
+    constructor(params: { title: string, groups: SidebarGroup[], contributors?: string[] }) {
         this.groups = params.groups;
+        this.contributors = params.contributors;
         this.contentLinkMap = new Map<string, SidebarItem>()
         this.contentScrollState = new Map<string, number>()
 
@@ -65,6 +67,22 @@ export class App {
                 sidebar.appendChild(document.createElement('hr'))
             }
         })
+        if (this.contributors) {
+            const content = this.contributorsContent()
+            const item = new HtmlItem({ name: 'credits', content: content })
+            this.contentLinkMap[item.linkname] = item
+
+            sidebar.appendChild(document.createElement('hr'))
+
+            const credits = document.createElement('section')
+            credits.className = 'credits'
+            sidebar.appendChild(credits)
+
+            const creditsLink = document.createElement('a')
+            creditsLink.href = './#credits'
+            creditsLink.innerHTML = 'credits'
+            credits.appendChild(creditsLink)
+        }
 
         // Responsive content sizing
         // On portrait displays, we want the content to extend under the sidebar
@@ -118,6 +136,25 @@ export class App {
         div.className = 'html-content'
         div.innerHTML = this.defaultHTML
         this.setContentElement(div)
+    }
+
+    contributorsContent() {
+        const div = document.createElement('div')
+        div.className = 'html-content'
+
+        const thanks = document.createElement('p')
+        thanks.innerHTML = 'Thanks to:'
+        div.appendChild(thanks)
+
+        const contributorList = document.createElement('ul')
+        this.contributors?.forEach(contributor => {
+            const item = document.createElement('li')
+            item.innerHTML = contributor
+            contributorList.appendChild(item)
+        })
+        div.appendChild(contributorList)
+
+        return div.innerHTML
     }
 
     setContentElement(content: HTMLElement) {

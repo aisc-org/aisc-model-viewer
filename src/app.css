@@ -253,3 +253,9 @@ nav.sidebar {
     color: #58595B;
     margin-bottom: 1ex;
 }
+
+section.credits {
+    margin-top: auto;
+    padding: 1ex;
+    text-align: right;
+}
