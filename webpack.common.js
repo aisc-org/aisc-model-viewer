@@ -8,6 +8,7 @@ module.exports = {
     entry: {
         index: './src/index.ts',
         double_angle: './src/double-angle/double-angle.ts',
+        slotted_hss: './src/slotted-hss/slotted-hss.ts',
         wt_plate: './src/wt-plate/wt-plate.ts',
         wf_truss: './src/wf-truss/wf-truss.ts',
     },
@@ -74,6 +75,12 @@ module.exports = {
             filename: 'double-angle/index.html',
             template: './src/app.ejs',
             chunks: ['double_angle']
+        }),
+        new HtmlWebpackPlugin({
+            title: 'Slotted HSS connection',
+            filename: 'slotted-hss/index.html',
+            template: './src/app.ejs',
+            chunks: ['slotted_hss']
         }),
         new HtmlWebpackPlugin({
             title: 'WT bolted connection',
