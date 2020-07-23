@@ -13,7 +13,7 @@ Material and Geometric Properties
 ---------------------------------
 
 The connection consists of a WT8x25 with the flange connected by six (6)
-1" diameter A490 bolts (threads excluded) to a 1" plate.
+1" diameter A490X bolts to a 1" plate.
 
 <figure>
     <img src="./bolted-wt-top.svg">
