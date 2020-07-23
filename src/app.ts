@@ -243,7 +243,11 @@ export class HtmlItem extends SidebarItem {
         const contentDiv = document.createElement('div')
         contentDiv.className = 'html-content'
         contentDiv.innerHTML = this.content
-        await (window as any).MathJax.typesetPromise([contentDiv])
+        // If MathJax is already loaded, then we need to tell it to typeset the
+        // page. If it's not finished loading, it'll typeset the page once it
+        // finishes.
+        if ((window as any).MathJax.typesetPromise !== undefined)
+            await (window as any).MathJax.typesetPromise([contentDiv])
         return Promise.resolve(contentDiv)
     }
 
