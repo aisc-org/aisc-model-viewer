@@ -1,4 +1,1 @@
-<figure>
-    <img src="./bolted-wt-top.svg">
-    <figcaption>Structural drawing</figcaption>
-</figure>
+![Structural drawing](./bolted-wt-top.svg)

@@ -15,10 +15,7 @@ Material and Geometric Properties
 The connection consists of a WT8x25 with the flange connected by six (6)
 1" diameter A490X bolts to a 1" plate.
 
-<figure>
-    <img src="./bolted-wt-top.svg">
-    <figcaption>Structural drawing</figcaption>
-</figure>
+![Structural drawing](./bolted-wt-top.svg)
 
 Typically, the material specifications for each type of steel shape used on a project
 are listed on the general notes sheet of the structural drawings. For this case,
@@ -83,8 +80,7 @@ Case 2, where:
 - $l$ is the length of the connection, in the direction of the force, from the
   centerline of the first row of bolts to the centerline of the last row of bolts
 
-<figure>
-</figure>
+![Figure showing $l$](../assets/placeholder.png)
 
 $$ \begin{align}
     U &= 1 - \frac{\bar{x}}{l} \\

@@ -29,7 +29,4 @@ The cut can be achieved in a variety of ways.
 Due to residual stresses in the W section, the two pieces will actually bend
 and may need to be straightened:
 
-<figure>
-    <img src="./bending-of-tee-when-cut.gif">
-    <figcaption>Bending of tee as the source W section is cut. \[[Source](https://www.youtube.com/watch?v=x3qNUgCmbDY)\]</figcaption>
-</figure>
+![Bending of tee as the source W section is cut. \[[Source](https://www.youtube.com/watch?v=x3qNUgCmbDY)\]](./bending-of-tee-when-cut.gif)
