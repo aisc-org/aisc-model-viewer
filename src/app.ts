@@ -2,6 +2,7 @@ import { ModelViewer } from './viewer'
 import './style.ts'
 import './assets/house-white.svg'
 import './assets/hamburger-menu-white.svg'
+import './assets/placeholder.png'
 
 
 enum DisplayMode {
