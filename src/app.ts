@@ -135,10 +135,19 @@ export class App {
                         console.error(error)
                     }
                 })
+            } else {
+                this.setDefaultContent()
             }
         }
         window.addEventListener('hashchange', setCurrentContent)
         setCurrentContent()
+    }
+
+    setDefaultContent() {
+        const div = document.createElement('div')
+        div.className = 'html-content'
+        div.innerText = 'Select an item from the sidebar.'
+        this.setContentElement(div)
     }
 
     setContentElement(content: HTMLElement) {
