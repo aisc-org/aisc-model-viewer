@@ -20,6 +20,10 @@ export class App {
     sidebarIsOpen: Boolean = true
     contentSizingMode: DisplayMode = DisplayMode.Landscape
 
+    // Default HTML displayed when no item selected, or hash doesn't point to an
+    // actual item.
+    defaultHTML = '<p>Select an item from the sidebar.</p>'
+
     constructor(params: { title: string, groups: SidebarGroup[] }) {
         this.groups = params.groups;
         this.contentLinkMap = new Map<string, SidebarItem>()
@@ -63,90 +67,54 @@ export class App {
         // Responsive content sizing
         // On portrait displays, we want the content to extend under the sidebar
         // even when its open.
-        const updateDisplayMode = () => {
-            if (window.innerWidth < window.innerHeight && this.contentSizingMode === DisplayMode.Landscape) {
-                this.contentSizingMode = DisplayMode.Portrait
-                if (this.sidebarIsOpen) {
-                    this.contentContainer.style.width = '100%'
-                }
-            } else if (window.innerWidth > window.innerHeight && this.contentSizingMode === DisplayMode.Portrait) {
-                this.contentSizingMode = DisplayMode.Landscape
-                if (this.sidebarIsOpen) {
-                    this.contentContainer.style.width = 'calc(100% - 250px)'
-                }
-            }
-        }
-        window.addEventListener('resize', updateDisplayMode)
-        updateDisplayMode()
+        window.addEventListener('resize', this.updateDisplayMode.bind(this))
+        this.updateDisplayMode()
 
         // Toggling of sidebar
         const sidebarToggle = document.getElementById('sidebar-toggle') as HTMLButtonElement
-        const toggleSidebar = () => {
-            if (this.sidebarIsOpen) {
-                sidebar.style.visibility = 'hidden'
-                if (this.contentSizingMode === DisplayMode.Landscape)
-                    this.contentContainer.style.width = '100%'
-            } else {
-                sidebar.style.visibility = 'visible'
-                if (this.contentSizingMode === DisplayMode.Landscape)
-                    this.contentContainer.style.width = 'calc(100% - 250px)'
-            }
-            this.sidebarIsOpen = !this.sidebarIsOpen
-        }
-        sidebarToggle.onclick = toggleSidebar
-
-        // If starting in portrait mode, hide the sidebar
-        if (this.contentSizingMode === DisplayMode.Portrait) {
-            toggleSidebar()
-        }
+        sidebarToggle.onclick = this.toggleSidebar.bind(this)
 
         // The current content item is specified by the hash. setCurrentContent
         // handles:
         // - saving/restoring the scroll state
         // - calling the 'onclick' method of the activated item
         //
-        const setCurrentContent = async () => {
-            const linkname = window.location.hash.substr(1)
-            const item: SidebarItem = this.contentLinkMap[linkname]
-            if (linkname in this.contentLinkMap) {
-                await item.createContent(this.contentContainer).then(content => {
-                    // Save scroll position
-                    if (this.currentElement) {
-                        console.log('Saving', this.currentContent, 'scroll position as', this.contentContainer.scrollTop)
-                        this.contentScrollState[this.currentContent] = this.contentContainer.scrollTop
-                    }
+        window.addEventListener('hashchange', this.setCurrentContent.bind(this))
+        this.setCurrentContent()
+    }
 
-                    // Set up content element
-                    this.setContentElement(content)
-                    this.currentContent = linkname
-                    console.log(linkname, 'loaded;', 'The current scroll position is', this.contentContainer.scrollTop)
-
-                    // Restore scroll position
-                    const scrollPosition = this.contentScrollState[linkname]
-                    if (scrollPosition) {
-                        console.log('Restoring', linkname, 'to scroll position', scrollPosition)
-                        this.contentContainer.scrollBy(scrollPosition, scrollPosition)
-                        console.log(linkname, 'restored;', 'The current scroll position is', this.contentContainer.scrollTop)
-                    }
-                }, error => {
-                    if (error instanceof NoContentError) {
-                        /* No content, no problem */
-                    } else {
-                        console.error(error)
-                    }
-                })
-            } else {
-                this.setDefaultContent()
+    updateDisplayMode() {
+        if (window.innerWidth < window.innerHeight && this.contentSizingMode === DisplayMode.Landscape) {
+            this.contentSizingMode = DisplayMode.Portrait
+            if (this.sidebarIsOpen) {
+                this.contentContainer.style.width = '100%'
+            }
+        } else if (window.innerWidth > window.innerHeight && this.contentSizingMode === DisplayMode.Portrait) {
+            this.contentSizingMode = DisplayMode.Landscape
+            if (this.sidebarIsOpen) {
+                this.contentContainer.style.width = 'calc(100% - 250px)'
             }
         }
-        window.addEventListener('hashchange', setCurrentContent)
-        setCurrentContent()
+    }
+
+    toggleSidebar() {
+        const sidebar = document.getElementById('sidebar') as HTMLElement
+        if (this.sidebarIsOpen) {
+            sidebar.style.visibility = 'hidden'
+            if (this.contentSizingMode === DisplayMode.Landscape)
+                this.contentContainer.style.width = '100%'
+        } else {
+            sidebar.style.visibility = 'visible'
+            if (this.contentSizingMode === DisplayMode.Landscape)
+                this.contentContainer.style.width = 'calc(100% - 250px)'
+        }
+        this.sidebarIsOpen = !this.sidebarIsOpen
     }
 
     setDefaultContent() {
         const div = document.createElement('div')
         div.className = 'html-content'
-        div.innerText = 'Select an item from the sidebar.'
+        div.innerHTML = this.defaultHTML
         this.setContentElement(div)
     }
 
@@ -156,6 +124,41 @@ export class App {
         }
         this.currentElement = content
         this.contentContainer.appendChild(this.currentElement)
+    }
+
+    async setCurrentContent() {
+        const linkname = window.location.hash.substr(1)
+        const item: SidebarItem = this.contentLinkMap[linkname]
+        if (linkname in this.contentLinkMap) {
+            await item.createContent(this.contentContainer).then(content => {
+                // Save scroll position
+                if (this.currentElement) {
+                    console.log('Saving', this.currentContent, 'scroll position as', this.contentContainer.scrollTop)
+                    this.contentScrollState[this.currentContent] = this.contentContainer.scrollTop
+                }
+
+                // Set up content element
+                this.setContentElement(content)
+                this.currentContent = linkname
+                console.log(linkname, 'loaded;', 'The current scroll position is', this.contentContainer.scrollTop)
+
+                // Restore scroll position
+                const scrollPosition = this.contentScrollState[linkname]
+                if (scrollPosition) {
+                    console.log('Restoring', linkname, 'to scroll position', scrollPosition)
+                    this.contentContainer.scrollBy(scrollPosition, scrollPosition)
+                    console.log(linkname, 'restored;', 'The current scroll position is', this.contentContainer.scrollTop)
+                }
+            }, error => {
+                if (error instanceof NoContentError) {
+                    /* No content, no problem */
+                } else {
+                    console.error(error)
+                }
+            })
+        } else {
+            this.setDefaultContent()
+        }
     }
 }
 
@@ -180,7 +183,7 @@ abstract class SidebarItem {
 
     /**
      * Create the content element that will be displayed.
-     * 
+     *
      * @param contentContainer - the parent HTMLElement, provided by the running
      *                           App instance.
      * @returns Promise&lt;HTMLElement&gt; - the created HTMLElement. The App will handle
