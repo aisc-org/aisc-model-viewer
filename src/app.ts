@@ -124,6 +124,10 @@ export class App {
         }
         this.currentElement = content
         this.contentContainer.appendChild(this.currentElement)
+        // Hide sidebar after clicking link if in portrait mode
+        if (this.contentSizingMode === DisplayMode.Portrait && this.sidebarIsOpen) {
+            this.toggleSidebar()
+        }
     }
 
     async setCurrentContent() {

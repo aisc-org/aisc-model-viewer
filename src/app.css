@@ -189,6 +189,12 @@ nav.sidebar {
     max-height: calc(100vh - 50px);
 }
 
+@media (orientation: portrait) {
+    nav.sidebar {
+        visibility: hidden;
+    }
+}
+
 .sidebar section {
     margin: 1em;
 }
