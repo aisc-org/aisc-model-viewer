@@ -4,7 +4,7 @@ import pathToNetSection from './Neyland Connection - NET SECTION.glb'
 import pathToBlockShear from './Neyland Connection - BLOCK SHEAR 2.glb'
 import calcs from './calculations.html'
 import drawing from './2d-drawing.html'
-import moreFun from './more_fun.html'
+import moreFun from './more-fun.html'
 import photo from './Photo.html'
 
 // Assets specified in the HTML files
