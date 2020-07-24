@@ -6,7 +6,7 @@ welded connection, considering the limit states of:
 
 - Tensile yielding of the HSS member
 - Tensile rupture of the HSS member
-- Fracture of the weld
+- Weld rupture
 - Base metal strength of the HSS member
 - Base metal strength of the gusset plate
 
@@ -24,22 +24,23 @@ to a 3/4"-thick gusset plate.
 
 Typically, the material specifications for each type of steel shape used on a project
 are listed on the general notes sheet of the structural drawings. For this case,
-the HSS member conforms to ASTM A1085.
+the HSS member conforms to ASTM A1085 and the gusset plate conforms to ASTM A572 Gr. 50.
+The filler metal classification strength $F_{EXX}$ is 70 ksi.
 
 From AISC *Manual* Table 2-4, the material properties for the HSS member are:
 
-- ASTM A1085 Gr. A
+ASTM A1085 Gr. A
 - $F_y = 50~\rm{ksi}$
 - $F_u = 65~\rm{ksi}$
 
 Note that for the HSS member, the section properties used in this example are
-not the ones listed in the AISC *Manual*. This is because A1085 HSS does not
-have the same design wall thicknes reduction that the more common A500 does.
+not the ones listed in the AISC *Manual*. This is because, unlike A500 HSS,
+the design wall thickness equals the nominal wall thickness for A1085 HSS. 
 Instead, refer to the [A1085 Dimensions and Properties table (PDF)](https://www.aisc.org/globalassets/product-files-not-searched/manuals/a1085-dimension-and-properties_square_7-10-2018.pdf) available from AISC.
 
 From AISC *Manual* Table 2-5, the material properties for the gusset plate are:
 
-- ASTM A572 Gr. 50
+ASTM A572 Gr. 50
 - $F_y = 50~\rm{ksi}$
 - $F_u = 65~\rm{ksi}$
 
@@ -75,10 +76,10 @@ material removed for the slot as defined in Section B4.3b of the AISC
 *Specification*.
 
 $$ \begin{align}
-    A_n &= A_g - 2 \ell (\text{plate thickness} + \tfrac{1}{16}~\rm{in.}) \\
-        &= 8.08~\rm{in.}^2 - 2 (12~\rm{in.}) (\tfrac{3}{4}~\rm{in.}
+    A_n &= A_g - 2 t (\text{plate thickness} + \tfrac{1}{16}~\rm{in.}) \\
+        &= 8.08~\rm{in.}^2 - 2 (\tfrac{3}{8}~\rm{in.}) (\tfrac{3}{4}~\rm{in.}
            + \tfrac{1}{16}~\rm{in.}) \\
-        &= 7.78~\rm{in.}^2
+        &= 7.47~\rm{in.}^2
 \end{align} $$
 
 From the description of the element in AISC *Specification* Table D3.1,
@@ -103,28 +104,27 @@ $$ \begin{align}
 
 Calculate the effective net area using AISC *Specification* Equation D3-1:
 
-$$ A_e = A_n U = (7.78~\rm{in.}^2) (0.812) = 6.32~\rm{in.}^2 $$
+$$ A_e = A_n U = (7.47~\rm{in.}^2) (0.812) = 6.07~\rm{in.}^2 $$
 
 Calculate the nominal strength using AISC *Specification* Equation D2-2:
 
 $$ \begin{align}
     P_n &= F_u A_e \\
         &= (65~\rm{ksi})(6.32~\rm{in.}^2) \\
-        &= 411~\rm{kips}
+        &= 395~\rm{kips}
 \end{align} $$
 
 Calculate the design strength by applying the resistance factor.
 
-$$ \phi P_n = 0.75(411~\rm{kips}) \boxed{= 308~\rm{kips}} $$
+$$ \phi P_n = 0.75(395~\rm{kips}) \boxed{= 296~\rm{kips}} $$
 
 
-Weld fracture strength ([model](#Weld-fracture))
+Weld rupture ([model](#Weld-fracture))
 ----------------------
 
-The connection is held together by four (4) 5/16" fillet welds. The filler metal
-classification strength $F_{EXX}$ is 70 ksi.
+The connection is made with four (4) 12 in. lengths of 5/16" fillet weld. 
 
-The fracture strength of the weld is defined by *Specification* equation J2-3.
+The rupture strength of the weld is defined by *Specification* equation J2-3.
 
 $$ R_n = F_{nw} A_{we} \tag{J2-3} $$
 
@@ -181,9 +181,9 @@ being checked is shear (section J4.2) instead of block shear (section J4.3).
 Calculate the gross shear area $A_{gv}$.
 
 $$ \begin{align}
-    A_{gv} &= 4 t_{des} \ell \\
+    A_{gv} &= 4 t \ell \\
            &= 4 (0.375~\rm{in.}) (12~\rm{in.}) \\
-           &= 18.0~\rm{in.}
+           &= 18.0~\rm{in.}^2
 \end{align} $$
 
 Calculate the nominal shear yielding strength using *Specification* equation
@@ -191,7 +191,7 @@ J4-3.
 
 $$ \begin{align}
     R_n &= 0.60 F_y A_{gv} \\
-        &= 0.60 (50~\rm{ksi}) (18.0~\rm{in.}) \\
+        &= 0.60 (50~\rm{ksi}) (18.0~\rm{in.}^2) \\
         &= 540~\rm{kips}
 \end{align} $$
 
@@ -211,7 +211,7 @@ J4-4.
 
 $$ \begin{align}
     R_n &= 0.60 F_u A_{nv} \\
-        &= 0.60 (65~\rm{ksi}) (18.0~\rm{in.}) \\
+        &= 0.60 (65~\rm{ksi}) (18.0~\rm{in.}^2) \\
         &= 702~\rm{kips}
 \end{align} $$
 
@@ -221,7 +221,7 @@ $$ \phi R_n = 0.75 (702~\rm{kips}) = 526~\rm{kips} $$
 
 Shear rupture controls the base metal limit state for the HSS member.
 
-$$ \boxed{\phi R_n = 405~\rm{kip}} $$
+$$ \boxed{\phi R_n = 526~\rm{kip}} $$
 
 
 Base metal -- plate ([model](#Base-metal-(plate)))
@@ -270,9 +270,9 @@ The design strength of the connection is summarized in the following table.
 | Limit state        | Design strength |
 |:-------------------|----------------:|
 | Tensile Yield      |        364 kips |
-| Tensile Rupture    |        308 kips |
-| Weld Fracture      |        334 kips |
+| Tensile Rupture    |        296 kips |
+| Weld Rupture       |        334 kips |
 | Base Metal - HSS   |        526 kips |
 | Base Metal - Plate |        624 kips |
 
-**Tensile rupture of the HSS controls with a design strength of 308 kips.**
+**Tensile rupture of the HSS controls with a design strength of 296 kips.**
