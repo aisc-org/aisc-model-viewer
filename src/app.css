@@ -104,6 +104,12 @@ div.html-content {
     -webkit-hyphens: auto;
 }
 
+.html-content div.properties p {
+    padding: 0;
+    padding-left: 2rem;
+    margin: 0;
+}
+
 .html-content h1,
 .html-content h2,
 .html-content h3,
@@ -176,6 +182,17 @@ pre.sourceCode {
 .html-content td,
 .html-content th {
     padding: 0 0.25rem;
+}
+
+div.properties table {
+    border: none;
+    margin: unset;
+    margin-left: 1rem;
+}
+
+div.properties td,
+div.properties th {
+    padding: 0 1rem;
 }
 
 .html-content details {
