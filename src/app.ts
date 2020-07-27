@@ -67,7 +67,7 @@ export class App {
                 sidebar.appendChild(document.createElement('hr'))
             }
         })
-        if (this.contributors) {
+        if (this.contributors !== undefined && this.contributors.length !== 0) {
             const content = this.contributorsContent()
             const item = new HtmlItem({ name: 'credits', content: content })
             this.contentLinkMap[item.linkname] = item
