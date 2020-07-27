@@ -40,8 +40,8 @@ const app = new App({
         }
     ],
     contributors: [
-        'Mark Denavit',
-        'Nicolo Franceschetti',
         'Peter Talley',
+        'Nicolo Franceschetti',
+        'Mark Denavit',
     ]
 })
