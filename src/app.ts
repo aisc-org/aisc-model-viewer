@@ -143,7 +143,7 @@ export class App {
         div.className = 'html-content'
 
         const thanks = document.createElement('p')
-        thanks.innerHTML = 'Thanks to:'
+        thanks.innerHTML = 'This collection was developed by:'
         div.appendChild(thanks)
 
         const contributorList = document.createElement('ul')
