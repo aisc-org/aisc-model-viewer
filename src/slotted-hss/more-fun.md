@@ -12,3 +12,7 @@ slot has been cut for the plate:
 --------------------------------------------------------------------------------
 
 This connection uses the [new A1085 standard](https://www.aisc.org/publications/steel-construction-manual-resources/#37587) for HSS. 
+
+--------------------------------------------------------------------------------
+
+[Link to the more fun doc.](../docs/#Adding-a-more-fun-item)
