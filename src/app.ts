@@ -132,19 +132,19 @@ export class App {
     }
 
     setDefaultContent() {
-        const div = document.createElement('div')
-        div.className = 'html-content'
-        div.innerHTML = this.defaultHTML
-        this.setContentElement(div)
+        const section = document.createElement('section')
+        section.className = 'html-content'
+        section.innerHTML = this.defaultHTML
+        this.setContentElement(section)
     }
 
     contributorsContent() {
-        const div = document.createElement('div')
-        div.className = 'html-content'
+        const section = document.createElement('section')
+        section.className = 'html-content'
 
         const thanks = document.createElement('p')
         thanks.innerHTML = 'This collection was developed by:'
-        div.appendChild(thanks)
+        section.appendChild(thanks)
 
         const contributorList = document.createElement('ul')
         this.contributors?.forEach(contributor => {
@@ -152,9 +152,9 @@ export class App {
             item.innerHTML = contributor
             contributorList.appendChild(item)
         })
-        div.appendChild(contributorList)
+        section.appendChild(contributorList)
 
-        return div.innerHTML
+        return section.innerHTML
     }
 
     setContentElement(content: HTMLElement) {
@@ -282,16 +282,16 @@ export class HtmlItem extends SidebarItem {
         this.content = params.content
     }
 
-    async createContent(contentContainer: HTMLElement): Promise<HTMLDivElement> {
-        const contentDiv = document.createElement('div')
-        contentDiv.className = 'html-content'
-        contentDiv.innerHTML = this.content
+    async createContent(contentContainer: HTMLElement): Promise<HTMLElement> {
+        const section = document.createElement('section')
+        section.className = 'html-content'
+        section.innerHTML = this.content
         // If MathJax is already loaded, then we need to tell it to typeset the
         // page. If it's not finished loading, it'll typeset the page once it
         // finishes.
         if ((window as any).MathJax.typesetPromise !== undefined)
-            await (window as any).MathJax.typesetPromise([contentDiv])
-        return Promise.resolve(contentDiv)
+            await (window as any).MathJax.typesetPromise([section])
+        return Promise.resolve(section)
     }
 
     createItem(): HTMLLIElement {

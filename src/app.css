@@ -89,7 +89,8 @@ div.app {
 
 /* --------------- Non-viewer content --------------- */
 
-div.html-content {
+div.html-content,
+section.html-content {
     font-family: 'STIX 2 Text', serif;
     line-height: 1.25;
     margin: auto;
