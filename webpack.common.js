@@ -8,6 +8,7 @@ module.exports = {
     entry: {
         index: './src/index.ts',
         docs: './src/docs/docs.ts',
+        guide_to_2d_drawings: './src/guide-to-2d-drawings/guide.ts',
         double_angle: './src/double-angle/double-angle.ts',
         slotted_hss: './src/slotted-hss/slotted-hss.ts',
         wt_plate: './src/wt-plate/wt-plate.ts',
@@ -76,6 +77,12 @@ module.exports = {
             filename: 'docs/index.html',
             template: './src/app.ejs',
             chunks: ['docs']
+        }),
+        new HtmlWebpackPlugin({
+            title: 'Guide to 2D drawings',
+            filename: 'guide-to-2d-drawings/index.html',
+            template: './src/app.ejs',
+            chunks: ['guide_to_2d_drawings']
         }),
         new HtmlWebpackPlugin({
             title: 'Double angle connection',
