@@ -120,7 +120,7 @@ $$ \phi P_n = 0.75(395~\rm{kips}) \boxed{= 296~\rm{kips}} $$
 
 
 Weld rupture ([model](#Weld-fracture))
-----------------------
+------------
 
 The connection is made with four (4) 12 in. lengths of 5/16" fillet weld. 
 
