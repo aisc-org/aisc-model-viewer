@@ -1,3 +1,14 @@
+Calculations
+============
+
+<!-- Math shorthands -->
+$$
+\newcommand{\inch}{~{\rm{in.}}}
+\newcommand{\kips}{~{\rm{kips}}}
+\newcommand{\ksi}{~{\rm{ksi}}}
+\newcommand{\sixt}{{\tfrac{1}{16}\inch}}
+$$
+
 This page demonstrates calculations to determine the design strength of the WT
 tension member, considering the limit states of:
 
@@ -23,21 +34,23 @@ the WT conforms to ASTM A992.
 
 From AISC *Manual* Table 2-4, the material properties for the WT are as follows:
 
-ASTM A992
-$$ \begin{align}
-    F_y &= 50 \text{ ksi} \\
-    F_u &= 65 \text{ ksi}
-\end{align}$$
+::: properties :::
+|                |
+|----------------|
+| ASTM A992      |
+| $F_y = 50\ksi$ |
+| $F_u = 65\ksi$ |
+::::::::::::::::::
 
 From AISC *Manual* Table 1-8, the geometric properties are as follows:
 
-::: properties :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::: properties ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 |                           |                        |                        |
 |---------------------------|------------------------|------------------------|
 | WT8x25                    |                        |                        |
 | $A_g = 7.37~\rm{in.}^2$   | $t_f = 0.630~\rm{in.}$ | $d = 8.13~\rm{in.}$    |
 | $\bar{y} = 1.89~\rm{in.}$ | $b_f = 7.07~\rm{in.}$  | $t_w = 0.380~\rm{in.}$ |
-::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 
 Tensile yielding

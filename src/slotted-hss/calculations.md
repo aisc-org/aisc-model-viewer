@@ -1,6 +1,14 @@
 Calculations
 ============
 
+<!-- Math shorthands -->
+$$
+\newcommand{\inch}{~{\rm{in.}}}
+\newcommand{\kips}{~{\rm{kips}}}
+\newcommand{\ksi}{~{\rm{ksi}}}
+\newcommand{\sixt}{{\tfrac{1}{16}\inch}}
+$$
+
 This page demonstrates calculations to determine the tensile strength of the
 welded connection, considering the limit states of:
 
@@ -29,9 +37,13 @@ The filler metal classification strength $F_{EXX}$ is 70 ksi.
 
 From AISC *Manual* Table 2-4, the material properties for the HSS member are:
 
-ASTM A1085 Gr. A
-- $F_y = 50~\rm{ksi}$
-- $F_u = 65~\rm{ksi}$
+::: properties :::
+|                |
+|----------------|
+| ASTM A1085     |
+| $F_y = 50\ksi$ |
+| $F_u = 65\ksi$ |
+::::::::::::::::::
 
 Note that for the HSS member, the section properties used in this example are
 not the ones listed in the AISC *Manual*. This is because, unlike A500 HSS,
@@ -40,9 +52,13 @@ Instead, refer to the [A1085 Dimensions and Properties table (PDF)](https://www.
 
 From AISC *Manual* Table 2-5, the material properties for the gusset plate are:
 
-ASTM A572 Gr. 50
-- $F_y = 50~\rm{ksi}$
-- $F_u = 65~\rm{ksi}$
+::: properties :::::
+|                  |
+|------------------|
+| ASTM A572 Gr. 50 |
+| $F_y = 50\ksi$   |
+| $F_u = 65\ksi$   |
+::::::::::::::::::::
 
 
 Tensile yield
