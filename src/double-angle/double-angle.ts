@@ -1,7 +1,11 @@
 import { App, HtmlItem, Model } from '../app'
+
+// Models
 import pathToModel from './Neyland Connection (centered).glb'
 import pathToNetSection from './Neyland Connection - NET SECTION.glb'
 import pathToBlockShear from './Neyland Connection - BLOCK SHEAR 2.glb'
+
+// Content
 import calcs from './calculations.html'
 import drawing from './2d-drawing.md'
 import moreFun from './more-fun.md'

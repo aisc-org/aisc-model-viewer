@@ -1,9 +1,11 @@
 import { App, HtmlItem, Model } from '../app'
 
+// Models
 import pathToModel from './Slotted HSS Connection.glb'
 import pathToRupture from './Slotted HSS Connection -- Tensile rupture.glb'
 import pathToWeldFracture from './Slotted HSS Connection -- Weld fracture.glb'
 
+// Content
 import calculations from './calculations.md'
 import moreFun from './more-fun.md'
 
@@ -25,5 +27,9 @@ new App({
                 new HtmlItem({ name: 'More fun!', content: moreFun })
             ]
         }
-    ]
+    ],
+    contributors: [
+        'Peter Talley',
+        'Mark Denavit',
+    ],
 })

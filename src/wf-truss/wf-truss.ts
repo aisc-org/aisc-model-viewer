@@ -9,7 +9,7 @@ import moreFun from './more-fun.md'
 // Images
 
 
-const app = new App({
+new App({
     title: 'Wide Flange Truss Connection',
     groups: [
         {
@@ -24,5 +24,10 @@ const app = new App({
                 new HtmlItem({ name: 'More fun!', content: moreFun }),
             ]
         }
-    ]
+    ],
+    contributors: [
+        'Peter Talley',
+        'Nicolo Franceschetti',
+        'Mark Denavit',
+    ],
 })
