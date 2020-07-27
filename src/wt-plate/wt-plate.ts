@@ -11,7 +11,6 @@ import moreFun from './more-fun.md'
 
 // Assets specified in the MD files
 import './bolted-wt-top.svg'
-import './idealized-parabolic.png'
 import './bending-of-tee-when-cut.gif'
 
 const app = new App({
