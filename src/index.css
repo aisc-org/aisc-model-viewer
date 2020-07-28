@@ -29,3 +29,12 @@ figure img {
 figure figcaption {
     text-align: center;
 }
+
+div.logo-container {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.logo-container img {
+    max-height: 6em;
+}
