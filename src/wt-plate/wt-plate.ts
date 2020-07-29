@@ -6,7 +6,6 @@ import pathToRupture from './WT Connection -- Tensile rupture.glb'
 import pathToWebShear from './WT Connection -- Web block shear.glb'
 import pathToIntuitiveShear from './WT Connection -- Intuitive block shear.glb'
 import pathToUnlikelyShear from './WT Connection -- Unlikely block shear.glb'
-import pathToYield from './WT Connection -- Tensile yield.glb'
 
 // Content
 import drawingPage from './2d-drawing.md'
@@ -24,7 +23,6 @@ new App({
             name: 'models',
             items: [
                 new Model({name: '3D model', path: pathToModel}),
-                new Model({name: 'Tensile yield', path: pathToYield}),
                 new Model({name: 'Tensile rupture', path: pathToRupture}),
                 new Model({name: 'Block shear 1', path: pathToWebShear}),
                 new Model({name: 'Block shear 2', path: pathToIntuitiveShear}),
