@@ -6,7 +6,7 @@ import pathToNetSection from './Neyland Connection - NET SECTION.glb'
 import pathToBlockShear from './Neyland Connection - BLOCK SHEAR 2.glb'
 
 // Content
-import calcs from './calculations.html'
+import calcs from './calculations.md'
 import drawing from './2d-drawing.md'
 import moreFun from './more-fun.md'
 import photo from './photo.md'
