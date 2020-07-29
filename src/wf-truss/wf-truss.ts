@@ -4,6 +4,7 @@ import { App, Model, HtmlItem } from '../app'
 import pathToBlockShear from './Gusset (centered).glb'
 
 // Content
+import calculations from './calculations.md'
 import moreFun from './more-fun.md'
 
 // Images
@@ -21,6 +22,7 @@ new App({
         {
             name: 'more',
             items: [
+                new HtmlItem({ name: 'Calculations', content: calculations }),
                 new HtmlItem({ name: 'More fun!', content: moreFun }),
             ]
         }
