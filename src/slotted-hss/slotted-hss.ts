@@ -5,6 +5,7 @@ import pathToModel from './Slotted HSS Connection.glb'
 import pathToRupture from './Slotted HSS Connection -- Tensile rupture.glb'
 import pathToWeldFracture from './Slotted HSS Connection -- Weld fracture.glb'
 import pathToBaseMetalHSS from './Slotted HSS Connection -- Base metal (HSS).glb'
+import pathToBaseMetalPlate from './Slotted HSS Connection -- Base metal (Plate).glb'
 
 // Content
 import calculations from './calculations.md'
@@ -20,6 +21,7 @@ new App({
                 new Model({ name: 'Tensile rupture', path: pathToRupture }),
                 new Model({ name: 'Weld fracture', path: pathToWeldFracture }),
                 new Model({ name: 'Base metal (HSS)', path: pathToBaseMetalHSS }),
+                new Model({ name: 'Base metal (Plate)', path: pathToBaseMetalPlate }),
             ]
         },
         {
