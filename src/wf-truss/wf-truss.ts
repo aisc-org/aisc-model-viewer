@@ -19,9 +19,9 @@ new App({
         {
             name: 'models',
             items: [
-                new Model({ name: '3D model', path: pathToModel}),
-                new Model({ name: 'Tensile rupture', path: pathToRupture }),
-                new Model({ name: 'Block shear rupture', path: pathToBlockShear }),
+                new Model({ name: '3D model', path: pathToModel, center: false }),
+                new Model({ name: 'Tensile rupture', path: pathToRupture, center: false }),
+                new Model({ name: 'Block shear rupture', path: pathToBlockShear, center: false }),
             ]
         },
         {

@@ -307,11 +307,13 @@ export class HtmlItem extends SidebarItem {
 
 export class Model extends SidebarItem {
     path: string
+    centerModel: boolean | undefined
     static viewer: ModelViewer
 
-    constructor(params: { name: string, path: string }) {
+    constructor(params: { name: string, path: string, center?: boolean }) {
         super(params.name)
         this.path = params.path
+        this.centerModel = params.center
         if (Model.viewer === undefined) {
             Model.viewer = new ModelViewer()
         }
@@ -319,7 +321,7 @@ export class Model extends SidebarItem {
 
     async createContent(contentContainer: HTMLElement): Promise<HTMLCanvasElement> {
         Model.viewer.attachToContainer(contentContainer)
-        Model.viewer.setModelAsCurrent(this.path)
+        Model.viewer.setModelAsCurrent(this.path, this.centerModel)
         return Model.viewer.renderer.domElement
     }
 
