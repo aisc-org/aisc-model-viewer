@@ -255,7 +255,7 @@ $$ \begin{align}
            &= 18.0~\rm{in.}^2
 \end{align} $$
 
-Calculate the net tensile area.
+Calculate the net tensile area. The weld size is typically neglected in this calculation.
 
 $$ \begin{align}
     A_{nt} &= (\tfrac34~\rm{in.}) (6~\rm{in.}) \\
