@@ -68,7 +68,7 @@ material removed for four bolt holes as defined in Section B4.3b of the AISC
 
 $$ \begin{align}
     A_n &= A_g - 4(d_h + \sixt) t_f \\
-        &= 21.1\inch^2 - 4 (1\tfrac14\inch + \sixt) (0.670\inch) \\
+        &= 21.1\inch^2 - 4 (1\tfrac18\inch + \tfrac18\inch + \sixt) (0.670\inch) \\
         &= 17.6 \inch^2
 \end{align} $$
 
@@ -136,7 +136,7 @@ Calculate the net area subject to shear.
 
 $$ \begin{align}
     A_{nv} &= A_{gv} - (4\text{ pieces}) (3\tfrac12\text{ holes}) (0.670\inch) (d_h + \sixt) \\
-           &= 37.5\inch^2 - (4) (3\tfrac12) (0.670\inch) (1\tfrac14 + \sixt) \\
+           &= 37.5\inch^2 - (4) (3\tfrac12) (0.670\inch) (1\tfrac18\inch + \tfrac18\inch + \sixt) \\
            &= 25.2\inch^2
 \end{align} $$
 
@@ -152,7 +152,7 @@ Calculate the net area subject to tension.
 
 $$ \begin{align}
     A_{nt} &= A_{gt} - 4\,t_f \cdot \tfrac12(d_h + \sixt) \\
-           &= 8.71\inch^2 - 4 (0.670\inch) \cdot \tfrac12 (1\tfrac14\inch + \sixt) \\
+           &= 8.71\inch^2 - 4 (0.670\inch) \cdot \tfrac12 (1\tfrac18\inch + \tfrac18\inch + \sixt) \\
            &= 6.95\inch^2
 \end{align} $$
 
@@ -173,86 +173,96 @@ Calculate the design strength by applying the resistance factor.
 $$ \phi R_n = (0.75) (1430\kips) \boxed{= 1080\kips} $$
 
 
-Bolt shear rupture
-------------------
+Bolt group strength
+-------------------
+The limit states of bolt shear rupture, bearing, and tearout are evaluated 
+together to determine the design strength of the bolt group.
 
-From Table J3.2, the nominal shear strength $F_{nv}$ of single bolt is 68 ksi.
-Calculate the nominal capacity of the bolts in the connection according to
+For each bolt, an effective strength is calculated as the lowest strength 
+from the limit states of bolt shear rupture, bearing, and tearout.
+
+![Bolt numbering scheme used.](../assets/placeholder.png)
+
+From Table J3.2, the nominal shear strength $F_{nv}$ of single Group B (A490) 
+bolt when threads are not excluded from the shear planes is $F_{nv} = 68\ksi$.
+
+### Bolts in row #1
+
+Calculate the nominal strength for the limit state of bolt shear rupture using 
 *Specification* Equation J3-1.
 
 $$ \begin{align}
-    R_n &= (16\text{ bolts}) F_{nv} A_b \\
-        &= (16\text{ bolts}) (68\ksi) \frac{\pi (1\tfrac18\inch)^2}{4} \\
-        &= 1080\kips
+    r_n &= F_{nv} A_b \\
+        &= (68\ksi) \frac{\pi (1\tfrac18\inch)^2}{4} \\
+        &= 67.6\kips
 \end{align} $$
 
-Calculate the design shear strength of the bolt group by applying the resistance
-factor.
-
-$$ \phi R_n = 0.75 (1080\kips) \boxed{= 811\kips} $$
-
-
-Bearing and tearout
--------------------
-
-Deformation at the bolt hole is not a design consideration.
-
-### Bearing
-
-Calculate the nominal strength using *Specification* Equation J3-6b.
+Calculate the nominal strength for the limit state of bearing on the wide flange
+using AISC Specification Equation J3-6a.
 
 $$ \begin{align}
-    R_n &= (16\text{ bolts}) 3.0 d t F_u \\
-        &= (16) (3.0) (1\tfrac18\inch) (0.670\inch^2) (65\ksi) \\
-        &= 2350\kips
+    r_n &= 2.4 d t_f F_u \\
+        &= (2.4) (1\tfrac18\inch) (0.670\inch) (65\ksi) \\
+        &= 117.6\kips
 \end{align} $$
 
-Calculate the design strength by applying the resistance factor.
+Calculate the nominal strength for the limit state of bearing on the gusset plate
+using AISC Specification Equation J3-6a.
 
-$$ \phi R_n = 0.75 (2350\kips) = 1760\kips$$
+$$ \begin{align}
+    r_n &= 2.4 d t F_u \\
+        &= (2.4) (1\tfrac18\inch) (1\inch) (65\ksi) \\
+        &= 175.5\kips
+\end{align} $$
 
-
-### Tearout
-
-Calculate the nominal strength using *Specification* Equation J3-6d. The clear
-distance between holes $l_c$ depends on which bolt is being considered. There
-are four "edge" bolts and 12 "interior" bolts.
-
-![Figure showing edge and interior bolts.](../assets/placeholder.png)
-
-For the edge bolts:
+Calculate the nominal strength for the limit state of tearout in the wide flange
+using AISC Specification Equation J3-6c.
 
 $$ \begin{align}
     l_c &= 2\inch - \tfrac12 d_h\\
-        &= 2\inch - \tfrac12 (1\tfrac14\inch + \sixt)\\
-        &= 1.24\inch
+        &= 2\inch - \tfrac12 (1\tfrac18\inch + \tfrac18\inch)\\
+        &= 1.375\inch
 \end{align} $$
 
 $$ \begin{align}
-    R_n &= (4\text{ bolts}) 1.5 l_c t F_u \\
-        &= (4\text{ bolts}) (1.5) (1.24\inch) (0.670\inch) (65\ksi) \\
-        &= 351\kips
+    r_n &= 1.2 l_c t_f F_u \\
+        &= (1.2) (1.375\inch) (0.670\inch) (65\ksi) \\
+        &= 71.9\kips
 \end{align} $$
 
-For the interior bolts:
+Calculate the nominal strength for the limit state of tearout in the plate
+using AISC Specification Equation J3-6c.
 
 $$ \begin{align}
     l_c &= 4\inch - d_h\\
-        &= 4\inch - (1\tfrac14\inch + \sixt)\\
-        &= 2.69\inch
+        &= 4\inch - (1\tfrac18\inch + \tfrac18\inch)\\
+        &= 2.75\inch
 \end{align} $$
 
 $$ \begin{align}
-    R_n &= (12\text{ bolts}) 1.5 l_c t F_u \\
-        &= (12\text{ bolts}) (1.5) (2.69\inch) (0.670\inch) (65\ksi) \\
-        &= 2110\kips
+    r_n &= 1.2 l_c t F_u \\
+        &= (1.2) (2.75\inch) (1\inch) (65\ksi) \\
+        &= 214.5\kips
 \end{align} $$
+
+Bolt shear rupture controls. The nominal effective strength of the bolts in row #1 is 67.6 kips.
+
+### Bolts in rows #2, #3, and #4
+
+The effective strength of bolts in the remaining rows is calculated in the same manner, 
+except with different clear distances. Bolt shear rupture controls. 
+The nominal effective strength of the bolts in rows #2, #3, and #4 is 67.6 kips.
+
+### Bolt group
+
+Calculate the nominal effective strength of the bolt group by summing the 
+nominal effective strength of each bolt.
+
+$$ R_n = (16~\rm{bolts}) \times (67.6~\rm{kips/bolt}) = 1082\kips $$
 
 Calculate the design strength by applying the resistance factor.
 
-$$ \phi R_n = 0.75 (351\kips + 2110\kips) = 1840\kips $$
-
-Bearing controls over tearout with a design strength of 1760 kips.
+$$ \phi R_n = 0.75 (1082\kips) \boxed{= 811 \kips} $$
 
 
 Summary
@@ -262,12 +272,11 @@ The design strength of the connection is summarized in the following table.
 
 : Tensile limit state summary
 
-| Limit state         | Design strength |
-|:--------------------|----------------:|
-| Tensile yielding    |        950 kips |
-| Tensile rupture     |        784 kips |
-| Block shear rupture |       1080 kips |
-| Bolt shear rupture  |        811 kips |
-| Bearing and tearout |       1760 kips |
+| Limit state                               | Design strength |
+|:------------------------------------------|----------------:|
+| Tensile yielding                          |        950 kips |
+| Tensile rupture                           |        784 kips |
+| Block shear rupture                       |       1080 kips |
+| Bolt shear rupture, bearing, and tearout  |        811 kips |
 
 **Tensile rupture controls with a design strength of 784 kips.**
