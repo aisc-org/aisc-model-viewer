@@ -4,6 +4,7 @@ import { App, HtmlItem, Model } from '../app'
 import pathToModel from './Slotted HSS Connection.glb'
 import pathToRupture from './Slotted HSS Connection -- Tensile rupture.glb'
 import pathToWeldFracture from './Slotted HSS Connection -- Weld fracture.glb'
+import pathToBaseMetalHSS from './Slotted HSS Connection -- Base metal (HSS).glb'
 
 // Content
 import calculations from './calculations.md'
@@ -18,6 +19,7 @@ new App({
                 new Model({ name: '3D model', path: pathToModel }),
                 new Model({ name: 'Tensile rupture', path: pathToRupture }),
                 new Model({ name: 'Weld fracture', path: pathToWeldFracture }),
+                new Model({ name: 'Base metal (HSS)', path: pathToBaseMetalHSS }),
             ]
         },
         {
