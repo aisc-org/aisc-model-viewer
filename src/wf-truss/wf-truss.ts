@@ -10,6 +10,7 @@ import calculations from './calculations.md'
 import moreFun from './more-fun.md'
 
 // Images
+import './x_bar.png'
 
 
 new App({
