@@ -5,6 +5,10 @@ Go Vols!
 
 --------------------------------------------------------------------------------
 
+What would be the controlling limit state if the bolts were A490?
+
+--------------------------------------------------------------------------------
+
 The column is a W24x130. You won't find this section in the 15th Edition of the
 Steel Construction Manual since it is no longer commonly produced. It last
 appeared in the
@@ -17,11 +21,11 @@ AISC members -- including student members!
 --------------------------------------------------------------------------------
 
 The *work point* of a connection is where the center line of the connected
-members meet. It is common for this to be at the top of the base plate. The work
+members meet. It is common for this to be at the top surface of the base plate. The work
 point of this connection is shown below, with the member centerlines in red:
 
-![Workpoint shown by intersection of member centerlines.](./workpoint.svg)
+![Work point shown by intersection of member centerlines.](./workpoint.svg)
 
 --------------------------------------------------------------------------------
 
-[Link to the more fun doc.](../docs/#Adding-a-more-fun-item)
+Do you have a fun idea to add to this page? Learn how to contribute it in [the documentation](../docs/#Adding-a-more-fun-item).

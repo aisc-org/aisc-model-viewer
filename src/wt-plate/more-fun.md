@@ -1,6 +1,6 @@
-What would be the controlling limit state if the WT as a WT#x##?
+What would be the controlling limit state if the tension member was a WT6x25?
 
-<details>
+<!-- <details>
     <summary>Hint</summary>
     Here's a hint!
 </details>
@@ -8,17 +8,7 @@ What would be the controlling limit state if the WT as a WT#x##?
 <details>
     <summary>Answer</summary>
     Simplified calculations...
-</details>
-
---------------------------------------------------------------------------------
-
-Link to the paper that we found discussing this weird block shear pattern.
-
---------------------------------------------------------------------------------
-
-There are a lot of limit states even for this one connection.
-If you are unsure which controls, or if you are writing a design spreadsheet, it is a good idea to check them all.
-With experience, you will gain a feel for which states control and limit your calculations.
+</details> -->
 
 --------------------------------------------------------------------------------
 
@@ -33,4 +23,17 @@ and may need to be straightened:
 
 --------------------------------------------------------------------------------
 
-[Link to the more fun doc.](../docs/#Adding-a-more-fun-item)
+The block shear pattern with [tension in the flange and shear in the stem](#Block-shear-1)
+is a bit out of the ordinary. The AISC *Engineering Journal* published papers that discuss
+this sort of failure in [1996](https://www.aisc.org/Block-Shear-of-Structural-Tees-in-Tension-Alternate-Paths)
+and [2002](https://www.aisc.org/Block-Shear-Net-Section-Capacities-of-Struct-Tees-in-Tension-Test-Results-Code-Implications).
+
+--------------------------------------------------------------------------------
+
+There are a lot of limit states even for this one connection.
+If you are unsure which controls, or if you are writing a design spreadsheet, it is a good idea to check them all.
+With experience, you will gain a feel for which limit states control a given connection and simplify your calculations.
+
+--------------------------------------------------------------------------------
+
+Do you have a fun idea to add to this page? Learn how to contribute it in [the documentation](../docs/#Adding-a-more-fun-item).
