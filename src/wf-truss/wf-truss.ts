@@ -1,7 +1,9 @@
 import { App, Model, HtmlItem } from '../app'
 
 // Model files
-import pathToBlockShear from './Gusset (centered).glb'
+import pathToModel from './WF Truss Connection.glb'
+import pathToBlockShear from './WF Truss Connection -- Block shear.glb'
+import pathToRupture from './WF Truss Connection -- Tensile rupture.glb'
 
 // Content
 import calculations from './calculations.md'
@@ -16,7 +18,9 @@ new App({
         {
             name: 'models',
             items: [
-                new Model({name: 'Block shear rupture', path: pathToBlockShear}),
+                new Model({ name: '3D model', path: pathToModel}),
+                new Model({ name: 'Tensile rupture', path: pathToRupture }),
+                new Model({ name: 'Block shear rupture', path: pathToBlockShear }),
             ]
         },
         {
