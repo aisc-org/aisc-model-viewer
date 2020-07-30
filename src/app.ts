@@ -27,7 +27,7 @@ export class App {
     // actual item.
     defaultHTML = '<p>Select an item from the sidebar.</p>'
 
-    constructor(params: { title: string, groups: SidebarGroup[], contributors?: string[] }) {
+    constructor(params: { title: string, groups: SidebarGroup[], contributors?: string[], addGuideLink?: boolean }) {
         this.groups = params.groups;
         this.contributors = params.contributors;
         this.contentLinkMap = new Map<string, SidebarItem>()
@@ -67,21 +67,30 @@ export class App {
                 sidebar.appendChild(document.createElement('hr'))
             }
         })
+
+        // Sidebar footer
+        sidebar.appendChild(document.createElement('hr'))
+        const sidebarFooter = document.createElement('section')
+        sidebarFooter.className = 'sidebar-footer'
+        sidebar.appendChild(sidebarFooter)
+        const sidebarFooterItems = document.createElement('ul')
+        sidebarFooter.appendChild(sidebarFooterItems)
+
+        if (params.addGuideLink || params.addGuideLink === undefined) {
+            sidebarFooterItems.appendChild(this.guideTo2dDrawingsLink())
+        }
+
         if (this.contributors !== undefined && this.contributors.length !== 0) {
             const content = this.contributorsContent()
             const item = new HtmlItem({ name: 'credits', content: content })
             this.contentLinkMap[item.linkname] = item
 
-            sidebar.appendChild(document.createElement('hr'))
-
-            const credits = document.createElement('section')
-            credits.className = 'credits'
-            sidebar.appendChild(credits)
-
             const creditsLink = document.createElement('a')
             creditsLink.href = './#credits'
             creditsLink.innerHTML = 'credits'
-            credits.appendChild(creditsLink)
+            const creditsLinkItem = document.createElement('li')
+            creditsLinkItem.appendChild(creditsLink)
+            sidebarFooterItems.appendChild(creditsLinkItem)
         }
 
         // Responsive content sizing
@@ -155,6 +164,14 @@ export class App {
         section.appendChild(contributorList)
 
         return section.innerHTML
+    }
+
+    guideTo2dDrawingsLink() {
+        return new Link({
+            name: 'guide to 2d drawings',
+            url: '../guide-to-2d-drawings',
+            openInNewTab: false,
+        }).createItem()
     }
 
     setContentElement(content: HTMLElement) {
@@ -251,10 +268,12 @@ export interface SidebarGroup {
 
 export class Link extends SidebarItem {
     url: string
+    openInNewTab?: boolean
 
-    constructor(params: { name: string, url: string }) {
+    constructor(params: { name: string, url: string, openInNewTab?: boolean }) {
         super(params.name)
         this.url = params.url
+        this.openInNewTab = params.openInNewTab
     }
 
     createItem(): HTMLLIElement {
@@ -264,8 +283,10 @@ export class Link extends SidebarItem {
         anchor.innerHTML = this.name
 
         // Open link in new tab/window
-        anchor.target = '_blank'
-        anchor.rel = 'noreferrer noopener'
+        if (this.openInNewTab) {
+            anchor.target = '_blank'
+            anchor.rel = 'noreferrer noopener'
+        }
 
         listitem.appendChild(anchor)
         return listitem

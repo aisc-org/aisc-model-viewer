@@ -285,8 +285,12 @@ nav.sidebar {
     margin-bottom: 1ex;
 }
 
-section.credits {
+section.sidebar-footer {
     margin-top: auto;
     padding: 1ex;
     text-align: right;
+}
+
+section.sidebar-footer ul {
+    list-style-type: none;
 }

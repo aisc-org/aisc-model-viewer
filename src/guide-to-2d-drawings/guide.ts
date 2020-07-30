@@ -33,5 +33,6 @@ new App({
     contributors: [
         'Mark Denavit',
         'Peter Talley',
-    ]
+    ],
+    addGuideLink: false,
 })
