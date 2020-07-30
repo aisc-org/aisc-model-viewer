@@ -17,7 +17,9 @@ Material and geometric properties
 
 The geometry of the connection is shown below.
 
-![2D structural drawing of the connection.](../assets/placeholder.png)
+![](./wf-truss-full.svg)
+
+![2D structural drawing of the connection.](./wf-truss-detail.svg)
 
 The W12x72 conforms to ASTM A992, while the gusset plates conform to ASTM A572
 Gr. 50.
