@@ -14,6 +14,7 @@ import moreFun from './more-fun.md'
 
 // Images
 import './slotted-hss.svg'
+import './reinforced-hss.svg'
 
 new App({
     title: 'Slotted HSS Connection',

@@ -20,7 +20,7 @@ controlling the strength of the connection, reinforcing plates can be welded to 
 to increase the cross-sectional area at the point of the connection where the
 slot has been cut for the plate:
 
-![Insert picture here](../assets/placeholder.png)
+![Cross-sectional view of reinforced HSS](./reinforced-hss.svg)
 
 --------------------------------------------------------------------------------
 
