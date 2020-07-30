@@ -169,7 +169,7 @@ export class App {
         }
     }
 
-    async setCurrentContent() {
+    setCurrentContent() {
         const loc = window.location
         if (this.forceTrailingSlash && !loc.pathname.endsWith('/')) {
             window.location.replace(loc.origin + loc.pathname + '/' + loc.hash)
@@ -178,7 +178,7 @@ export class App {
         const linkname = window.location.hash.substr(1)
         const item: SidebarItem = this.contentLinkMap[linkname]
         if (linkname in this.contentLinkMap) {
-            await item.createContent(this.contentContainer).then(content => {
+            item.createContent(this.contentContainer).then(content => {
                 // Save scroll position
                 if (this.currentElement) {
                     console.log('Saving', this.currentContent, 'scroll position as', this.contentContainer.scrollTop)
@@ -237,7 +237,7 @@ abstract class SidebarItem {
      * @returns Promise&lt;HTMLElement&gt; - the created HTMLElement. The App will handle
      *                           adding this to the page.
      */
-    async createContent(contentContainer: HTMLElement): Promise<HTMLElement> {
+    createContent(contentContainer: HTMLElement): Promise<HTMLElement> {
         return Promise.reject(new NoContentError)
     }
 }
@@ -322,10 +322,10 @@ export class Model extends SidebarItem {
         }
     }
 
-    async createContent(contentContainer: HTMLElement): Promise<HTMLCanvasElement> {
+    createContent(contentContainer: HTMLElement): Promise<HTMLCanvasElement> {
         Model.viewer.attachToContainer(contentContainer)
         Model.viewer.setModelAsCurrent(this.path, this.centerModel)
-        return Model.viewer.renderer.domElement
+        return Promise.resolve(Model.viewer.renderer.domElement)
     }
 
     createItem() {
