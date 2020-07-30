@@ -14,8 +14,8 @@ Different types of lines are used in structural drawings to represent different 
 
 Several of these types of lines are illustrated in the figures below.
 
-![Three-dimensional view](../assets/placeholder.png)
+![Three-dimensional view](./linework-3d.svg)
 
-![Top view](../assets/placeholder.png)
+![Top view](./linework-top.svg)
 
-![Side view](../assets/placeholder.png)
+![Side view](./linework-side.svg)

@@ -8,6 +8,9 @@ import boltsAndWelds from './bolts-and-welds.md'
 import abbreviations from './abbreviations.md'
 
 // Images/assets
+import './linework-3d.svg'
+import './linework-top.svg'
+import './linework-side.svg'
 import './weld-symbols-1.svg'
 import './weld-symbols-2.svg'
 import './weld-symbols-3.svg'
