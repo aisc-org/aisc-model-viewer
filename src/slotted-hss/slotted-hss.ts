@@ -8,8 +8,12 @@ import pathToBaseMetalHSS from './Slotted HSS Connection -- Base metal (HSS).glb
 import pathToBaseMetalPlate from './Slotted HSS Connection -- Base metal (Plate).glb'
 
 // Content
+import drawing from './2d-drawing.md'
 import calculations from './calculations.md'
 import moreFun from './more-fun.md'
+
+// Images
+import './slotted-hss.svg'
 
 new App({
     title: 'Slotted HSS Connection',
@@ -27,6 +31,7 @@ new App({
         {
             name: 'more',
             items: [
+                new HtmlItem({ name: '2D drawing', content: drawing, classes: ['full-width'] }),
                 new HtmlItem({ name: 'Calculations', content: calculations }),
                 new HtmlItem({ name: 'More fun!', content: moreFun })
             ]

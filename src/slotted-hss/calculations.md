@@ -28,7 +28,7 @@ Material and geometric properties
 The connection consists of a HSS6x6x3/8 connected by four (4) 5/16" fillet welds
 to a 3/4"-thick gusset plate.
 
-![Structural drawing](../assets/placeholder.png)
+![Structural drawing](./slotted-hss.svg)
 
 Typically, the material specifications for each type of steel shape used on a project
 are listed on the general notes sheet of the structural drawings. For this case,
