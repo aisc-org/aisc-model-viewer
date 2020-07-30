@@ -8,6 +8,10 @@ Bolts are complex three-dimensional objects with many features. They can be depi
 
 Welds
 -----
-The physical extent of welds is typically not shown in structural drawings. Instead, standard weld symbols are used to communicate the size, type, and length of weld along with other pertinent information. A guide to weld symbols can be found in Table 8-2 of the AISC *Manual*. The figure below describes key aspects of weld symbols for fillet welds. 
+The physical extent of welds is typically not shown in structural drawings. Instead, standard weld symbols are used to communicate the size, type, and length of weld along with other pertinent information. A guide to weld symbols can be found in Table 8-2 of the AISC *Manual*. The figures below describe key aspects of weld symbols for fillet welds. 
 
-![Weld symbols for fillet welds](../assets/placeholder.png)
+![Weld symbols for fillet welds](./weld-symbols-1.svg)
+
+![5/16" fillet weld on arrow side of joint](./weld-symbols-2.svg)
+
+![5/16" fillet weld, 12" long, on both sides of joint](./weld-symbols-3.svg)

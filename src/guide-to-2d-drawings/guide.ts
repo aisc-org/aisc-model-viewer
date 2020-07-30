@@ -8,7 +8,9 @@ import boltsAndWelds from './bolts-and-welds.md'
 import abbreviations from './abbreviations.md'
 
 // Images/assets
-// import '/relative/path/to/asset.ext'
+import './weld-symbols-1.svg'
+import './weld-symbols-2.svg'
+import './weld-symbols-3.svg'
 
 
 new App({
