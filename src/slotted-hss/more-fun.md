@@ -22,6 +22,8 @@ slot has been cut for the plate:
 
 ![Cross-sectional view of reinforced HSS](./reinforced-hss.svg)
 
+![Side view of reinforced HSS](./reinforced-hss-side.svg)
+
 --------------------------------------------------------------------------------
 
 Equation 8-2 in the AISC *Manual* is handy to make quick work of available strength 
