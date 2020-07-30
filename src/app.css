@@ -97,6 +97,15 @@ section.html-content {
     max-width: 30em;
 }
 
+div.html-content.full-width,
+section.html-content.full-width {
+    max-width: none;
+}
+
+.full-width>* {
+    margin: auto;
+}
+
 .html-content p {
     padding: 0 1rem;
     text-align: justify;

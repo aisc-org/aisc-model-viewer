@@ -275,16 +275,19 @@ export class Link extends SidebarItem {
 
 export class HtmlItem extends SidebarItem {
     content: string
-    fetchedContent: string
+    classes = ['html-content']
 
-    constructor(params: { name: string, content: string }) {
+    constructor(params: { name: string, content: string, classes?: string[] }) {
         super(params.name)
         this.content = params.content
+        if (params.classes) {
+            this.classes.push(...params.classes)
+        }
     }
 
     async createContent(contentContainer: HTMLElement): Promise<HTMLElement> {
         const section = document.createElement('section')
-        section.className = 'html-content'
+        section.classList.add(...this.classes)
         section.innerHTML = this.content
         // If MathJax is already loaded, then we need to tell it to typeset the
         // page. If it's not finished loading, it'll typeset the page once it
