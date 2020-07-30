@@ -106,6 +106,10 @@ section.html-content.full-width {
     margin: auto;
 }
 
+.full-width>p {
+    max-width: 30em;
+}
+
 .html-content p {
     padding: 0 1rem;
     text-align: justify;
