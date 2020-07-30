@@ -1,15 +1,12 @@
 Calculations
 ============
 
-$$
-\newcommand{\inch}{~{\rm{in.}}}
-\newcommand{\kips}{~{\rm{kips}}}
-\newcommand{\ksi}{~{\rm{ksi}}}
-\newcommand{\sixt}{{\tfrac{1}{16}\inch}}
-$$
-
 This page demonstrates calculations to determine the design strength of the
 diagonal wide flange members and their connection to the gusset plates.
+$\newcommand{\inch}{~{\rm{in.}}}
+ \newcommand{\kips}{~{\rm{kips}}}
+ \newcommand{\ksi}{~{\rm{ksi}}}
+ \newcommand{\sixt}{{\tfrac{1}{16}\inch}}$
 
 
 Material and geometric properties

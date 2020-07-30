@@ -1,14 +1,6 @@
 Calculations
 ============
 
-<!-- Math shorthands -->
-$$
-\newcommand{\inch}{~{\rm{in.}}}
-\newcommand{\kips}{~{\rm{kips}}}
-\newcommand{\ksi}{~{\rm{ksi}}}
-\newcommand{\sixt}{{\tfrac{1}{16}\inch}}
-$$
-
 This page demonstrates calculations to:
 
 -   determine the design strength of the double angle tension member and bolted
@@ -17,6 +9,10 @@ This page demonstrates calculations to:
 
 The calculations are based on the 2016 AISC *Specification* and the 15th Edition
 AISC *Manual*.
+$\newcommand{\inch}{~{\rm{in.}}}
+ \newcommand{\kips}{~{\rm{kips}}}
+ \newcommand{\ksi}{~{\rm{ksi}}}
+ \newcommand{\sixt}{{\tfrac{1}{16}\inch}}$
 
 
 Material and Geometric Properties

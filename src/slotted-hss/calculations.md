@@ -1,14 +1,6 @@
 Calculations
 ============
 
-<!-- Math shorthands -->
-$$
-\newcommand{\inch}{~{\rm{in.}}}
-\newcommand{\kips}{~{\rm{kips}}}
-\newcommand{\ksi}{~{\rm{ksi}}}
-\newcommand{\sixt}{{\tfrac{1}{16}\inch}}
-$$
-
 This page demonstrates calculations to determine the tensile strength of the
 welded connection, considering the limit states of:
 
@@ -20,6 +12,10 @@ welded connection, considering the limit states of:
 
 The calculations are based on the 2016 AISC *Specification* and the 15th edition
 AISC *Manual*.
+$\newcommand{\inch}{~{\rm{in.}}}
+ \newcommand{\kips}{~{\rm{kips}}}
+ \newcommand{\ksi}{~{\rm{ksi}}}
+ \newcommand{\sixt}{{\tfrac{1}{16}\inch}}$
 
 
 Material and geometric properties
