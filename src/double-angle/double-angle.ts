@@ -37,7 +37,7 @@ const app = new App({
             name: 'more',
             items: [
                 new HtmlItem({name: 'Calculations', content: calcs}),
-                new HtmlItem({name: '2D structural drawing', content: drawing}),
+                new HtmlItem({name: '2D structural drawing', content: drawing, classes: ['full-width']}),
                 new HtmlItem({name: 'Photo', content: photo}),
                 new HtmlItem({name: 'More fun!', content: moreFun}),
             ]

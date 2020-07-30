@@ -1,1 +1,3 @@
-![Structural drawing](./bolted-wt-top.svg)
+<figure>
+![](./bolted-wt-top.svg)
+</figure>

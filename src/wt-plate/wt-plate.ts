@@ -32,7 +32,7 @@ new App({
         {
             name: 'more',
             items: [
-                new HtmlItem({name: '2D structural drawing', content: drawingPage}),
+                new HtmlItem({name: '2D structural drawing', content: drawingPage, classes: ['full-width']}),
                 new HtmlItem({name: 'Calculations', content: calculations}),
                 new HtmlItem({name: 'More fun!', content: moreFun}),
             ]

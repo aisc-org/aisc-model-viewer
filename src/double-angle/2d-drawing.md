@@ -1,1 +1,3 @@
-![2D structural drawing of the connection.](./double-angle.svg)
+<figure>
+![](./double-angle.svg)
+</figure>
