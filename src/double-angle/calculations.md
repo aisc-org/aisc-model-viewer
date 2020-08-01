@@ -51,8 +51,6 @@ Tensile Yielding
 
 Calculate the nominal strength using AISC *Specification* Equation D2-1.
 
-![Tensile yielding path.](./gross-tension.svg)
-
 $$ \begin{align}
     P_n &= F_y A_g \\
         &= (36~\rm{ksi})(2 \times 7.13~\rm{in.}^2) \\
@@ -70,9 +68,9 @@ Tensile Rupture
 A depiction of tensile rupture failure for this connection is shown in
 [this three-dimensional view](#Tensile-rupture).
 
-![Tensile rupture path.](./net-tension.svg)
+![Tensile rupture path.](./rupture-path.svg)
 
-![Corresponding failure surface.](./net-area-3d-view.jpg)
+![Corresponding failure surface.](./rupture-area.svg)
 
 The net area, $A_n$, is shown in orange. It is equal to the gross area minus the
 material removed for two bolt holes as defined in Section B4.3b of the AISC
@@ -132,9 +130,12 @@ See also the [3D view of this failure mode](#Block-shear-rupture).
 
 ![Block shear failure path (side view). $A_{nv}$ in blue, $A_{nt}$ in red.](./block-shear-path.svg)
 
-![Corresponding failure surface.](./block-shear-3d-view.jpg)
+![Area subject to shear in blue. Light areas are removed for net area.](./block-shear-area-shear.svg)
+
+![Area subject to tension in red. Light areas are removed for net area.](./block-shear-area-tension.svg)
 
 Calculate the gross area subject to shear.
+
 
 $$ \begin{align}
     A_{gv} &= 2 \times (26\tfrac{1}{8}~\rm{in.})(\tfrac{5}{8}~\rm{in.}) \\
@@ -151,6 +152,7 @@ $$ \begin{align}
 \end{align} $$
 
 Calculate the gross area subject to tension.
+
 
 $$ \begin{align}
     A_{gt} &= 2 \times (3\tfrac{3}{4}~\rm{in.})(\tfrac{5}{8}~\rm{in.}) \\
