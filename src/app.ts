@@ -169,7 +169,7 @@ export class App {
     guideTo2dDrawingsLink() {
         return new Link({
             name: 'guide to 2d drawings',
-            url: '../guide-to-2d-drawings',
+            url: '../guide-to-2d-drawings/#Types-of-drawings',
             openInNewTab: false,
         }).createItem()
     }

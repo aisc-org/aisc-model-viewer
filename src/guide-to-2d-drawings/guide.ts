@@ -1,7 +1,6 @@
 import { App, HtmlItem } from '../app'
 
 // Content
-import guideLanding from './guide-to-2d-drawings.md'
 import typesOfDrawings from './types-of-drawings.md'
 import linework from './linework.md'
 import boltsAndWelds from './bolts-and-welds.md'
@@ -22,7 +21,6 @@ new App({
         {
             name: '',
             items: [
-                new HtmlItem({ name: 'Landing', content: guideLanding }),
                 new HtmlItem({ name: 'Types of drawings', content: typesOfDrawings }),
                 new HtmlItem({ name: 'Linework', content: linework }),
                 new HtmlItem({ name: 'Bolts and welds', content: boltsAndWelds }),
