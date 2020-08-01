@@ -123,7 +123,7 @@ Block shear rupture ([model](#./Block-shear-rupture))
 There is only one plausible block shear path for this connection, consisting of
 four (4) pieces of the wide-flange shape breaking off.
 
-![Highlighting a single "piece".](../assets/placeholder.png)
+<!-- ![Highlighting a single "piece".](../assets/placeholder.png) -->
 
 Calculate the gross area subject to shear.
 

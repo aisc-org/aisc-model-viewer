@@ -154,9 +154,9 @@ For the fillet welds in this connection, the effective length is given by
 times the weld size (31.2 in.), so the effective length is equal to the actual
 length.
 
-The effective throat is shown in the figure below.
+<!-- The effective throat is shown in the figure below.
 
-![A figure showing the effective throat.](../assets/placeholder.png)
+![A figure showing the effective throat.](../assets/placeholder.png) -->
 
 Calculate the effective area of a single weld.
 
