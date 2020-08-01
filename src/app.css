@@ -170,6 +170,10 @@ pre.sourceCode {
 
 .html-content figure {
     text-align: center;
+    background-color: #fbfbfb;
+    padding: 5px;
+    border-radius: 5px;
+    margin: 0;
 }
 
 .html-content img {
