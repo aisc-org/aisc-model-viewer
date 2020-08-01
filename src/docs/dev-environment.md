@@ -44,13 +44,15 @@ by running
 choco install -y pandoc
 ```
 
-from an administrator terminal.
+from an administrator terminal. If you don't use `choco` to install Pandoc, make
+sure that the `pandoc` command is visible on your `PATH`.
 
 
 Linux
 -----
 
-On Ubuntu, the easiest way to install Node is to run
+On Ubuntu, the easiest way to install Node is to use the snap package, which
+comes bundled with Yarn:
 
 ``` sh
 snap install --classic node --channel=12
@@ -59,8 +61,3 @@ snap install --classic node --channel=12
 For other distros, download the
 [Linux binaries](https://nodejs.org/en/download/) or consult the
 [instructions for installing via package manager](https://nodejs.org/en/download/package-manager/).
-
-macOS
------
-
-(I have no idea.)
