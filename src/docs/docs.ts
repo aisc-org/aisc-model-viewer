@@ -1,6 +1,7 @@
 import { App, HtmlItem } from '../app'
 
 // Content
+import gettingStarted from './getting-started.md'
 import devEnvironment from './dev-environment.md'
 import addingACollection from './adding-a-collection.md'
 import addingAModel from './adding-a-model.md'
@@ -17,6 +18,12 @@ import './screenshot-new-collection-with-dogs.png'
 const app = new App({
     title: 'Documentation',
     groups: [
+        {
+            name: '',
+            items: [
+                new HtmlItem({ name: 'Getting started', content: gettingStarted }),
+            ]
+        },
         {
             name: 'Tutorials',
             items: [
