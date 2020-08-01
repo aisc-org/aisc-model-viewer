@@ -83,6 +83,8 @@ The net area, $A_n$, is shown in red. It is equal to the gross area minus the
 material removed for two bolt holes as defined in Section B4.3b of the AISC
 *Specification*.
 
+![Area in tension. Light areas are removed for net area.](./wt-rupture-area.svg)
+
 $$ \begin{align}
     A_n &= A_g - 2(d_h + \tfrac{1}{16}\text{ in.}) t_f \\
         &= 7.37 \text{ in.}^2 - 2 (1 \tfrac{1}{8} \text{ in.}
@@ -100,7 +102,7 @@ Case 2, where:
 - $l$ is the length of the connection, in the direction of the force, from the
   centerline of the first row of bolts to the centerline of the last row of bolts
 
-![Figure showing $l$](../assets/placeholder.png)
+![Figure showing $l$](./wt-shear-lag.svg)
 
 $$ \begin{align}
     U &= 1 - \frac{\bar{x}}{l} \\
@@ -148,6 +150,8 @@ All plausible paths have uniform tension stress, so $U_{bs} = 1.0$ for all.
 
 ### Block shear 1 ([model](#Block-shear-1))
 
+![Area subject to shear in blue.](./wt-block-shear-1-area-shear.svg)
+
 The shear plane is in the stem at the toe of the fillet. Since there is no material
 removed (e.g., bolt holes), the gross and net shear areas $A_{gv}$ and $A_{nv}$ are
 the same:
@@ -160,6 +164,8 @@ $$ \begin{align}
 
 The gross area subject to tension is most easily calculated by subtracting the
 area of the stem from the gross area of the WT:
+
+![Area subject to tension in red. Light areas are removed for net area.](./wt-block-shear-1-area-tension.svg)
 
 $$ \begin{align}
     A_{gt} &= A - t_w (d - k_{des}) \\
@@ -190,7 +196,11 @@ $$ \begin{align}
 
 ### Block shear 2 ([model](#Block-shear-2))
 
+![Block shear path 2.](./wt-block-shear-2-path.svg)
+
 Calculate the gross area subject to shear.
+
+![Area subject to shear in blue. Light areas are removed for net area.](./wt-block-shear-2-area-shear.svg)
 
 $$ \begin{align}
     A_{gv} &= 2 t_f (8 \text{ in.}) \\
@@ -209,6 +219,8 @@ $$ \begin{align}
 \end{align} $$
 
 Calculate the gross area subject to tension.
+
+![Area subject to tension in red. Light areas are removed for net area.](./wt-block-shear-2-area-tension.svg)
 
 $$ \begin{align}
     A_{gt} &= (b_f - 3.5\text{ in.}) t_f \\
@@ -242,6 +254,8 @@ $$ \begin{align}
 
 ### Block shear 3 ([model](#Block-shear-3))
 
+![Block shear path 3.](./wt-block-shear-3-path.svg)
+
 The gross and net areas subject to shear are the same as for block shear 2.
 
 $$ \begin{align}
@@ -250,6 +264,8 @@ $$ \begin{align}
 \end{align} $$
 
 Calculate the gross area subject to tension.
+
+![Area subject to tension in red. Light areas are removed for net area.](./wt-block-shear-3-area-tension.svg)
 
 $$ \begin{align}
     A_{gt} &= A - (b_f - 3.5\text{ in.}) t_f \\

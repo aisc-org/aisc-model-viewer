@@ -14,6 +14,16 @@ import moreFun from './more-fun.md'
 
 // Assets specified in the MD files
 import './bolted-wt-top.svg'
+import './wt-rupture-area.svg'
+import './wt-shear-lag.svg'
+import './wt-block-shear-1-area-shear.svg'
+import './wt-block-shear-1-area-tension.svg'
+import './wt-block-shear-2-area-shear.svg'
+import './wt-block-shear-2-area-tension.svg'
+import './wt-block-shear-2-path.svg'
+import './wt-block-shear-3-area-shear.svg'
+import './wt-block-shear-3-area-tension.svg'
+import './wt-block-shear-3-path.svg'
 import './bending-of-tee-when-cut.gif'
 
 new App({
