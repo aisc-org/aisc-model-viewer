@@ -34,7 +34,11 @@ const app = new App({
                 new HtmlItem({ name: 'Adding a more fun item', content: addingMoreFun }),
             ]
         }
-    ]
+    ],
+    contributors: [
+        'Peter Talley'
+    ],
+    addGuideLink: false
 })
 
 app.defaultHTML = `
