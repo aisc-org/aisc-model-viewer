@@ -1,6 +1,11 @@
 Exporting to glTF
 =================
 
+Models for this site must be in [glTF format](https://www.khronos.org/gltf/).
+You can preview your exported models using Don McCurdy's
+[glTF viewer](https://gltf-viewer.donmccurdy.com/).
+
+
 Blender
 -------
 

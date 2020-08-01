@@ -1,6 +1,16 @@
 Adding a model
 ==============
 
+To add a model to an existing collection, you'll need:
+
+- A model file in [glTF format](https://www.khronos.org/gltf/)
+- A name to call it
+
+You can preview your exported glTF models using Don McCurdy's online
+[glTF viewer](https://gltf-viewer.donmccurdy.com/), which is powered by the same
+[three.js](https://threejs.org/) library as this site.
+
+
 Format
 ------
 
@@ -24,15 +34,13 @@ Code
 ----
 
 To add a model to an existing collection, you'll need to add a new `Model` to
-the `App` definition for the collection. The `name` and `path` parameters are
-required; you should also add the names of the people who made the model so they
-can be credited for their work.
+the `App` definition for the collection. You should also add any new
+contributors to the collection to the `contributors` list.
 
-<details class="sourceCode" open>
-<summary>collection.ts</summary>
-
+**collection.ts**
 ``` diff
   import { App, Model } from '../app'
+  import pathToOtherModel from './Some other model.glb'
 + import pathToModel from './My Model.glb'
   
   new App({
@@ -41,11 +49,14 @@ can be credited for their work.
           {
               name: 'models',
               items: [
+                  new Model({ name: 'Some other model', path: pathToOtherModel }),
 +                 new Model({ name: 'My model', path: pathToModel }),
               ]
           },
+      ],
+      contributors: [
+          'Wirt',
++         'Jason Funderberker',
       ]
   })
 ```
-
-</details>
