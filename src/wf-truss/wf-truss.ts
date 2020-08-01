@@ -17,7 +17,7 @@ import './x_bar.png'
 
 
 new App({
-    title: 'Wide Flange Truss Connection',
+    title: 'WF Truss Connection',
     groups: [
         {
             name: 'models',
