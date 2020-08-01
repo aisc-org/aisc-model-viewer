@@ -13,6 +13,8 @@ import moreFun from './more-fun.md'
 // Images
 import './wf-truss-full.svg'
 import './wf-truss-detail.svg'
+import './wf-truss-bolts.svg'
+import './wf-truss-lag.svg'
 import './x_bar.png'
 
 

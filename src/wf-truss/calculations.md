@@ -82,11 +82,11 @@ Calculate the shear lag according to Case 2. For wide-flange shapes with the
 flanges attached to plates, the eccentricity of the connection $\bar{x}$ is
 calculated by considering the W section as two WT sections.
 
-![Figure showing shear lag?](../assets/placeholder.png)
-
 The WT made from a W12x72 is a WT6x36 (divide both the nominal depth
 and nominal weight by 2). From AISC *Manual* Table 1-8, $\bar{y} = 1.02\inch$
 for a WT6x36.
+
+![Connection length for shear lag.](./wf-truss-lag.svg)
 
 $$ \begin{align}
     U &= 1 - \frac{\bar{x}}{l} \\
@@ -182,7 +182,7 @@ together to determine the design strength of the bolt group.
 For each bolt, an effective strength is calculated as the lowest strength 
 from the limit states of bolt shear rupture, bearing, and tearout.
 
-![Bolt numbering scheme used.](../assets/placeholder.png)
+![Bolt numbering scheme used and clear distances.](./wf-truss-bolts.svg)
 
 From Table J3.2, the nominal shear strength $F_{nv}$ of single Group B (A490) 
 bolt when threads are not excluded from the shear planes is $F_{nv} = 68\ksi$.
