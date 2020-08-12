@@ -31,8 +31,10 @@ export class ModelViewer {
 
     wireframeColor: THREE.Color = colors.black
     backgroundColor: THREE.Color = colors.gray_4
+
     // Whether to render edges as lines in the model.
     renderEdges: Boolean = true
+
     // Controls whether the EdgesGeometry used for the outline draws the edge.
     // If the angle between the adjacent normals exceeds the threshold, the edge
     // is drawn. Use a fairly high threshold angle -- 20 degrees -- so that
