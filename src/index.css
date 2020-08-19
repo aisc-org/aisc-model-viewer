@@ -4,7 +4,7 @@ body {
     font-family: 'STIX 2 Text', serif;
     line-height: 1.25;
     margin: auto;
-    padding: 0 1em;
+    padding: 1em;
     max-width: 30em;
 }
 
@@ -22,7 +22,7 @@ code {
     border-radius: 10%;
 }
 
-figure img {
+img {
     max-width: 100%;
 }
 
