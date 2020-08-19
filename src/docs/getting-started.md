@@ -8,8 +8,9 @@ This site is built to grow. We especially encourage:
 - [New items for the More Fun! pages](./#Adding-a-more-fun-item)
 
 Check out the tutorials for more information. Once you've developed your
-contribution, you can email the maintainers with your submission. Or, if you
-know how to use git,
+contribution, you can
+[email the maintainers](mailto:universityprograms@aisc.org)
+with your submission. Or, if you know how to use git,
 [fork the repository](https://github.com/otaithleigh/aisc-model-viewer) and make
 a pull request with your added content.
 
