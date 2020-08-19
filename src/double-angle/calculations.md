@@ -72,7 +72,7 @@ A depiction of tensile rupture failure for this connection is shown in
 
 ![Corresponding failure surface.](./rupture-area.svg)
 
-The net area, $A_n$, is shown in orange. It is equal to the gross area minus the
+The net area, $A_n$, is shown in red. It is equal to the gross area minus the
 material removed for two bolt holes as defined in Section B4.3b of the AISC
 *Specification*:
 
