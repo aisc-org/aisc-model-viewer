@@ -182,7 +182,7 @@ together to determine the design strength of the bolt group.
 For each bolt, an effective strength is calculated as the lowest strength 
 from the limit states of bolt shear rupture, bearing, and tearout.
 
-![Bolt numbering scheme used and clear distances.](./wf-truss-bolts.svg)
+![Bolt numbering scheme used and clear distances for tearout in the plate.](./wf-truss-bolts.svg)
 
 From Table J3.2, the nominal shear strength $F_{nv}$ of single Group B (A490) 
 bolt when threads are not excluded from the shear planes is $F_{nv} = 68\ksi$.
