@@ -1,16 +1,21 @@
-To run:
+Three-Dimensional Model Viewer for Illustrating Structural Steel Concepts
+=========================================================================
 
-````````````````````````````````````````````````````````````````````````````````
-yarn install
-yarn start
-````````````````````````````````````````````````````````````````````````````````
+This repository contains the source code for the site. See
+[Setting up a development environment](https://otaithleigh.github.io/aisc-model-viewer/docs/#Setting-up-a-development-environment)
+for information on building the site from these sources.
 
-Then open a new tab pointing to `localhost:8080`.
 
-Note that Yarn and `webpack-dev-server` aren't playing along nicely right now if
-you try to have `webpack-dev-server` automatically open a new tab for you (see
-[the relevant yarn issue](https://github.com/yarnpkg/berry/issues/856)).
+Contributing
+------------
 
-If using Visual Studio Code: you will need to run the `TypeScript: select
-TypeScript Version` command (from inside a *.ts file) in order for the
-TypeScript language server to look at the right things.
+See [the documentation](https://otaithleigh.github.io/aisc-model-viewer/docs/#Getting-started) for more details.
+
+
+About
+-----
+
+This project was developed by Mark Denavit and Peter Talley at the University of
+Tennessee, Knoxville. Funding for this project was provided by the American
+Institute of Steel Construction (AISC) through the Teaching Aid Development
+Program.
