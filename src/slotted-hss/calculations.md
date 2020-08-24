@@ -236,7 +236,7 @@ Shear rupture controls the base metal limit state for the HSS member.
 $$ \boxed{\phi R_n = 526~\rm{kip}} $$
 
 
-Base metal -- plate ([model](#Base-metal-(plate)))
+Base metal -- plate ([model](#Base-metal-(Plate)))
 -------------------
 
 The base metal limit state checks for failure of the welded elements at the weld
