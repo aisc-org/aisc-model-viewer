@@ -20,15 +20,6 @@ is preferred for simplicity and reduced asset size. See
 [Exporting to glTF](./#Exporting-to-glTF) for instructions for common modeling
 software.
 
-Licensing
----------
-
-Please ensure that you have permission to re-distribute any content submitted to
-the site.
-
-Section on licensing. Do models/words become (c) AISC? Will contributors have to
-sign a [contributor license agreement](https://en.wikipedia.org/wiki/Contributor_License_Agreement)?
-Does AISC have existing boilerplate for this kinda thing?
 
 Code
 ----
