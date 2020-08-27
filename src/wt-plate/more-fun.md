@@ -1,15 +1,5 @@
 What would be the controlling limit state if the tension member was a WT6x25?
 
-<!-- <details>
-    <summary>Hint</summary>
-    Here's a hint!
-</details>
-
-<details>
-    <summary>Answer</summary>
-    Simplified calculations...
-</details> -->
-
 --------------------------------------------------------------------------------
 
 WTs are made by cutting a wide flange section lengthwise, either in a dedicated shop
