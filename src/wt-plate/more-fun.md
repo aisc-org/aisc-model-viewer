@@ -26,4 +26,16 @@ With experience, you will gain a feel for which limit states control a given con
 
 --------------------------------------------------------------------------------
 
+What is the strength of the bolt group in this connection?
+Remember to consider bearing and tearout in the connected material as well as bolt shear rupture.
+
+--------------------------------------------------------------------------------
+
+This connection has eccentricity -- the centroid of the tension member is offset
+from the centroid of the gusset plate. As a result, moments are generated which
+may need to be considered in design. Historically, eccentricity has been ignored
+for tension members. It cannot be ignored for compression members.
+
+--------------------------------------------------------------------------------
+
 Do you have a fun idea to add to this page? Learn how to contribute it in [the documentation](../docs/#Adding-a-more-fun-item).

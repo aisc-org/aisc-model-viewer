@@ -9,6 +9,11 @@ What would be the controlling limit state if the bolts were A490?
 
 --------------------------------------------------------------------------------
 
+What would be the effective net area of the tension member if the angles were
+2L8x4x5/8 LLBB (long legs back-to-back)? What if they were short legs back-to-back?
+
+--------------------------------------------------------------------------------
+
 The column is a W24x130. You won't find this section in the 15th Edition of the
 Steel Construction Manual since it is no longer commonly produced. It last
 appeared in the
