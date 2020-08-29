@@ -130,7 +130,7 @@ section.html-content.full-width {
 }
 
 /* Inline code */
-.html-content code:not(.sourceCode) {
+.html-content p>code {
     padding: 0.5%;
     background-clip: border-box;
     background-color: #e5e5e5;
