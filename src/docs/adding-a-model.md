@@ -51,3 +51,27 @@ contributors to the collection to the `contributors` list.
       ]
   })
 ```
+
+What's happening:
+
+- Specify the model file (`My Model.glb`) as a dependency:
+  ``` typescript
+  import pathToModel from './My Model.glb'
+  ```
+  The relative path to the file is returned in the variable `pathToModel`.
+- Create a new `Model` instance:
+  ``` typescript
+  new Model({ name: 'My model', path: pathToModel })
+  ```
+  `name` specifies the name used in the sidebar, which is also used to create
+  the unique link to the item. `path` tells the code where to look for the model
+  file.
+- Credit the appropriate contributors:
+  ``` typescript
+  contributors: [
+      'Wirt',
+      'Jason Funderberker',
+  ]
+  ```
+  The `contributors` array is used to populate the list of contributors on the
+  credits page of the collection.
