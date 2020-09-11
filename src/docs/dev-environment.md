@@ -9,7 +9,7 @@ Building the site requires the following external dependencies:
 
 - Node.js
 - Yarn
-- Pandoc, v2.0 or higher. Make sure it's available on your `PATH`.
+- Pandoc, v2.8 or higher. Make sure it's available on your `PATH`.
 
 
 External dependencies
