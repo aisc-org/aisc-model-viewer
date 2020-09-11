@@ -2,14 +2,14 @@ Three-Dimensional Model Viewer for Illustrating Structural Steel Concepts
 =========================================================================
 
 This repository contains the source code for the site. See
-[Setting up a development environment](https://otaithleigh.github.io/aisc-model-viewer/docs/#Setting-up-a-development-environment)
+[Setting up a development environment](https://aisc-org.github.io/aisc-model-viewer/docs/#Setting-up-a-development-environment)
 for information on building the site from these sources.
 
 
 Contributing
 ------------
 
-See [the documentation](https://otaithleigh.github.io/aisc-model-viewer/docs/#Getting-started) for more details.
+See [the documentation](https://aisc-org.github.io/aisc-model-viewer/docs/#Getting-started) for more details.
 
 
 About

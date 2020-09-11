@@ -47,7 +47,7 @@ along the top.
 
 Next we need to tell the build system to create a new `index.html` page for our
 collection. The build system is controlled by the
-[`webpack.common.js`](https://github.com/otaithleigh/aisc-model-viewer/blob/master/webpack.common.js)
+[`webpack.common.js`](https://github.com/aisc-org/aisc-model-viewer/blob/master/webpack.common.js)
 file in the root of the repository. We need to do 2 things:
 
 - Tell webpack to create a new bundle
@@ -90,7 +90,7 @@ Let's break this down by its pieces:
 
 - `title` defines the title of the page that appears in the tab in your browser.
 - `filename` defines the path to the HTML file relative to the site root. So our
-  new collection will be found at `https://otaithleigh.github.io/my-collection/`,
+  new collection will be found at `https://aisc-org.github.io/my-collection/`,
   recalling that `index.html` is a special file that is served when the URL
   points to a directory.
 - `template` tells webpack which template HTML file to use. All collections
