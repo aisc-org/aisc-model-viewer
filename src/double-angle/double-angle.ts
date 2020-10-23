@@ -20,6 +20,7 @@ import './block-shear-path.svg'
 import './block-shear-area-shear.svg'
 import './block-shear-area-tension.svg'
 import './bolt-numbering.svg'
+import './bolt-9-clear-distance.svg'
 import './workpoint.svg'
 
 const app = new App({

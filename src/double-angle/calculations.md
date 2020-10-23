@@ -286,8 +286,17 @@ Bearing in the gusset plate controls. The nominal effective strength of bolts
 ### Bolt \#9
 
 The effective strength of bolt \#9 is calculated in the same manner, except with
-different clear distances. Bearing in the gusset plate controls. The nominal
-effective strength of bolt \#9 is 60.9 kips.
+different clear distances:
+
+$$ \begin{align}
+    l_{c,\text{ angle}} &= 3\inch - d_h = 2.063\inch \\
+    l_{c,\text{ plate}} &= 0.882\inch \text{ (see figure)}
+\end{align} $$
+
+![Clear distance for gusset-plate tearout for bolt \#9.](./bolt-9-clear-distance.svg)
+
+Tearout in the gusset plate controls. The nominal effective strength of bolt \#9
+is 30.7 kips.
 
 ### Bolt group
 
@@ -295,13 +304,13 @@ Calculate the nominal effective strength of the bolt group by summing the
 nominal effective strength of each bolt.
 
 $$ \begin{align}
-    R_n &= 60.9~\rm{kips} + 7 \times 60.9~\rm{kips} + 60.9~\rm{kips} \\
-        &= 548~\rm{kips}
+    R_n &= 60.9~\rm{kips} + 7 \times 60.9~\rm{kips} + 30.7~\rm{kips} \\
+        &= 518~\rm{kips}
 \end{align} $$
 
 Calculate the design strength by applying the resistance factor.
 
-$$ \phi P_n = 0.75(548~\rm{kips}) = 411~\rm{kips}$$
+$$ \phi P_n = 0.75(518~\rm{kips}) = 388~\rm{kips}$$
 
 
 Design Strength
@@ -315,9 +324,9 @@ each of the limit states investigated is summarized in the following table.
   Tensile yielding                           462 kips
   Tensile rupture                            525 kips
   Block shear rupture                        706 kips
-  Bolt shear rupture, bearing, and tearout   411 kips
+  Bolt shear rupture, bearing, and tearout   388 kips
 
-**Bolt group strength controls with a design strength of 411 kips.**
+**Bolt group strength controls with a design strength of 388 kips.**
 
 
 Bolt Spacing
