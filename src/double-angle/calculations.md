@@ -268,7 +268,7 @@ $$ \begin{align}
 \end{align} $$
 
 Bearing in the gusset plate controls. The nominal effective strength of bolt \#1
-is 64.9 kips.
+is 60.9 kips.
 
 ### Bolts \#2-8
 
