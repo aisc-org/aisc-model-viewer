@@ -273,10 +273,17 @@ is 60.9 kips.
 ### Bolts \#2-8
 
 The effective strength of bolts \#2 through \#8 is calculated in the same
-manner, except with different clear distances. Bearing in the gusset plate
-controls. The nominal effective strength of bolts \#2 through \#8 is 60.9 kips.
+manner, except the clear distance for tearout is the same for both the plate and
+the double angle:
 
-### Bolts \#9
+$$ \begin{align}
+    l_c &= 3\inch - d_h = 2.063\inch
+\end{align} $$
+
+Bearing in the gusset plate controls. The nominal effective strength of bolts
+\#2 through \#8 is 60.9 kips.
+
+### Bolt \#9
 
 The effective strength of bolt \#9 is calculated in the same manner, except with
 different clear distances. Bearing in the gusset plate controls. The nominal
