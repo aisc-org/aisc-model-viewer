@@ -9,10 +9,13 @@ module.exports = {
         index: './src/index.ts',
         docs: './src/docs/docs.ts',
         guide_to_2d_drawings: './src/guide-to-2d-drawings/guide.ts',
+        // Tension members
         double_angle: './src/double-angle/double-angle.ts',
         slotted_hss: './src/slotted-hss/slotted-hss.ts',
         wt_plate: './src/wt-plate/wt-plate.ts',
         wf_truss: './src/wf-truss/wf-truss.ts',
+        // Buckling members
+        buckling_wf_columns: './src/buckling-wf-columns/buckling-wf-columns.ts',
     },
     module: {
         rules: [
@@ -107,6 +110,12 @@ module.exports = {
             filename: 'wf-truss/index.html',
             template: './src/app.ejs',
             chunks: ['wf_truss']
+        }),
+        new HtmlWebpackPlugin({
+            title: 'Buckling of wide flange columns',
+            filename: 'buckling-wf-columns/index.html',
+            template: './src/app.ejs',
+            chunks: ['buckling_wf_columns']
         }),
     ],
     output: {
