@@ -70,6 +70,9 @@ export class ModelViewer {
         const resizeCallback = this.updateCanvasSize.bind(this)
         this.resizeObserver = new MutationObserver(resizeCallback)
         window.addEventListener('resize', resizeCallback)
+
+        // Add viewer as global variable for console access
+        ;(window as any).modelViewer = this
     }
 
     attachToContainer(container: HTMLElement) {

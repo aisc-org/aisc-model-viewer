@@ -110,6 +110,9 @@ export class App {
         //
         window.addEventListener('hashchange', this.setCurrentContent.bind(this))
         this.setCurrentContent()
+
+        // Add app as global variable for console access
+        ;(window as any).modelApp = this
     }
 
     updateDisplayMode() {
