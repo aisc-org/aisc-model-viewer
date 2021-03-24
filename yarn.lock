@@ -158,6 +158,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/three@npm:^0.126.1":
+  version: 0.126.1
+  resolution: "@types/three@npm:0.126.1"
+  checksum: 3/47340256d0adb80c3b9c88f1f0b4b82473bae556f49d4de7be2416fe1524b56df778f6c1b2612bffb5d55de95cf121d13ce427a3e0b58fd406969b6813496063
+  languageName: node
+  linkType: hard
+
 "@types/uglify-js@npm:*":
   version: 3.9.0
   resolution: "@types/uglify-js@npm:3.9.0"
@@ -533,6 +540,7 @@ __metadata:
   resolution: "aisc-model-viewer@workspace:."
   dependencies:
     "@types/node": ^13.11.1
+    "@types/three": ^0.126.1
     "@yarnpkg/pnpify": ^2.0.0-rc.20
     clean-webpack-plugin: ^3.0.0
     file-loader: ^6.0.0
