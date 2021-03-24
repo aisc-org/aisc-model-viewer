@@ -539,7 +539,7 @@ __metadata:
     html-loader: ^1.1.0
     html-webpack-plugin: ^4.2.0
     pnp-webpack-plugin: ^1.6.4
-    three: ^0.116.1
+    three: ^0.126.1
     ts-loader: ^6.2.2
     typescript: ^3.8.3
     webpack: ^4.42.1
@@ -6177,10 +6177,10 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"three@npm:^0.116.1":
-  version: 0.116.1
-  resolution: "three@npm:0.116.1"
-  checksum: 3/72b2df891611751ff62d1354b3219aa1dbee7266aac873afcac2b78e8ee5ed4687eeeeded1dc25839ad3946b33cb3c333ea8ae164777d7efdf0e04751f8eb4c0
+"three@npm:^0.126.1":
+  version: 0.126.1
+  resolution: "three@npm:0.126.1"
+  checksum: 3/de1ba579b8e499be7f45fa75773bf95d05eb9d82e4cd7db9808e6b54d5e94cbb3b78a00853c4de2643176e509e167c8d41288680e9f11cf77bf2479ed56b2ca4
   languageName: node
   linkType: hard
 
