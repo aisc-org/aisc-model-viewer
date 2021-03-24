@@ -41,6 +41,8 @@ export class ModelViewer {
     // edges don't show up on curved surfaces.
     edgeThresholdAngle: number = 20
 
+    // Observer that watches for window resizes, and updates the canvas size to
+    // match.
     private resizeObserver: MutationObserver
 
     constructor() {
