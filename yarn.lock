@@ -73,6 +73,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/dat.gui@npm:^0.7.6":
+  version: 0.7.6
+  resolution: "@types/dat.gui@npm:0.7.6"
+  checksum: 3/048963af7f675266cc260a3601ba95ffe5c77c3109934423336cc0376d97a39fd694cae289b7161cb5f5aa58db48be708fbf6c3ff8c6af30eff428053f8d7922
+  languageName: node
+  linkType: hard
+
 "@types/emscripten@npm:^1.38.0":
   version: 1.39.3
   resolution: "@types/emscripten@npm:1.39.3"
@@ -539,10 +546,12 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "aisc-model-viewer@workspace:."
   dependencies:
+    "@types/dat.gui": ^0.7.6
     "@types/node": ^13.11.1
     "@types/three": ^0.126.1
     "@yarnpkg/pnpify": ^2.0.0-rc.20
     clean-webpack-plugin: ^3.0.0
+    dat.gui: ^0.7.7
     file-loader: ^6.0.0
     html-loader: ^1.1.0
     html-webpack-plugin: ^4.2.0
@@ -1698,6 +1707,13 @@ __metadata:
   dependencies:
     assert-plus: ^1.0.0
   checksum: 3/5959409ee42dc4bdbf3fa384b801ece580ca336658bb0342ffab0099b3fc6bf9b3e239e1b82dcc4fcaeee315353e08f2eae47b0928a6a579391598c44958afa1
+  languageName: node
+  linkType: hard
+
+"dat.gui@npm:^0.7.7":
+  version: 0.7.7
+  resolution: "dat.gui@npm:0.7.7"
+  checksum: 3/6c61e4bd2de95033796166ecf0f4d211a1d4aac73997ad777b8d0f9943a1ffa7c6216ce817ef081f2d01add0255425740e544b48d8d3871240d35aae6544184b
   languageName: node
   linkType: hard
 
