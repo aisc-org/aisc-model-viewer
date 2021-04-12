@@ -98,6 +98,9 @@ export class App {
         // even when its open.
         window.addEventListener('resize', this.updateDisplayMode.bind(this))
         this.updateDisplayMode()
+        if (this.contentSizingMode === DisplayMode.Portrait) {
+            this.toggleSidebar()
+        }
 
         // Toggling of sidebar
         const sidebarToggle = document.getElementById('sidebar-toggle') as HTMLButtonElement
