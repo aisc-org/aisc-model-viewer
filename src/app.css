@@ -75,7 +75,7 @@ div.app {
     top: 50px;
     bottom: 0;
     position: fixed;
-    overflow-x: hidden;
+    overflow-x: auto;
     overflow-y: auto;
 }
 
