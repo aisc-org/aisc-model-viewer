@@ -177,6 +177,9 @@ export class ModelViewer {
             console.log('Updating canvas size...')
             this.camera.aspect = this.container.clientWidth / this.container.clientHeight
             this.camera.updateProjectionMatrix()
+            // Fire twice; fixes issue where scrollbars leave blank edges around
+            // the canvas.
+            this.renderer.setSize(this.container.clientWidth, this.container.clientHeight)
             this.renderer.setSize(this.container.clientWidth, this.container.clientHeight)
             this.render()
         }
