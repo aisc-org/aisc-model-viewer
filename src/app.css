@@ -250,7 +250,7 @@ nav.sidebar {
     width: 250px;
     height: 100%;
     background-color: #F6F6F6;
-    border-left: 10px solid var(--header-bg-color);
+    border-left: 5px solid var(--header-bg-color);
     box-sizing: border-box;
     color: var(--color-ut-smokey);
     padding: 0;
