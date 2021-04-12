@@ -6,6 +6,7 @@ import { siteRoot } from './utils'
 
 
 const colors = {
+    aisc_blue: new THREE.Color('#00558A'),
     orange:   new THREE.Color('#FF8200'),
     white:    new THREE.Color('#FFFFFF'),
     smokey:   new THREE.Color('#58595B'),
@@ -30,7 +31,7 @@ export class ModelViewer {
     controls: OrbitControls
 
     wireframeColor: THREE.Color = colors.black
-    backgroundColor: THREE.Color = colors.gray_4
+    backgroundColor: THREE.Color = colors.aisc_blue
 
     // Whether to render edges as lines in the model.
     renderEdges: Boolean = true
