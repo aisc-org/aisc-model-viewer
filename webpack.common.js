@@ -82,37 +82,37 @@ module.exports = {
             chunks: ['docs']
         }),
         new HtmlWebpackPlugin({
-            title: 'Guide to 2D drawings',
+            title: 'Guide to 2D Drawings',
             filename: 'guide-to-2d-drawings/index.html',
             template: './src/app.ejs',
             chunks: ['guide_to_2d_drawings']
         }),
         new HtmlWebpackPlugin({
-            title: 'Double angle connection',
+            title: 'Double Angle Connection',
             filename: 'double-angle/index.html',
             template: './src/app.ejs',
             chunks: ['double_angle']
         }),
         new HtmlWebpackPlugin({
-            title: 'Slotted HSS connection',
+            title: 'Slotted HSS Connection',
             filename: 'slotted-hss/index.html',
             template: './src/app.ejs',
             chunks: ['slotted_hss']
         }),
         new HtmlWebpackPlugin({
-            title: 'WT bolted connection',
+            title: 'WT Bolted Connection',
             filename: 'wt-plate/index.html',
             template: './src/app.ejs',
             chunks: ['wt_plate']
         }),
         new HtmlWebpackPlugin({
-            title: 'Wide flange truss connection',
+            title: 'Wide Flange Truss Connection',
             filename: 'wf-truss/index.html',
             template: './src/app.ejs',
             chunks: ['wf_truss']
         }),
         new HtmlWebpackPlugin({
-            title: 'Buckling of wide flange columns',
+            title: 'Buckling of Wide Flange Columns',
             filename: 'buckling-wf-columns/index.html',
             template: './src/app.ejs',
             chunks: ['buckling_wf_columns']
