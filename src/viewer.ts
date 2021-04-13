@@ -152,10 +152,6 @@ export class ModelViewer {
     }
 
     addWireframeToGroup(group: THREE.Group) {
-        const wireMaterial = new THREE.LineBasicMaterial({
-            color: this.wireframeColor,
-            linewidth: 1.5,
-        })
         // For each material, turn on polygonOffset. This very slightly
         // moves the surface to prevent z-fighting with the wireframe. Store
         // (and check for) materials we've already updated.
@@ -178,12 +174,46 @@ export class ModelViewer {
                     element.material.forEach(setPolygonOffset)
                 }
                 // Create the wireframe from the mesh geometry.
-                console.log('Adding wireframe to mesh...')
-                let wireGeometry = new THREE.EdgesGeometry(element.geometry, this.edgeThresholdAngle)
-                let wireframe = new THREE.LineSegments(wireGeometry, wireMaterial)
-                element.add(wireframe)
+                this.updateWireframe(element)
             }
         });
+    }
+
+    /**
+     * Remove any existing wireframe(s) from a mesh.
+     * 
+     * @param mesh The mesh to remove wireframe(s) from.
+     */
+    removeWireframe(mesh: THREE.Mesh) {
+        mesh.children.forEach(child => {
+            if (child instanceof THREE.LineSegments) {
+                mesh.remove(child)
+            }
+        })
+    }
+
+    /**
+     * Update the wireframe for a given mesh.
+     * 
+     * @param mesh The mesh to add a wireframe to.
+     * @param useMorphed If true, use the morphed geometry to create the edges. Buggy. Default: false
+     */
+    updateWireframe(mesh: THREE.Mesh, options?: { useMorphed?: boolean }) {
+        console.log('Updating wireframe for mesh ', mesh)
+
+        // Remove the previous wireframe(s)
+        this.removeWireframe(mesh)
+
+        const wireMaterial = new THREE.LineBasicMaterial({
+            color: this.wireframeColor,
+            linewidth: 1.5,
+        })
+
+        const geometry = options?.useMorphed ? getMorphedGeometry(mesh) : mesh.geometry
+
+        let wireGeometry = new THREE.EdgesGeometry(geometry, this.edgeThresholdAngle)
+        let wireframe = new THREE.LineSegments(wireGeometry, wireMaterial)
+        mesh.add(wireframe)
     }
 
     clearScene() {
