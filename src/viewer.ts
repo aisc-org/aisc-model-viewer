@@ -1,4 +1,5 @@
 import * as THREE from 'three'
+import { BufferGeometryUtils } from 'three/examples/jsm/utils/BufferGeometryUtils'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
@@ -18,6 +19,27 @@ const colors = {
     gray_3:   new THREE.Color('#CACACA'),
     gray_4:   new THREE.Color('#B6B6B6'),
     black:    new THREE.Color('#000000'),
+}
+
+
+interface MorphedAttributes {
+    positionAttribute: THREE.Float32BufferAttribute
+    normalAttribute: THREE.Float32BufferAttribute
+    morphedPositionAttribute: THREE.Float32BufferAttribute
+    morphedNormalAttribute: THREE.Float32BufferAttribute
+}
+
+
+function getMorphedGeometry(mesh: THREE.Mesh) {
+    const attributes = BufferGeometryUtils.computeMorphedAttributes(mesh) as MorphedAttributes
+
+    const morphed = new THREE.BufferGeometry()
+    morphed.setAttribute('position', attributes.morphedPositionAttribute)
+    morphed.setAttribute('normal', attributes.morphedNormalAttribute)
+
+    morphed.morphTargetsRelative = mesh.geometry.morphTargetsRelative
+
+    return morphed
 }
 
 
