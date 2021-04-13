@@ -199,9 +199,14 @@ export class App {
         }
 
         const linkname = window.location.hash.substr(1)
+        const currentItem: SidebarItem = this.contentLinkMap[this.currentContent]
+        const cleanup = currentItem ? currentItem.destroyContent : () => { return Promise.resolve() }
+
         const item: SidebarItem = this.contentLinkMap[linkname]
         if (linkname in this.contentLinkMap) {
-            item.createContent(this.contentContainer).then(content => {
+            cleanup().then(() => {
+                return item.createContent(this.contentContainer)
+            }).then(content => {
                 // Save scroll position
                 if (this.currentElement) {
                     console.log('Saving', this.currentContent, 'scroll position as', this.contentContainer.scrollTop)
@@ -262,6 +267,14 @@ abstract class SidebarItem {
      */
     createContent(contentContainer: HTMLElement): Promise<HTMLElement> {
         return Promise.reject(new NoContentError)
+    }
+
+    /**
+     * Perform cleanup before switching to new content.
+     * 
+     */
+    destroyContent() {
+        return Promise.resolve()
     }
 }
 
@@ -355,6 +368,11 @@ export class Model extends SidebarItem {
         Model.viewer.attachToContainer(contentContainer)
         Model.viewer.setModelAsCurrent(this.path, this.centerModel, this.maxScale)
         return Promise.resolve(Model.viewer.renderer.domElement)
+    }
+
+    destroyContent() {
+        Model.viewer.destroyGUI()
+        return Promise.resolve()
     }
 
     createItem() {
