@@ -337,7 +337,7 @@ export class HtmlItem extends SidebarItem {
 
 export class Model extends SidebarItem {
     path: string
-    centerModel: boolean | undefined
+    centerModel?: boolean
     static viewer: ModelViewer
 
     constructor(params: { name: string, path: string, center?: boolean }) {
