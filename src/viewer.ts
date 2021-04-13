@@ -3,6 +3,7 @@ import { BufferGeometryUtils } from 'three/examples/jsm/utils/BufferGeometryUtil
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
+import { GUI } from 'dat.gui'
 import { siteRoot } from './utils'
 
 
@@ -51,6 +52,7 @@ export class ModelViewer {
     camera: THREE.PerspectiveCamera
     renderer: THREE.WebGLRenderer
     controls: OrbitControls
+    gui?: GUI
 
     wireframeColor: THREE.Color = colors.black
     backgroundColor: THREE.Color = colors.aisc_blue
@@ -141,6 +143,59 @@ export class ModelViewer {
             this.controls.update()
         })
         this.updateCanvasSize()
+    }
+
+    addGUI() {
+        this.destroyGUI()
+        this.gui = new GUI({ autoPlace: false, closeOnTop: true,  })
+
+        let guiContainer = document.getElementById('gui-wrapper') as HTMLDivElement | null
+        if (guiContainer === null) {
+            guiContainer = document.createElement('div')
+            guiContainer.id = 'gui-wrapper'
+            guiContainer.style.position = 'absolute'
+            guiContainer.style.top = '0'
+            this.container.appendChild(guiContainer)
+        }
+        guiContainer.appendChild(this.gui.domElement)
+
+        return this.gui
+    }
+
+    updateGUI(morphMeshes: THREE.Mesh[], maxScale = 25.0) {
+        const gui = this.gui ? this.gui : this.addGUI()
+        const params = {
+            Scale: 0.5*maxScale,
+        }
+
+        gui.__controllers.forEach(controller => {
+            gui.remove(controller)
+        })
+
+        const updateScale = (value: number) => {
+            morphMeshes.forEach(mesh => {
+                if (mesh.morphTargetInfluences?.length){
+                    mesh.morphTargetInfluences.forEach((_, index, mti) => {
+                        mti[index] = value
+                    })
+                    if (this.renderEdges) {
+                        this.updateWireframe(mesh, { useMorphed: true })
+                    }
+                }
+            })
+            this.render()
+        }
+
+        gui.add(params, 'Scale', 0, maxScale, 0.01).onChange(updateScale)
+        updateScale(params.Scale)
+    }
+
+    destroyGUI() {
+        if (this.gui !== undefined) {
+            this.gui.domElement.remove()
+            this.gui.destroy()
+            this.gui = undefined
+        }
     }
 
     addLights() {
