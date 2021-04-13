@@ -107,7 +107,7 @@ export class ModelViewer {
         this.updateCanvasSize()
     }
 
-    setModelAsCurrent(path: string, center = true) {
+    setModelAsCurrent(path: string, center = true, maxScale = 25.0) {
         this.clearScene()
         this.loader.load(path, (gltf) => {
             const box = new THREE.Box3().setFromObject(gltf.scene)
@@ -123,10 +123,6 @@ export class ModelViewer {
                 theCenter.copy(gltf.scene.position)
             }
 
-            if (this.renderEdges) {
-                this.addWireframeToGroup(gltf.scene)
-            }
-
             this.controls.reset()
             this.controls.maxDistance = size*10
             this.camera.near = size / 100
@@ -140,6 +136,21 @@ export class ModelViewer {
             this.camera.lookAt(theCenter)
 
             this.scene.add(gltf.scene)
+
+            let morphableMeshes: THREE.Mesh[] = []
+            gltf.scene.traverse(element => {
+                if (element instanceof THREE.Mesh && element.morphTargetInfluences?.length) {
+                    morphableMeshes.push(element)
+                }
+            })
+            if (morphableMeshes.length > 0) {
+                this.updateGUI(morphableMeshes, maxScale)
+            }
+
+            if (this.renderEdges) {
+                this.addWireframeToGroup(gltf.scene)
+            }
+
             this.controls.update()
         })
         this.updateCanvasSize()
