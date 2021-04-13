@@ -79,8 +79,9 @@ export class ModelViewer {
 
         this.scene = new THREE.Scene()
         this.scene.background = this.backgroundColor
-        this.addLights()
         this.camera = new THREE.PerspectiveCamera(75)
+        this.addLights()
+        this.scene.add(this.camera)
 
         this.renderer = new THREE.WebGLRenderer({ antialias: true })
         this.renderer.setPixelRatio(window.devicePixelRatio)
@@ -210,11 +211,11 @@ export class ModelViewer {
     }
 
     addLights() {
-        const ambientLight = new THREE.AmbientLight(0xFFFFFF, 0.95)
-        const directionalLightUp = new THREE.DirectionalLight(0xFFFFFF, 0.35)
-        directionalLightUp.position.set(0, -1, 0);
-        const directionalLightDn = new THREE.DirectionalLight(0xFFFFFF, 0.35)
-        this.scene.add(ambientLight, directionalLightUp, directionalLightDn)
+        const ambient = new THREE.AmbientLight(0xFFFFFF, 0.35)
+        const directional = new THREE.DirectionalLight(0xFFFFFF, 0.85)
+        directional.position.set(1, 0, 0)
+
+        this.camera.add(ambient, directional)
     }
 
     addWireframeToGroup(group: THREE.Group) {
