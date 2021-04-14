@@ -3,10 +3,17 @@
 :root {
     --color-ut-orange: #FF8200;
     --color-ut-smokey: #58595B;
+    --color-ut-smokey-x: #333333;
     --color-aisc-blue: #00558a;
+    --color-gray-1: #f6f6f6;
+    --color-gray-2: #e0e0e0;
+    --color-gray-3: #cacaca;
+    --color-gray-4: #b6b6b6;
 
     --header-bg-color: var(--color-aisc-blue);
     --header-text-color: white;
+
+    --code-bg-color: #e5e5e5;
 }
 
 html, body {
@@ -15,7 +22,7 @@ html, body {
     margin: 0;
     padding: 0;
     border: 0;
-    color: #333333;
+    color: var(--color-ut-smokey-x);
 }
 
 a {
@@ -133,7 +140,7 @@ section.html-content.full-width {
 .html-content p>code {
     padding: 0.5%;
     background-clip: border-box;
-    background-color: #e5e5e5;
+    background-color: var(--code-bg-color);
     border-radius: 10%;
 }
 
@@ -145,7 +152,7 @@ section.html-content.full-width {
 pre.sourceCode {
     padding: 1%;
     background-clip: border-box;
-    background-color: #e5e5e5;
+    background-color: var(--code-bg-color);
     overflow-x: auto;
 }
 
@@ -166,7 +173,7 @@ pre.sourceCode {
 
 .html-content figure {
     text-align: center;
-    background-color: #fbfbfb;
+    background-color: var(--color-gray-1);
     padding: 5px;
     border-radius: 5px;
     margin: 0;
@@ -210,7 +217,7 @@ div.properties th {
 }
 
 .html-content details {
-    border: 1px solid #333;
+    border: 1px solid var(--color-ut-smokey-x);
     border-radius: 4px;
     margin: 0 1rem;
     padding: 0.5em 0.5em 0;
@@ -227,14 +234,14 @@ div.properties th {
 }
 
 .html-content details.sourceCode[open] {
-    background-color: #e5e5e5;
+    background-color: var(--code-bg-color);
 }
 
 .html-content details[open] summary {
     background-color: white;
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
-    border-bottom: 1px solid #333;
+    border-bottom: 1px solid var(--color-ut-smokey-x);
     margin-bottom: 0.5em;
 }
 
@@ -249,7 +256,7 @@ nav.sidebar {
     z-index: 1;
     width: 250px;
     height: 100%;
-    background-color: #F6F6F6;
+    background-color: var(--color-gray-1);
     border-left: 5px solid var(--header-bg-color);
     box-sizing: border-box;
     color: var(--color-ut-smokey);
