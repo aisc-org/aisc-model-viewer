@@ -212,8 +212,8 @@ export class ModelViewer {
 
     addLights() {
         const ambient = new THREE.AmbientLight(0xFFFFFF, 0.35)
-        const directional = new THREE.DirectionalLight(0xFFFFFF, 0.85)
-        directional.position.set(1, 0, 0)
+        const directional = new THREE.DirectionalLight(0xFFFFFF, 0.65)
+        directional.position.set(1, 1, 0)
 
         this.camera.add(ambient, directional)
     }
