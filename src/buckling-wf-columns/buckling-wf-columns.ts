@@ -12,5 +12,11 @@ new App({
                 new Model({ name: 'Case A', path: pathToCaseA })
             ]
         }
-    ]
+    ],
+    addGuideLink: false,
+    contributors: [
+        'Michael Hadley',
+        'Peter Talley',
+        'Mark Denavit',
+    ],
 });
