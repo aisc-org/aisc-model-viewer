@@ -44,6 +44,12 @@ function getMorphedGeometry(mesh: THREE.Mesh) {
 }
 
 
+interface WireframeOptions {
+    useMorphed?: boolean
+    useWireframe?: boolean
+}
+
+
 export class ModelViewer {
     container: HTMLElement
     loader: GLTFLoader
@@ -264,8 +270,9 @@ export class ModelViewer {
      * 
      * @param mesh The mesh to add a wireframe to.
      * @param useMorphed If true, use the morphed geometry to create the edges. Buggy. Default: false
+     * @param useWireframe If true, use WireframeGeometry instead of EdgesGeometry.
      */
-    updateWireframe(mesh: THREE.Mesh, options?: { useMorphed?: boolean }) {
+    updateWireframe(mesh: THREE.Mesh, options?: WireframeOptions) {
         console.log('Updating wireframe for mesh ', mesh)
 
         // Remove the previous wireframe(s)
@@ -276,10 +283,15 @@ export class ModelViewer {
             linewidth: 1.5,
         })
 
-        const geometry = options?.useMorphed ? getMorphedGeometry(mesh) : mesh.geometry
+        const geometry = options?.useMorphed
+            ? getMorphedGeometry(mesh)
+            : mesh.geometry
 
-        let wireGeometry = new THREE.EdgesGeometry(geometry, this.edgeThresholdAngle)
-        let wireframe = new THREE.LineSegments(wireGeometry, wireMaterial)
+        const wireGeometry = options?.useWireframe 
+            ? new THREE.WireframeGeometry(geometry)
+            : new THREE.EdgesGeometry(geometry, this.edgeThresholdAngle)
+
+        const wireframe = new THREE.LineSegments(wireGeometry, wireMaterial)
         mesh.add(wireframe)
     }
 
