@@ -37,6 +37,7 @@ function getMorphedGeometry(mesh: THREE.Mesh) {
     const morphed = new THREE.BufferGeometry()
     morphed.setAttribute('position', attributes.morphedPositionAttribute)
     morphed.setAttribute('normal', attributes.morphedNormalAttribute)
+    morphed.setIndex(mesh.geometry.index)
 
     morphed.morphTargetsRelative = mesh.geometry.morphTargetsRelative
 
