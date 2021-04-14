@@ -15,9 +15,12 @@ import pathToWebLB from './Wide-flange-column-models-W8x31-Web-LB.glb'
 
 // Content
 import aiscTable from './appendix-table.md'
+import commentary from './commentary.md'
+import moreFun from './more-fun.md'
 
 // Assets
 import './AISC-360-Table-C-A-7.1.png'
+import './W14x159.jpg'
 
 
 new App({
@@ -48,6 +51,13 @@ new App({
             items: [
                 new Model({ name: 'Flange', path: pathToFlangeLB, maxScale: 5 }),
                 new Model({ name: 'Web', path: pathToWebLB, maxScale: 3.5 }),
+            ]
+        },
+        {
+            name: 'more',
+            items: [
+                new HtmlItem({ name: 'Commentary', content: commentary }),
+                new HtmlItem({ name: 'More fun!', content: moreFun }),
             ]
         },
     ],
