@@ -16,6 +16,7 @@ module.exports = {
         wf_truss: './src/wf-truss/wf-truss.ts',
         // Buckling members
         buckling_wf_columns: './src/buckling-wf-columns/buckling-wf-columns.ts',
+        buckling_i_shaped_beam: './src/buckling-i-shaped-beam/buckling-i-shaped-beam.ts',
     },
     module: {
         rules: [
@@ -116,6 +117,12 @@ module.exports = {
             filename: 'buckling-wf-columns/index.html',
             template: './src/app.ejs',
             chunks: ['buckling_wf_columns']
+        }),
+        new HtmlWebpackPlugin({
+            title: 'Buckling of I-shaped Beam',
+            filename: 'buckling-i-shaped-beam/index.html',
+            template: './src/app.ejs',
+            chunks: ['buckling_i_shaped_beam']
         }),
     ],
     output: {
