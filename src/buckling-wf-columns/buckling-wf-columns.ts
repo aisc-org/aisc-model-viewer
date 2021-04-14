@@ -4,7 +4,7 @@ import { App, Model } from '../app'
 import pathToCaseA from './Wide-flange-column-models-W8x31-Case-A.glb'
 
 new App({
-    title: 'Buckling of wide flange columns',
+    title: 'Wide flange column',
     groups: [
         {
             name: 'models',
