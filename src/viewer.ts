@@ -184,11 +184,11 @@ export class ModelViewer {
             gui.remove(controller)
         })
 
-        const updateScale = (value: number) => {
+        const updateScale = (scale: number) => {
             morphMeshes.forEach(mesh => {
                 if (mesh.morphTargetInfluences?.length){
                     mesh.morphTargetInfluences.forEach((_, index, mti) => {
-                        mti[index] = value
+                        mti[index] = scale
                     })
                     if (this.renderEdges) {
                         this.updateWireframe(mesh, { useMorphed: true })
