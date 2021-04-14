@@ -156,7 +156,7 @@ export class ModelViewer {
             }
 
             if (this.renderEdges) {
-                this.addWireframeToGroup(gltf.scene)
+                this.addWireframeToGroup(gltf.scene, { useMorphed: true })
             }
 
             this.controls.update()
