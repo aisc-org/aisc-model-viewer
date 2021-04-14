@@ -225,7 +225,7 @@ export class ModelViewer {
         this.camera.add(ambient, directional)
     }
 
-    addWireframeToGroup(group: THREE.Group) {
+    addWireframeToGroup(group: THREE.Group, options?: WireframeOptions) {
         // For each material, turn on polygonOffset. This very slightly
         // moves the surface to prevent z-fighting with the wireframe. Store
         // (and check for) materials we've already updated.
@@ -240,6 +240,7 @@ export class ModelViewer {
                 updatedMaterials.push(material)
             }
         }
+
         group.traverse(element => {
             if (element instanceof THREE.Mesh) {
                 if (element.material instanceof THREE.Material) {
@@ -248,7 +249,7 @@ export class ModelViewer {
                     element.material.forEach(setPolygonOffset)
                 }
                 // Create the wireframe from the mesh geometry.
-                this.updateWireframe(element)
+                this.updateWireframe(element, options)
             }
         });
     }
