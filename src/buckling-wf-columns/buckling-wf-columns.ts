@@ -68,3 +68,5 @@ new App({
         'Mark Denavit',
     ],
 });
+
+Model.viewer.edgeThresholdAngle = 40
