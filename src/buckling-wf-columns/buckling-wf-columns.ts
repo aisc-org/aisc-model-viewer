@@ -43,7 +43,7 @@ new App({
             items: [
                 new Model({ name: 'Minor-axis flexural', path: pathToMinorFBMode2 }),
                 new Model({ name: 'Major-axis flexural', path: pathToMajorFB }),
-                new Model({ name: 'Torsional', path: pathToTB, maxScale: 10 }),
+                new Model({ name: 'Torsional', path: pathToTB, maxScale: 5 }),
             ]
         },
         {
