@@ -17,6 +17,8 @@ module.exports = {
         // Buckling members
         buckling_wf_columns: './src/buckling-wf-columns/buckling-wf-columns.ts',
         buckling_i_shaped_beam: './src/buckling-i-shaped-beam/buckling-i-shaped-beam.ts',
+        buckling_hss: './src/buckling-hss/buckling-hss.ts',
+        buckling_double_angle: './src/buckling-double-angle/buckling-double-angle.ts',
     },
     module: {
         rules: [
@@ -123,6 +125,18 @@ module.exports = {
             filename: 'buckling-i-shaped-beam/index.html',
             template: './src/app.ejs',
             chunks: ['buckling_i_shaped_beam']
+        }),
+        new HtmlWebpackPlugin({
+            title: 'Buckling of HSS',
+            filename: 'buckling-hss/index.html',
+            template: './src/app.ejs',
+            chunks: ['buckling_hss']
+        }),
+        new HtmlWebpackPlugin({
+            title: 'Buckling of Double Angle',
+            filename: 'buckling-double-angle/index.html',
+            template: './src/app.ejs',
+            chunks: ['buckling_double_angle']
         }),
     ],
     output: {
