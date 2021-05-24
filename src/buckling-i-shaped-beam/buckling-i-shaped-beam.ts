@@ -13,9 +13,9 @@ new App({
         {
             name: '',
             items: [
-                new Model({ name: 'Flange local buckling', path: pathToFlangeLB }),
-                new Model({ name: 'Web local buckling', path: pathToWebLB }),
-                new Model({ name: 'Shear buckling (no stiffeners)', path: pathToShearBuckling1, maxScale: 20 }),
+                new Model({ name: 'Flange local buckling', path: pathToFlangeLB, maxScale: 10 }),
+                new Model({ name: 'Web local buckling', path: pathToWebLB, maxScale: 16 }),
+                new Model({ name: 'Shear buckling (no stiffeners)', path: pathToShearBuckling1, maxScale: 14 }),
                 new Model({ name: 'Shear buckling (with stiffeners)', path: pathToShearBuckling2 }),
                 new Model({ name: 'Lateral-torsional buckling', path: pathToLTB, maxScale: 50 }),
             ]
@@ -29,4 +29,4 @@ new App({
     ],
 })
 
-Model.viewer.edgeThresholdAngle = 50
+Model.viewer.edgeThresholdAngle = 35
