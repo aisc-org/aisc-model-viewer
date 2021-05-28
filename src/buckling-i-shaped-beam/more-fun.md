@@ -37,3 +37,8 @@ the applied loads and lateral bracing can restrain the beam in unwanted ways.
 Experimentalists use special mechanisms such as a
 [gravity load simulator and Watt's linkage](https://dx.doi.org/10.1007/BF02326237)
 to achieve the intended behavior.
+
+--------------------------------------------------------------------------------
+
+Do you have a fun idea to add to this page? Learn how to contribute it in
+[the documentation](../docs/#Adding-a-more-fun-item).

@@ -15,3 +15,8 @@ There are several advantages to filling an HSS with concrete to create a
 composite column. One of the advantages is that the tube cannot locally buckle
 inward. This does not prevent local buckling altogether, but does delay it and
 helps to increase strength and ductility.
+
+--------------------------------------------------------------------------------
+
+Do you have a fun idea to add to this page? Learn how to contribute it in
+[the documentation](../docs/#Adding-a-more-fun-item).
