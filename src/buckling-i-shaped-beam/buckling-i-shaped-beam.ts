@@ -7,11 +7,15 @@ import pathToShearBuckling1 from './I-shaped-beam-Shear-buckling-no-stiffeners.g
 import pathToShearBuckling2 from './I-shaped-beam-Shear-buckling-with-stiffeners.glb'
 import pathToLTB from './I-shaped-beam-Lateral-torsional-buckling.glb'
 
+// Content
+import commentary from './commentary.md'
+import moreFun from './more-fun.md'
+
 new App({
     title: 'I-Shaped Beam',
     groups: [
         {
-            name: '',
+            name: 'models',
             items: [
                 new Model({ name: 'Flange local buckling', path: pathToFlangeLB, maxScale: 10 }),
                 new Model({ name: 'Web local buckling', path: pathToWebLB, maxScale: 16 }),
@@ -20,6 +24,13 @@ new App({
                 new Model({ name: 'Lateral-torsional buckling', path: pathToLTB, maxScale: 50 }),
             ]
         },
+        {
+            name: 'more',
+            items: [
+                new HtmlItem({ name: 'Commentary', content: commentary }),
+                new HtmlItem({ name: 'More fun!', content: moreFun }),
+            ]
+        }
     ],
     addGuideLink: false,
     contributors: [
