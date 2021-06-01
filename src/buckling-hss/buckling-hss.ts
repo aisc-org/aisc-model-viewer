@@ -7,6 +7,7 @@ import pathToLB from './HSS-Local-buckling.glb'
 // Content
 import commentary from './commentary.md'
 import moreFun from './more-fun.md'
+import './rcft.jpg'
 
 new App({
     title: 'Buckling of HSS',
