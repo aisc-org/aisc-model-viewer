@@ -45,6 +45,7 @@ new App({
     addGuideLink: false,
     contributors: [
         'Michael Hadley',
+        'Tsu-Jung Denavit',
         'Peter Talley',
         'Mark Denavit',
     ],
