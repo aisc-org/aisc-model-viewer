@@ -24,7 +24,7 @@ import './W14x159.jpg'
 
 
 new App({
-    title: 'Wide flange column',
+    title: 'Buckling of Wide Flange Columns',
     groups: [
         {
             name: 'minor-axis flexural',
