@@ -59,6 +59,7 @@ export class ModelViewer {
     camera: THREE.PerspectiveCamera
     renderer: THREE.WebGLRenderer
     controls: OrbitControls
+    loadingSpinner?: HTMLDivElement
     gui?: GUI
 
     wireframeColor: THREE.Color = colors.black
@@ -117,6 +118,7 @@ export class ModelViewer {
 
     setModelAsCurrent(path: string, center = true, maxScale = 25.0) {
         this.clearScene()
+        this.addLoadingSpinner()
         this.loader.load(path, (gltf) => {
             const box = new THREE.Box3().setFromObject(gltf.scene)
             const size = box.getSize(new THREE.Vector3()).length()
@@ -160,8 +162,30 @@ export class ModelViewer {
             }
 
             this.controls.update()
+            this.removeLoadingSpinner()
         })
         this.updateCanvasSize()
+    }
+
+    addLoadingSpinner() {
+        if (this.loadingSpinner !== undefined) {
+            this.loadingSpinner.style.visibility = 'visible'
+            return
+        }
+
+        this.loadingSpinner = document.createElement('div')
+        this.loadingSpinner.appendChild(document.createElement('div'))
+        this.loadingSpinner.appendChild(document.createElement('div'))
+        this.loadingSpinner.appendChild(document.createElement('div'))
+        this.loadingSpinner.className = 'loading-spinner'
+        this.container.appendChild(this.loadingSpinner)
+    }
+
+    removeLoadingSpinner() {
+        if (this.loadingSpinner === undefined)
+            return
+
+        this.loadingSpinner.style.visibility = 'hidden'
     }
 
     addGUI() {
