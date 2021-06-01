@@ -15,7 +15,7 @@ transverse loads generates longitudinal compressive stress in the top half of
 the girder. These stresses make the girder susceptible to lateral-torsional
 buckling, flange local buckling, and web local buckling.
 
-Lateral-torsional buckling \([model](./#Lateral-torsional-buckling)\) is a type
+Lateral-torsional buckling \([model](./#Lateral-torsional)\) is a type
 of buckling for a flexural member (e.g., beam or girder) involving deflection
 out of the plane of bending occurring simultaneously with twist about the shear
 center of the cross section.
@@ -49,7 +49,7 @@ strength.
 
 The flange of this girder is quite stocky and would be classified as compact for
 any practical yield strength. This means that the load at which the elastic
-buckling mode shown in the [model](./#Flange-local-buckling) is much higher than
+buckling mode shown in the [model](./#Flange) is much higher than
 what it takes to yield the girder and that flange local buckling would not
 impact the available strength. Notice how flange local buckling only occurs in
 the compression flange (not the tension flange) and near midspan (where the
@@ -62,7 +62,7 @@ of I-shaped flexural members in the AISC *Specification*. Instead, the
 slenderness of the web impacts the calculations of the other limit states. The
 classification of the web also helps determine which section of AISC
 *Specification* Chapter F you use to compute the available strength. Notice how
-web local buckling only occurs in the top half of the web where the stress is
+web local buckling \([model](./#Web)\) only occurs in the top half of the web where the stress is
 compressive. Also note the slight ripples in the flange. Buckling of the web
 imparts a twisting force on the flange causing these deformations.
 
@@ -80,8 +80,8 @@ used to help transfer large point loads or reactions into the member while
 avoiding web local yielding or crippling. Stiffeners used for transferring large
 loads are called bearing stiffeners. Notice the differences in the buckling mode
 between the
-[model with only bearing stiffeners](./#Shear-buckling-(no-stiffeners)) and the
-[model with bearing stiffeners and transverse stiffeners](./#Shear-buckling-(with-stiffeners)).
+[model with only bearing stiffeners](./#No-transverse-stiffeners) and the
+[model with bearing stiffeners and transverse stiffeners](./#With-transverse-stiffeners)).
 
 It is important to note that shear buckling of the web is not the end of the
 story. The available strength you compute per AISC *Specification* Section G2 is
