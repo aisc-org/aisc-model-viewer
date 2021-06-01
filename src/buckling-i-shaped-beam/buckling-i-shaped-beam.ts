@@ -15,13 +15,23 @@ new App({
     title: 'I-Shaped Beam',
     groups: [
         {
-            name: 'models',
+            name: 'lateral-torsional',
             items: [
-                new Model({ name: 'Flange local buckling', path: pathToFlangeLB, maxScale: 10 }),
-                new Model({ name: 'Web local buckling', path: pathToWebLB, maxScale: 16 }),
-                new Model({ name: 'Shear buckling (no stiffeners)', path: pathToShearBuckling1, maxScale: 14 }),
-                new Model({ name: 'Shear buckling (with stiffeners)', path: pathToShearBuckling2 }),
-                new Model({ name: 'Lateral-torsional buckling', path: pathToLTB, maxScale: 50 }),
+                new Model({ name: 'Lateral-torsional', path: pathToLTB, maxScale: 50 }),
+            ]
+        },
+        {
+            name: 'local',
+            items: [
+                new Model({ name: 'Flange', path: pathToFlangeLB, maxScale: 10 }),
+                new Model({ name: 'Web', path: pathToWebLB, maxScale: 16 }),
+            ]
+        },
+        {
+            name: 'shear',
+            items: [
+                new Model({ name: 'No transverse stiffeners', path: pathToShearBuckling1, maxScale: 14 }),
+                new Model({ name: 'With transverse stiffeners', path: pathToShearBuckling2 }),
             ]
         },
         {
