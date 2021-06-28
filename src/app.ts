@@ -371,7 +371,7 @@ export class Model extends SidebarItem {
     }
 
     destroyContent() {
-        Model.viewer.destroyGUI()
+        Model.viewer.destroyContent()
         return Promise.resolve()
     }
 

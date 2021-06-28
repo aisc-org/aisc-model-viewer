@@ -109,6 +109,10 @@ export class ModelViewer {
         ;(window as any).modelViewer = this
     }
 
+    destroyContent() {
+        this.destroyGUI()
+    }
+
     attachToContainer(container: HTMLElement) {
         this.resizeObserver.disconnect()
         this.container = container
