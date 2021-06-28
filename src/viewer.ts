@@ -196,8 +196,6 @@ export class ModelViewer {
         if (guiContainer === null) {
             guiContainer = document.createElement('div')
             guiContainer.id = 'gui-wrapper'
-            guiContainer.style.position = 'absolute'
-            guiContainer.style.top = '0'
             this.container.appendChild(guiContainer)
         }
         guiContainer.appendChild(this.gui.domElement)

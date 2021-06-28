@@ -90,6 +90,11 @@ div.app {
     display: block;
 }
 
+.content-container div#gui-wrapper {
+    position: absolute;
+    top: 0;
+}
+
 .loading-spinner {
     position: absolute;
     top: calc(50% - 40px);
