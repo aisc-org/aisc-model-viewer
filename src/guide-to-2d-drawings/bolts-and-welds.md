@@ -1,4 +1,4 @@
-Displaying bolts and welds
+Displaying Bolts and Welds
 ==========================
 
 Bolts

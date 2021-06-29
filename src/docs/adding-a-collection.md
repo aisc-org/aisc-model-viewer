@@ -1,4 +1,4 @@
-Adding a collection
+Adding a Collection
 ===================
 
 In this tutorial, we'll:
@@ -7,7 +7,7 @@ In this tutorial, we'll:
 - Tell the build system what it needs to know to add the collection to the site
 - Link to the collection from the main page
 
-Create the collection
+Create the Collection
 ---------------------
 
 Each collection is gathered in a single folder in the `src` directory. The first
@@ -108,7 +108,7 @@ should see something like this:
 By default, a link to the [guide to 2d drawings](../guide-to-2d-drawings/) is
 added, but nothing else. Let's add some content to the collection.
 
-Adding content to the collection
+Adding Content to the Collection
 --------------------------------
 
 Most text content on this site is written in

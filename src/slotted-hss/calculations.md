@@ -18,7 +18,7 @@ $\newcommand{\inch}{~{\rm{in.}}}
  \newcommand{\sixt}{{\tfrac{1}{16}\inch}}$
 
 
-Material and geometric properties
+Material and Geometric Properties
 ---------------------------------
 
 The connection consists of a HSS6x6x3/8 connected by four (4) 5/16" fillet welds
@@ -57,7 +57,7 @@ From AISC *Manual* Table 2-5, the material properties for the gusset plate are:
 ::::::::::::::::::::
 
 
-Tensile yield
+Tensile Yield
 -------------
 
 Calculate the nominal strength using AISC *Specification* Equation D2-1.
@@ -71,7 +71,7 @@ $$ \begin{align}
 $$ \phi P_n = 0.9 (404~\rm{kips}) \boxed{= 364~\rm{kips}} $$
 
 
-Tensile rupture ([model](#Tensile-rupture))
+Tensile Rupture ([model](#Tensile-rupture))
 ---------------
 
 Steps:
@@ -131,7 +131,7 @@ Calculate the design strength by applying the resistance factor.
 $$ \phi P_n = 0.75(395~\rm{kips}) \boxed{= 296~\rm{kips}} $$
 
 
-Weld rupture ([model](#Weld-fracture))
+Weld Rupture ([model](#Weld-fracture))
 ------------
 
 The connection is made with four (4) 12 in. lengths of 5/16" fillet weld. 
@@ -179,7 +179,7 @@ Calculate the design strength by applying the resistance factor.
 $$ \phi R_n = 0.75 (445~\rm{kips}) \boxed{= 334~\rm{kips}} $$
 
 
-Base metal -- HSS ([model](#Base-metal-(HSS)))
+Base Metal -- HSS ([model](#Base-metal-(HSS)))
 -----------------
 
 The base metal limit state checks for failure of the welded elements at the weld
@@ -188,7 +188,7 @@ area is quite small relative to the shear area, however, and it is common to
 neglect it. Since the tensile contribution is being neglected, the limit state
 being checked is shear (section J4.2) instead of block shear (section J4.3).
 
-### Shear yielding
+### Shear Yielding
 
 Calculate the gross shear area $A_{gv}$.
 
@@ -211,7 +211,7 @@ Calculate the design strength by applying the resistance factor.
 
 $$ \phi R_n = 1.0 (540~\rm{kips}) = 540~\rm{kips} $$
 
-### Shear rupture
+### Shear Rupture
 
 For the shear planes being considered, the net shear area is equal to the gross
 shear area.
@@ -236,7 +236,7 @@ Shear rupture controls the base metal limit state for the HSS member.
 $$ \boxed{\phi R_n = 526~\rm{kip}} $$
 
 
-Base metal -- plate ([model](#Base-metal-(Plate)))
+Base Metal -- Plate ([model](#Base-metal-(Plate)))
 -------------------
 
 The base metal limit state checks for failure of the welded elements at the weld

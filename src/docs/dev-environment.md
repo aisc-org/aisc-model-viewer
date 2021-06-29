@@ -1,4 +1,4 @@
-Setting up a development environment
+Setting up a Development Environment
 ====================================
 
 In order to build the website for testing on your own machine, you'll need to
@@ -12,7 +12,7 @@ Building the site requires the following external dependencies:
 - Pandoc, v2.8 or higher. Make sure it's available on your `PATH`.
 
 
-External dependencies
+External Dependencies
 ---------------------
 
 ### Windows
@@ -64,7 +64,7 @@ For other distros, download the
 [instructions for installing via package manager](https://nodejs.org/en/download/package-manager/).
 
 
-Other dependencies
+Other Dependencies
 ------------------
 
 Once node and yarn are installed, run
@@ -76,7 +76,7 @@ yarn install
 To install the rest of the dependencies.
 
 
-Running the dev server
+Running the Dev Server
 ----------------------
 
 Once your development environment is set up, you can run the dev server, which
@@ -90,7 +90,7 @@ then open a new tab pointing to `localhost:8080`. You'll need to stop and
 restart the dev server if you make changes to the webpack configuration.
 
 
-Building the site
+Building the Site
 -----------------
 
 Run

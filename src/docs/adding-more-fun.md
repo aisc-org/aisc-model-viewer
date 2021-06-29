@@ -1,4 +1,4 @@
-Adding a more fun item
+Adding a More Fun Item
 ======================
 
 The "more fun!" pages on this site are collections of trivia and questions meant

@@ -1,4 +1,4 @@
-Types of structural drawings
+Types of Structural Drawings
 ============================
 
 
