@@ -157,6 +157,10 @@ section.html-content.full-width {
     max-width: 30em;
 }
 
+.full-width>img {
+    display: block;
+}
+
 .html-content p {
     padding: 0 1rem;
     text-align: justify;
