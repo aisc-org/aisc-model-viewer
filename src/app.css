@@ -58,6 +58,8 @@ nav.header img {
 
 nav.header h1 {
     align-self: center;
+    font-size: 1.3rem;
+    margin: 0.75rem;
 }
 
 nav.header button#sidebar-toggle {
