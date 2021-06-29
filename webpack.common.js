@@ -91,7 +91,7 @@ module.exports = {
             chunks: ['guide_to_2d_drawings']
         }),
         new HtmlWebpackPlugin({
-            title: 'Double Angle Connection',
+            title: 'Double Angle Brace Connection',
             filename: 'double-angle/index.html',
             template: './src/app.ejs',
             chunks: ['double_angle']
