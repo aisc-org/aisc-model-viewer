@@ -30,12 +30,36 @@ new App({
             name: 'minor-axis flexural',
             items: [
                 new HtmlItem({name: 'Table C-A-7.1', content: aiscTable, classes: ['full-width'] }),
-                new Model({ name: 'Case A', path: pathToCaseA }),
-                new Model({ name: 'Case B', path: pathToCaseB }),
-                new Model({ name: 'Case C', path: pathToCaseC }),
-                new Model({ name: 'Case D', path: pathToCaseD }),
-                new Model({ name: 'Case E', path: pathToCaseE }),
-                new Model({ name: 'Case F', path: pathToCaseF }),
+                new Model({
+                    name: 'Case A',
+                    path: pathToCaseA,
+                    desc: "<i>K</i> = 0.5 (theoretical), <i>K</i> = 0.65 (design)",
+                }),
+                new Model({
+                    name: 'Case B',
+                    path: pathToCaseB,
+                    desc: "<i>K</i> = 0.7 (theoretical), <i>K</i> = 0.8 (design)",
+                }),
+                new Model({
+                    name: 'Case C',
+                    path: pathToCaseC,
+                    desc: "<i>K</i> = 1.0 (theoretical), <i>K</i> = 1.0 (design)",
+                }),
+                new Model({
+                    name: 'Case D',
+                    path: pathToCaseD,
+                    desc: "<i>K</i> = 1.0 (theoretical), <i>K</i> = 1.2 (design)",
+                }),
+                new Model({
+                    name: 'Case E',
+                    path: pathToCaseE,
+                    desc: "<i>K</i> = 2.0 (theoretical), <i>K</i> = 2.1 (design)",
+                }),
+                new Model({
+                    name: 'Case F',
+                    path: pathToCaseF,
+                    desc: "<i>K</i> = 2.0 (theoretical), <i>K</i> = 2.0 (design)",
+                }),
             ]
         },
         {
