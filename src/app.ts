@@ -366,7 +366,7 @@ export class Model extends SidebarItem {
 
     createContent(contentContainer: HTMLElement): Promise<HTMLCanvasElement> {
         Model.viewer.attachToContainer(contentContainer)
-        Model.viewer.setModelAsCurrent(this.path, this.centerModel, this.maxScale)
+        Model.viewer.setModelAsCurrent(this.name, this.path, this.centerModel, this.maxScale)
         return Promise.resolve(Model.viewer.renderer.domElement)
     }
 

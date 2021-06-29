@@ -61,6 +61,7 @@ export class ModelViewer {
     controls: OrbitControls
     loadingSpinner?: HTMLDivElement
     gui?: GUI
+    titleElement?: HTMLDivElement
 
     wireframeColor: THREE.Color = colors.black
     backgroundColor: THREE.Color = colors.aisc_blue
@@ -111,6 +112,7 @@ export class ModelViewer {
 
     destroyContent() {
         this.destroyGUI()
+        this.destroyTitle()
     }
 
     attachToContainer(container: HTMLElement) {
@@ -120,7 +122,7 @@ export class ModelViewer {
         this.updateCanvasSize()
     }
 
-    setModelAsCurrent(path: string, center = true, maxScale = 25.0) {
+    setModelAsCurrent(name: string, path: string, center = true, maxScale = 25.0) {
         this.clearScene()
         this.addLoadingSpinner()
         this.loader.load(path, (gltf) => {
@@ -169,6 +171,7 @@ export class ModelViewer {
             this.removeLoadingSpinner()
         })
         this.updateCanvasSize()
+        this.updateTitle(name)
     }
 
     addLoadingSpinner() {
@@ -241,6 +244,24 @@ export class ModelViewer {
             this.gui.destroy()
             this.gui = undefined
         }
+    }
+
+    updateTitle(title: string) {
+        if (this.titleElement === undefined) {
+            this.titleElement = document.createElement('div')
+            this.titleElement.id = 'model-name'
+            this.container.appendChild(this.titleElement)
+        }
+
+        this.titleElement.innerText = title
+    }
+
+    destroyTitle() {
+        if (this.titleElement === undefined)
+            return
+
+        this.titleElement.remove()
+        this.titleElement = undefined
     }
 
     addLights() {

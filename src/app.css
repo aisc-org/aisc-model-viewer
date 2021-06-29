@@ -13,6 +13,8 @@
     --header-bg-color: var(--color-aisc-blue);
     --header-text-color: white;
 
+    --model-name-text-color: white;
+
     --code-bg-color: #e5e5e5;
 }
 
@@ -90,6 +92,15 @@ div.app {
 
 .content-container canvas {
     display: block;
+}
+
+.content-container div#model-name {
+    position: absolute;
+    bottom: 0;
+    color: var(--model-name-text-color);
+    font-weight: bold;
+    font-size: larger;
+    padding: 0.5rem;
 }
 
 .content-container div#gui-wrapper {
