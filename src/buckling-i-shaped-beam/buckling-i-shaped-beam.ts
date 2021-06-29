@@ -12,7 +12,7 @@ import commentary from './commentary.md'
 import moreFun from './more-fun.md'
 
 new App({
-    title: 'Buckling of I-Shaped Beam',
+    title: 'Buckling of I-Shaped Plate Girder',
     groups: [
         {
             name: 'lateral-torsional',
