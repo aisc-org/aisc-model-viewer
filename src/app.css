@@ -58,6 +58,11 @@ nav.header img {
     width: auto;
 }
 
+nav.header #home-button {
+    padding: 7.5%;
+    height: 85%;
+}
+
 nav.header h1 {
     align-self: center;
     font-size: 1.3rem;
@@ -67,7 +72,7 @@ nav.header h1 {
 nav.header button#sidebar-toggle {
     background: none;
     border: none;
-    width: 60px;
+    width: 3.75rem;
 }
 
 nav.header img#sidebar-toggle-icon {
