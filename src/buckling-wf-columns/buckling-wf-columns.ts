@@ -29,13 +29,13 @@ new App({
         {
             name: 'minor-axis flexural',
             items: [
+                new HtmlItem({name: 'Table C-A-7.1', content: aiscTable, classes: ['full-width'] }),
                 new Model({ name: 'Case A', path: pathToCaseA }),
                 new Model({ name: 'Case B', path: pathToCaseB }),
                 new Model({ name: 'Case C', path: pathToCaseC }),
                 new Model({ name: 'Case D', path: pathToCaseD }),
                 new Model({ name: 'Case E', path: pathToCaseE }),
                 new Model({ name: 'Case F', path: pathToCaseF }),
-                new HtmlItem({name: 'Table C-A-7.1', content: aiscTable, classes: ['full-width'] })
             ]
         },
         {
