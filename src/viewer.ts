@@ -61,7 +61,7 @@ export class ModelViewer {
     controls: OrbitControls
     loadingSpinner?: HTMLDivElement
     gui?: GUI
-    titleElement?: HTMLDivElement
+    titleBlock?: TitleBlock
 
     wireframeColor: THREE.Color = colors.black
     backgroundColor: THREE.Color = colors.aisc_blue
@@ -112,7 +112,8 @@ export class ModelViewer {
 
     destroyContent() {
         this.destroyGUI()
-        this.destroyTitle()
+        this.titleBlock?.destroy()
+        this.titleBlock = undefined
     }
 
     attachToContainer(container: HTMLElement) {
@@ -122,7 +123,7 @@ export class ModelViewer {
         this.updateCanvasSize()
     }
 
-    setModelAsCurrent(name: string, path: string, center = true, maxScale = 25.0) {
+    setModelAsCurrent(name: string, desc: string, path: string, center = true, maxScale = 25.0) {
         this.clearScene()
         this.addLoadingSpinner()
         this.loader.load(path, (gltf) => {
@@ -171,7 +172,12 @@ export class ModelViewer {
             this.removeLoadingSpinner()
         })
         this.updateCanvasSize()
-        this.updateTitle(name)
+
+        if (this.titleBlock === undefined) {
+            this.titleBlock = new TitleBlock()
+            this.container.appendChild(this.titleBlock.domElement)
+        }
+        this.titleBlock.update(name, desc)
     }
 
     addLoadingSpinner() {
@@ -244,24 +250,6 @@ export class ModelViewer {
             this.gui.destroy()
             this.gui = undefined
         }
-    }
-
-    updateTitle(title: string) {
-        if (this.titleElement === undefined) {
-            this.titleElement = document.createElement('div')
-            this.titleElement.id = 'model-name'
-            this.container.appendChild(this.titleElement)
-        }
-
-        this.titleElement.innerText = title
-    }
-
-    destroyTitle() {
-        if (this.titleElement === undefined)
-            return
-
-        this.titleElement.remove()
-        this.titleElement = undefined
     }
 
     addLights() {
@@ -371,5 +359,34 @@ export class ModelViewer {
 
     render() {
         this.renderer.render(this.scene, this.camera)
+    }
+}
+
+
+class TitleBlock {
+    domElement: HTMLDivElement
+    private nameElement: HTMLHeadElement
+    private descElement: HTMLParagraphElement
+
+    constructor() {
+        this.domElement = document.createElement('div')
+        this.domElement.id = 'model-title'
+
+        this.nameElement = document.createElement('h2')
+        this.nameElement.id = 'model-name'
+        this.descElement = document.createElement('p')
+        this.descElement.id = 'model-desc'
+
+        this.domElement.appendChild(this.nameElement)
+        this.domElement.appendChild(this.descElement)
+    }
+
+    update(name: string, desc: string = "") {
+        this.nameElement.innerText = name
+        this.descElement.innerHTML = desc
+    }
+
+    destroy() {
+        this.domElement.remove()
     }
 }

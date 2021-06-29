@@ -13,7 +13,7 @@
     --header-bg-color: var(--color-aisc-blue);
     --header-text-color: white;
 
-    --model-name-text-color: white;
+    --model-title-text-color: white;
 
     --code-bg-color: #e5e5e5;
 }
@@ -94,13 +94,23 @@ div.app {
     display: block;
 }
 
-.content-container div#model-name {
+.content-container div#model-title {
     position: absolute;
     bottom: 0;
-    color: var(--model-name-text-color);
-    font-weight: bold;
+    color: var(--model-title-text-color);
+    margin-left: 0.5rem;
+    max-width: 25rem;
+}
+
+.content-container #model-name {
     font-size: larger;
-    padding: 0.5rem;
+    margin: 0;
+    margin-bottom: 0.25rem;
+}
+
+.content-container #model-desc {
+    margin-top: 0.25rem;
+    margin-bottom: 0.5rem;
 }
 
 .content-container div#gui-wrapper {
