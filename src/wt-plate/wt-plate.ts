@@ -27,7 +27,7 @@ import './wt-block-shear-3-path.svg'
 import './bending-of-tee-when-cut.gif'
 
 new App({
-    title: 'WT bolted to plate',
+    title: 'WT Bolted Connection',
     groups: [
         {
             name: 'models',
