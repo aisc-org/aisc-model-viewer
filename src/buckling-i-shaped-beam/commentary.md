@@ -32,8 +32,8 @@ It is hard to obtain analytical solutions for cases without a constant
 moment diagram. The lateral-torsional buckling modification factor defined in
 AISC *Specification* Section F1, $C_b$, is used to approximate the effect of
 different loading conditions and extrapolate the results obtained analytically
-for the case of uniform moment to a broader range of moment diagrams. Note, the
-equation above is equal to AISC *Specification* Equation F2-4 times $S_x$ when
+for the case of uniform moment to a broader range of moment diagrams. Note that the
+equation for $M_{o,\text{cr}}$ above is equal to AISC *Specification* Equation F2-4 times $S_x$ when
 $C_b=1.0$.
 
 ## Local Buckling Models
