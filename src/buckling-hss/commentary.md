@@ -27,5 +27,5 @@ long and $F_{cr}$ is low, there may be no reduction at all since the other
 buckling mode (in this case, flexural buckling) will occur well before local
 buckling. Local buckling is more likely to affect the strength of shorter
 columns with higher $F_{cr}$. This is why the column in the
-[model](./#Local-buckling) depicting local buckling is shorter than the
-[model](./#Flexural-buckling) depicting flexural buckling.
+[model depicting local buckling](./#Local-buckling) is shorter than the
+[model depicting flexural buckling](./#Flexural-buckling).
