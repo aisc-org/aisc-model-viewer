@@ -65,16 +65,39 @@ new App({
         {
             name: 'braced column',
             items: [
-                new Model({ name: 'Minor-axis flexural', path: pathToMinorFBMode2 }),
-                new Model({ name: 'Major-axis flexural', path: pathToMajorFB }),
-                new Model({ name: 'Torsional', path: pathToTB, maxScale: 3.5 }),
+                new Model({
+                    name: 'Minor-axis flexural',
+                    title: 'Minor-axis flexural buckling (braced)',
+                    path: pathToMinorFBMode2,
+                }),
+                new Model({
+                    name: 'Major-axis flexural',
+                    title: 'Major-axis flexural buckling (braced)',
+                    path: pathToMajorFB,
+                }),
+                new Model({
+                    name: 'Torsional',
+                    title: 'Torsional buckling (braced)',
+                    path: pathToTB,
+                    maxScale: 3.5,
+                }),
             ]
         },
         {
             name: 'local',
             items: [
-                new Model({ name: 'Flange local buckling', path: pathToFlangeLB, maxScale: 5 }),
-                new Model({ name: 'Web local buckling', path: pathToWebLB, maxScale: 3.5 }),
+                new Model({
+                    name: 'Flange',
+                    title: 'Flange local buckling',
+                    path: pathToFlangeLB,
+                    maxScale: 5,
+                }),
+                new Model({
+                    name: 'Web',
+                    title: 'Web local buckling',
+                    path: pathToWebLB,
+                    maxScale: 3.5,
+                }),
             ]
         },
         {

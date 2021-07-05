@@ -18,22 +18,51 @@ new App({
         {
             name: 'lateral-torsional',
             items: [
-                new Model({ name: 'Lateral-torsional', path: pathToLTB, maxScale: 50 }),
-                new Model({ name: 'Lateral-torsional (braced)', path: pathToLTB2, maxScale: 50 }),
+                new Model({
+                    name: 'Lateral-torsional',
+                    title: 'Lateral-torsional buckling',
+                    path: pathToLTB,
+                    maxScale: 50,
+                }),
+                new Model({
+                    name: 'Lateral-torsional (braced)',
+                    title: 'Lateral-torsional buckling (braced)',
+                    path: pathToLTB2,
+                    maxScale: 50,
+                }),
             ]
         },
         {
             name: 'local',
             items: [
-                new Model({ name: 'Flange local buckling', path: pathToFlangeLB, maxScale: 10 }),
-                new Model({ name: 'Web local buckling', path: pathToWebLB, maxScale: 16 }),
+                new Model({
+                    name: 'Flange',
+                    title: 'Flange local buckling',
+                    path: pathToFlangeLB,
+                    maxScale: 10
+                }),
+                new Model({
+                    name: 'Web',
+                    title: 'Web local buckling',
+                    path: pathToWebLB,
+                    maxScale: 16
+                }),
             ]
         },
         {
             name: 'shear',
             items: [
-                new Model({ name: 'No transverse stiffeners', path: pathToShearBuckling1, maxScale: 14 }),
-                new Model({ name: 'With transverse stiffeners', path: pathToShearBuckling2 }),
+                new Model({
+                    name: 'No transverse stiffeners',
+                    title: 'Shear buckling with no transverse stiffeners',
+                    path: pathToShearBuckling1,
+                    maxScale: 14,
+                }),
+                new Model({
+                    name: 'With transverse stiffeners',
+                    title: 'Shear buckling with transverse stiffeners',
+                    path: pathToShearBuckling2,
+                }),
             ]
         },
         {
