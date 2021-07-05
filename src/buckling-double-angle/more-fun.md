@@ -2,7 +2,7 @@ One common application of double angle compression members is as the top chord
 of an open web steel joist. These members are subjected to combined axial
 compression and bending moment, and can have slender elements. You can learn
 more about open web steel joists from the
-[Steel Joist Institute](https://steeljoist.org).
+[Steel Joist Institute](https://steeljoist.org){target="_blank" rel="noreferrer"}.
 
 --------------------------------------------------------------------------------
 
@@ -15,7 +15,7 @@ flexural-torsional buckling?
 
 End connection details are very important for built-up columns. You can watch a
 discussion of this and other important stability concepts in
-[this video](https://www.youtube.com/watch?v=k30_FSEhXIE&t=3300s).
+[this video](https://www.youtube.com/watch?v=k30_FSEhXIE&t=3300s){target="_blank" rel="noreferrer"}.
 
 --------------------------------------------------------------------------------
 
