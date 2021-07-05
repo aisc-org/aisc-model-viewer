@@ -126,7 +126,7 @@ Both the web and flange of a W8x31 are nonslender for ASTM A992 (the preferred m
 specification for wide flange shapes). This is the case for most available wide flange 
 shapes used as columns. 
 
-Note that the web was restrained in the model depicting flange local buckling.
-Similarly, the flange was restrained in the model depicting web local buckling.
+Note that the web was restrained in the model depicting [flange local buckling](./#Flange-local-buckling).
+Similarly, the flange was restrained in the model depicting [web local buckling](./#Web-local-buckling).
 This was done to illustrate each individual buckling mode more clearly. 
 

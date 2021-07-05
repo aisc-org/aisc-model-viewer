@@ -55,7 +55,7 @@ strength.
 
 The flange of this girder is quite stocky and would be classified as compact for
 any practical yield strength. This means that the load at which the elastic
-buckling mode shown in the [model](./#Flange) is much higher than
+buckling mode shown in the [model](./#Flange-local-buckling) is much higher than
 what it takes to yield the girder, and flange local buckling would not
 affect the available strength. Notice how flange local buckling only occurs in
 the compression flange (not the tension flange) and near midspan (where the
@@ -68,7 +68,7 @@ of I-shaped flexural members in the AISC *Specification*. Instead, the
 slenderness of the web affects the calculations of the other limit states. The
 classification of the web also helps determine which section of AISC
 *Specification* Chapter F to use for computing the available strength. Notice how
-web local buckling \([model](./#Web)\) only occurs in the top half of the web where the stress is
+web local buckling \([model](./#Web-local-buckling)\) only occurs in the top half of the web where the stress is
 compressive. Also note the slight ripples in the flange. Buckling of the web
 imparts a twisting force on the flange causing these deformations.
 

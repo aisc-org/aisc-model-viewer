@@ -73,8 +73,8 @@ new App({
         {
             name: 'local',
             items: [
-                new Model({ name: 'Flange', path: pathToFlangeLB, maxScale: 5 }),
-                new Model({ name: 'Web', path: pathToWebLB, maxScale: 3.5 }),
+                new Model({ name: 'Flange local buckling', path: pathToFlangeLB, maxScale: 5 }),
+                new Model({ name: 'Web local buckling', path: pathToWebLB, maxScale: 3.5 }),
             ]
         },
         {
