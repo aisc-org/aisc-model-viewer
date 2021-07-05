@@ -1,8 +1,8 @@
 HSS shapes are manufactured through a cold-forming process. Some producers have
 [videos describing the process](https://www.youtube.com/watch?v=fRQAJL3wJXA){target="_blank" rel="noreferrer"}.
 There are also opportunities to
-[tour a production facility](https://www.aisc.org/steelday/questions/#32805){target="_blank" rel="noreferrer"} on
-SteelDay.
+[tour a production facility](https://www.aisc.org/steelday/questions/#32805){target="_blank" rel="noreferrer"}
+on SteelDay.
 
 --------------------------------------------------------------------------------
 

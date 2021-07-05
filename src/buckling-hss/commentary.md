@@ -13,10 +13,10 @@ buckling is not a relevant mode.
 
 For a square HSS column, the relevant buckling modes are flexural buckling
 \([model](./#Flexural-buckling)\) and local buckling
-\([model](./#Local-buckling)\). Local buckling need not be considered
-if the walls are classified as “nonslender” per Table B4.1a of the AISC
-*Specification*. However, local buckling might not affect the strength of the column
-even if the walls are classified as “slender.”
+\([model](./#Local-buckling)\). Local buckling need not be considered if the
+walls are classified as “nonslender” per Table B4.1a of the AISC
+*Specification*. However, local buckling might not affect the strength of the
+column even if the walls are classified as “slender.”
 
 The strength of columns with slender elements is governed by Section E7 of the
 AISC *Specification*. Local buckling is accounted for using a reduced
