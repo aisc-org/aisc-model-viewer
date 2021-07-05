@@ -7,15 +7,15 @@ respectively; and a web depth and thickness of $h = 56~\rm{in.}$ and
 $t_w=0.5~\rm{in.}$, respectively. The overall depth of the girder is
 $d=60~\rm{in.}$
 
-## Lateral-Torsional Buckling Model
+## Lateral-Torsional Buckling Models
 
-This girder is simply supported and subjected to transverse loads. The girder is
+This girder is simply supported and subjected to uniform transverse loads. The girder is
 not subjected to axial compression, but the bending moment caused by the
 transverse loads generates longitudinal compressive stress in the top half of
 the girder. These stresses make the girder susceptible to lateral-torsional
 buckling, flange local buckling, and web local buckling.
 
-Lateral-torsional buckling \([model](./#Lateral-torsional)\) is a type
+Lateral-torsional buckling is a type
 of buckling for a flexural member (e.g., beam or girder) involving deflection
 out of the plane of bending occurring simultaneously with twist about the shear
 center of the cross section.
@@ -34,7 +34,13 @@ AISC *Specification* Section F1, $C_b$, is used to approximate the effect of
 different loading conditions and extrapolate the results obtained analytically
 for the case of uniform moment to a broader range of moment diagrams. Note that the
 equation for $M_{o,\text{cr}}$ above is equal to AISC *Specification* Equation F2-4 times $S_x$ when
-$C_b=1.0$.
+the unbraced length $L_b=L$ and $C_b=1.0$.
+
+For the unbraced plate girder \([model](./#Lateral-torsional)\), $L_b$ is the
+full span of the beam, and $C_b=1.14$ (see AISC *Manual* Table 3-1). Providing
+lateral bracing at the midspan \([model](./#Lateral-torsional-(braced))\) changes
+the buckled shape and increases the buckling load by both halving $L_b$ and
+increasing $C_b$ to 1.30 for each of the two unbraced lengths.
 
 ## Local Buckling Models
 
