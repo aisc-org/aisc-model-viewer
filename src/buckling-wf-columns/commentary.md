@@ -126,7 +126,7 @@ material specification for wide flange shapes). This is the case for most
 available wide flange shapes used as columns.
 
 Note that the web was restrained in the model depicting
-[flange local buckling](./#Flange-local-buckling). Similarly, the flange was
-restrained in the model depicting [web local buckling](./#Web-local-buckling).
+[flange local buckling](./#Flange). Similarly, the flange was
+restrained in the model depicting [web local buckling](./#Web).
 This was done to illustrate each individual buckling mode more clearly.
 
