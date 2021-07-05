@@ -123,7 +123,7 @@ export class ModelViewer {
         this.updateCanvasSize()
     }
 
-    setModelAsCurrent(name: string, desc: string, path: string, center = true, maxScale = 25.0) {
+    setModelAsCurrent(name: string, desc: string, path: string, center = true, maxScale = 25.0, title?: string) {
         this.clearScene()
         this.addLoadingSpinner()
         this.loader.load(path, (gltf) => {
@@ -177,7 +177,7 @@ export class ModelViewer {
             this.titleBlock = new TitleBlock()
             this.container.appendChild(this.titleBlock.domElement)
         }
-        this.titleBlock.update(name, desc)
+        this.titleBlock.update(title ? title : name, desc)
     }
 
     addLoadingSpinner() {
