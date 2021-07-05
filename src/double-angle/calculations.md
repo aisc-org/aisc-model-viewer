@@ -298,7 +298,7 @@ $$ \begin{align}
 Tearout in the gusset plate controls. The nominal effective strength of bolt \#9
 is 30.7 kips.
 
-### Bolt group
+### Bolt Group
 
 Calculate the nominal effective strength of the bolt group by summing the
 nominal effective strength of each bolt.

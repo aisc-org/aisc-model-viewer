@@ -14,7 +14,7 @@ import pathToTB from './Wide-flange-column-models-W8x31-TB.glb'
 import pathToWebLB from './Wide-flange-column-models-W8x31-Web-LB.glb'
 
 // Content
-import aiscTable from './appendix-table.md'
+const aiscTable = '<img src="./AISC-360-Table-C-A-7.1.png"></img>'
 import commentary from './commentary.md'
 import moreFun from './more-fun.md'
 
@@ -29,28 +29,75 @@ new App({
         {
             name: 'minor-axis flexural',
             items: [
-                new Model({ name: 'Case A', path: pathToCaseA }),
-                new Model({ name: 'Case B', path: pathToCaseB }),
-                new Model({ name: 'Case C', path: pathToCaseC }),
-                new Model({ name: 'Case D', path: pathToCaseD }),
-                new Model({ name: 'Case E', path: pathToCaseE }),
-                new Model({ name: 'Case F', path: pathToCaseF }),
-                new HtmlItem({name: 'Table C-A-7.1', content: aiscTable, classes: ['full-width'] })
+                new HtmlItem({name: 'Table C-A-7.1', content: aiscTable, classes: ['full-width'] }),
+                new Model({
+                    name: 'Case A',
+                    path: pathToCaseA,
+                    desc: "<i>K</i> = 0.5 (theoretical), <i>K</i> = 0.65 (design)",
+                }),
+                new Model({
+                    name: 'Case B',
+                    path: pathToCaseB,
+                    desc: "<i>K</i> = 0.7 (theoretical), <i>K</i> = 0.8 (design)",
+                }),
+                new Model({
+                    name: 'Case C',
+                    path: pathToCaseC,
+                    desc: "<i>K</i> = 1.0 (theoretical), <i>K</i> = 1.0 (design)",
+                }),
+                new Model({
+                    name: 'Case D',
+                    path: pathToCaseD,
+                    desc: "<i>K</i> = 1.0 (theoretical), <i>K</i> = 1.2 (design)",
+                }),
+                new Model({
+                    name: 'Case E',
+                    path: pathToCaseE,
+                    desc: "<i>K</i> = 2.0 (theoretical), <i>K</i> = 2.1 (design)",
+                }),
+                new Model({
+                    name: 'Case F',
+                    path: pathToCaseF,
+                    desc: "<i>K</i> = 2.0 (theoretical), <i>K</i> = 2.0 (design)",
+                }),
             ]
         },
         {
             name: 'braced column',
             items: [
-                new Model({ name: 'Minor-axis flexural', path: pathToMinorFBMode2 }),
-                new Model({ name: 'Major-axis flexural', path: pathToMajorFB }),
-                new Model({ name: 'Torsional', path: pathToTB, maxScale: 3.5 }),
+                new Model({
+                    name: 'Minor-axis flexural',
+                    title: 'Minor-axis flexural buckling (braced)',
+                    path: pathToMinorFBMode2,
+                }),
+                new Model({
+                    name: 'Major-axis flexural',
+                    title: 'Major-axis flexural buckling (braced)',
+                    path: pathToMajorFB,
+                }),
+                new Model({
+                    name: 'Torsional',
+                    title: 'Torsional buckling (braced)',
+                    path: pathToTB,
+                    maxScale: 3.5,
+                }),
             ]
         },
         {
             name: 'local',
             items: [
-                new Model({ name: 'Flange', path: pathToFlangeLB, maxScale: 5 }),
-                new Model({ name: 'Web', path: pathToWebLB, maxScale: 3.5 }),
+                new Model({
+                    name: 'Flange',
+                    title: 'Flange local buckling',
+                    path: pathToFlangeLB,
+                    maxScale: 5,
+                }),
+                new Model({
+                    name: 'Web',
+                    title: 'Web local buckling',
+                    path: pathToWebLB,
+                    maxScale: 3.5,
+                }),
             ]
         },
         {

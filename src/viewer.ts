@@ -61,6 +61,7 @@ export class ModelViewer {
     controls: OrbitControls
     loadingSpinner?: HTMLDivElement
     gui?: GUI
+    titleBlock?: TitleBlock
 
     wireframeColor: THREE.Color = colors.black
     backgroundColor: THREE.Color = colors.aisc_blue
@@ -109,6 +110,12 @@ export class ModelViewer {
         ;(window as any).modelViewer = this
     }
 
+    destroyContent() {
+        this.destroyGUI()
+        this.titleBlock?.destroy()
+        this.titleBlock = undefined
+    }
+
     attachToContainer(container: HTMLElement) {
         this.resizeObserver.disconnect()
         this.container = container
@@ -116,7 +123,7 @@ export class ModelViewer {
         this.updateCanvasSize()
     }
 
-    setModelAsCurrent(path: string, center = true, maxScale = 25.0) {
+    setModelAsCurrent(name: string, desc: string, path: string, center = true, maxScale = 25.0, title?: string) {
         this.clearScene()
         this.addLoadingSpinner()
         this.loader.load(path, (gltf) => {
@@ -165,6 +172,12 @@ export class ModelViewer {
             this.removeLoadingSpinner()
         })
         this.updateCanvasSize()
+
+        if (this.titleBlock === undefined) {
+            this.titleBlock = new TitleBlock()
+            this.container.appendChild(this.titleBlock.domElement)
+        }
+        this.titleBlock.update(title ? title : name, desc)
     }
 
     addLoadingSpinner() {
@@ -196,8 +209,6 @@ export class ModelViewer {
         if (guiContainer === null) {
             guiContainer = document.createElement('div')
             guiContainer.id = 'gui-wrapper'
-            guiContainer.style.position = 'absolute'
-            guiContainer.style.top = '0'
             this.container.appendChild(guiContainer)
         }
         guiContainer.appendChild(this.gui.domElement)
@@ -348,5 +359,34 @@ export class ModelViewer {
 
     render() {
         this.renderer.render(this.scene, this.camera)
+    }
+}
+
+
+class TitleBlock {
+    domElement: HTMLDivElement
+    private nameElement: HTMLHeadElement
+    private descElement: HTMLParagraphElement
+
+    constructor() {
+        this.domElement = document.createElement('div')
+        this.domElement.id = 'model-title'
+
+        this.nameElement = document.createElement('h2')
+        this.nameElement.id = 'model-name'
+        this.descElement = document.createElement('p')
+        this.descElement.id = 'model-desc'
+
+        this.domElement.appendChild(this.nameElement)
+        this.domElement.appendChild(this.descElement)
+    }
+
+    update(name: string, desc: string = "") {
+        this.nameElement.innerText = name
+        this.descElement.innerHTML = desc
+    }
+
+    destroy() {
+        this.domElement.remove()
     }
 }

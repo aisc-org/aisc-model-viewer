@@ -13,6 +13,8 @@
     --header-bg-color: var(--color-aisc-blue);
     --header-text-color: white;
 
+    --model-title-text-color: white;
+
     --code-bg-color: #e5e5e5;
 }
 
@@ -56,14 +58,21 @@ nav.header img {
     width: auto;
 }
 
+nav.header #home-button {
+    padding: 7.5%;
+    height: 85%;
+}
+
 nav.header h1 {
     align-self: center;
+    font-size: 1.3rem;
+    margin: 0.75rem;
 }
 
 nav.header button#sidebar-toggle {
     background: none;
     border: none;
-    width: 60px;
+    width: 3.75rem;
 }
 
 nav.header img#sidebar-toggle-icon {
@@ -88,6 +97,30 @@ div.app {
 
 .content-container canvas {
     display: block;
+}
+
+.content-container div#model-title {
+    position: absolute;
+    bottom: 0;
+    color: var(--model-title-text-color);
+    margin-left: 0.5rem;
+    max-width: 25rem;
+}
+
+.content-container #model-name {
+    font-size: larger;
+    margin: 0;
+    margin-bottom: 0.25rem;
+}
+
+.content-container #model-desc {
+    margin-top: 0.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.content-container div#gui-wrapper {
+    position: absolute;
+    top: 0;
 }
 
 .loading-spinner {
@@ -148,6 +181,10 @@ section.html-content.full-width {
 
 .full-width>p {
     max-width: 30em;
+}
+
+.full-width>img {
+    display: block;
 }
 
 .html-content p {

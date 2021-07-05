@@ -91,7 +91,7 @@ module.exports = {
             chunks: ['guide_to_2d_drawings']
         }),
         new HtmlWebpackPlugin({
-            title: 'Double Angle Connection',
+            title: 'Double Angle Brace Connection',
             filename: 'double-angle/index.html',
             template: './src/app.ejs',
             chunks: ['double_angle']
@@ -121,7 +121,7 @@ module.exports = {
             chunks: ['buckling_wf_columns']
         }),
         new HtmlWebpackPlugin({
-            title: 'Buckling of I-shaped Beam',
+            title: 'Buckling of I-shaped Plate Girder',
             filename: 'buckling-i-shaped-beam/index.html',
             template: './src/app.ejs',
             chunks: ['buckling_i_shaped_beam']

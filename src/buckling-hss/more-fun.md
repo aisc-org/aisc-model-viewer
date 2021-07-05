@@ -1,8 +1,8 @@
 HSS shapes are manufactured through a cold-forming process. Some producers have
-[videos describing the process](https://www.youtube.com/watch?v=fRQAJL3wJXA).
+[videos describing the process](https://www.youtube.com/watch?v=fRQAJL3wJXA){target="_blank" rel="noreferrer"}.
 There are also opportunities to
-[tour a production facility](https://www.aisc.org/steelday/questions/#32805) on
-SteelDay.
+[tour a production facility](https://www.aisc.org/steelday/questions/#32805){target="_blank" rel="noreferrer"}
+on SteelDay.
 
 --------------------------------------------------------------------------------
 
@@ -13,10 +13,10 @@ square?
 
 There are several advantages to filling an HSS with concrete to create a
 composite column. One of the advantages is that the tube cannot locally buckle
-inward. This does not prevent local buckling altogether, but does delay it and
+inward. This does not prevent local buckling altogether but does delay it and
 helps to increase strength and ductility.
 
-![Rectangular concrete-filled steel tube (RCFT) constructed using an HSS20x12x5/16. Note that the buckling of the wall is only outward, not inward as well. [Source](http://dx.doi.org/10.1061/(ASCE)ST.1943-541X.0000784)](./rcft.jpg)
+![Rectangular concrete-filled steel tube (RCFT) constructed using an HSS20x12x5/16. Note that the buckling of the wall is only outward. [Source](http://dx.doi.org/10.1061/(ASCE)ST.1943-541X.0000784){target="_blank" rel="noreferrer"}](./rcft.jpg)
 
 --------------------------------------------------------------------------------
 
