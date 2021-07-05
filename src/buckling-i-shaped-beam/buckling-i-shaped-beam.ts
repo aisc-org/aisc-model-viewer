@@ -6,6 +6,7 @@ import pathToWebLB from './I-shaped-beam-Web-LB.glb'
 import pathToShearBuckling1 from './I-shaped-beam-Shear-buckling-no-stiffeners.glb'
 import pathToShearBuckling2 from './I-shaped-beam-Shear-buckling-with-stiffeners.glb'
 import pathToLTB from './I-shaped-beam-Lateral-torsional-buckling.glb'
+import pathToLTB2 from './I-shaped-beam-LTB-braced.glb'
 
 // Content
 import commentary from './commentary.md'
@@ -18,6 +19,7 @@ new App({
             name: 'lateral-torsional',
             items: [
                 new Model({ name: 'Lateral-torsional', path: pathToLTB, maxScale: 50 }),
+                new Model({ name: 'Lateral-torsional (braced)', path: pathToLTB2, maxScale: 50 }),
             ]
         },
         {
