@@ -34,9 +34,21 @@ new App({
             items: [
                 new Model({name: '3D model', path: pathToModel}),
                 new Model({name: 'Tensile rupture', path: pathToRupture}),
-                new Model({name: 'Block shear 1', path: pathToWebShear}),
-                new Model({name: 'Block shear 2', path: pathToIntuitiveShear}),
-                new Model({name: 'Block shear 3', path: pathToUnlikelyShear}),
+                new Model({
+                    name: 'Block shear 1',
+                    path: pathToWebShear,
+                    desc: 'Tension in the flange and shear in the stem',
+                }),
+                new Model({
+                    name: 'Block shear 2',
+                    path: pathToIntuitiveShear,
+                    desc: 'Tension in the outside of the flange and shear along the bolt lines',
+                }),
+                new Model({
+                    name: 'Block shear 3',
+                    path: pathToUnlikelyShear,
+                    desc: 'Tension in the stem and the inside of the flange and shear along the bolt lines',
+                }),
             ]
         },
         {
