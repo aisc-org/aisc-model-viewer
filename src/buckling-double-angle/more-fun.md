@@ -1,4 +1,4 @@
-One common application of double angle compression members is as the top chord
+One common application of double-angle compression members is as the top chord
 of an open web steel joist. These members are subjected to combined axial
 compression and bending moment, and can have slender elements. You can learn
 more about open web steel joists from the

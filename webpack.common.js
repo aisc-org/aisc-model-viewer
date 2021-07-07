@@ -91,7 +91,7 @@ module.exports = {
             chunks: ['guide_to_2d_drawings']
         }),
         new HtmlWebpackPlugin({
-            title: 'Double Angle Brace Connection',
+            title: 'Double-angle Brace Connection',
             filename: 'double-angle/index.html',
             template: './src/app.ejs',
             chunks: ['double_angle']
@@ -109,13 +109,13 @@ module.exports = {
             chunks: ['wt_plate']
         }),
         new HtmlWebpackPlugin({
-            title: 'Wide Flange Truss Connection',
+            title: 'Wide-flange Truss Connection',
             filename: 'wf-truss/index.html',
             template: './src/app.ejs',
             chunks: ['wf_truss']
         }),
         new HtmlWebpackPlugin({
-            title: 'Buckling of Wide Flange Columns',
+            title: 'Buckling of Wide-flange Columns',
             filename: 'buckling-wf-columns/index.html',
             template: './src/app.ejs',
             chunks: ['buckling_wf_columns']

@@ -1,7 +1,7 @@
 # Commentary
 
 The models in this collection depict different buckling modes for a 2L4x4x1/4
-double angle compression member. The angles are separated by 3/8 in.
+double-angle compression member. The angles are separated by 3/8 in.
 
 A double angle is a singly symmetric shape. It is symmetric about the y-axis,
 but not the x-axis. This means that a double angle is susceptible to
@@ -16,7 +16,7 @@ push through the shear center. The resulting force couple causes twist.
 ![Shear center of double angle, offset from centroid.](./double-angle-shear-center.svg)
 
 A double angle is also a built-up shape. Connectors are necessary to make the
-two shapes behave as one member. Typically, the two angles of a double angle
+two shapes behave as one member. Typically, the two angles of a double-angle
 compression member are connected at the ends of the member and a few points
 along the length. A single angle acting alone would buckle around its minor
 axis, the z-axis. For an L4x4x1/4, the radius of gyration about the minor axis
@@ -42,7 +42,7 @@ it is possible for one of the single angles to buckle on its own between the
 connectors before the double angle buckles as a whole
 \([model](./#Single-angle-buckling)\).
 
-[Local buckling of the legs](./#Local-buckling) can also occur in double angle
+[Local buckling of the legs](./#Local-buckling) can also occur in double-angle
 compression members with slender elements. In the model, out-of-plane moment of
 the back-to-back legs was restrained to better distinguish local buckling from
 torsional buckling.

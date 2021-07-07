@@ -1,5 +1,5 @@
 
-This collection of models features a W8x31 because this wide flange shape was
+This collection of models features a W8x31 because this wide-flange shape was
 used in many previous studies on the stability of structural steel frames,
 including in the
 [development](https://fsel.engr.utexas.edu/research/publications/details/703110325){target="_blank" rel="noreferrer"}

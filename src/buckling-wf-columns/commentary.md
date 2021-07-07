@@ -67,7 +67,7 @@ $$ P_e = \frac{\pi^2(29000\ksi)(37.1\inch^4)}{(288\inch)^2} = 128\kips $$
 Braced Column Models
 --------------------
 
-Minor-axis flexural buckling often controls the strength of wide flange columns.
+Minor-axis flexural buckling often controls the strength of wide-flange columns.
 However, if the effective length for buckling about the major axis is greater
 than that for minor-axis buckling (i.e., $L_{cx} \geq L_{cy}$), then major-axis
 flexural buckling could control and needs to be checked.
@@ -91,7 +91,7 @@ $$ P_e = \frac{\pi^2 E I_y}{L_{cy}^2} = \frac{\pi^2(29000\ksi)(37.1\inch^4)}{(72
 Similarly, if the effective length for buckling about the longitudinal axis is
 greater than the effective length for minor-axis flexural buckling (i.e.,
 $L_{cz} \geq L_{cy}$) then torsional buckling could control. Torsional buckling
-is covered in AISC *Specification* Section E4 and applies to wide flange columns
+is covered in AISC *Specification* Section E4 and applies to wide-flange columns
 “when the torsional unbraced length exceeds the lateral unbraced length.”
 
 Depending on the beam stiffness and the beam-to-column connection details, the
@@ -112,7 +112,7 @@ $$ P_e = F_e A_g = (90.5\ksi)(9.13\inch^2) = 826\kips $$
 Local Buckling Models
 ---------------------
 
-Local buckling can affect the strength of wide flange columns if the flange or
+Local buckling can affect the strength of wide-flange columns if the flange or
 web is classified as slender. AISC *Specification* Table B4.1a specifies
 limiting width-to-thickness ratios which are used to classify each element of a
 column cross section. If the width-to-thickness ratio of an element is greater
@@ -122,8 +122,8 @@ cross section has any slender elements, AISC *Specification* Section E7 should
 be used to determine the compressive strength.
 
 Both the web and flange of a W8x31 are nonslender for ASTM A992 (the preferred
-material specification for wide flange shapes). This is the case for most
-available wide flange shapes used as columns.
+material specification for wide-flange shapes). This is the case for most
+available wide-flange shapes used as columns.
 
 Note that the web was restrained in the model depicting
 [flange local buckling](./#Flange). Similarly, the flange was
