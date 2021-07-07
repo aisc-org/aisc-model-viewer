@@ -91,7 +91,7 @@ between the
 
 It is important to note that shear buckling of the web is not the end of the
 story. The available strength computed per AISC *Specification* Section G2 is
-often greater than the buckling load. This paragraph from the *Commentary* on
+often greater than the buckling load. This paragraph from the Commentary on
 AISC *Specification* Section G2.2 describes it well (emphasis added):
 
 > The panels of the web of a built-up member, bounded on the top and bottom by
