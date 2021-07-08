@@ -1,4 +1,4 @@
-Types of structural drawings
+Types of Structural Drawings
 ============================
 
 
@@ -7,7 +7,7 @@ Drawings are the primary way structural engineers communicate their designs. Tog
 
 Notes
 -----
-Notes are text and can appear throughout a drawing set. When placed at the front of a set and titled GENERAL NOTES, the information is applicable to all sheets and all disciplines. GENERAL STRUCTURAL NOTES, or just STRUCTURAL NOTES, apply to all sheets of the structural drawings. Information on these drawings include the code to which the structure was designed, key design criteria (e.g., live loads, wind speed, seismic design category), and typical material specifications. For example, structural notes may include a statement that W-SHAPES SHALL CONFORM TO ASTM A992, GRADE 50 UNLESS NOTED OTHERWISE. The term “unless noted otherwise”, sometimes abbreviated U.N.O., allows flexibility should a specific wide flange member need to be of a different grade. 
+Notes are text and can appear throughout a drawing set. When placed at the front of a set and titled GENERAL NOTES, the information is applicable to all sheets and all disciplines. GENERAL STRUCTURAL NOTES, or just STRUCTURAL NOTES, apply to all sheets of the structural drawings. Information on these drawings include the code to which the structure was designed, key design criteria (e.g., live loads, wind speed, seismic design category), and typical material specifications. For example, structural notes may include a statement that W-SHAPES SHALL CONFORM TO ASTM A992, GRADE 50 UNLESS NOTED OTHERWISE. The term “unless noted otherwise”, sometimes abbreviated U.N.O., allows flexibility should a specific wide-flange member need to be of a different grade. 
 
 
 Plans

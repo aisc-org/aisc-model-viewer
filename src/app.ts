@@ -98,6 +98,9 @@ export class App {
         // even when its open.
         window.addEventListener('resize', this.updateDisplayMode.bind(this))
         this.updateDisplayMode()
+        if (this.contentSizingMode === DisplayMode.Portrait) {
+            this.toggleSidebar()
+        }
 
         // Toggling of sidebar
         const sidebarToggle = document.getElementById('sidebar-toggle') as HTMLButtonElement
@@ -110,6 +113,9 @@ export class App {
         //
         window.addEventListener('hashchange', this.setCurrentContent.bind(this))
         this.setCurrentContent()
+
+        // Add app as global variable for console access
+        ;(window as any).modelApp = this
     }
 
     updateDisplayMode() {
@@ -193,9 +199,14 @@ export class App {
         }
 
         const linkname = window.location.hash.substr(1)
+        const currentItem: SidebarItem = this.contentLinkMap[this.currentContent]
+        const cleanup = currentItem ? currentItem.destroyContent : () => { return Promise.resolve() }
+
         const item: SidebarItem = this.contentLinkMap[linkname]
         if (linkname in this.contentLinkMap) {
-            item.createContent(this.contentContainer).then(content => {
+            cleanup().then(() => {
+                return item.createContent(this.contentContainer)
+            }).then(content => {
                 // Save scroll position
                 if (this.currentElement) {
                     console.log('Saving', this.currentContent, 'scroll position as', this.contentContainer.scrollTop)
@@ -256,6 +267,14 @@ abstract class SidebarItem {
      */
     createContent(contentContainer: HTMLElement): Promise<HTMLElement> {
         return Promise.reject(new NoContentError)
+    }
+
+    /**
+     * Perform cleanup before switching to new content.
+     * 
+     */
+    destroyContent() {
+        return Promise.resolve()
     }
 }
 
@@ -331,13 +350,19 @@ export class HtmlItem extends SidebarItem {
 
 export class Model extends SidebarItem {
     path: string
-    centerModel: boolean | undefined
+    centerModel?: boolean
+    maxScale?: number
+    desc: string = ""
+    title?: string
     static viewer: ModelViewer
 
-    constructor(params: { name: string, path: string, center?: boolean }) {
+    constructor(params: { name: string, path: string, center?: boolean, maxScale?: number, desc?: string, title?: string }) {
         super(params.name)
         this.path = params.path
         this.centerModel = params.center
+        this.maxScale = params.maxScale
+        if (params.desc) this.desc = params.desc
+        this.title = params.title
         if (Model.viewer === undefined) {
             Model.viewer = new ModelViewer()
         }
@@ -345,8 +370,13 @@ export class Model extends SidebarItem {
 
     createContent(contentContainer: HTMLElement): Promise<HTMLCanvasElement> {
         Model.viewer.attachToContainer(contentContainer)
-        Model.viewer.setModelAsCurrent(this.path, this.centerModel)
+        Model.viewer.setModelAsCurrent(this.name, this.desc, this.path, this.centerModel, this.maxScale, this.title)
         return Promise.resolve(Model.viewer.renderer.domElement)
+    }
+
+    destroyContent() {
+        Model.viewer.destroyContent()
+        return Promise.resolve()
     }
 
     createItem() {

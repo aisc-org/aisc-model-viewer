@@ -1,11 +1,14 @@
 import * as THREE from 'three'
+import { BufferGeometryUtils } from 'three/examples/jsm/utils/BufferGeometryUtils'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
+import { GUI } from 'dat.gui'
 import { siteRoot } from './utils'
 
 
 const colors = {
+    aisc_blue: new THREE.Color('#00558A'),
     orange:   new THREE.Color('#FF8200'),
     white:    new THREE.Color('#FFFFFF'),
     smokey:   new THREE.Color('#58595B'),
@@ -20,6 +23,34 @@ const colors = {
 }
 
 
+interface MorphedAttributes {
+    positionAttribute: THREE.Float32BufferAttribute
+    normalAttribute: THREE.Float32BufferAttribute
+    morphedPositionAttribute: THREE.Float32BufferAttribute
+    morphedNormalAttribute: THREE.Float32BufferAttribute
+}
+
+
+function getMorphedGeometry(mesh: THREE.Mesh) {
+    const attributes = BufferGeometryUtils.computeMorphedAttributes(mesh) as MorphedAttributes
+
+    const morphed = new THREE.BufferGeometry()
+    morphed.setAttribute('position', attributes.morphedPositionAttribute)
+    morphed.setAttribute('normal', attributes.morphedNormalAttribute)
+    morphed.setIndex(mesh.geometry.index)
+
+    morphed.morphTargetsRelative = mesh.geometry.morphTargetsRelative
+
+    return morphed
+}
+
+
+interface WireframeOptions {
+    useMorphed?: boolean
+    useWireframe?: boolean
+}
+
+
 export class ModelViewer {
     container: HTMLElement
     loader: GLTFLoader
@@ -28,9 +59,12 @@ export class ModelViewer {
     camera: THREE.PerspectiveCamera
     renderer: THREE.WebGLRenderer
     controls: OrbitControls
+    loadingSpinner?: HTMLDivElement
+    gui?: GUI
+    titleBlock?: TitleBlock
 
     wireframeColor: THREE.Color = colors.black
-    backgroundColor: THREE.Color = colors.gray_4
+    backgroundColor: THREE.Color = colors.aisc_blue
 
     // Whether to render edges as lines in the model.
     renderEdges: Boolean = true
@@ -41,6 +75,8 @@ export class ModelViewer {
     // edges don't show up on curved surfaces.
     edgeThresholdAngle: number = 20
 
+    // Observer that watches for window resizes, and updates the canvas size to
+    // match.
     private resizeObserver: MutationObserver
 
     constructor() {
@@ -52,8 +88,9 @@ export class ModelViewer {
 
         this.scene = new THREE.Scene()
         this.scene.background = this.backgroundColor
-        this.addLights()
         this.camera = new THREE.PerspectiveCamera(75)
+        this.addLights()
+        this.scene.add(this.camera)
 
         this.renderer = new THREE.WebGLRenderer({ antialias: true })
         this.renderer.setPixelRatio(window.devicePixelRatio)
@@ -68,6 +105,15 @@ export class ModelViewer {
         const resizeCallback = this.updateCanvasSize.bind(this)
         this.resizeObserver = new MutationObserver(resizeCallback)
         window.addEventListener('resize', resizeCallback)
+
+        // Add viewer as global variable for console access
+        ;(window as any).modelViewer = this
+    }
+
+    destroyContent() {
+        this.destroyGUI()
+        this.titleBlock?.destroy()
+        this.titleBlock = undefined
     }
 
     attachToContainer(container: HTMLElement) {
@@ -77,8 +123,9 @@ export class ModelViewer {
         this.updateCanvasSize()
     }
 
-    setModelAsCurrent(path: string, center = true) {
+    setModelAsCurrent(name: string, desc: string, path: string, center = true, maxScale = 25.0, title?: string) {
         this.clearScene()
+        this.addLoadingSpinner()
         this.loader.load(path, (gltf) => {
             const box = new THREE.Box3().setFromObject(gltf.scene)
             const size = box.getSize(new THREE.Vector3()).length()
@@ -91,10 +138,6 @@ export class ModelViewer {
                 gltf.scene.position.z += (gltf.scene.position.z - theCenter.z)
             } else {
                 theCenter.copy(gltf.scene.position)
-            }
-
-            if (this.renderEdges) {
-                this.addWireframeToGroup(gltf.scene)
             }
 
             this.controls.reset()
@@ -110,24 +153,114 @@ export class ModelViewer {
             this.camera.lookAt(theCenter)
 
             this.scene.add(gltf.scene)
+
+            let morphableMeshes: THREE.Mesh[] = []
+            gltf.scene.traverse(element => {
+                if (element instanceof THREE.Mesh && element.morphTargetInfluences?.length) {
+                    morphableMeshes.push(element)
+                }
+            })
+            if (morphableMeshes.length > 0) {
+                this.updateGUI(morphableMeshes, maxScale)
+            }
+
+            if (this.renderEdges) {
+                this.addWireframeToGroup(gltf.scene, { useMorphed: true })
+            }
+
             this.controls.update()
+            this.removeLoadingSpinner()
         })
         this.updateCanvasSize()
+
+        if (this.titleBlock === undefined) {
+            this.titleBlock = new TitleBlock()
+            this.container.appendChild(this.titleBlock.domElement)
+        }
+        this.titleBlock.update(title ? title : name, desc)
+    }
+
+    addLoadingSpinner() {
+        if (this.loadingSpinner !== undefined) {
+            this.loadingSpinner.style.visibility = 'visible'
+            return
+        }
+
+        this.loadingSpinner = document.createElement('div')
+        this.loadingSpinner.appendChild(document.createElement('div'))
+        this.loadingSpinner.appendChild(document.createElement('div'))
+        this.loadingSpinner.appendChild(document.createElement('div'))
+        this.loadingSpinner.className = 'loading-spinner'
+        this.container.appendChild(this.loadingSpinner)
+    }
+
+    removeLoadingSpinner() {
+        if (this.loadingSpinner === undefined)
+            return
+
+        this.loadingSpinner.style.visibility = 'hidden'
+    }
+
+    addGUI() {
+        this.destroyGUI()
+        this.gui = new GUI({ autoPlace: false, closeOnTop: true,  })
+
+        let guiContainer = document.getElementById('gui-wrapper') as HTMLDivElement | null
+        if (guiContainer === null) {
+            guiContainer = document.createElement('div')
+            guiContainer.id = 'gui-wrapper'
+            this.container.appendChild(guiContainer)
+        }
+        guiContainer.appendChild(this.gui.domElement)
+
+        return this.gui
+    }
+
+    updateGUI(morphMeshes: THREE.Mesh[], maxScale = 25.0) {
+        const gui = this.gui ? this.gui : this.addGUI()
+        const params = {
+            Scale: 0.5*maxScale,
+        }
+
+        gui.__controllers.forEach(controller => {
+            gui.remove(controller)
+        })
+
+        const updateScale = (scale: number) => {
+            morphMeshes.forEach(mesh => {
+                if (mesh.morphTargetInfluences?.length){
+                    mesh.morphTargetInfluences.forEach((_, index, mti) => {
+                        mti[index] = scale
+                    })
+                    if (this.renderEdges) {
+                        this.updateWireframe(mesh, { useMorphed: true })
+                    }
+                }
+            })
+            this.render()
+        }
+
+        gui.add(params, 'Scale', 0, maxScale, 0.01).onChange(updateScale)
+        updateScale(params.Scale)
+    }
+
+    destroyGUI() {
+        if (this.gui !== undefined) {
+            this.gui.domElement.remove()
+            this.gui.destroy()
+            this.gui = undefined
+        }
     }
 
     addLights() {
-        const ambientLight = new THREE.AmbientLight(0xFFFFFF, 0.95)
-        const directionalLightUp = new THREE.DirectionalLight(0xFFFFFF, 0.35)
-        directionalLightUp.position.set(0, -1, 0);
-        const directionalLightDn = new THREE.DirectionalLight(0xFFFFFF, 0.35)
-        this.scene.add(ambientLight, directionalLightUp, directionalLightDn)
+        const ambient = new THREE.AmbientLight(0xFFFFFF, 0.35)
+        const directional = new THREE.DirectionalLight(0xFFFFFF, 0.65)
+        directional.position.set(1, 1, 0)
+
+        this.camera.add(ambient, directional)
     }
 
-    addWireframeToGroup(group: THREE.Group) {
-        const wireMaterial = new THREE.LineBasicMaterial({
-            color: this.wireframeColor,
-            linewidth: 1.5,
-        })
+    addWireframeToGroup(group: THREE.Group, options?: WireframeOptions) {
         // For each material, turn on polygonOffset. This very slightly
         // moves the surface to prevent z-fighting with the wireframe. Store
         // (and check for) materials we've already updated.
@@ -142,6 +275,7 @@ export class ModelViewer {
                 updatedMaterials.push(material)
             }
         }
+
         group.traverse(element => {
             if (element instanceof THREE.Mesh) {
                 if (element.material instanceof THREE.Material) {
@@ -150,12 +284,52 @@ export class ModelViewer {
                     element.material.forEach(setPolygonOffset)
                 }
                 // Create the wireframe from the mesh geometry.
-                console.log('Adding wireframe to mesh...')
-                let wireGeometry = new THREE.EdgesGeometry(element.geometry, this.edgeThresholdAngle)
-                let wireframe = new THREE.LineSegments(wireGeometry, wireMaterial)
-                element.add(wireframe)
+                this.updateWireframe(element, options)
             }
         });
+    }
+
+    /**
+     * Remove any existing wireframe(s) from a mesh.
+     * 
+     * @param mesh The mesh to remove wireframe(s) from.
+     */
+    removeWireframe(mesh: THREE.Mesh) {
+        mesh.children.forEach(child => {
+            if (child instanceof THREE.LineSegments) {
+                mesh.remove(child)
+            }
+        })
+    }
+
+    /**
+     * Update the wireframe for a given mesh.
+     * 
+     * @param mesh The mesh to add a wireframe to.
+     * @param useMorphed If true, use the morphed geometry to create the edges. Buggy. Default: false
+     * @param useWireframe If true, use WireframeGeometry instead of EdgesGeometry.
+     */
+    updateWireframe(mesh: THREE.Mesh, options?: WireframeOptions) {
+        console.log('Updating wireframe for mesh ', mesh)
+
+        // Remove the previous wireframe(s)
+        this.removeWireframe(mesh)
+
+        const wireMaterial = new THREE.LineBasicMaterial({
+            color: this.wireframeColor,
+            linewidth: 1.5,
+        })
+
+        const geometry = options?.useMorphed
+            ? getMorphedGeometry(mesh)
+            : mesh.geometry
+
+        const wireGeometry = options?.useWireframe 
+            ? new THREE.WireframeGeometry(geometry)
+            : new THREE.EdgesGeometry(geometry, this.edgeThresholdAngle)
+
+        const wireframe = new THREE.LineSegments(wireGeometry, wireMaterial)
+        mesh.add(wireframe)
     }
 
     clearScene() {
@@ -171,6 +345,9 @@ export class ModelViewer {
             console.log('Updating canvas size...')
             this.camera.aspect = this.container.clientWidth / this.container.clientHeight
             this.camera.updateProjectionMatrix()
+            // Fire twice; fixes issue where scrollbars leave blank edges around
+            // the canvas.
+            this.renderer.setSize(this.container.clientWidth, this.container.clientHeight)
             this.renderer.setSize(this.container.clientWidth, this.container.clientHeight)
             this.render()
         }
@@ -182,5 +359,34 @@ export class ModelViewer {
 
     render() {
         this.renderer.render(this.scene, this.camera)
+    }
+}
+
+
+class TitleBlock {
+    domElement: HTMLDivElement
+    private nameElement: HTMLHeadElement
+    private descElement: HTMLParagraphElement
+
+    constructor() {
+        this.domElement = document.createElement('div')
+        this.domElement.id = 'model-title'
+
+        this.nameElement = document.createElement('h2')
+        this.nameElement.id = 'model-name'
+        this.descElement = document.createElement('p')
+        this.descElement.id = 'model-desc'
+
+        this.domElement.appendChild(this.nameElement)
+        this.domElement.appendChild(this.descElement)
+    }
+
+    update(name: string, desc: string = "") {
+        this.nameElement.innerText = name
+        this.descElement.innerHTML = desc
+    }
+
+    destroy() {
+        this.domElement.remove()
     }
 }

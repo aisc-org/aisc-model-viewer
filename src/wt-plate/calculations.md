@@ -49,7 +49,7 @@ From AISC *Manual* Table 1-8, the geometric properties are as follows:
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 
-Tensile yielding
+Tensile Yielding
 ----------------
 
 Calculate the nominal strength using AISC *Specification* Equation D2-1.
@@ -67,7 +67,7 @@ $$
 $$
 
 
-Tensile rupture
+Tensile Rupture
 ---------------
 
 Steps:
@@ -137,7 +137,7 @@ Calculate the design strength by applying the resistance factor.
 $$\phi P_n = 0.75 (344 \text{ kips}) \boxed{= 258 \text{ kips}}$$
 
 
-Block shear
+Block Shear
 -----------
 
 There are three plausible block shear paths for this connection:
@@ -148,7 +148,7 @@ There are three plausible block shear paths for this connection:
 
 All plausible paths have uniform tension stress, so $U_{bs} = 1.0$ for all.
 
-### Block shear 1 ([model](#Block-shear-1))
+### Block Shear 1 ([model](#Block-shear-1))
 
 ![Area subject to shear in blue.](./wt-block-shear-1-area-shear.svg)
 
@@ -194,7 +194,7 @@ $$ \begin{align}
         &\boxed{= 298 \text{ kips}}
 \end{align} $$
 
-### Block shear 2 ([model](#Block-shear-2))
+### Block Shear 2 ([model](#Block-shear-2))
 
 ![Block shear path 2.](./wt-block-shear-2-path.svg)
 
@@ -252,7 +252,7 @@ $$ \begin{align}
 \end{align} $$
 
 
-### Block shear 3 ([model](#Block-shear-3))
+### Block Shear 3 ([model](#Block-shear-3))
 
 ![Block shear path 3.](./wt-block-shear-3-path.svg)
 
@@ -297,7 +297,7 @@ $$ \begin{align}
         &\boxed{= 531\text{ kips}}
 \end{align} $$
 
-### Block shear summary
+### Block Shear Summary
 
 The controlling nominal strength is from block shear 1, with
 $R_n = 298\text{ kips}$. Calculate the design strength by applying the
@@ -309,7 +309,7 @@ $$ \begin{align}
 \end{align} $$
 
 
-Limit state summary
+Limit State Summary
 -------------------
 
 The design tensile strength of the WT member is summarized in the following

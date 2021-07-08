@@ -1,4 +1,4 @@
-Adding a model
+Adding a Model
 ==============
 
 To add a model to an existing collection, you'll need:

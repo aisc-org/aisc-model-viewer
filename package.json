@@ -11,10 +11,13 @@
     "*.css"
   ],
   "dependencies": {
-    "three": "^0.116.1"
+    "dat.gui": "^0.7.7",
+    "three": "^0.126.1"
   },
   "devDependencies": {
+    "@types/dat.gui": "^0.7.6",
     "@types/node": "^13.11.1",
+    "@types/three": "^0.126.1",
     "@yarnpkg/pnpify": "^2.0.0-rc.20",
     "clean-webpack-plugin": "^3.0.0",
     "file-loader": "^6.0.0",

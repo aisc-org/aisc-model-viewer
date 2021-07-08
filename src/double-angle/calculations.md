@@ -3,7 +3,7 @@ Calculations
 
 This page demonstrates calculations to:
 
--   determine the design strength of the double angle tension member and bolted
+-   determine the design strength of the double-angle tension member and bolted
     connection
 -   assess the compliance of the connection with geometric limitations
 
@@ -22,7 +22,7 @@ The geometry of the connection is shown below.
 
 ![2D structural drawing of the connection.](./double-angle.svg)
 
-The double angle tension member and the gusset plate both conform to A36. This
+The double-angle tension member and the gusset plate both conform to A36. This
 information is typically found in the general notes of the structural drawings.
 
 From AISC *Manual* Table 2-4, the material properties are as follows:
@@ -298,7 +298,7 @@ $$ \begin{align}
 Tearout in the gusset plate controls. The nominal effective strength of bolt \#9
 is 30.7 kips.
 
-### Bolt group
+### Bolt Group
 
 Calculate the nominal effective strength of the bolt group by summing the
 nominal effective strength of each bolt.
@@ -316,7 +316,7 @@ $$ \phi P_n = 0.75(518~\rm{kips}) = 388~\rm{kips}$$
 Design Strength
 ---------------
 
-The design strength of the double angle tension member and bolted connection for
+The design strength of the double-angle tension member and bolted connection for
 each of the limit states investigated is summarized in the following table.
 
   Limit state                                Design strength

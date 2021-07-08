@@ -2,14 +2,14 @@ Calculations
 ============
 
 This page demonstrates calculations to determine the design strength of the
-diagonal wide flange members and their connection to the gusset plates.
+diagonal wide-flange members and their connection to the gusset plates.
 $\newcommand{\inch}{~{\rm{in.}}}
  \newcommand{\kips}{~{\rm{kips}}}
  \newcommand{\ksi}{~{\rm{ksi}}}
  \newcommand{\sixt}{{\tfrac{1}{16}\inch}}$
 
 
-Material and geometric properties
+Material and Geometric Properties
 ---------------------------------
 
 The geometry of the connection is shown below.
@@ -44,7 +44,7 @@ From AISC *Manual* Table 1-1, the geometric properties are as follows:
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 
-Tensile yield
+Tensile Yield
 -------------
 
 Calculate the nominal strength using AISC *Specification* Equation D2-1.
@@ -60,7 +60,7 @@ Calculate the design strength by applying the resistance factor.
 $$ \phi P_n = 0.9 (1060 \kips) \boxed{= 950 \kips} $$
 
 
-Tensile rupture ([model](#./Tensile-rupture))
+Tensile Rupture ([model](#./Tensile-rupture))
 ---------------
 
 The net area $A_n$ is shown in red. It is equal to the gross area minus the
@@ -117,7 +117,7 @@ Calculate the design strength by applying the resistance factor.
 $$ \phi P_n = 0.75(1050 \kips) \boxed{= 784 \kips} $$
 
 
-Block shear rupture ([model](#./Block-shear-rupture))
+Block Shear Rupture ([model](#./Block-shear-rupture))
 -------------------
 
 There is only one plausible block shear path for this connection, consisting of
@@ -174,7 +174,7 @@ Calculate the design strength by applying the resistance factor.
 $$ \phi R_n = (0.75) (1430\kips) \boxed{= 1080\kips} $$
 
 
-Bolt group strength
+Bolt Group Strength
 -------------------
 The limit states of bolt shear rupture, bearing, and tearout are evaluated 
 together to determine the design strength of the bolt group.
@@ -187,7 +187,7 @@ from the limit states of bolt shear rupture, bearing, and tearout.
 From Table J3.2, the nominal shear strength $F_{nv}$ of single Group B (A490) 
 bolt when threads are not excluded from the shear planes is $F_{nv} = 68\ksi$.
 
-### Bolts in row #1
+### Bolts in Row #1
 
 Calculate the nominal strength for the limit state of bolt shear rupture using 
 *Specification* Equation J3-1.
@@ -199,7 +199,7 @@ $$ \begin{align}
 \end{align} $$
 
 Calculate the nominal strength for the limit state of bearing on the wide flange
-using AISC Specification Equation J3-6a.
+using AISC *Specification* Equation J3-6a.
 
 $$ \begin{align}
     r_n &= 2.4 d t_f F_u \\
@@ -208,7 +208,7 @@ $$ \begin{align}
 \end{align} $$
 
 Calculate the nominal strength for the limit state of bearing on the gusset plate
-using AISC Specification Equation J3-6a.
+using AISC *Specification* Equation J3-6a.
 
 $$ \begin{align}
     r_n &= 2.4 d t F_u \\
@@ -217,7 +217,7 @@ $$ \begin{align}
 \end{align} $$
 
 Calculate the nominal strength for the limit state of tearout in the wide flange
-using AISC Specification Equation J3-6c.
+using AISC *Specification* Equation J3-6c.
 
 $$ \begin{align}
     l_c &= 2\inch - \tfrac12 d_h\\
@@ -232,7 +232,7 @@ $$ \begin{align}
 \end{align} $$
 
 Calculate the nominal strength for the limit state of tearout in the plate
-using AISC Specification Equation J3-6c.
+using AISC *Specification* Equation J3-6c.
 
 $$ \begin{align}
     l_c &= 4\inch - d_h\\
@@ -248,13 +248,13 @@ $$ \begin{align}
 
 Bolt shear rupture controls. The nominal effective strength of the bolts in row #1 is 67.6 kips.
 
-### Bolts in rows #2, #3, and #4
+### Bolts in Rows #2, #3, and #4
 
 The effective strength of bolts in the remaining rows is calculated in the same manner, 
 except with different clear distances. Bolt shear rupture controls. 
 The nominal effective strength of the bolts in rows #2, #3, and #4 is 67.6 kips.
 
-### Bolt group
+### Bolt Group
 
 Calculate the nominal effective strength of the bolt group by summing the 
 nominal effective strength of each bolt.

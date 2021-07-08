@@ -3,10 +3,19 @@
 :root {
     --color-ut-orange: #FF8200;
     --color-ut-smokey: #58595B;
+    --color-ut-smokey-x: #333333;
     --color-aisc-blue: #00558a;
+    --color-gray-1: #f6f6f6;
+    --color-gray-2: #e0e0e0;
+    --color-gray-3: #cacaca;
+    --color-gray-4: #b6b6b6;
 
     --header-bg-color: var(--color-aisc-blue);
     --header-text-color: white;
+
+    --model-title-text-color: white;
+
+    --code-bg-color: #e5e5e5;
 }
 
 html, body {
@@ -15,7 +24,7 @@ html, body {
     margin: 0;
     padding: 0;
     border: 0;
-    color: #333333;
+    color: var(--color-ut-smokey-x);
 }
 
 a {
@@ -49,14 +58,21 @@ nav.header img {
     width: auto;
 }
 
+nav.header #home-button {
+    padding: 7.5%;
+    height: 85%;
+}
+
 nav.header h1 {
     align-self: center;
+    font-size: 1.3rem;
+    margin: 0.75rem;
 }
 
 nav.header button#sidebar-toggle {
     background: none;
     border: none;
-    width: 60px;
+    width: 3.75rem;
 }
 
 nav.header img#sidebar-toggle-icon {
@@ -75,12 +91,73 @@ div.app {
     top: 50px;
     bottom: 0;
     position: fixed;
-    overflow-x: hidden;
+    overflow-x: auto;
     overflow-y: auto;
 }
 
 .content-container canvas {
     display: block;
+}
+
+.content-container div#model-title {
+    position: absolute;
+    bottom: 0;
+    color: var(--model-title-text-color);
+    margin-left: 0.5rem;
+    max-width: 25rem;
+}
+
+.content-container #model-name {
+    font-size: larger;
+    margin: 0;
+    margin-bottom: 0.25rem;
+}
+
+.content-container #model-desc {
+    margin-top: 0.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.content-container div#gui-wrapper {
+    position: absolute;
+    top: 0;
+}
+
+.loading-spinner {
+    position: absolute;
+    top: calc(50% - 40px);
+    left: calc(50% - 40px);
+    width: 80px;
+    height: 80px;
+}
+.loading-spinner div {
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border: 8px solid #fff;
+    border-radius: 50%;
+    animation: loading-spinner 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border-color: #fff transparent transparent transparent;
+}
+.loading-spinner div:nth-child(1) {
+    animation-delay: -0.45s;
+}
+.loading-spinner div:nth-child(2) {
+    animation-delay: -0.3s;
+}
+.loading-spinner div:nth-child(3) {
+    animation-delay: -0.15s;
+}
+@keyframes loading-spinner {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
 }
 
 /* --------------- Non-viewer content --------------- */
@@ -104,6 +181,10 @@ section.html-content.full-width {
 
 .full-width>p {
     max-width: 30em;
+}
+
+.full-width>img {
+    display: block;
 }
 
 .html-content p {
@@ -133,7 +214,7 @@ section.html-content.full-width {
 .html-content p>code {
     padding: 0.5%;
     background-clip: border-box;
-    background-color: #e5e5e5;
+    background-color: var(--code-bg-color);
     border-radius: 10%;
 }
 
@@ -145,7 +226,7 @@ section.html-content.full-width {
 pre.sourceCode {
     padding: 1%;
     background-clip: border-box;
-    background-color: #e5e5e5;
+    background-color: var(--code-bg-color);
     overflow-x: auto;
 }
 
@@ -166,7 +247,7 @@ pre.sourceCode {
 
 .html-content figure {
     text-align: center;
-    background-color: #fbfbfb;
+    background-color: var(--color-gray-1);
     padding: 5px;
     border-radius: 5px;
     margin: 0;
@@ -210,7 +291,7 @@ div.properties th {
 }
 
 .html-content details {
-    border: 1px solid #333;
+    border: 1px solid var(--color-ut-smokey-x);
     border-radius: 4px;
     margin: 0 1rem;
     padding: 0.5em 0.5em 0;
@@ -227,14 +308,14 @@ div.properties th {
 }
 
 .html-content details.sourceCode[open] {
-    background-color: #e5e5e5;
+    background-color: var(--code-bg-color);
 }
 
 .html-content details[open] summary {
     background-color: white;
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
-    border-bottom: 1px solid #333;
+    border-bottom: 1px solid var(--color-ut-smokey-x);
     margin-bottom: 0.5em;
 }
 
@@ -249,19 +330,13 @@ nav.sidebar {
     z-index: 1;
     width: 250px;
     height: 100%;
-    background-color: #F6F6F6;
-    border-left: 10px solid var(--header-bg-color);
+    background-color: var(--color-gray-1);
+    border-left: 5px solid var(--header-bg-color);
     box-sizing: border-box;
     color: var(--color-ut-smokey);
     padding: 0;
     overflow-y: auto;
     max-height: calc(100vh - 50px);
-}
-
-@media (orientation: portrait) {
-    nav.sidebar {
-        visibility: hidden;
-    }
 }
 
 .sidebar section {

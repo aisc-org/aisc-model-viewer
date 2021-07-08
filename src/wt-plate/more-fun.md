@@ -2,7 +2,7 @@ What would be the controlling limit state if the tension member was a WT6x25?
 
 --------------------------------------------------------------------------------
 
-WTs are made by cutting a wide flange section lengthwise, either in a dedicated shop
+WTs are made by cutting a wide-flange section lengthwise, either in a dedicated shop
 or at the jobsite itself.
 They are rarely, if ever, hot-rolled as separate sections.
 The cut can be achieved in a variety of ways.

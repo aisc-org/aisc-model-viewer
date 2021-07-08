@@ -24,7 +24,7 @@ import './bolt-9-clear-distance.svg'
 import './workpoint.svg'
 
 const app = new App({
-    title: 'Double Angle Connection',
+    title: 'Double-angle Brace Connection',
     groups: [
         {
             name: 'models',
