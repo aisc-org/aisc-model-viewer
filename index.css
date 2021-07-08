@@ -1,0 +1,40 @@
+@import url('./fonts.css');
+
+body {
+    font-family: 'STIX 2 Text', serif;
+    line-height: 1.25;
+    margin: auto;
+    padding: 1em;
+    max-width: 30em;
+}
+
+p {
+    text-align: justify;
+    hyphens: auto;
+    -ms-hyphens: auto;
+    -webkit-hyphens: auto;
+}
+
+code {
+    padding: 0.5%;
+    background-clip: border-box;
+    background-color: #e5e5e5;
+    border-radius: 10%;
+}
+
+img {
+    max-width: 100%;
+}
+
+figure figcaption {
+    text-align: center;
+}
+
+div.logo-container {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.logo-container img {
+    max-height: 6em;
+}
