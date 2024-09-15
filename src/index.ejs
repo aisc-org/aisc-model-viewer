@@ -3,12 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./index.css">
-
     <title><%= htmlWebpackPlugin.options.title %></title>
 </head>
 <body>
-    <a href="https://www.aisc.org/universityprograms"><img src="assets/AISC_lockup_university_programs.png"></a>
+    <a href="https://www.aisc.org/universityprograms"><img src="<%= require('./assets/AISC_lockup_university_programs.png') %>"></a>
 
     <h1>Three-Dimensional Model Viewer for Illustrating Structural Steel Concepts</h1>
 
@@ -47,8 +45,8 @@
     <p>This project was developed by Mark Denavit and Peter Talley at the University of Tennessee, Knoxville. Funding for this project was provided by the American Institute of Steel Construction (AISC) through the Teaching Aid Development Program.</p>
 
     <div class="logo-container">
-        <a href="https://www.aisc.org"><img src="./assets/aisc-logo.jpg" alt="AISC Logo"></a>
-        <a href="https://utk.edu"><img src="./assets/utk-logo.png" alt="University of Tennessee, Knoxville Logo"></a>
+        <a href="https://www.aisc.org"><img src="<%= require('./assets/aisc-logo.jpg') %>" alt="AISC Logo"></a>
+        <a href="https://utk.edu"><img src="<%= require('./assets/utk-logo.png') %>" alt="University of Tennessee, Knoxville Logo"></a>
     </div>
 </body>
 </html>

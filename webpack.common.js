@@ -1,7 +1,5 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const PnpWebpackPlugin = require('pnp-webpack-plugin')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const child_process = require('child_process')
 
 module.exports = {
@@ -29,15 +27,11 @@ module.exports = {
             {
                 test: /\.html$/,
                 loader: 'html-loader',
-                options: {
-                    attributes: false,
-                }
             },
             {
                 test: /\.md$/,
                 loader: 'html-loader',
                 options: {
-                    attributes: false,
                     preprocessor: (content, loaderContext) => {
                         let result = child_process.execFileSync(
                             'pandoc', ['-t', 'html', '--mathjax'], { input: content }
@@ -47,31 +41,20 @@ module.exports = {
                 }
             },
             {
-                test: /\.(css|woff2|svg|png|jpe?g|gif)$/,
-                loader: 'file-loader',
-                options: {
-                    context: 'src',
-                    name: '[path][name].[ext]'
-                }
+                test: /\.css$/,
+                use: ['style-loader', 'css-loader'],
+            },
+            {
+                test: /\.(woff2|svg|png|jpe?g|gif)$/,
+                type: 'asset/resource',
             },
             {
                 test: /\.(gltf|glb)$/,
-                loader: 'file-loader',
-                options: {
-                    name: 'assets/[contenthash].[ext]'
-                }
+                type: 'asset/resource',
             },
         ]
     },
-    resolve: {
-        plugins: [PnpWebpackPlugin],
-        extensions: ['.ts', '.js']
-    },
-    resolveLoader: {
-        plugins: [PnpWebpackPlugin.moduleLoader(module)]
-    },
     plugins: [
-        new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             title: 'AISC Model Viewer',
             filename: 'index.html',
@@ -141,12 +124,17 @@ module.exports = {
     ],
     output: {
         filename: '[name].bundle.js',
-        path: path.resolve(__dirname, 'dist')
+        assetModuleFilename: 'assets/[name]-[hash][ext]',
+        path: path.resolve(__dirname, 'dist'),
+        clean: true,
     },
     optimization: {
         usedExports: true,
         splitChunks: {
             chunks: 'all'
         }
+    },
+    resolve: {
+        extensions: ['.ts', '...']
     }
 }
