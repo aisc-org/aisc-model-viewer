@@ -14,12 +14,11 @@ import pathToTB from './Wide-flange-column-models-W8x31-TB.glb'
 import pathToWebLB from './Wide-flange-column-models-W8x31-Web-LB.glb'
 
 // Content
-const aiscTable = '<img src="./AISC-360-Table-C-A-7.1.png"></img>'
+import aiscTable from './AISC-360-Table-C-A-7.1.html'
 import commentary from './commentary.md'
 import moreFun from './more-fun.md'
 
 // Assets
-import './AISC-360-Table-C-A-7.1.png'
 import './W14x159.jpg'
 
 
