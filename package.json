@@ -12,12 +12,12 @@
   ],
   "dependencies": {
     "dat.gui": "^0.7.9",
-    "three": "^0.126.1"
+    "three": "0.130"
   },
   "devDependencies": {
     "@types/dat.gui": "^0.7.13",
     "@types/node": "^22.5.5",
-    "@types/three": "^0.126.2",
+    "@types/three": "0.130",
     "@yarnpkg/pnpify": "^4.1.2",
     "css-loader": "^7.1.2",
     "html-loader": "^5.1.0",

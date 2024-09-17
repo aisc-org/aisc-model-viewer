@@ -420,10 +420,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/three@npm:^0.126.2":
-  version: 0.126.2
-  resolution: "@types/three@npm:0.126.2"
-  checksum: 10/984ee7c3c6b008445532d86911d066963667b433d325003090aff99a96a2c6c49de74e18ff63f0e24fe315750d02665ad6fceacdd990b82819b79e56bad0e170
+"@types/three@npm:0.130":
+  version: 0.130.2
+  resolution: "@types/three@npm:0.130.2"
+  checksum: 10/fa6793603327e1d9e9d38f03d57d65de899c683f824d3c0d4dfc12e6a70dfb89c742c5829552ac822aae52f901d9ccb36e54af95f85e0d6faa776ec4fb675184
   languageName: node
   linkType: hard
 
@@ -812,14 +812,14 @@ __metadata:
   dependencies:
     "@types/dat.gui": "npm:^0.7.13"
     "@types/node": "npm:^22.5.5"
-    "@types/three": "npm:^0.126.2"
+    "@types/three": "npm:0.130"
     "@yarnpkg/pnpify": "npm:^4.1.2"
     css-loader: "npm:^7.1.2"
     dat.gui: "npm:^0.7.9"
     html-loader: "npm:^5.1.0"
     html-webpack-plugin: "npm:^5.6.0"
     style-loader: "npm:^4.0.0"
-    three: "npm:^0.126.1"
+    three: "npm:0.130"
     ts-loader: "npm:^9.5.1"
     typescript: "npm:^5.6.2"
     webpack: "npm:^5.94.0"
@@ -4496,10 +4496,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"three@npm:^0.126.1":
-  version: 0.126.1
-  resolution: "three@npm:0.126.1"
-  checksum: 10/30dfcb9e9215bd34ea4b99ed1ce4b1d8504229913f6120d52b10890d4e9095d2859aa11255d073a06b1f0bd0778f41381f3178507e9833ee0590788ff6bb5ef8
+"three@npm:0.130":
+  version: 0.130.1
+  resolution: "three@npm:0.130.1"
+  checksum: 10/92ac124484204335c5a2d3bf24b582c7ec4481716f17d4c30ff3853c74a9b5713bdea4f86cb16b3e155d60f5621685b603d69959d3c52252a831b0df2321a43e
   languageName: node
   linkType: hard
 
