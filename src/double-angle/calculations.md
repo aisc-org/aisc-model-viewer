@@ -387,8 +387,8 @@ The maximum provided edge distance is $3\tfrac{3}{4}~\rm{in.}$ which
 satisfies the maximum edge distance requirement.
 
 
-Entering and Tightning Clearances
----------------------------------
+Entering and Tightening Clearances
+----------------------------------
 
 From Table 7-15 of the AISC *Manual*, the minimum distance from the center of a
 7/8 in. diameter A325 bolt and the face of a vertical obstruction is
