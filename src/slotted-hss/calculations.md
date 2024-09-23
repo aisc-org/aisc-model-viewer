@@ -10,7 +10,7 @@ welded connection, considering the limit states of:
 - Base metal strength of the HSS member
 - Base metal strength of the gusset plate
 
-The calculations are based on the 2016 AISC *Specification* and the 15th edition
+The calculations are based on the 2022 AISC *Specification* and the 16th edition
 AISC *Manual*.
 $\newcommand{\inch}{~{\rm{in.}}}
  \newcommand{\kips}{~{\rm{kips}}}
@@ -21,7 +21,7 @@ $\newcommand{\inch}{~{\rm{in.}}}
 Material and Geometric Properties
 ---------------------------------
 
-The connection consists of a HSS6x6x3/8 connected by four (4) 5/16" fillet welds
+The connection consists of an HSS6x6x3/8 connected by four (4) 5/16" fillet welds
 to a 3/4"-thick gusset plate.
 
 ![Structural drawing](./slotted-hss.svg)
@@ -43,8 +43,8 @@ From AISC *Manual* Table 2-4, the material properties for the HSS member are:
 
 Note that for the HSS member, the section properties used in this example are
 not the ones listed in the AISC *Manual*. This is because, unlike A500 HSS,
-the design wall thickness equals the nominal wall thickness for A1085 HSS. 
-Instead, refer to the [A1085 Dimensions and Properties table (PDF)](https://www.aisc.org/globalassets/product-files-not-searched/manuals/a1085-dimension-and-properties_square_7-10-2018.pdf) available from AISC.
+the design wall thickness equals the nominal wall thickness for A1085 HSS.
+Instead, refer to the [A1085 Dimensions and Properties table (PDF)](https://www.aisc.org/globalassets/product-files-not-searched/manuals/v16.0_a1085-square-pdf.pdf) available from AISC.
 
 From AISC *Manual* Table 2-5, the material properties for the gusset plate are:
 
@@ -95,48 +95,51 @@ $$ \begin{align}
 \end{align} $$
 
 From the description of the element in AISC *Specification* Table D3.1,
-calculate the shear lag factor $U$. Since the length of the connection
-$\ell~(12~\rm{in.})$ is greater than the width of the HSS $B~(6~\rm{in.})$, Case
-6 applies. First calculate the connection eccentricity $\bar{x}$.
+calculate the shear lag factor $U$. As a slotted HSS connection, Case 5 applies.
+First calculate the connection eccentricity $\bar{x}$.
 
 $$ \begin{align}
-    \bar{x} &= \frac{B^2 + 2BH}{4(B + H)} \\[1ex]
-            &= \frac{(6~\rm{in.})^2 + 2(6~\rm{in.})(6~\rm{in.})}
-                    {4(6~\rm{in.} + 6~\rm{in.})} \\
-            &= 2.25~\rm{in.}
+    \bar{x} &= b - \frac{2b^2 + tH - 2t^2}{2H + 4b - 4t} \\[1ex]
+    b       &= \tfrac12\left(B - t_p\right) \\
+            &= \tfrac12\left(6~\rm{in.} - \tfrac34~\rm{in.}\right) \\
+            &= 2.62~\rm{in.}\\
+    \bar{x} &= 2.62~\rm{in.}
+               - \frac{2(2.62~\rm{in.})^2 + (\tfrac{3}{8}~\rm{in.})(6~\rm{in.}) - 2(\tfrac{3}{8}~\rm{in.})^2}
+                      {2(6~\rm{in.}) + 4(2.62~\rm{in.}) - 4(\tfrac{3}{8}~\rm{in.})} \\
+            &= 2.28~\rm{in.}
 \end{align} $$
 
 Calculate the shear lag factor.
 
 $$ \begin{align}
     U &= 1 - \frac{\bar{x}}{\ell} \\
-      &= 1 - \frac{2.25~\rm{in.}}{12~\rm{in.}} \\
-      &= 0.812
+      &= 1 - \frac{2.28~\rm{in.}}{12~\rm{in.}} \\
+      &= 0.810
 \end{align} $$
 
 Calculate the effective net area using AISC *Specification* Equation D3-1:
 
-$$ A_e = A_n U = (7.47~\rm{in.}^2) (0.812) = 6.07~\rm{in.}^2 $$
+$$ A_e = A_n U = (7.47~\rm{in.}^2) (0.810) = 6.05~\rm{in.}^2 $$
 
 Calculate the nominal strength using AISC *Specification* Equation D2-2:
 
 $$ \begin{align}
     P_n &= F_u A_e \\
-        &= (65~\rm{ksi})(6.32~\rm{in.}^2) \\
-        &= 395~\rm{kips}
+        &= (65~\rm{ksi})(6.05~\rm{in.}^2) \\
+        &= 393~\rm{kips}
 \end{align} $$
 
 Calculate the design strength by applying the resistance factor.
 
-$$ \phi P_n = 0.75(395~\rm{kips}) \boxed{= 296~\rm{kips}} $$
+$$ \phi P_n = 0.75(393~\rm{kips}) \boxed{= 295~\rm{kips}} $$
 
 
 Weld Rupture ([model](#Weld-fracture))
 ------------
 
-The connection is made with four (4) 12 in. lengths of 5/16" fillet weld. 
+The connection is made with four (4) 12 in. lengths of 5/16" fillet weld.
 
-The rupture strength of the weld is defined by *Specification* equation J2-3.
+The rupture strength of the weld is defined by *Specification* Equation J2-3.
 
 $$ R_n = F_{nw} A_{we} \tag{J2-3} $$
 
@@ -282,9 +285,9 @@ The design strength of the connection is summarized in the following table.
 | Limit state        | Design strength |
 |:-------------------|----------------:|
 | Tensile Yield      |        364 kips |
-| Tensile Rupture    |        296 kips |
+| Tensile Rupture    |        295 kips |
 | Weld Rupture       |        334 kips |
 | Base Metal - HSS   |        526 kips |
 | Base Metal - Plate |        624 kips |
 
-**Tensile rupture of the HSS controls with a design strength of 296 kips.**
+**Tensile rupture of the HSS controls with a design strength of 295 kips.**
