@@ -1,6 +1,8 @@
-const path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
 const child_process = require('child_process')
+const path = require('path')
+
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
     entry: {
@@ -42,7 +44,7 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                use: ['style-loader', 'css-loader'],
+                use: [MiniCssExtractPlugin.loader, 'css-loader'],
             },
             {
                 test: /\.(woff2|svg|png|jpe?g|gif)$/,
@@ -55,6 +57,7 @@ module.exports = {
         ]
     },
     plugins: [
+        new MiniCssExtractPlugin(),
         new HtmlWebpackPlugin({
             title: 'AISC Model Viewer',
             filename: 'index.html',
