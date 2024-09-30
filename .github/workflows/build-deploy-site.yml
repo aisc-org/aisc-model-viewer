@@ -29,6 +29,7 @@ jobs:
           corepack enable
           yarn install
           yarn build
+          touch dist/.nojekyll  # Create sentinel file to tell GitHub not to run Jekyll
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
