@@ -106,32 +106,32 @@ $$ \begin{align}
     \bar{x} &= 2.62~\rm{in.}
                - \frac{2(2.62~\rm{in.})^2 + (\tfrac{3}{8}~\rm{in.})(6~\rm{in.}) - 2(\tfrac{3}{8}~\rm{in.})^2}
                       {2(6~\rm{in.}) + 4(2.62~\rm{in.}) - 4(\tfrac{3}{8}~\rm{in.})} \\
-            &= 2.28~\rm{in.}
+            &= 1.88~\rm{in.}
 \end{align} $$
 
 Calculate the shear lag factor.
 
 $$ \begin{align}
     U &= 1 - \frac{\bar{x}}{\ell} \\
-      &= 1 - \frac{2.28~\rm{in.}}{12~\rm{in.}} \\
-      &= 0.810
+      &= 1 - \frac{1.88~\rm{in.}}{12~\rm{in.}} \\
+      &= 0.844
 \end{align} $$
 
 Calculate the effective net area using AISC *Specification* Equation D3-1:
 
-$$ A_e = A_n U = (7.47~\rm{in.}^2) (0.810) = 6.05~\rm{in.}^2 $$
+$$ A_e = A_n U = (7.47~\rm{in.}^2) (0.844) = 6.30~\rm{in.}^2 $$
 
 Calculate the nominal strength using AISC *Specification* Equation D2-2:
 
 $$ \begin{align}
     P_n &= F_u A_e \\
-        &= (65~\rm{ksi})(6.05~\rm{in.}^2) \\
-        &= 393~\rm{kips}
+        &= (65~\rm{ksi})(6.30~\rm{in.}^2) \\
+        &= 410~\rm{kips}
 \end{align} $$
 
 Calculate the design strength by applying the resistance factor.
 
-$$ \phi P_n = 0.75(393~\rm{kips}) \boxed{= 295~\rm{kips}} $$
+$$ \phi P_n = 0.75(410~\rm{kips}) \boxed{= 307~\rm{kips}} $$
 
 
 Weld Rupture ([model](#Weld-fracture))
@@ -285,9 +285,9 @@ The design strength of the connection is summarized in the following table.
 | Limit state        | Design strength |
 |:-------------------|----------------:|
 | Tensile Yield      |        364 kips |
-| Tensile Rupture    |        295 kips |
+| Tensile Rupture    |        307 kips |
 | Weld Rupture       |        334 kips |
 | Base Metal - HSS   |        526 kips |
 | Base Metal - Plate |        624 kips |
 
-**Tensile rupture of the HSS controls with a design strength of 295 kips.**
+**Tensile rupture of the HSS controls with a design strength of 307 kips.**
