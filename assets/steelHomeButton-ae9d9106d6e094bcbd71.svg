@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
+   height="50"
+   width="50"
+   sodipodi:docname="steelHomeButton.svg"
+   version="1.1"
+   viewBox="0 0 50.000002 50"
+   data-name="Layer 1"
+   id="Layer_1">
+  <metadata
+     id="metadata20">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>steelHomeButton</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     inkscape:current-layer="Layer_1"
+     inkscape:window-maximized="1"
+     inkscape:window-y="-8"
+     inkscape:window-x="-8"
+     inkscape:cy="21.141483"
+     inkscape:cx="-11.636821"
+     inkscape:zoom="8.8670978"
+     showgrid="false"
+     id="namedview18"
+     inkscape:window-height="1017"
+     inkscape:window-width="1920"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0"
+     guidetolerance="10"
+     gridtolerance="10"
+     objecttolerance="10"
+     borderopacity="1"
+     bordercolor="#666666"
+     pagecolor="#ffffff" />
+  <defs
+     id="defs7">
+    <style
+       id="style2">.cls-1,.cls-4{fill:none;}.cls-2{clip-path:url(#clip-path);}.cls-3{fill:#fff;}.cls-4{stroke:#fff;stroke-miterlimit:10;stroke-width:3px;}</style>
+    <clipPath
+       transform="translate(-3.53 -0.71)"
+       id="clip-path">
+      <rect
+         y="0"
+         x="0"
+         id="rect4"
+         height="50"
+         width="50"
+         class="cls-1" />
+    </clipPath>
+  </defs>
+  <title
+     id="title9">steelHomeButton</title>
+  <g
+     transform="translate(3.62,1.0349998)"
+     id="g15"
+     clip-path="url(#clip-path)"
+     class="cls-2">
+    <path
+       id="path11"
+       transform="translate(-3.53,-0.71)"
+       d="m 41.28,20.58 c -2.12,-1.67 -4,-3.79 -5.93,-5.61 L 28.14,8.09 c -1,-0.93 -1.93,-2 -3,-2.87 a 1.15,1.15 0 0 0 -0.87,-0.3 c -0.79,0.11 -1.68,1.44 -2.21,2 l -3,3.06 -5.9,6.11 -2.53,2.61 A 28.84,28.84 0 0 1 7.39,21.5 8.65,8.65 0 0 1 5.06,21.84 C 4.25,21.84 3.95,21.5 3.43,20.96 L 24.3,0.71 46.29,21 a 3.23,3.23 0 0 1 -0.75,0.79 c -0.19,0.08 -0.44,0.29 -0.65,0.29 -0.21,0 -0.51,0.05 -0.83,0.05 a 3,3 0 0 1 -0.68,-0.12 7.86,7.86 0 0 1 -0.78,-0.43 10.82,10.82 0 0 1 -1.31,-1"
+       class="cls-3" />
+    <rect
+       id="rect13"
+       ry="2.4000001"
+       rx="2.4000001"
+       height="28"
+       width="28"
+       y="18.43"
+       x="7.3800001"
+       class="cls-4" />
+  </g>
+</svg>
