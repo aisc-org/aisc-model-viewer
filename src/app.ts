@@ -1,8 +1,5 @@
 import { ModelViewer } from './viewer'
-import './style.ts'
-import './assets/steelHomeButton.svg'
-import './assets/hamburger-menu-white.svg'
-import './assets/placeholder.png'
+import './app.css'
 
 
 enum DisplayMode {
@@ -271,7 +268,7 @@ abstract class SidebarItem {
 
     /**
      * Perform cleanup before switching to new content.
-     * 
+     *
      */
     destroyContent() {
         return Promise.resolve()

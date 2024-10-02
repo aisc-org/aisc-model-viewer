@@ -3,8 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../app.css">
-
     <title><%= htmlWebpackPlugin.options.title %></title>
 
     <!-- This is the configuration for MathJax. It needs to be present before
@@ -13,22 +11,22 @@
         MathJax = {
             chtml: {
                 scale: 0.95, // MathJax by default auto-scales the font size;
-                             // it's a little big with the selected body font   
+                             // it's a little big with the selected body font
                 displayAlign: 'left',
-                displayIndent: '1em'                             
+                displayIndent: '1em'
             }
         }
     </script>
     <!-- These scripts deliver MathJax. -->
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 </head>
 <body>
     <nav class="header">
-        <a href=".."><img src="../assets/steelHomeButton.svg" alt="Home" id="home-button" width="50"></a>
+        <a href=".."><img src="<%= require('./assets/steelHomeButton.svg') %>" alt="Home" id="home-button" width="50"></a>
         <h1 id="header-title"></h1>
         <button id="sidebar-toggle">
-            <img id="sidebar-toggle-icon" src="../assets/hamburger-menu-white.svg" alt="Open sidebar">
+            <img id="sidebar-toggle-icon" src="<%= require('./assets/hamburger-menu-white.svg') %>" alt="Open sidebar">
         </button>
     </nav>
     <div class="app">

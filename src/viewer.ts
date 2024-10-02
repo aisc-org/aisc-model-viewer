@@ -4,8 +4,6 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { GUI } from 'dat.gui'
-import { siteRoot } from './utils'
-
 
 const colors = {
     aisc_blue: new THREE.Color('#00558A'),
@@ -83,7 +81,6 @@ export class ModelViewer {
         const draco = new DRACOLoader()
         draco.setDecoderPath('https://www.gstatic.com/draco/v1/decoders/')
         this.loader = new GLTFLoader()
-        this.loader.setPath(siteRoot)
         this.loader.setDRACOLoader(draco)
 
         this.scene = new THREE.Scene()
@@ -291,7 +288,7 @@ export class ModelViewer {
 
     /**
      * Remove any existing wireframe(s) from a mesh.
-     * 
+     *
      * @param mesh The mesh to remove wireframe(s) from.
      */
     removeWireframe(mesh: THREE.Mesh) {
@@ -304,7 +301,7 @@ export class ModelViewer {
 
     /**
      * Update the wireframe for a given mesh.
-     * 
+     *
      * @param mesh The mesh to add a wireframe to.
      * @param useMorphed If true, use the morphed geometry to create the edges. Buggy. Default: false
      * @param useWireframe If true, use WireframeGeometry instead of EdgesGeometry.
@@ -324,7 +321,7 @@ export class ModelViewer {
             ? getMorphedGeometry(mesh)
             : mesh.geometry
 
-        const wireGeometry = options?.useWireframe 
+        const wireGeometry = options?.useWireframe
             ? new THREE.WireframeGeometry(geometry)
             : new THREE.EdgesGeometry(geometry, this.edgeThresholdAngle)
 

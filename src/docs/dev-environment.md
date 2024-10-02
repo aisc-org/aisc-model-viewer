@@ -3,12 +3,11 @@ Setting up a Development Environment
 
 In order to build the website for testing on your own machine, you'll need to
 set up a [Node.js](https://nodejs.org) development environment. The site targets
-the LTS version of Node (currently major version 12).
+the LTS version of Node (currently major version 20).
 
 Building the site requires the following external dependencies:
 
 - Node.js
-- Yarn
 - Pandoc, v2.8 or higher. Make sure it's available on your `PATH`.
 
 
@@ -19,22 +18,13 @@ External Dependencies
 
 #### Node
 
-Download the latest 12.X release from [the Node.js website](https://nodejs.org).
+Download the latest 20.X release from [the Node.js website](https://nodejs.org).
 When installing, make sure to check "Automatically install the necessary tools"
 on the "Tools for Native Modules" screen -- or follow the link to the manual
 instructions.
 
 ![The "Tools for Native Modules" screen. Make sure the highlighted box is checked.](./tools-for-native-modules.png)
 
-#### Yarn
-
-Once Node is installed, run 
-
-``` powershell
-npm install -g yarn
-```
-
-from an administrator terminal.
 
 #### Pandoc
 
@@ -56,20 +46,21 @@ On Ubuntu, the easiest way to install Node is to use the snap package, which
 comes bundled with Yarn:
 
 ``` sh
-snap install --classic node --channel=12
+snap install --classic node --channel=20
 ```
 
 For other distros, download the
 [Linux binaries](https://nodejs.org/en/download/) or consult the
-[instructions for installing via package manager](https://nodejs.org/en/download/package-manager/).
+[instructions for installing via package manager](https://nodejs.org/en/download/package-manager).
 
 
 Other Dependencies
 ------------------
 
-Once node and yarn are installed, run
+Once node is installed, run
 
 ```
+corepack enable
 yarn install
 ```
 

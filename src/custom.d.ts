@@ -1,5 +1,9 @@
 // Declarations that allow typescript to not panic when using the webpack
 // file-loader syntax (import path from 'file')
+declare module "*.css" {
+    const content: string
+    export default content
+}
 declare module "*.gltf" {
     const content: string
     export default content

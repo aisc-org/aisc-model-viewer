@@ -11,24 +11,24 @@
     "*.css"
   ],
   "dependencies": {
-    "dat.gui": "^0.7.7",
-    "three": "^0.126.1"
+    "dat.gui": "^0.7.9",
+    "three": "0.130"
   },
   "devDependencies": {
-    "@types/dat.gui": "^0.7.6",
-    "@types/node": "^13.11.1",
-    "@types/three": "^0.126.1",
-    "@yarnpkg/pnpify": "^2.0.0-rc.20",
-    "clean-webpack-plugin": "^3.0.0",
-    "file-loader": "^6.0.0",
-    "html-loader": "^1.1.0",
-    "html-webpack-plugin": "^4.2.0",
-    "pnp-webpack-plugin": "^1.6.4",
-    "ts-loader": "^6.2.2",
-    "typescript": "^3.8.3",
-    "webpack": "^4.42.1",
-    "webpack-cli": "^3.3.11",
-    "webpack-dev-server": "^3.10.3",
-    "webpack-merge": "^4.2.2"
-  }
+    "@types/dat.gui": "^0.7.13",
+    "@types/node": "^22.5.5",
+    "@types/three": "0.130",
+    "@yarnpkg/pnpify": "^4.1.2",
+    "css-loader": "^7.1.2",
+    "html-loader": "^5.1.0",
+    "html-webpack-plugin": "^5.6.0",
+    "mini-css-extract-plugin": "^2.9.1",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.6.2",
+    "webpack": "^5.94.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.1.0",
+    "webpack-merge": "^6.0.1"
+  },
+  "packageManager": "yarn@4.5.0"
 }
