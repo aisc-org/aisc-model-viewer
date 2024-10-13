@@ -146,14 +146,14 @@ $$ R_n = F_{nw} A_{we} \tag{J2-3} $$
 Where $F_{nw}$ is the nominal stress of the weld metal and $A_{we}$ is the
 effective area of the weld. These values are defined by *Specification* Table
 J2.5. For fillet welds, $F_{nw}$ is $0.60 F_{EXX}$ and $A_{we}$ is defined by
-*Specification* section J2.2a:
+*Specification* Section J2.2a:
 
 > The effective area of a fillet weld shall be the effective length multiplied
 > by the effective throat. The effective throat of a fillet weld shall be the
 > shortest distance from the root to the face of the diagrammatic weld.
 
 For the fillet welds in this connection, the effective length is given by
-*Specification* section J2.2b(d). The actual length (12 in.) is less than 100
+*Specification* Section J2.2b(d). The actual length (12 in.) is less than 100
 times the weld size (31.2 in.), so the effective length is equal to the actual
 length.
 
@@ -189,7 +189,7 @@ The base metal limit state checks for failure of the welded elements at the weld
 interface. For the HSS, there is a small amount of material in tension. This
 area is quite small relative to the shear area, however, and it is common to
 neglect it. Since the tensile contribution is being neglected, the limit state
-being checked is shear (section J4.2) instead of block shear (section J4.3).
+being checked is shear (Section J4.2) instead of block shear (Section J4.3).
 
 ### Shear Yielding
 
