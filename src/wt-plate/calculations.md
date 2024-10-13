@@ -8,7 +8,7 @@ tension member, considering the limit states of:
 - Tensile rupture
 - Block shear rupture
 
-The calculations are based on the 2016 AISC *Specification* and the 15th edition
+The calculations are based on the 2022 AISC *Specification* and the 16th edition
 AISC *Manual*.
 $\newcommand{\inch}{~{\rm{in.}}}
  \newcommand{\kips}{~{\rm{kips}}}

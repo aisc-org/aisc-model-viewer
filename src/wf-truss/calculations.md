@@ -3,6 +3,9 @@ Calculations
 
 This page demonstrates calculations to determine the design strength of the
 diagonal wide-flange members and their connection to the gusset plates.
+
+The calculations are based on the 2022 AISC *Specification* and the 16th edition
+AISC *Manual*.
 $\newcommand{\inch}{~{\rm{in.}}}
  \newcommand{\kips}{~{\rm{kips}}}
  \newcommand{\ksi}{~{\rm{ksi}}}
@@ -74,9 +77,8 @@ $$ \begin{align}
 \end{align} $$
 
 From the description of the element in AISC *Specification* Table D3.1 Case 7,
-calculate the shear lag factor, U, as the larger of the values from Case 2 and
-Case 7. Note that *Manual*s printed before June 2019 have an error in the figure
-for Case 2. [See the errata (PDF)](https://www.aisc.org/globalassets/aisc/publications/standards/errata_15th-ed-manual_june-2019.pdf)
+calculate the shear lag factor, $U$, as the larger of the values from Case 2 and
+Case 7.
 
 Calculate the shear lag according to Case 2. For wide-flange shapes with the
 flanges attached to plates, the eccentricity of the connection $\bar{x}$ is

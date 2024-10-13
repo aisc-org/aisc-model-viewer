@@ -7,7 +7,7 @@ This page demonstrates calculations to:
     connection
 -   assess the compliance of the connection with geometric limitations
 
-The calculations are based on the 2016 AISC *Specification* and the 15th Edition
+The calculations are based on the 2022 AISC *Specification* and the 16th Edition
 AISC *Manual*.
 $\newcommand{\inch}{~{\rm{in.}}}
  \newcommand{\kips}{~{\rm{kips}}}
@@ -332,7 +332,7 @@ each of the limit states investigated is summarized in the following table.
 Bolt Spacing
 ------------
 
-From Section J3.3 of the AISC *Specification*, the minimum spacing between bolts
+From Section J3.4 of the AISC *Specification*, the minimum spacing between bolts
 is $2\tfrac{2}{3}d$.
 
 $$ \begin{align}
@@ -341,7 +341,7 @@ $$ \begin{align}
             &= 2.33~\rm{in.}
 \end{align} $$
 
-From the User Note in Section J3.3 of the AISC *Specification*, the preferred
+From the User Note in Section J3.4 of the AISC *Specification*, the preferred
 minimum spacing between bolts is $3d$.
 
 $$ \begin{align}
@@ -367,14 +367,14 @@ spacing, preferred minimum spacing, and the maximum spacing.
 Bolt Edge Distances
 -------------------
 
-From Section J3.4 and Table J3.4 of the AISC *Specification*, the
+From Section J3.5 and Table J3.4 of the AISC *Specification*, the
 minimum edge distance for a 7/8 in. diameter bolt in a standard hole is
 $1\tfrac{1}{8}~\rm{in.}$
 
 The minimum provided edge distance is $2\tfrac{1}{8}~\rm{in.}$ which
 satisfies the minimum edge distance requirement.
 
-From Section J3.5 of the AISC *Specification*, the maximum spacing between bolts
+From Section J3.6 of the AISC *Specification*, the maximum spacing between bolts
 is the lesser of 12 times the thickness of the connected part and 6 in.
 
 $$ \begin{align}
