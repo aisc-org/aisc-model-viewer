@@ -96,8 +96,8 @@ AISC *Specification* Section G2.2 describes it well (emphasis added):
 
 > The panels of the web of a built-up member, bounded on the top and bottom by
 > the flanges and on each side by transverse stiffeners, are capable of carrying
-> loads far in excess of their web buckling load. Upon reaching the theoretical
-> web buckling limit, slight lateral web displacements will have developed.
+> loads far in excess of their web elastic buckling strength. Upon reaching the theoretical
+> web elastic buckling strength, slight lateral web displacements will have developed.
 > These deformations **are of no structural significance**, because other means
 > are still present to provide further strength.
 
