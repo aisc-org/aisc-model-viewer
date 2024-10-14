@@ -11,11 +11,10 @@
     "*.css"
   ],
   "dependencies": {
-    "dat.gui": "^0.7.9",
+    "lil-gui": "^0.19.2",
     "three": "0.130"
   },
   "devDependencies": {
-    "@types/dat.gui": "^0.7.13",
     "@types/node": "^22.5.5",
     "@types/three": "0.130",
     "@yarnpkg/pnpify": "^4.1.2",

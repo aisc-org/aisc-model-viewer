@@ -3,7 +3,7 @@ import { BufferGeometryUtils } from 'three/examples/jsm/utils/BufferGeometryUtil
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
-import { GUI } from 'dat.gui'
+import GUI from 'lil-gui'
 
 const colors = {
     aisc_blue: new THREE.Color('#00558A'),
@@ -200,7 +200,7 @@ export class ModelViewer {
 
     addGUI() {
         this.destroyGUI()
-        this.gui = new GUI({ autoPlace: false, closeOnTop: true,  })
+        this.gui = new GUI({ autoPlace: false })
 
         let guiContainer = document.getElementById('gui-wrapper') as HTMLDivElement | null
         if (guiContainer === null) {
@@ -219,8 +219,8 @@ export class ModelViewer {
             Scale: 0.5*maxScale,
         }
 
-        gui.__controllers.forEach(controller => {
-            gui.remove(controller)
+        gui.controllers.forEach(controller => {
+            controller.destroy()
         })
 
         const updateScale = (scale: number) => {
