@@ -134,7 +134,7 @@ export class ModelViewer {
         this.controls.addEventListener('change', this.render.bind(this))
         this.controls.update()
 
-        matchMedia(`resolution: ${window.devicePixelRatio}dppx`).addListener(this.updatePixelRatio.bind(this))
+        matchMedia(`resolution: ${window.devicePixelRatio}dppx`).addEventListener('change', this.updatePixelRatio.bind(this))
 
         const resizeCallback = this.updateCanvasSize.bind(this)
         this.resizeObserver = new MutationObserver(resizeCallback)
