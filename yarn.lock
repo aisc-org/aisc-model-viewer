@@ -413,10 +413,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/three@npm:0.130":
-  version: 0.130.2
-  resolution: "@types/three@npm:0.130.2"
-  checksum: 10/fa6793603327e1d9e9d38f03d57d65de899c683f824d3c0d4dfc12e6a70dfb89c742c5829552ac822aae52f901d9ccb36e54af95f85e0d6faa776ec4fb675184
+"@types/three@npm:0.131":
+  version: 0.131.1
+  resolution: "@types/three@npm:0.131.1"
+  checksum: 10/aa5749646ca8c63b33d53e488f7404ed2310a6e8e1c1daec5c54d68dbd382ba1ecb214025b2c1db0b2aa142c171c555e4314e749d5e418e95d4051f125d9b668
   languageName: node
   linkType: hard
 
@@ -804,14 +804,14 @@ __metadata:
   resolution: "aisc-model-viewer@workspace:."
   dependencies:
     "@types/node": "npm:^22.5.5"
-    "@types/three": "npm:0.130"
+    "@types/three": "npm:0.131"
     "@yarnpkg/pnpify": "npm:^4.1.2"
     css-loader: "npm:^7.1.2"
     html-loader: "npm:^5.1.0"
     html-webpack-plugin: "npm:^5.6.0"
     lil-gui: "npm:^0.19.2"
     mini-css-extract-plugin: "npm:^2.9.1"
-    three: "npm:0.130"
+    three: "npm:0.131"
     ts-loader: "npm:^9.5.1"
     typescript: "npm:^5.6.2"
     webpack: "npm:^5.94.0"
@@ -4491,10 +4491,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"three@npm:0.130":
-  version: 0.130.1
-  resolution: "three@npm:0.130.1"
-  checksum: 10/92ac124484204335c5a2d3bf24b582c7ec4481716f17d4c30ff3853c74a9b5713bdea4f86cb16b3e155d60f5621685b603d69959d3c52252a831b0df2321a43e
+"three@npm:0.131":
+  version: 0.131.3
+  resolution: "three@npm:0.131.3"
+  checksum: 10/c46c61debc93a9f0771ad5837db203964190446ec721b0dac8b87dfe9e88740e2b0f5e4a3e6274a19fd4510675222d24fafba4a411c2c5a28bd8a3d22660d264
   languageName: node
   linkType: hard
 

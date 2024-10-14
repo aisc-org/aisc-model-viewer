@@ -29,6 +29,12 @@ interface MorphedAttributes {
 }
 
 
+/**
+ * Use built-in three.js tools to calculate morphed geometry. Not working
+ * as of three.js r131 -- computeMorphedAttributes just returns the same
+ * values for positionAttribute and morphedPositionAttribute. Unclear what
+ * the underlying problem is.
+ */
 function getMorphedGeometry(mesh: THREE.Mesh) {
     const attributes = BufferGeometryUtils.computeMorphedAttributes(mesh) as MorphedAttributes
 
@@ -40,6 +46,37 @@ function getMorphedGeometry(mesh: THREE.Mesh) {
     morphed.morphTargetsRelative = mesh.geometry.morphTargetsRelative
 
     return morphed
+}
+
+
+/**
+ * Create new geometry from morphed mesh.
+ *
+ * Workaround in order to be able to update past three.js r131. A bit
+ * hacky: only calculates updated positions, assumes that morph targets
+ * are relative, and only supports one morph influence at a time. These
+ * are fine for the use case of the model viewer, which is only morphing
+ * from undeformed to deformed geometry, and not trying to mix them.
+ */
+function getMorphedGeometry2(mesh: THREE.Mesh, morphIndex: number) {
+    if (mesh.morphTargetInfluences === undefined) {
+        return mesh.geometry.clone();
+    }
+
+    const N = mesh.geometry.attributes.position.array.length
+    const morphedData = new Float32Array(N)
+    const influence = mesh.morphTargetInfluences[morphIndex]
+    for (let i = 0; i < N; i++) {
+        let position = mesh.geometry.attributes.position.array[i]
+        let morph = mesh.geometry.morphAttributes.position[morphIndex].array[i]
+        morphedData[i] = position + influence * morph
+    }
+
+    const morphedGeometry = new THREE.BufferGeometry()
+    morphedGeometry.setIndex(mesh.geometry.index)
+    morphedGeometry.attributes.position = new THREE.Float32BufferAttribute(morphedData, 3)
+
+    return morphedGeometry
 }
 
 
@@ -307,8 +344,6 @@ export class ModelViewer {
      * @param useWireframe If true, use WireframeGeometry instead of EdgesGeometry.
      */
     updateWireframe(mesh: THREE.Mesh, options?: WireframeOptions) {
-        console.log('Updating wireframe for mesh ', mesh)
-
         // Remove the previous wireframe(s)
         this.removeWireframe(mesh)
 
@@ -318,7 +353,7 @@ export class ModelViewer {
         })
 
         const geometry = options?.useMorphed
-            ? getMorphedGeometry(mesh)
+            ? getMorphedGeometry2(mesh, 0)
             : mesh.geometry
 
         const wireGeometry = options?.useWireframe
