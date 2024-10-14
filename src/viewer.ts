@@ -1,5 +1,5 @@
 import * as THREE from 'three'
-import { BufferGeometryUtils } from 'three/examples/jsm/utils/BufferGeometryUtils'
+import * as BufferGeometryUtils from 'three/examples/jsm/utils/BufferGeometryUtils'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
@@ -61,6 +61,9 @@ function getMorphedGeometry(mesh: THREE.Mesh) {
 function getMorphedGeometry2(mesh: THREE.Mesh, morphIndex: number) {
     if (mesh.morphTargetInfluences === undefined) {
         return mesh.geometry.clone();
+    }
+    if (mesh.geometry.attributes.position instanceof THREE.GLBufferAttribute) {
+        throw new Error("Geometries using `GLBufferAttribute` are not supported");
     }
 
     const N = mesh.geometry.attributes.position.array.length
@@ -128,7 +131,7 @@ export class ModelViewer {
 
         this.renderer = new THREE.WebGLRenderer({ antialias: true })
         this.renderer.setPixelRatio(window.devicePixelRatio)
-        this.renderer.outputEncoding = THREE.sRGBEncoding
+        this.renderer.outputColorSpace = THREE.SRGBColorSpace
 
         this.controls = new OrbitControls(this.camera, this.renderer.domElement)
         this.controls.addEventListener('change', this.render.bind(this))
@@ -287,8 +290,10 @@ export class ModelViewer {
     }
 
     addLights() {
-        const ambient = new THREE.AmbientLight(0xFFFFFF, 0.35)
-        const directional = new THREE.DirectionalLight(0xFFFFFF, 0.65)
+        // three.js now uses a "non-scaled" lighting intensity, so need to
+        // multiply by pi? Weird.
+        const ambient = new THREE.AmbientLight(0xFFFFFF, 0.35 * Math.PI)
+        const directional = new THREE.DirectionalLight(0xFFFFFF, 0.65 * Math.PI)
         directional.position.set(1, 1, 0)
 
         this.camera.add(ambient, directional)
