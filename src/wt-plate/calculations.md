@@ -10,10 +10,6 @@ tension member, considering the limit states of:
 
 The calculations are based on the 2022 AISC *Specification* and the 16th edition
 AISC *Manual*.
-$\newcommand{\inch}{~{\rm{in.}}}
- \newcommand{\kips}{~{\rm{kips}}}
- \newcommand{\ksi}{~{\rm{ksi}}}
- \newcommand{\sixt}{{\tfrac{1}{16}\inch}}$
 
 
 Material and Geometric Properties
@@ -40,13 +36,13 @@ From AISC *Manual* Table 2-4, the material properties for the WT are as follows:
 
 From AISC *Manual* Table 1-8, the geometric properties are as follows:
 
-::: properties ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-|                           |                        |                        |
-|---------------------------|------------------------|------------------------|
-| WT8x25                    |                        |                        |
-| $A_g = 7.37~\rm{in.}^2$   | $t_f = 0.630~\rm{in.}$ | $d = 8.13~\rm{in.}$    |
-| $\bar{y} = 1.89~\rm{in.}$ | $b_f = 7.07~\rm{in.}$  | $t_w = 0.380~\rm{in.}$ |
-:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::: properties :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+|                            |                         |                         |
+|----------------------------|-------------------------|-------------------------|
+| WT8x25                     |                         |                         |
+| $A_g = 7.37~{\rm in.}^2$   | $t_f = 0.630~{\rm in.}$ | $d = 8.13~{\rm in.}$    |
+| $\bar{y} = 1.89~{\rm in.}$ | $b_f = 7.07~{\rm in.}$  | $t_w = 0.380~{\rm in.}$ |
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 
 Tensile Yielding

@@ -2,10 +2,10 @@
 
 The models in this collection depict different buckling modes for a doubly
 symmetric I-shaped plate girder. The girder in these models is constructed with
-a flange width and thickness of $b_f = 14~\rm{in.}$ and $t_f = 2~\rm{in.}$,
-respectively; and a web depth and thickness of $h = 56~\rm{in.}$ and
-$t_w=0.5~\rm{in.}$, respectively. The overall depth of the girder is
-$d=60~\rm{in.}$
+a flange width and thickness of $b_f = 14~{\rm in.}$ and $t_f = 2~{\rm in.}$,
+respectively; and a web depth and thickness of $h = 56~{\rm in.}$ and
+$t_w=0.5~{\rm in.}$, respectively. The overall depth of the girder is
+$d=60~{\rm in.}$
 
 ## Lateral-Torsional Buckling Models
 

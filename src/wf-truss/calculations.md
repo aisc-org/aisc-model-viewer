@@ -6,9 +6,9 @@ diagonal wide-flange members and their connection to the gusset plates.
 
 The calculations are based on the 2022 AISC *Specification* and the 16th edition
 AISC *Manual*.
-$\newcommand{\inch}{~{\rm{in.}}}
- \newcommand{\kips}{~{\rm{kips}}}
- \newcommand{\ksi}{~{\rm{ksi}}}
+$\newcommand{\inch}{~{\rm in.}}
+ \newcommand{\kips}{~{\rm kips}}
+ \newcommand{\ksi}{~{\rm ksi}}
  \newcommand{\sixt}{{\tfrac{1}{16}\inch}}$
 
 
@@ -261,7 +261,7 @@ The nominal effective strength of the bolts in rows #2, #3, and #4 is 67.6 kips.
 Calculate the nominal effective strength of the bolt group by summing the
 nominal effective strength of each bolt.
 
-$$ R_n = (16~\rm{bolts}) \times (67.6~\rm{kips/bolt}) = 1082\kips $$
+$$ R_n = (16~{\rm bolts}) \times (67.6~{\rm kips/bolt}) = 1082\kips $$
 
 Calculate the design strength by applying the resistance factor.
 
