@@ -346,7 +346,7 @@ $$ \begin{align}
             &= 2.63~{\rm in.}
 \end{align} $$
 
-From Section J3.5 of the AISC *Specification* and noting that the members are
+From Section J3.6 of the AISC *Specification* and noting that the members are
 painted, the maximum spacing between bolts is the lesser of 24 times the
 thickness of the thinner part jointed and 12 in.
 
