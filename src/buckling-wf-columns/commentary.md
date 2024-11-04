@@ -1,11 +1,11 @@
-Commentary 
+Commentary
 ==========
 
-The models in this collection depict different buckling modes for a W8x31 
+The models in this collection depict different buckling modes for a W8x31
 column.
-$\newcommand{\inch}{~{\rm{in.}}}
- \newcommand{\kips}{~{\rm{kips}}}
- \newcommand{\ksi}{~{\rm{ksi}}}
+$\newcommand{\inch}{~{\rm in.}}
+ \newcommand{\kips}{~{\rm kips}}
+ \newcommand{\ksi}{~{\rm ksi}}
  \newcommand{\sixt}{{\tfrac{1}{16}\inch}}$
 
 From AISC *Manual* Table 1-1, the geometric properties are as follows:
@@ -79,8 +79,8 @@ flexural buckling ($L_{cy} = 72\inch$). The beam does not restrain the movement
 of the column in the plane of the web, so major-axis flexural buckling occurs as
 if the beam was not there at all ($L_{cx} = 144\inch$).
 
-Computing the buckling load for these two modes shows that major-axis flexural 
-buckling controls for this case. 
+Computing the buckling load for these two modes shows that major-axis flexural
+buckling controls for this case.
 
 Major-axis flexural buckling ([model](#Major-axis-flexural)):
 $$ P_e = \frac{\pi^2 E I_x}{L_{cx}^2} = \frac{\pi^2(29000\ksi)(110\inch^4)}{(144\inch)^2} = 1518\kips $$

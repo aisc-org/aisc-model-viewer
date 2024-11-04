@@ -1,9 +1,9 @@
 import * as THREE from 'three'
-import { BufferGeometryUtils } from 'three/examples/jsm/utils/BufferGeometryUtils'
+import * as BufferGeometryUtils from 'three/examples/jsm/utils/BufferGeometryUtils'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
-import { GUI } from 'dat.gui'
+import GUI from 'lil-gui'
 
 const colors = {
     aisc_blue: new THREE.Color('#00558A'),
@@ -29,6 +29,12 @@ interface MorphedAttributes {
 }
 
 
+/**
+ * Use built-in three.js tools to calculate morphed geometry. Not working
+ * as of three.js r131 -- computeMorphedAttributes just returns the same
+ * values for positionAttribute and morphedPositionAttribute. Unclear what
+ * the underlying problem is.
+ */
 function getMorphedGeometry(mesh: THREE.Mesh) {
     const attributes = BufferGeometryUtils.computeMorphedAttributes(mesh) as MorphedAttributes
 
@@ -40,6 +46,40 @@ function getMorphedGeometry(mesh: THREE.Mesh) {
     morphed.morphTargetsRelative = mesh.geometry.morphTargetsRelative
 
     return morphed
+}
+
+
+/**
+ * Create new geometry from morphed mesh.
+ *
+ * Workaround in order to be able to update past three.js r131. A bit
+ * hacky: only calculates updated positions, assumes that morph targets
+ * are relative, and only supports one morph influence at a time. These
+ * are fine for the use case of the model viewer, which is only morphing
+ * from undeformed to deformed geometry, and not trying to mix them.
+ */
+function getMorphedGeometry2(mesh: THREE.Mesh, morphIndex: number) {
+    if (mesh.morphTargetInfluences === undefined) {
+        return mesh.geometry.clone();
+    }
+    if (mesh.geometry.attributes.position instanceof THREE.GLBufferAttribute) {
+        throw new Error("Geometries using `GLBufferAttribute` are not supported");
+    }
+
+    const N = mesh.geometry.attributes.position.array.length
+    const morphedData = new Float32Array(N)
+    const influence = mesh.morphTargetInfluences[morphIndex]
+    for (let i = 0; i < N; i++) {
+        let position = mesh.geometry.attributes.position.array[i]
+        let morph = mesh.geometry.morphAttributes.position[morphIndex].array[i]
+        morphedData[i] = position + influence * morph
+    }
+
+    const morphedGeometry = new THREE.BufferGeometry()
+    morphedGeometry.setIndex(mesh.geometry.index)
+    morphedGeometry.attributes.position = new THREE.Float32BufferAttribute(morphedData, 3)
+
+    return morphedGeometry
 }
 
 
@@ -91,13 +131,13 @@ export class ModelViewer {
 
         this.renderer = new THREE.WebGLRenderer({ antialias: true })
         this.renderer.setPixelRatio(window.devicePixelRatio)
-        this.renderer.outputEncoding = THREE.sRGBEncoding
+        this.renderer.outputColorSpace = THREE.SRGBColorSpace
 
         this.controls = new OrbitControls(this.camera, this.renderer.domElement)
         this.controls.addEventListener('change', this.render.bind(this))
         this.controls.update()
 
-        matchMedia(`resolution: ${window.devicePixelRatio}dppx`).addListener(this.updatePixelRatio.bind(this))
+        matchMedia(`resolution: ${window.devicePixelRatio}dppx`).addEventListener('change', this.updatePixelRatio.bind(this))
 
         const resizeCallback = this.updateCanvasSize.bind(this)
         this.resizeObserver = new MutationObserver(resizeCallback)
@@ -200,7 +240,7 @@ export class ModelViewer {
 
     addGUI() {
         this.destroyGUI()
-        this.gui = new GUI({ autoPlace: false, closeOnTop: true,  })
+        this.gui = new GUI({ autoPlace: false })
 
         let guiContainer = document.getElementById('gui-wrapper') as HTMLDivElement | null
         if (guiContainer === null) {
@@ -219,8 +259,8 @@ export class ModelViewer {
             Scale: 0.5*maxScale,
         }
 
-        gui.__controllers.forEach(controller => {
-            gui.remove(controller)
+        gui.controllers.forEach(controller => {
+            controller.destroy()
         })
 
         const updateScale = (scale: number) => {
@@ -250,8 +290,10 @@ export class ModelViewer {
     }
 
     addLights() {
-        const ambient = new THREE.AmbientLight(0xFFFFFF, 0.35)
-        const directional = new THREE.DirectionalLight(0xFFFFFF, 0.65)
+        // three.js now uses a "non-scaled" lighting intensity, so need to
+        // multiply by pi? Weird.
+        const ambient = new THREE.AmbientLight(0xFFFFFF, 0.35 * Math.PI)
+        const directional = new THREE.DirectionalLight(0xFFFFFF, 0.65 * Math.PI)
         directional.position.set(1, 1, 0)
 
         this.camera.add(ambient, directional)
@@ -307,8 +349,6 @@ export class ModelViewer {
      * @param useWireframe If true, use WireframeGeometry instead of EdgesGeometry.
      */
     updateWireframe(mesh: THREE.Mesh, options?: WireframeOptions) {
-        console.log('Updating wireframe for mesh ', mesh)
-
         // Remove the previous wireframe(s)
         this.removeWireframe(mesh)
 
@@ -318,7 +358,7 @@ export class ModelViewer {
         })
 
         const geometry = options?.useMorphed
-            ? getMorphedGeometry(mesh)
+            ? getMorphedGeometry2(mesh, 0)
             : mesh.geometry
 
         const wireGeometry = options?.useWireframe

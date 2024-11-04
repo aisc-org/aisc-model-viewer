@@ -12,10 +12,6 @@ welded connection, considering the limit states of:
 
 The calculations are based on the 2022 AISC *Specification* and the 16th edition
 AISC *Manual*.
-$\newcommand{\inch}{~{\rm{in.}}}
- \newcommand{\kips}{~{\rm{kips}}}
- \newcommand{\ksi}{~{\rm{ksi}}}
- \newcommand{\sixt}{{\tfrac{1}{16}\inch}}$
 
 
 Material and Geometric Properties
@@ -64,11 +60,11 @@ Calculate the nominal strength using AISC *Specification* Equation D2-1.
 
 $$ \begin{align}
     P_n &= F_y A_g \\
-        &= (50~\rm{ksi})(8.08~\rm{in.}^2) \\
-        &= 404~\rm{kips}
+        &= (50~{\rm ksi})(8.08~{\rm in.}^2) \\
+        &= 404~{\rm kips}
 \end{align} $$
 
-$$ \phi P_n = 0.9 (404~\rm{kips}) \boxed{= 364~\rm{kips}} $$
+$$ \phi P_n = 0.9 (404~{\rm kips}) \boxed{= 364~{\rm kips}} $$
 
 
 Tensile Rupture ([model](#Tensile-rupture))
@@ -88,10 +84,10 @@ material removed for the slot as defined in Section B4.3b of the AISC
 *Specification*.
 
 $$ \begin{align}
-    A_n &= A_g - 2 t (\text{plate thickness} + \tfrac{1}{16}~\rm{in.}) \\
-        &= 8.08~\rm{in.}^2 - 2 (\tfrac{3}{8}~\rm{in.}) (\tfrac{3}{4}~\rm{in.}
-           + \tfrac{1}{16}~\rm{in.}) \\
-        &= 7.47~\rm{in.}^2
+    A_n &= A_g - 2 t (\text{plate thickness} + \tfrac{1}{16}~{\rm in.}) \\
+        &= 8.08~{\rm in.}^2 - 2 (\tfrac{3}{8}~{\rm in.}) (\tfrac{3}{4}~{\rm in.}
+           + \tfrac{1}{16}~{\rm in.}) \\
+        &= 7.47~{\rm in.}^2
 \end{align} $$
 
 From the description of the element in AISC *Specification* Table D3.1,
@@ -101,37 +97,37 @@ First calculate the connection eccentricity $\bar{x}$.
 $$ \begin{align}
     \bar{x} &= b - \frac{2b^2 + tH - 2t^2}{2H + 4b - 4t} \\[1ex]
     b       &= \tfrac12\left(B - t_p\right) \\
-            &= \tfrac12\left(6~\rm{in.} - \tfrac34~\rm{in.}\right) \\
-            &= 2.62~\rm{in.}\\
-    \bar{x} &= 2.62~\rm{in.}
-               - \frac{2(2.62~\rm{in.})^2 + (\tfrac{3}{8}~\rm{in.})(6~\rm{in.}) - 2(\tfrac{3}{8}~\rm{in.})^2}
-                      {2(6~\rm{in.}) + 4(2.62~\rm{in.}) - 4(\tfrac{3}{8}~\rm{in.})} \\
-            &= 1.88~\rm{in.}
+            &= \tfrac12\left(6~{\rm in.} - \tfrac34~{\rm in.}\right) \\
+            &= 2.62~{\rm in.}\\
+    \bar{x} &= 2.62~{\rm in.}
+               - \frac{2(2.62~{\rm in.})^2 + (\tfrac{3}{8}~{\rm in.})(6~{\rm in.}) - 2(\tfrac{3}{8}~{\rm in.})^2}
+                      {2(6~{\rm in.}) + 4(2.62~{\rm in.}) - 4(\tfrac{3}{8}~{\rm in.})} \\
+            &= 1.88~{\rm in.}
 \end{align} $$
 
 Calculate the shear lag factor.
 
 $$ \begin{align}
     U &= 1 - \frac{\bar{x}}{\ell} \\
-      &= 1 - \frac{1.88~\rm{in.}}{12~\rm{in.}} \\
+      &= 1 - \frac{1.88~{\rm in.}}{12~{\rm in.}} \\
       &= 0.844
 \end{align} $$
 
 Calculate the effective net area using AISC *Specification* Equation D3-1:
 
-$$ A_e = A_n U = (7.47~\rm{in.}^2) (0.844) = 6.30~\rm{in.}^2 $$
+$$ A_e = A_n U = (7.47~{\rm in.}^2) (0.844) = 6.30~{\rm in.}^2 $$
 
 Calculate the nominal strength using AISC *Specification* Equation D2-2:
 
 $$ \begin{align}
     P_n &= F_u A_e \\
-        &= (65~\rm{ksi})(6.30~\rm{in.}^2) \\
-        &= 410~\rm{kips}
+        &= (65~{\rm ksi})(6.30~{\rm in.}^2) \\
+        &= 410~{\rm kips}
 \end{align} $$
 
 Calculate the design strength by applying the resistance factor.
 
-$$ \phi P_n = 0.75(410~\rm{kips}) \boxed{= 307~\rm{kips}} $$
+$$ \phi P_n = 0.75(410~{\rm kips}) \boxed{= 307~{\rm kips}} $$
 
 
 Weld Rupture ([model](#Weld-fracture))
@@ -146,14 +142,14 @@ $$ R_n = F_{nw} A_{we} \tag{J2-3} $$
 Where $F_{nw}$ is the nominal stress of the weld metal and $A_{we}$ is the
 effective area of the weld. These values are defined by *Specification* Table
 J2.5. For fillet welds, $F_{nw}$ is $0.60 F_{EXX}$ and $A_{we}$ is defined by
-*Specification* section J2.2a:
+*Specification* Section J2.2a:
 
 > The effective area of a fillet weld shall be the effective length multiplied
 > by the effective throat. The effective throat of a fillet weld shall be the
 > shortest distance from the root to the face of the diagrammatic weld.
 
 For the fillet welds in this connection, the effective length is given by
-*Specification* section J2.2b(d). The actual length (12 in.) is less than 100
+*Specification* Section J2.2b(d). The actual length (12 in.) is less than 100
 times the weld size (31.2 in.), so the effective length is equal to the actual
 length.
 
@@ -165,21 +161,21 @@ Calculate the effective area of a single weld.
 
 $$ \begin{align}
     A_{we} &= (\text{effective throat})(\text{effective length}) \\
-           &= \left[(\tfrac{1}{4}~\rm{in.}) \cos{45^\circ}\right] (12~\rm{in.}) \\
-           &= 2.65~\rm{in.}^2
+           &= \left[(\tfrac{1}{4}~{\rm in.}) \cos{45^\circ}\right] (12~{\rm in.}) \\
+           &= 2.65~{\rm in.}^2
 \end{align} $$
 
 Calculate the nominal strength of the weld group.
 
 $$ \begin{align}
     R_n &= 4 F_{nw} A_{we} \\
-        &= 4 (0.60) (70~\rm{ksi}) (2.65~\rm{in.}^2) \\
-        &= 445~\rm{kips}
+        &= 4 (0.60) (70~{\rm ksi}) (2.65~{\rm in.}^2) \\
+        &= 445~{\rm kips}
 \end{align} $$
 
 Calculate the design strength by applying the resistance factor.
 
-$$ \phi R_n = 0.75 (445~\rm{kips}) \boxed{= 334~\rm{kips}} $$
+$$ \phi R_n = 0.75 (445~{\rm kips}) \boxed{= 334~{\rm kips}} $$
 
 
 Base Metal -- HSS ([model](#Base-metal-(HSS)))
@@ -189,7 +185,7 @@ The base metal limit state checks for failure of the welded elements at the weld
 interface. For the HSS, there is a small amount of material in tension. This
 area is quite small relative to the shear area, however, and it is common to
 neglect it. Since the tensile contribution is being neglected, the limit state
-being checked is shear (section J4.2) instead of block shear (section J4.3).
+being checked is shear (Section J4.2) instead of block shear (Section J4.3).
 
 ### Shear Yielding
 
@@ -197,8 +193,8 @@ Calculate the gross shear area $A_{gv}$.
 
 $$ \begin{align}
     A_{gv} &= 4 t \ell \\
-           &= 4 (0.375~\rm{in.}) (12~\rm{in.}) \\
-           &= 18.0~\rm{in.}^2
+           &= 4 (0.375~{\rm in.}) (12~{\rm in.}) \\
+           &= 18.0~{\rm in.}^2
 \end{align} $$
 
 Calculate the nominal shear yielding strength using *Specification* equation
@@ -206,37 +202,37 @@ J4-3.
 
 $$ \begin{align}
     R_n &= 0.60 F_y A_{gv} \\
-        &= 0.60 (50~\rm{ksi}) (18.0~\rm{in.}^2) \\
-        &= 540~\rm{kips}
+        &= 0.60 (50~{\rm ksi}) (18.0~{\rm in.}^2) \\
+        &= 540~{\rm kips}
 \end{align} $$
 
 Calculate the design strength by applying the resistance factor.
 
-$$ \phi R_n = 1.0 (540~\rm{kips}) = 540~\rm{kips} $$
+$$ \phi R_n = 1.0 (540~{\rm kips}) = 540~{\rm kips} $$
 
 ### Shear Rupture
 
 For the shear planes being considered, the net shear area is equal to the gross
 shear area.
 
-$$ A_{nv} = 18.0~\rm{in.} $$
+$$ A_{nv} = 18.0~{\rm in.} $$
 
 Calculate the nominal shear rupture strength using *Specification* equation
 J4-4.
 
 $$ \begin{align}
     R_n &= 0.60 F_u A_{nv} \\
-        &= 0.60 (65~\rm{ksi}) (18.0~\rm{in.}^2) \\
-        &= 702~\rm{kips}
+        &= 0.60 (65~{\rm ksi}) (18.0~{\rm in.}^2) \\
+        &= 702~{\rm kips}
 \end{align} $$
 
 Calculate the design strength by applying the resistance factor.
 
-$$ \phi R_n = 0.75 (702~\rm{kips}) = 526~\rm{kips} $$
+$$ \phi R_n = 0.75 (702~{\rm kips}) = 526~{\rm kips} $$
 
 Shear rupture controls the base metal limit state for the HSS member.
 
-$$ \boxed{\phi R_n = 526~\rm{kip}} $$
+$$ \boxed{\phi R_n = 526~{\rm kip}} $$
 
 
 Base Metal -- Plate ([model](#Base-metal-(Plate)))
@@ -250,15 +246,15 @@ connection, so the net and gross shear areas are the same.
 Calculate the gross shear area.
 
 $$ \begin{align}
-    A_{gv} &= 2 (\tfrac34~\rm{in.}) (12~\rm{in.}) \\
-           &= 18.0~\rm{in.}^2
+    A_{gv} &= 2 (\tfrac34~{\rm in.}) (12~{\rm in.}) \\
+           &= 18.0~{\rm in.}^2
 \end{align} $$
 
 Calculate the net tensile area. The weld size is typically neglected in this calculation.
 
 $$ \begin{align}
-    A_{nt} &= (\tfrac34~\rm{in.}) (6~\rm{in.}) \\
-           &= 4.50~\rm{in.}^2
+    A_{nt} &= (\tfrac34~{\rm in.}) (6~{\rm in.}) \\
+           &= 4.50~{\rm in.}^2
 \end{align} $$
 
 Calculate the nominal block shear strength using *Specification* equation J4-5.
@@ -266,13 +262,13 @@ The tension stress is uniform, so $U_{bs} = 1.0$.
 
 $$ \begin{align}
     R_n &= 0.60 F_y A_{gv} + U_{bs} F_u A_{nt} \\
-        &= 0.60 (50~\rm{ksi}) (18.0~\rm{in.}^2) + (65~\rm{ksi}) (4.50~\rm{in.}^2) \\
-        &= 832~\rm{kips}
+        &= 0.60 (50~{\rm ksi}) (18.0~{\rm in.}^2) + (65~{\rm ksi}) (4.50~{\rm in.}^2) \\
+        &= 832~{\rm kips}
 \end{align} $$
 
 Calculate the design strength by applying the resistance factor.
 
-$$ \phi R_n = 0.75 (832~\rm{kips}) \boxed{= 624~\rm{kips}} $$
+$$ \phi R_n = 0.75 (832~{\rm kips}) \boxed{= 624~{\rm kips}} $$
 
 
 Summary

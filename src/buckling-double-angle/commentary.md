@@ -20,15 +20,15 @@ two shapes behave as one member. Typically, the two angles of a double-angle
 compression member are connected at the ends of the member and a few points
 along the length. A single angle acting alone would buckle around its minor
 axis, the z-axis. For an L4x4x1/4, the radius of gyration about the minor axis
-is $r_z=0.783~\rm{in.}$ and the radii of gyration about the geometric axis are
-$r_x=r_y=1.25~\rm{in.}$ For a 2L4x4x1/4, the radius of gyration about the x-axis
-is $r_x=1.25~\rm{in.}$, no different than for the single angle. For flexural
+is $r_z=0.783~{\rm in.}$ and the radii of gyration about the geometric axis are
+$r_x=r_y=1.25~{\rm in.}$ For a 2L4x4x1/4, the radius of gyration about the x-axis
+is $r_x=1.25~{\rm in.}$, no different than for the single angle. For flexural
 buckling, the connectors force buckling about the x-axis, but the strength of
 the double angle is otherwise not greater than twice the strength of the single
 angle.
 
 For a 2L4x4x1/4 with 3/8 in. separation, the radius of gyration about the y-axis
-is $r_y=1.78~\rm{in.}$, greater than that for a single angle. The increased
+is $r_y=1.78~{\rm in.}$, greater than that for a single angle. The increased
 radius of gyration increases the flexural-torsional buckling strength and is an
 indicator that shear forces will develop in the connectors. For modes of
 buckling like this, the slenderness of the built-up shape needs to be modified

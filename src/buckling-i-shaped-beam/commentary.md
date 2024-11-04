@@ -2,10 +2,10 @@
 
 The models in this collection depict different buckling modes for a doubly
 symmetric I-shaped plate girder. The girder in these models is constructed with
-a flange width and thickness of $b_f = 14~\rm{in.}$ and $t_f = 2~\rm{in.}$,
-respectively; and a web depth and thickness of $h = 56~\rm{in.}$ and
-$t_w=0.5~\rm{in.}$, respectively. The overall depth of the girder is
-$d=60~\rm{in.}$
+a flange width and thickness of $b_f = 14~{\rm in.}$ and $t_f = 2~{\rm in.}$,
+respectively; and a web depth and thickness of $h = 56~{\rm in.}$ and
+$t_w=0.5~{\rm in.}$, respectively. The overall depth of the girder is
+$d=60~{\rm in.}$
 
 ## Lateral-Torsional Buckling Models
 
@@ -96,8 +96,8 @@ AISC *Specification* Section G2.2 describes it well (emphasis added):
 
 > The panels of the web of a built-up member, bounded on the top and bottom by
 > the flanges and on each side by transverse stiffeners, are capable of carrying
-> loads far in excess of their web buckling load. Upon reaching the theoretical
-> web buckling limit, slight lateral web displacements will have developed.
+> loads far in excess of their web elastic buckling strength. Upon reaching the theoretical
+> web elastic buckling strength, slight lateral web displacements will have developed.
 > These deformations **are of no structural significance**, because other means
 > are still present to provide further strength.
 

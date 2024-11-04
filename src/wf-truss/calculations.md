@@ -3,9 +3,12 @@ Calculations
 
 This page demonstrates calculations to determine the design strength of the
 diagonal wide-flange members and their connection to the gusset plates.
-$\newcommand{\inch}{~{\rm{in.}}}
- \newcommand{\kips}{~{\rm{kips}}}
- \newcommand{\ksi}{~{\rm{ksi}}}
+
+The calculations are based on the 2022 AISC *Specification* and the 16th edition
+AISC *Manual*.
+$\newcommand{\inch}{~{\rm in.}}
+ \newcommand{\kips}{~{\rm kips}}
+ \newcommand{\ksi}{~{\rm ksi}}
  \newcommand{\sixt}{{\tfrac{1}{16}\inch}}$
 
 
@@ -74,9 +77,8 @@ $$ \begin{align}
 \end{align} $$
 
 From the description of the element in AISC *Specification* Table D3.1 Case 7,
-calculate the shear lag factor, U, as the larger of the values from Case 2 and
-Case 7. Note that *Manual*s printed before June 2019 have an error in the figure
-for Case 2. [See the errata (PDF)](https://www.aisc.org/globalassets/aisc/publications/standards/errata_15th-ed-manual_june-2019.pdf)
+calculate the shear lag factor, $U$, as the larger of the values from Case 2 and
+Case 7.
 
 Calculate the shear lag according to Case 2. For wide-flange shapes with the
 flanges attached to plates, the eccentricity of the connection $\bar{x}$ is
@@ -98,7 +100,7 @@ Calculate the shear lag according to Case 7.
 
 $$ (b_f = 12.0\inch) \ge (\tfrac23 d = 4.1\inch) \implies U = 0.90 $$
 
-The larger value is permitted to be used, so use U = 0.915.
+The larger value is permitted to be used, so use $U = 0.915$.
 
 Calculate the effective net area using *Specification* Equation D3-1:
 
@@ -176,20 +178,20 @@ $$ \phi R_n = (0.75) (1430\kips) \boxed{= 1080\kips} $$
 
 Bolt Group Strength
 -------------------
-The limit states of bolt shear rupture, bearing, and tearout are evaluated 
+The limit states of bolt shear rupture, bearing, and tearout are evaluated
 together to determine the design strength of the bolt group.
 
-For each bolt, an effective strength is calculated as the lowest strength 
+For each bolt, an effective strength is calculated as the lowest strength
 from the limit states of bolt shear rupture, bearing, and tearout.
 
 ![Bolt numbering scheme used and clear distances for tearout in the plate.](./wf-truss-bolts.svg)
 
-From Table J3.2, the nominal shear strength $F_{nv}$ of single Group B (A490) 
+From Table J3.2, the nominal shear strength $F_{nv}$ of single Group B (A490)
 bolt when threads are not excluded from the shear planes is $F_{nv} = 68\ksi$.
 
 ### Bolts in Row #1
 
-Calculate the nominal strength for the limit state of bolt shear rupture using 
+Calculate the nominal strength for the limit state of bolt shear rupture using
 *Specification* Equation J3-1.
 
 $$ \begin{align}
@@ -250,16 +252,16 @@ Bolt shear rupture controls. The nominal effective strength of the bolts in row 
 
 ### Bolts in Rows #2, #3, and #4
 
-The effective strength of bolts in the remaining rows is calculated in the same manner, 
-except with different clear distances. Bolt shear rupture controls. 
+The effective strength of bolts in the remaining rows is calculated in the same manner,
+except with different clear distances. Bolt shear rupture controls.
 The nominal effective strength of the bolts in rows #2, #3, and #4 is 67.6 kips.
 
 ### Bolt Group
 
-Calculate the nominal effective strength of the bolt group by summing the 
+Calculate the nominal effective strength of the bolt group by summing the
 nominal effective strength of each bolt.
 
-$$ R_n = (16~\rm{bolts}) \times (67.6~\rm{kips/bolt}) = 1082\kips $$
+$$ R_n = (16~{\rm bolts}) \times (67.6~{\rm kips/bolt}) = 1082\kips $$
 
 Calculate the design strength by applying the resistance factor.
 
