@@ -1,0 +1,67 @@
+@font-face {
+    font-family: 'STIX 2 Text';
+    font-style: normal;
+    src: url(assets/STIX2Text-Regular-a36cc3114d48b0757f58.woff2) format('woff2');
+}
+
+@font-face {
+    font-family: 'STIX 2 Text';
+    font-style: italic;
+    src: url(assets/STIX2Text-Italic-da0e16a8e98c000fa1bf.woff2) format('woff2');
+}
+
+@font-face {
+    font-family: 'STIX 2 Text';
+    font-style: normal;
+    font-weight: bold;
+    src: url(assets/STIX2Text-Bold-4ab263c849841a9cd6ac.woff2) format('woff2');
+}
+
+@font-face {
+    font-family: 'STIX 2 Text';
+    font-style: italic;
+    font-weight: bold;
+    src: url(assets/STIX2Text-BoldItalic-5a420a797fc2287750a0.woff2) format('woff2');
+}
+
+body {
+    font-family: 'STIX 2 Text', serif;
+    line-height: 1.25;
+    margin: auto;
+    padding: 1em;
+    max-width: 30em;
+}
+
+p {
+    text-align: justify;
+    hyphens: auto;
+    -ms-hyphens: auto;
+    -webkit-hyphens: auto;
+}
+
+code {
+    padding: 0.5%;
+    background-clip: border-box;
+    background-color: #e5e5e5;
+    border-radius: 10%;
+}
+
+img {
+    max-width: 100%;
+}
+
+figure figcaption {
+    text-align: center;
+}
+
+div.logo-container {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.logo-container img {
+    max-height: 6em;
+}
+
+
+/*# sourceMappingURL=index.css.map*/
