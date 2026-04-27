@@ -1,10 +1,10 @@
 import{ App, HtmlItem, Model } from '../app'
 
-// Calculations from Excel
+// Calculations
 import shearTabCalcs from './ShearTab_Calculation.md'
 
 // Model
-import pathToModel from './ShearTab-v1.glb'
+import pathToModel from './Shear Tab GLB.glb'
 
 new App({
     title: 'Shear Tab',

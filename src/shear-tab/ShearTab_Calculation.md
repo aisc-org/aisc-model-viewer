@@ -5,12 +5,17 @@
 
 ---
 
+## Sample Structure
+Consider a W16x36 girder being connected to two columns as a part of a floor system. The beam is designed as a pin-pin, so it's connections do not need moment control. A simple pin connection for the ends of this beam may be a **shear tab**. Lets design this for a shear tab on one side of a 10' girder carrying a 4klf load.
+
+---
+
 ## Members & Applied Loads
 
 | Parameter | Value | Unit | Notes |
 |-----------|-------|------|-------|
-| Axial force, $P$ | 0 | kips | Max axial force, from RISA 3D |
-| Shear reaction, $V$ | 20 | kips | From RISA 3D |
+| Axial force, $P$ | 0 | kips | Max axial force, from structural analysis |
+| Shear reaction, $V$ | 20 | kips | From structural analysis |
 | Main member | W16x36 | — | Out-of-plane beam element |
 | Side member | PL0.5 | — | Shear tab plate |
 
@@ -81,7 +86,7 @@ $$
 S_{avail} = d - 2k = 15.9 - 2(0.832) = 14.2360 \text{ in}
 $$
 
-> **✅ GOOD** &nbsp; **Available Space Check** &nbsp;|&nbsp; $S_{req} = 8.5000$ in &nbsp;<&nbsp; $S_{avail} = 14.2360$ in
+> **GOOD** &nbsp; **Available Space Check** &nbsp;|&nbsp; $S_{req} = 8.5000$ in &nbsp;<&nbsp; $S_{avail} = 14.2360$ in
 
 ---
 
@@ -97,7 +102,7 @@ $$
 \phi_y F_{y,main} A_{g,main} = (0.9)(50)(10.6) = 477.000 \text{ k}
 $$
 
-> **✅ GOOD** &nbsp; **MM Yield  (vs max(P,V))** &nbsp;|&nbsp; Capacity = 477.000 k &nbsp;≥&nbsp; Demand = 20.000 k
+> **GOOD** &nbsp; **MM Yield  (vs max(P,V))** &nbsp;|&nbsp; Capacity = 477.000 k &nbsp;≥&nbsp; Demand = 20.000 k
 
 ### 2.2 Side Member Yielding — Shear
 
@@ -105,7 +110,7 @@ $$
 \phi_y F_{y,side} A_{g,side} = (0.9)(36)(4.2500) = 137.700 \text{ k}
 $$
 
-> **✅ GOOD** &nbsp; **SM Yield — shear  (vs V)** &nbsp;|&nbsp; Capacity = 137.700 k &nbsp;≥&nbsp; Demand = 20.000 k
+> **GOOD** &nbsp; **SM Yield — shear  (vs V)** &nbsp;|&nbsp; Capacity = 137.700 k &nbsp;≥&nbsp; Demand = 20.000 k
 
 ### 2.3 Side Member Yielding — Axial
 
@@ -117,7 +122,7 @@ $$
 \phi_y F_{y,side} A_{g,side,axial} = (0.9)(36)(1.2500) = 40.500 \text{ k}
 $$
 
-> **✅ GOOD** &nbsp; **SM Yield — axial  (vs P)** &nbsp;|&nbsp; Capacity = 40.500 k &nbsp;≥&nbsp; Demand = 0.000 k
+> **GOOD** &nbsp; **SM Yield — axial  (vs P)** &nbsp;|&nbsp; Capacity = 40.500 k &nbsp;≥&nbsp; Demand = 0.000 k
 
 ---
 
@@ -137,7 +142,7 @@ $$
 \phi_f F_{u,side} A_{e,side} = (0.75)(58)(3.6875) = 160.4062 \text{ k}
 $$
 
-> **✅ GOOD** &nbsp; **SM Fracture  (vs max(P,V))** &nbsp;|&nbsp; Capacity = 160.406 k &nbsp;≥&nbsp; Demand = 20.000 k
+> **GOOD** &nbsp; **SM Fracture  (vs max(P,V))** &nbsp;|&nbsp; Capacity = 160.406 k &nbsp;≥&nbsp; Demand = 20.000 k
 
 ### 3.2 Main Member Fracture
 
@@ -159,7 +164,7 @@ $$
 \phi_f F_{u,main} A_{e,main} = (0.75)(65)(8.9846) = 437.9997 \text{ k}
 $$
 
-> **✅ GOOD** &nbsp; **MM Fracture  (vs max(P,V))** &nbsp;|&nbsp; Capacity = 438.000 k &nbsp;≥&nbsp; Demand = 20.000 k
+> **GOOD** &nbsp; **MM Fracture  (vs max(P,V))** &nbsp;|&nbsp; Capacity = 438.000 k &nbsp;≥&nbsp; Demand = 20.000 k
 
 ---
 
@@ -199,7 +204,7 @@ $$
 
 Controlling mechanism: **YIELDING** &nbsp;→&nbsp; $\phi R_n = 99.4242$ k
 
-> **✅ GOOD** &nbsp; **MM Block Shear  (vs max(P,V))** &nbsp;|&nbsp; Capacity = 99.424 k &nbsp;≥&nbsp; Demand = 20.000 k
+> **GOOD** &nbsp; **MM Block Shear  (vs max(P,V))** &nbsp;|&nbsp; Capacity = 99.424 k &nbsp;≥&nbsp; Demand = 20.000 k
 
 ### 4.2 Side Member Block Shear — Shear (y-direction)
 
@@ -221,7 +226,7 @@ $$
 
 Controlling mechanism: **FRACTURE** &nbsp;→&nbsp; $\phi R_n = 23.9250$ k
 
-> **✅ GOOD** &nbsp; **SM Block Shear — shear  (vs V)** &nbsp;|&nbsp; Capacity = 23.925 k &nbsp;≥&nbsp; Demand = 20.000 k
+> **GOOD** &nbsp; **SM Block Shear — shear  (vs V)** &nbsp;|&nbsp; Capacity = 23.925 k &nbsp;≥&nbsp; Demand = 20.000 k
 
 ### 4.3 Side Member Block Shear — Axial (x-direction)
 
@@ -243,7 +248,7 @@ $$
 
 Controlling mechanism: **FRACTURE** &nbsp;→&nbsp; $\phi R_n = 72.8625$ k
 
-> **✅ GOOD** &nbsp; **SM Block Shear — axial  (vs P)** &nbsp;|&nbsp; Capacity = 72.862 k &nbsp;≥&nbsp; Demand = 0.000 k
+> **GOOD** &nbsp; **SM Block Shear — axial  (vs P)** &nbsp;|&nbsp; Capacity = 72.862 k &nbsp;≥&nbsp; Demand = 0.000 k
 
 ---
 
@@ -287,7 +292,7 @@ $$
 \phi R_n = \min(B_1,C_1) + (n-1)\min(B_2,C_2) = 12.4038 + (3-1)(33.4364) = 79.2766 \text{ k}
 $$
 
-> **✅ GOOD** &nbsp; **Shear Bearing — MM  (vs V)** &nbsp;|&nbsp; Capacity = 79.277 k &nbsp;≥&nbsp; Demand = 20.000 k
+> **GOOD** &nbsp; **Shear Bearing — MM  (vs V)** &nbsp;|&nbsp; Capacity = 79.277 k &nbsp;≥&nbsp; Demand = 20.000 k
 
 ### 5.2 Side Member — Shear Direction (y)
 
@@ -323,7 +328,7 @@ $$
 \phi R_n = \min(B_1,C_1) + (n-1)\min(B_2,C_2) = 18.7594 + (3-1)(50.5687) = 119.8969 \text{ k}
 $$
 
-> **✅ GOOD** &nbsp; **Shear Bearing — SM  (vs V)** &nbsp;|&nbsp; Capacity = 119.897 k &nbsp;≥&nbsp; Demand = 20.000 k
+> **GOOD** &nbsp; **Shear Bearing — SM  (vs V)** &nbsp;|&nbsp; Capacity = 119.897 k &nbsp;≥&nbsp; Demand = 20.000 k
 
 ### 5.3 Main Member — Axial Direction (x)
 
@@ -359,7 +364,7 @@ $$
 \phi R_n = \min(B_1,C_1) + (n-1)\min(B_2,C_2) = 12.4038 + (1-1)(33.4364) = 12.4038 \text{ k}
 $$
 
-> **✅ GOOD** &nbsp; **Axial Bearing — MM  (vs P)** &nbsp;|&nbsp; Capacity = 12.404 k &nbsp;≥&nbsp; Demand = 0.000 k
+> **GOOD** &nbsp; **Axial Bearing — MM  (vs P)** &nbsp;|&nbsp; Capacity = 12.404 k &nbsp;≥&nbsp; Demand = 0.000 k
 
 ### 5.4 Side Member — Axial Direction (x)
 
@@ -395,7 +400,7 @@ $$
 \phi R_n = \min(B_1,C_1) + (n-1)\min(B_2,C_2) = 18.7594 + (1-1)(50.5687) = 18.7594 \text{ k}
 $$
 
-> **✅ GOOD** &nbsp; **Axial Bearing — SM  (vs P)** &nbsp;|&nbsp; Capacity = 18.759 k &nbsp;≥&nbsp; Demand = 0.000 k
+> **GOOD** &nbsp; **Axial Bearing — SM  (vs P)** &nbsp;|&nbsp; Capacity = 18.759 k &nbsp;≥&nbsp; Demand = 0.000 k
 
 ---
 
@@ -409,7 +414,7 @@ $$
 V_u = n_b \cdot \phi r_n = (3)(24.35) = 73.050 \text{ k}
 $$
 
-> **✅ GOOD** &nbsp; **Bolt Shear  (vs max(P,V))** &nbsp;|&nbsp; Capacity = 73.050 k &nbsp;≥&nbsp; Demand = 20.000 k
+> **GOOD** &nbsp; **Bolt Shear  (vs max(P,V))** &nbsp;|&nbsp; Capacity = 73.050 k &nbsp;≥&nbsp; Demand = 20.000 k
 
 ### 6.2 Slip-Critical Strength
 
@@ -428,7 +433,7 @@ $$
 V_u = n_b \phi D_u \mu h_f T_b N_s = (3)(1.0)(1.13)(0.3)(1.0)(51)(1) = 51.867 \text{ k}
 $$
 
-> **✅ GOOD** &nbsp; **Slip-Critical  (vs max(P,V))** &nbsp;|&nbsp; Capacity = 51.867 k &nbsp;≥&nbsp; Demand = 20.000 k
+> **GOOD** &nbsp; **Slip-Critical  (vs max(P,V))** &nbsp;|&nbsp; Capacity = 51.867 k &nbsp;≥&nbsp; Demand = 20.000 k
 
 ---
 
@@ -456,7 +461,7 @@ $$
 D_w = D_{min} = 0.1875 \text{ in} = \frac{3}{16}\text{" weld}
 $$
 
-> **✅ GOOD** &nbsp; **Weld Size Check** &nbsp;|&nbsp; $D_w = 0.1875$" &nbsp;≥&nbsp; $D_{min} = 0.1875$"
+> **GOOD** &nbsp; **Weld Size Check** &nbsp;|&nbsp; $D_w = 0.1875$" &nbsp;≥&nbsp; $D_{min} = 0.1875$"
 
 ---
 
@@ -464,24 +469,24 @@ $$
 
 | # | Check | Capacity (k) | Demand (k) | Result |
 |---|-------|:------------:|:----------:|:------:|
-| 1 | Available Space | 14.236 | 8.500 | ✅ GOOD |
-| 2.1 | MM Yield  (vs max(P,V)) | 477.000 | 20.000 | ✅ GOOD |
-| 2.2 | SM Yield — shear  (vs V) | 137.700 | 20.000 | ✅ GOOD |
-| 2.3 | SM Yield — axial  (vs P) | 40.500 | 0.000 | ✅ GOOD |
-| 3.1 | SM Fracture  (vs max(P,V)) | 160.406 | 20.000 | ✅ GOOD |
-| 3.2 | MM Fracture  (vs max(P,V)) | 438.000 | 20.000 | ✅ GOOD |
-| 4.1 | MM Block Shear  (vs max(P,V)) | 99.424 | 20.000 | ✅ GOOD |
-| 4.2 | SM Block Shear — shear  (vs V) | 23.925 | 20.000 | ✅ GOOD |
-| 4.3 | SM Block Shear — axial  (vs P) | 72.862 | 0.000 | ✅ GOOD |
-| 5.1 | Shear Bearing — MM  (vs V) | 79.277 | 20.000 | ✅ GOOD |
-| 5.2 | Shear Bearing — SM  (vs V) | 119.897 | 20.000 | ✅ GOOD |
-| 5.3 | Axial Bearing — MM  (vs P) | 12.404 | 0.000 | ✅ GOOD |
-| 5.4 | Axial Bearing — SM  (vs P) | 18.759 | 0.000 | ✅ GOOD |
-| 6.1 | Bolt Shear  (vs max(P,V)) | 73.050 | 20.000 | ✅ GOOD |
-| 6.2 | Slip-Critical  (vs max(P,V)) | 51.867 | 20.000 | ✅ GOOD |
-| 7 | Weld Size | 0.188 | 0.188 | ✅ GOOD |
+| 1 | Available Space | 14.236 | 8.500 | GOOD |
+| 2.1 | MM Yield  (vs max(P,V)) | 477.000 | 20.000 | GOOD |
+| 2.2 | SM Yield — shear  (vs V) | 137.700 | 20.000 | GOOD |
+| 2.3 | SM Yield — axial  (vs P) | 40.500 | 0.000 | GOOD |
+| 3.1 | SM Fracture  (vs max(P,V)) | 160.406 | 20.000 | GOOD |
+| 3.2 | MM Fracture  (vs max(P,V)) | 438.000 | 20.000 | GOOD |
+| 4.1 | MM Block Shear  (vs max(P,V)) | 99.424 | 20.000 | GOOD |
+| 4.2 | SM Block Shear — shear  (vs V) | 23.925 | 20.000 | GOOD |
+| 4.3 | SM Block Shear — axial  (vs P) | 72.862 | 0.000 | GOOD |
+| 5.1 | Shear Bearing — MM  (vs V) | 79.277 | 20.000 | GOOD |
+| 5.2 | Shear Bearing — SM  (vs V) | 119.897 | 20.000 | GOOD |
+| 5.3 | Axial Bearing — MM  (vs P) | 12.404 | 0.000 | GOOD |
+| 5.4 | Axial Bearing — SM  (vs P) | 18.759 | 0.000 | GOOD |
+| 6.1 | Bolt Shear  (vs max(P,V)) | 73.050 | 20.000 | GOOD |
+| 6.2 | Slip-Critical  (vs max(P,V)) | 51.867 | 20.000 | GOOD |
+| 7 | Weld Size | 0.188 | 0.188 | GOOD |
 
-### ✅ All checks pass — Connection is acceptable.
+### — All checks pass — Connection is acceptable.
 
 ---
 

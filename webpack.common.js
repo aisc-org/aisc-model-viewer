@@ -21,7 +21,16 @@ module.exports = {
         buckling_double_angle: './src/buckling-double-angle/buckling-double-angle.ts',
         //Sculpture Connections
         full_AISC_sculpture: './src/full-AISC-sculpture/full-AISC-sculpture.ts',
-        shear_tab: './src/shear-tab/shear-tab.ts'
+        shear_tab: './src/shear-tab/shear-tab.ts',
+        seated_truss: './src/seated-truss/seated-truss.ts',
+        BW_double_angle: './src/BW-double-angle/BW-double-angle.ts',
+        bent_plate: './src/bent-plate/bent-plate.ts',
+        column_splice: './src/column-splice/column-splice.ts',
+        base_plate: './src/base-plate/base-plate.ts',
+        direct_weld: './src/direct-weld/direct-weld.ts',
+        moment_splice: './src/moment-splice/moment-splice.ts',
+        end_plate: './src/end-plate/end-plate.ts',
+        flange_plate: './src/flange-plate/flange-plate.ts',
     },
     module: {
         rules: [
@@ -138,7 +147,63 @@ module.exports = {
             filename: 'shear-tab/index.html',
             template: './src/app.ejs',
             chunks: ['shear_tab']
+        }),
+        new HtmlWebpackPlugin({
+            title: 'Seated Truss Connection',
+            filename: 'seated-truss/index.html',
+            template: './src/app.ejs',
+            chunks: ['seated_truss']
+        }),
+        new HtmlWebpackPlugin({
+            title: 'Bolted Double Angle Connection',
+            filename: 'BW-double-angle/index.html',
+            template: './src/app.ejs',
+            chunks: ['BW_double_angle']
+        }),
+        new HtmlWebpackPlugin({
+            title: 'Bent Plate Connection',
+            filename: 'bent-plate/index.html',
+            template: './src/app.ejs',
+            chunks: ['bent_plate']
+        }),
+        new HtmlWebpackPlugin({
+            title: 'Column Splice Connection',
+            filename: 'column-splice/index.html',
+            template: './src/app.ejs',
+            chunks: ['column_splice']
+        }),
+        new HtmlWebpackPlugin({
+            title: 'Base Plate Connection',
+            filename: 'base-plate/index.html',
+            template: './src/app.ejs',
+            chunks: ['base_plate']
+        }),
+        new HtmlWebpackPlugin({
+            title: 'Directly Welded Flange Moment Connection',
+            filename: 'direct-weld/index.html',
+            template: './src/app.ejs',
+            chunks: ['direct_weld']
+        }),
+        new HtmlWebpackPlugin({
+            title: 'Moment Splice Connection',
+            filename: 'moment-splice/index.html',
+            template: './src/app.ejs',
+            chunks: ['moment_splice']
+        }),
+        new HtmlWebpackPlugin({
+            title: 'End Plate Connection',
+            filename: 'end-plate/index.html',
+            template: './src/app.ejs',
+            chunks: ['end_plate']
+        }),
+        new HtmlWebpackPlugin({
+            title: 'Flange Plate Connection',
+            filename: 'flange-plate/index.html',
+            template: './src/app.ejs',
+            chunks: ['flange_plate']
         })
+
+
     ],
     output: {
         filename: '[name].bundle.js',
